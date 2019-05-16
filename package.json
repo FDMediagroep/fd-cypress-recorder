@@ -1,0 +1,39 @@
+{
+  "name": "fd-cypress-recorder",
+  "version": "0.0.1",
+  "description": "Fd Cypress Recorder captures user interactions and generates Cypress test code.",
+  "main": "fd-cypress-recorder/content.js",
+  "scripts": {
+    "lint": "tslint -p .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "cross-env NODE_ENV=production webpack --mode production --display-modules -w",
+    "watch-dev": "cross-env NODE_ENV=development webpack --mode development --display-modules -w",
+    "webpack": "cross-env NODE_ENV=production webpack --mode production --display-modules -p"
+  },
+  "author": "Willem Liu",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chrome": "0.0.81",
+    "@types/react": "^16.8.17",
+    "@types/react-dom": "^16.8.3",
+    "@types/styled-components": "^4.1.15",
+    "@types/webpack-env": "^1.13.9",
+    "awesome-typescript-loader": "^5.2.1",
+    "cross-env": "^5.2.0",
+    "tslint": "^5.16.0",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.4.1",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "@fdmg/fd-buttons": "^1.0.27",
+    "@fdmg/fd-inputs": "^1.0.24",
+    "@fdmg/fd-typography": "^1.0.31",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "resub": "^1.0.13",
+    "styled-components": "^4.2.0",
+    "unique-selector": "^0.4.1"
+  }
+}

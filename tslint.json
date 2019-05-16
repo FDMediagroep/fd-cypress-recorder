@@ -1,0 +1,42 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended",
+        "tslint-react"
+    ],
+    "jsRules": {},
+    "rules": {
+        "interface-name": false,
+        "jsx-no-multiline-js": false,
+        "max-line-length": [false],
+        "no-console": false,
+        "no-empty": false,
+        "no-string-literal": false,
+        "no-var-requires": false,
+        "object-literal-sort-keys": false,
+        "ordered-imports": false,
+        "member-access": false,
+        "quotemark": false,
+        "semicolon": [true],
+        "trailing-comma": [false, "always"]
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": [
+            "src/utils/array.find.ts"
+        ]
+    },
+    "incorrect-state-access": [
+        true
+    ],
+    "override-calls-super": [
+        true,
+        "_buildInitialState",
+        "componentWillMount",
+        "componentDidMount",
+        "componentWillReceiveProps",
+        "componentWillUpdate",
+        "componentDidUpdate",
+        "componentWillUnmount"
+    ]
+}
