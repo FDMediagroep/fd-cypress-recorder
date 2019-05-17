@@ -5,7 +5,13 @@ The plugin only automatically record click on `anchors`. If you want to do some 
 
 ## Installation
 
-Chrome Web Store: 
+Via Chrome Web Store: 
+
+Or manually:
+1. Clone this repository.
+1. npm i
+1. npm run webpack
+1. In your Chrome or Edge Chromium browser you can then load an unpacked extension using the `fd-cypress-recorder` folder.
 
 ## Usage
 
