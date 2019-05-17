@@ -8,6 +8,9 @@ export interface Props {
     selector: string;
 }
 
+/**
+ * This component renders the context menu.
+ */
 export default class ContextMenu extends PureComponent<Props, any> {
     private top = 0;
     private left = 0;
@@ -72,24 +75,22 @@ export default class ContextMenu extends PureComponent<Props, any> {
 
     render() {
         return (
-            <>
-                <StyledContextMenu top={this.top} left={this.left}>
-                    <ul>
-                        <li className="label">Interactions</li>
-                        <li className="clickable" onMouseDown={this.handleClick}>Click</li>
-                        <li className="clickable" onMouseDown={this.handleHover}>Hover</li>
-                        <li className="label">Asserts</li>
-                        <li className="clickable" onMouseDown={this.handleCheckExists}>Exists</li>
-                        <li className="clickable" onMouseDown={this.handleCheckText}>Contains text</li>
-                        <li className="clickable" onMouseDown={this.handleAwaitLocationContains}>URL contains</li>
-                        <li className="label">Global</li>
-                        <li className="clickable" onMouseDown={this.handleAwaitLocation}>Match current URL</li>
-                        <li className="clickable" onMouseDown={this.handleVisit}>Visit current URL</li>
-                        <li className="clickable" onMouseDown={this.handleEnterText}>Enter text</li>
-                    </ul>
-                    <small>{this.props.selector}</small>
-                </StyledContextMenu>
-            </>
+            <StyledContextMenu top={this.top} left={this.left}>
+                <ul>
+                    <li className="label">Interactions</li>
+                    <li className="clickable" onMouseDown={this.handleClick}>Click</li>
+                    <li className="clickable" onMouseDown={this.handleHover}>Hover</li>
+                    <li className="label">Asserts</li>
+                    <li className="clickable" onMouseDown={this.handleCheckExists}>Exists</li>
+                    <li className="clickable" onMouseDown={this.handleCheckText}>Contains text</li>
+                    <li className="clickable" onMouseDown={this.handleAwaitLocationContains}>URL contains</li>
+                    <li className="label">Global</li>
+                    <li className="clickable" onMouseDown={this.handleAwaitLocation}>Match current URL</li>
+                    <li className="clickable" onMouseDown={this.handleVisit}>Visit current URL</li>
+                    <li className="clickable" onMouseDown={this.handleEnterText}>Enter text</li>
+                </ul>
+                <small>{this.props.selector}</small>
+            </StyledContextMenu>
         );
     }
 }

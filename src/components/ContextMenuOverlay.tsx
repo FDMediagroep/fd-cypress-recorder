@@ -9,6 +9,9 @@ export interface Props {
     onClick: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
+/**
+ * This component renders the overlay for the context menu and also contains the context menu.
+ */
 export default class ContextMenuOverlay extends PureComponent<Props, any> {
     render() {
         return (

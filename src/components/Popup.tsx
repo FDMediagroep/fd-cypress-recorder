@@ -20,6 +20,9 @@ interface PopupState {
     basicAuth: boolean;
 }
 
+/**
+ * This is the Chrome plugin popup window.
+ */
 export interface Props extends React.Props<any> {
     onTestSuiteChange: (testSuiteName: string|null) => void;
     onTestDescriptionChange: (testDescription: string|null) => void;

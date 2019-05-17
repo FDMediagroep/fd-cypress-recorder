@@ -15,6 +15,9 @@ export interface Props {
     onDescriptionChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+/**
+ * This component can show the recorded events as code or as a list of individual events.
+ */
 export default class CypressGenerator extends PureComponent<Props, any> {
     state: any = {
         view: 'code'

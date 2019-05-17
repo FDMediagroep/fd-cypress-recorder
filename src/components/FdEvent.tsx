@@ -8,7 +8,7 @@ interface Props {
 export default function FdEvent(props: Props) {
     return (
         <StyledEvent>
-            <span className="event-type">{props.event.type}</span>
+            <span className="event-type">{props.event.type} </span>
             {props.event.value ? <span className="event-value">{props.event.value}</span> : null}
         </StyledEvent>
     );

@@ -1,6 +1,9 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
 
+/**
+ * Returns a styled shortcut button.
+ */
 export default function ShortCut(props: any) {
     return (
         <>
