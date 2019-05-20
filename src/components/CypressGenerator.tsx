@@ -68,17 +68,22 @@ export default class CypressGenerator extends PureComponent<Props, any> {
         code = code.map((line: string) => {
             return `\t\t${line}`;
         });
-        code.unshift(`\tit('${description}', () => {\r\n`);
+
+        code.unshift(...[
+            `/**\r\n`,
+            ` * Code generated with Fd Cypress Recorder.\r\n`,
+            ` * https://github.com/FDMediagroep/fd-cypress-recorder\r\n`,
+            ` */\r\n\r\n`,
+            `/// <reference types="Cypress" />\r\n`,
+            `describe('${suite}', () => {\r\n`,
+            `\tafterEach(() => {\r\n`,
+            `\t\tcy.clearCookies();\r\n`,
+            `\t});\r\n\r\n`,
+            `\tit('${description}', () => {\r\n`
+        ]);
+
         code.push('\t});\r\n');
-
-        code.unshift(`\t});\r\n\r\n`);
-        code.unshift(`\t\tcy.clearCookies();\r\n`);
-        code.unshift(`\tafterEach(() => {\r\n`);
-
-        code.unshift(`describe('${suite}', () => {\r\n`);
         code.push('});\r\n');
-
-        code.unshift(`/// <reference types="Cypress" />\r\n`);
 
         return code;
     }
