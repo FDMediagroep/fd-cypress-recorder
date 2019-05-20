@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] = `
+<div
+  className="sc-htpNat hCcVFS"
+  onClick={[MockFunction]}
+>
+  <div
+    className="sc-bwzfXH eljiXW"
+    height={0}
+    width={0}
+  />
+  <div
+    className="sc-bdVaJa krjyUP"
+  >
+    <ul>
+      <li
+        className="label"
+      >
+        Interactions
+      </li>
+      <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
+        Click
+      </li>
+      <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
+        Hover
+      </li>
+      <li
+        className="label"
+      >
+        Asserts
+      </li>
+      <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
+        Exists
+      </li>
+      <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
+        Contains text
+      </li>
+      <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
+        URL contains
+      </li>
+      <li
+        className="label"
+      >
+        Global
+      </li>
+      <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
+        Match current URL
+      </li>
+      <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
+        Visit current URL
+      </li>
+      <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
+        Enter text
+      </li>
+    </ul>
+    <small>
+      .context-menu-overlay-test
+    </small>
+  </div>
+</div>
+`;

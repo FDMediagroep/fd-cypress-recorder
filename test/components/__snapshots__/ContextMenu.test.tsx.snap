@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Context Menu renders context menu correctly 1`] = `
+exports[`Context Menu should render context menu correctly 1`] = `
 <div
   className="sc-bdVaJa krjyUP"
 >

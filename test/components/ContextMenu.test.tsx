@@ -29,12 +29,12 @@ describe('Context Menu', () => {
         EventsStore.clear();
     });
 
-    test('renders context menu correctly', () => {
+    it('should render context menu correctly', () => {
         let contextMenu = TestRenderer.create(<ContextMenu target={target} selector={'.context-menu-test'}/>);
         expect(contextMenu.toJSON()).toMatchSnapshot();
     });
 
-    test('handles manual Click event correctly', () => {
+    it('should handle manual Click event correctly', () => {
         [].slice.call(target.querySelectorAll('li')).forEach((li: HTMLLIElement) => {
             if (li.textContent && li.textContent.toLowerCase() === 'click') {
                 li.dispatchEvent(mouseDownEvt);
@@ -48,7 +48,7 @@ describe('Context Menu', () => {
         expect(fdClickEvt.target).toBe('.context-menu-test');
     });
 
-    test('handles Check Exists event correctly', () => {
+    it('should handle Check Exists event correctly', () => {
         [].slice.call(target.querySelectorAll('li')).forEach((li: HTMLLIElement) => {
             if (li.textContent && li.textContent.toLowerCase() === 'exists') {
                 li.dispatchEvent(mouseDownEvt);
@@ -62,7 +62,7 @@ describe('Context Menu', () => {
         expect(fdClickEvt.target).toBe('.context-menu-test');
     });
 
-    test('handles Hover event correctly', () => {
+    it('should handle Hover event correctly', () => {
         [].slice.call(target.querySelectorAll('li')).forEach((li: HTMLLIElement) => {
             if (li.textContent && li.textContent.toLowerCase() === 'hover') {
                 li.dispatchEvent(mouseDownEvt);
@@ -76,7 +76,7 @@ describe('Context Menu', () => {
         expect(fdClickEvt.target).toBe('.context-menu-test');
     });
 
-    test('handles Visit event correctly', () => {
+    it('should handle Visit event correctly', () => {
         [].slice.call(target.querySelectorAll('li')).forEach((li: HTMLLIElement) => {
             if (li.textContent && li.textContent.toLowerCase() === 'visit current url') {
                 li.dispatchEvent(mouseDownEvt);
@@ -90,7 +90,7 @@ describe('Context Menu', () => {
         expect(fdClickEvt.href).toBe('http://localhost/');
     });
 
-    test('handles Match Current URL event correctly', () => {
+    it('should handle Match Current URL event correctly', () => {
         [].slice.call(target.querySelectorAll('li')).forEach((li: HTMLLIElement) => {
             if (li.textContent && li.textContent.toLowerCase() === 'match current url') {
                 li.dispatchEvent(mouseDownEvt);
