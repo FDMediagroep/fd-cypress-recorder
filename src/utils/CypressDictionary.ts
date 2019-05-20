@@ -15,42 +15,42 @@ interface FdEvent {
     type: FdEventType;
 }
 
-interface FdTypeEvent extends FdEvent {
+export interface FdTypeEvent extends FdEvent {
     target: HTMLElement;
     value: string;
 }
 
-interface FdClickEvent extends FdEvent {
+export interface FdClickEvent extends FdEvent {
     target: HTMLElement;
 }
 
-interface FdHoverEvent extends FdEvent {
+export interface FdHoverEvent extends FdEvent {
     target: HTMLElement;
 }
 
-interface FdLocationEvent extends FdEvent {
+export interface FdLocationEvent extends FdEvent {
     href: string;
 }
 
-interface FdLocationContainsEvent extends FdEvent {
+export interface FdLocationContainsEvent extends FdEvent {
     value: string;
 }
 
-interface FdVisitEvent extends FdEvent {
+export interface FdVisitEvent extends FdEvent {
     href: string;
 }
 
-interface FdTextContentEvent extends FdEvent {
+export interface FdTextContentEvent extends FdEvent {
     target: HTMLElement;
     value: string;
 }
 
-interface FdViewportSizeEvent extends FdEvent {
+export interface FdViewportSizeEvent extends FdEvent {
     width: number;
     height: number;
 }
 
-interface FdExistsEvent extends FdEvent {
+export interface FdExistsEvent extends FdEvent {
     target: HTMLElement;
 }
 

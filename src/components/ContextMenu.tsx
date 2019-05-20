@@ -57,7 +57,6 @@ export default class ContextMenu extends PureComponent<Props, any> {
     }
 
     handleAwaitLocationContains = () => {
-        const el = this.props.target as HTMLInputElement;
         const value = prompt('URL should contain') || '';
         if (value) {
             EventsStore.addEvent({ type: FdEventType.LOCATION_CONTAINS, value });
