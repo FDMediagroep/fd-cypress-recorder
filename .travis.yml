@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - node
+python:
+  - "3.6"
+cache:
+  - pip
+addons:
+  apt:
+    packages:
+    - nodejs-legacy
+branches:
+  only:
+  - master
+stages:
+  - test
+install:
+  - npm install
+jobs:
+  include:
+    - stage: test
+      name: "Unit test"
+      script: npm test
+after_success:
+- cat ./dist/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
