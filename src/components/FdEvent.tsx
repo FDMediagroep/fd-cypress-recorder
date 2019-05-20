@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 interface Props {
     event: any;
+    value?: string;
 }
 
 export default function FdEvent(props: Props) {

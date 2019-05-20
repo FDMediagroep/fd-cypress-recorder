@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fd Event should render event type correctly 1`] = `
+<span
+  className="sc-bdVaJa kzYKzy"
+>
+  <span
+    className="event-type"
+  >
+     
+  </span>
+</span>
+`;
+
+exports[`Fd Event should render event type with value correctly 1`] = `
+<span
+  className="sc-bdVaJa kzYKzy"
+>
+  <span
+    className="event-type"
+  >
+     
+  </span>
+</span>
+`;
