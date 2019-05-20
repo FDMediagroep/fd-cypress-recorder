@@ -21,6 +21,7 @@
     "@types/styled-components": "^4.1.15",
     "@types/webpack-env": "^1.13.9",
     "awesome-typescript-loader": "^5.2.1",
+    "coveralls": "^3.0.3",
     "cross-env": "^5.2.0",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
