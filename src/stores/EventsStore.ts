@@ -56,12 +56,18 @@ class EventsStore extends StoreBase {
      * Add event if not already exists. Otherwise override existing.
      */
     setEvent(event: AllFdEvents) {
-        const foundEvent = this.events.filter((ev) => ev.type === event.type);
+        const foundEvent = this.events.filter((ev) => ev.type === event.type );
         this.clearUndone();
         if (foundEvent.length === 0) {
-            this.events = [...this.events, event];
-        } else {
             this.events = this.events.concat(event);
+        } else {
+            const copy = [...this.events];
+            copy.forEach((ev, idx) => {
+                if (ev.type === event.type) {
+                    copy[idx] = event;
+                }
+            });
+            this.events = copy;
         }
         this.trigger();
     }
