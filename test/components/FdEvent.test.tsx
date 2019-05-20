@@ -5,12 +5,12 @@ import { FdEventType } from '../../src/utils/CypressDictionary';
 
 describe('Fd Event', () => {
     it('should render event type correctly', () => {
-        let contextMenu = TestRenderer.create(<FdEvent event={FdEventType.CLICK}/>);
+        let contextMenu = TestRenderer.create(<FdEvent event={{type: FdEventType.CLICK, target: 'document.body'}}/>);
         expect(contextMenu.toJSON()).toMatchSnapshot();
     });
 
     it('should render event type with value correctly', () => {
-        let contextMenu = TestRenderer.create(<FdEvent event={FdEventType.CONTAINS_TEXT} value='Test text'/>);
+        let contextMenu = TestRenderer.create(<FdEvent event={{type: FdEventType.CONTAINS_TEXT, target: 'document.body', value: 'contains this text'}}/>);
         expect(contextMenu.toJSON()).toMatchSnapshot();
     });
 

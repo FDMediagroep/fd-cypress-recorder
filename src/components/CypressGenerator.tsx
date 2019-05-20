@@ -53,7 +53,7 @@ export default class CypressGenerator extends PureComponent<Props, any> {
     }
 
     removeEvent = (e: React.MouseEvent<HTMLButtonElement>) => {
-        this.props.onRemoveEvent(parseInt(e.currentTarget.getAttribute('data-index') || '0'));
+        this.props.onRemoveEvent(parseInt(e.currentTarget.getAttribute('data-index') || '0', 10));
     }
 
     generateCodeFromEvents = (events: AllFdEvents[]) => {
@@ -93,7 +93,11 @@ export default class CypressGenerator extends PureComponent<Props, any> {
                     <textarea onChange={this.handleChange} value={this.state.cypressCode.join('')} placeholder="Start using the website to record some events" readOnly={false} spellCheck={false}/>
                     : (
                         <ul>
-                            {this.props.events.map((event: AllFdEvents, idx: number) => <li key={idx}><FdEvent event={event}/> <ButtonEditorial className="toggle-view" data-index={idx} onClick={this.removeEvent} title="Delete event">x</ButtonEditorial></li>)}
+                            {this.props.events.map((event: AllFdEvents, idx: number) => (
+                                <li key={idx}>
+                                    <FdEvent event={event}/><ButtonEditorial className="toggle-view" data-index={idx} onClick={this.removeEvent} title="Delete event">x</ButtonEditorial>
+                                </li>
+                            ))}
                         </ul>
                     )
                 }
@@ -108,7 +112,7 @@ const StyledCodeContainer = styled.div`
     flex: 1 1 auto;
     flex-direction: column;
     min-width: 450px;
-    
+
     .testSuite, .testDescription {
         width: 100%;
         margin-bottom: 1rem;

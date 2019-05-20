@@ -76,7 +76,7 @@ export const UNIQUE_SELECTOR_OPTIONS = {
 };
 
 export interface Options {
-    basicAuth?: boolean
+    basicAuth?: boolean;
 }
 
 export function getCode(event: AllFdEvents, options?: Options) {
