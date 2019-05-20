@@ -1,0 +1,321 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cypress Generator should render empty test correctly 1`] = `
+<div
+  className="sc-bwzfXH dyAAZl"
+>
+  <div
+    className="fd-input testSuite"
+  >
+    <div
+      className="input"
+    >
+      <input
+        id="testSuite"
+        maxLength={null}
+        minLength={null}
+        name="testSuite"
+        onChange={[Function]}
+        onInvalid={[Function]}
+        placeholder=" "
+        required={false}
+        title="Test suite name"
+        type="text"
+        value=""
+      />
+      <label
+        htmlFor="testSuite"
+      >
+        Test suite name
+         
+        <i
+          className="icon-check"
+        />
+      </label>
+      <div
+        className="input-message error-message"
+      >
+        Please enter a name for your test suite
+      </div>
+      <div
+        className="input-message"
+      />
+    </div>
+  </div>
+  <div
+    className="fd-input testDescription"
+  >
+    <div
+      className="input"
+    >
+      <input
+        id="testDescription"
+        maxLength={null}
+        minLength={null}
+        name="testDescription"
+        onChange={[Function]}
+        onInvalid={[Function]}
+        placeholder=" "
+        required={false}
+        title="Description"
+        type="text"
+        value=""
+      />
+      <label
+        htmlFor="testDescription"
+      >
+        Description
+         
+        <i
+          className="icon-check"
+        />
+      </label>
+      <div
+        className="input-message error-message"
+      >
+        Please enter a description for your test
+      </div>
+      <div
+        className="input-message"
+      />
+    </div>
+  </div>
+  <textarea
+    onChange={[Function]}
+    placeholder="Start using the website to record some events"
+    readOnly={false}
+    spellCheck={false}
+    value="/// <reference types=\\"Cypress\\" />
+describe('Test Suite ...', () => {
+	afterEach(() => {
+		cy.clearCookies();
+	});
+
+	it('should ...', () => {
+	});
+});
+"
+  />
+  <button
+    className="fd-button toggle-view"
+    onClick={[Function]}
+    title="Toggle between code and event view"
+  >
+    Show events
+  </button>
+</div>
+`;
+
+exports[`Cypress Generator should render events correctly 1`] = `
+<div
+  className="sc-bwzfXH dyAAZl"
+>
+  <div
+    className="fd-input testSuite"
+  >
+    <div
+      className="input"
+    >
+      <input
+        id="testSuite"
+        maxLength={null}
+        minLength={null}
+        name="testSuite"
+        onChange={[Function]}
+        onInvalid={[Function]}
+        placeholder=" "
+        required={false}
+        title="Test suite name"
+        type="text"
+        value=""
+      />
+      <label
+        htmlFor="testSuite"
+      >
+        Test suite name
+         
+        <i
+          className="icon-check"
+        />
+      </label>
+      <div
+        className="input-message error-message"
+      >
+        Please enter a name for your test suite
+      </div>
+      <div
+        className="input-message"
+      />
+    </div>
+  </div>
+  <div
+    className="fd-input testDescription"
+  >
+    <div
+      className="input"
+    >
+      <input
+        id="testDescription"
+        maxLength={null}
+        minLength={null}
+        name="testDescription"
+        onChange={[Function]}
+        onInvalid={[Function]}
+        placeholder=" "
+        required={false}
+        title="Description"
+        type="text"
+        value=""
+      />
+      <label
+        htmlFor="testDescription"
+      >
+        Description
+         
+        <i
+          className="icon-check"
+        />
+      </label>
+      <div
+        className="input-message error-message"
+      >
+        Please enter a description for your test
+      </div>
+      <div
+        className="input-message"
+      />
+    </div>
+  </div>
+  <textarea
+    onChange={[Function]}
+    placeholder="Start using the website to record some events"
+    readOnly={false}
+    spellCheck={false}
+    value="/// <reference types=\\"Cypress\\" />
+describe('Test Suite ...', () => {
+	afterEach(() => {
+		cy.clearCookies();
+	});
+
+	it('should ...', () => {
+		cy.viewport(320, 240);
+		cy.visit('http://willemliu.nl');
+	});
+});
+"
+  />
+  <button
+    className="fd-button toggle-view"
+    onClick={[Function]}
+    title="Toggle between code and event view"
+  >
+    Show events
+  </button>
+</div>
+`;
+
+exports[`Cypress Generator should render test with suite name and description correctly 1`] = `
+<div
+  className="sc-bwzfXH dyAAZl"
+>
+  <div
+    className="fd-input testSuite"
+  >
+    <div
+      className="input"
+    >
+      <input
+        id="testSuite"
+        maxLength={null}
+        minLength={null}
+        name="testSuite"
+        onChange={[Function]}
+        onInvalid={[Function]}
+        placeholder=" "
+        required={false}
+        title="Test suite name"
+        type="text"
+        value="Test suite name"
+      />
+      <label
+        htmlFor="testSuite"
+      >
+        Test suite name
+         
+        <i
+          className="icon-check"
+        />
+      </label>
+      <div
+        className="input-message error-message"
+      >
+        Please enter a name for your test suite
+      </div>
+      <div
+        className="input-message"
+      />
+    </div>
+  </div>
+  <div
+    className="fd-input testDescription"
+  >
+    <div
+      className="input"
+    >
+      <input
+        id="testDescription"
+        maxLength={null}
+        minLength={null}
+        name="testDescription"
+        onChange={[Function]}
+        onInvalid={[Function]}
+        placeholder=" "
+        required={false}
+        title="Description"
+        type="text"
+        value="Test description"
+      />
+      <label
+        htmlFor="testDescription"
+      >
+        Description
+         
+        <i
+          className="icon-check"
+        />
+      </label>
+      <div
+        className="input-message error-message"
+      >
+        Please enter a description for your test
+      </div>
+      <div
+        className="input-message"
+      />
+    </div>
+  </div>
+  <textarea
+    onChange={[Function]}
+    placeholder="Start using the website to record some events"
+    readOnly={false}
+    spellCheck={false}
+    value="/// <reference types=\\"Cypress\\" />
+describe('Test suite name', () => {
+	afterEach(() => {
+		cy.clearCookies();
+	});
+
+	it('Test description', () => {
+	});
+});
+"
+  />
+  <button
+    className="fd-button toggle-view"
+    onClick={[Function]}
+    title="Toggle between code and event view"
+  >
+    Show events
+  </button>
+</div>
+`;
