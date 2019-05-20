@@ -85,7 +85,12 @@ exports[`Cypress Generator should render empty test correctly 1`] = `
     placeholder="Start using the website to record some events"
     readOnly={false}
     spellCheck={false}
-    value="/// <reference types=\\"Cypress\\" />
+    value="/**
+ * Code generated with Fd Cypress Recorder.
+ * https://github.com/FDMediagroep/fd-cypress-recorder
+ */
+
+/// <reference types=\\"Cypress\\" />
 describe('Test Suite ...', () => {
 	afterEach(() => {
 		cy.clearCookies();
@@ -191,7 +196,12 @@ exports[`Cypress Generator should render events correctly 1`] = `
     placeholder="Start using the website to record some events"
     readOnly={false}
     spellCheck={false}
-    value="/// <reference types=\\"Cypress\\" />
+    value="/**
+ * Code generated with Fd Cypress Recorder.
+ * https://github.com/FDMediagroep/fd-cypress-recorder
+ */
+
+/// <reference types=\\"Cypress\\" />
 describe('Test Suite ...', () => {
 	afterEach(() => {
 		cy.clearCookies();
@@ -299,7 +309,12 @@ exports[`Cypress Generator should render test with suite name and description co
     placeholder="Start using the website to record some events"
     readOnly={false}
     spellCheck={false}
-    value="/// <reference types=\\"Cypress\\" />
+    value="/**
+ * Code generated with Fd Cypress Recorder.
+ * https://github.com/FDMediagroep/fd-cypress-recorder
+ */
+
+/// <reference types=\\"Cypress\\" />
 describe('Test suite name', () => {
 	afterEach(() => {
 		cy.clearCookies();
