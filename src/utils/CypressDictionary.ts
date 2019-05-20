@@ -11,21 +11,21 @@ export enum FdEventType {
     VISIT = 'visit',
 }
 
-interface FdEvent {
+export interface FdEvent {
     type: FdEventType;
 }
 
 export interface FdTypeEvent extends FdEvent {
-    target: HTMLElement;
+    target: string; // CSS Selector
     value: string;
 }
 
 export interface FdClickEvent extends FdEvent {
-    target: HTMLElement;
+    target: string; // CSS Selector
 }
 
 export interface FdHoverEvent extends FdEvent {
-    target: HTMLElement;
+    target: string; // CSS Selector
 }
 
 export interface FdLocationEvent extends FdEvent {
@@ -41,7 +41,7 @@ export interface FdVisitEvent extends FdEvent {
 }
 
 export interface FdTextContentEvent extends FdEvent {
-    target: HTMLElement;
+    target: string; // CSS Selector
     value: string;
 }
 
@@ -51,7 +51,7 @@ export interface FdViewportSizeEvent extends FdEvent {
 }
 
 export interface FdExistsEvent extends FdEvent {
-    target: HTMLElement;
+    target: string; // CSS Selector
 }
 
 export type AllFdEvents = FdEvent
