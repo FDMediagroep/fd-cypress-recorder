@@ -104,4 +104,30 @@ describe('Context Menu', () => {
         expect(fdClickEvt.href).toBe('http://localhost/');
     });
 
+    it('should handle Attributes... event correctly', () => {
+        [].slice.call(target.querySelectorAll('li')).forEach((li: HTMLLIElement) => {
+            if (li.textContent && li.textContent.toLowerCase() === 'attributes...') {
+                li.dispatchEvent(mouseDownEvt);
+            }
+        });
+        expect(clickMock).toHaveBeenCalledTimes(1);
+        expect(target.querySelectorAll('li.label.back').length).toBe(1);
+    });
+
+    it('should handle Attributes... and then Back event correctly', () => {
+        [].slice.call(target.querySelectorAll('li')).forEach((li: HTMLLIElement) => {
+            if (li.textContent && li.textContent.toLowerCase() === 'attributes...') {
+                li.dispatchEvent(mouseDownEvt);
+            }
+        });
+        expect(clickMock).toHaveBeenCalledTimes(1);
+        expect(target.querySelectorAll('li.label.back').length).toBe(1);
+
+        [].slice.call(target.querySelectorAll('li.label.back')).forEach((li: HTMLLIElement) => {
+            li.dispatchEvent(mouseDownEvt);
+        });
+
+        expect(target.querySelectorAll('li.label.back').length).toBe(0);
+    });
+
 });
