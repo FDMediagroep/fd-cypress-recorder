@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Context Menu Attribute should render with attributes correctly 1`] = `
+<ul>
+  <li
+    className="label back"
+    onMouseDown={[Function]}
+  >
+    &lt; Attributes
+  </li>
+  <li
+    className="label separator"
+  >
+    <b>
+      class
+    </b>
+  </li>
+  <li
+    className="clickable"
+    data-name="class"
+    data-value="context-menu-attributes-test"
+    onMouseDown={[Function]}
+  >
+    Contains...
+  </li>
+  <li
+    className="clickable"
+    data-name="class"
+    data-value="context-menu-attributes-test"
+    onMouseDown={[Function]}
+  >
+    <div
+      className="sc-bdVaJa bRGwQJ"
+    >
+      Equals
+      <small>
+        context-menu-attributes-test
+      </small>
+    </div>
+  </li>
+  <li
+    className="clickable"
+    data-name="class"
+    data-value="context-menu-attributes-test"
+    onMouseDown={[Function]}
+  >
+    Exists
+  </li>
+</ul>
+`;
+
+exports[`Context Menu Attribute should render without attributes correctly 1`] = `
+<ul>
+  <li
+    className="label back"
+    onMouseDown={[Function]}
+  >
+    &lt; No attributes found
+  </li>
+</ul>
+`;
