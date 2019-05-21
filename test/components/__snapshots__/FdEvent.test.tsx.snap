@@ -2,7 +2,7 @@
 
 exports[`Fd Event should render event type correctly 1`] = `
 <span
-  className="sc-bdVaJa kjUZVp"
+  className="sc-bdVaJa frVpeg"
 >
   <span
     className="event-type"
@@ -22,7 +22,7 @@ exports[`Fd Event should render event type correctly 1`] = `
 
 exports[`Fd Event should render event type with value correctly 1`] = `
 <span
-  className="sc-bdVaJa kjUZVp"
+  className="sc-bdVaJa frVpeg"
 >
   <span
     className="event-type"
