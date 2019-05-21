@@ -33,6 +33,12 @@ exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] =
         className="clickable"
         onMouseDown={[Function]}
       >
+        Enter text
+      </li>
+      <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
         Hover
       </li>
       <li
@@ -44,7 +50,7 @@ exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] =
         className="clickable"
         onMouseDown={[Function]}
       >
-        Exists
+        Attributes...
       </li>
       <li
         className="clickable"
@@ -56,13 +62,7 @@ exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] =
         className="clickable"
         onMouseDown={[Function]}
       >
-        Attributes...
-      </li>
-      <li
-        className="clickable"
-        onMouseDown={[Function]}
-      >
-        URL contains
+        Exists
       </li>
       <li
         className="label"
@@ -79,13 +79,13 @@ exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] =
         className="clickable"
         onMouseDown={[Function]}
       >
-        Visit current URL
+        URL contains
       </li>
       <li
         className="clickable"
         onMouseDown={[Function]}
       >
-        Enter text
+        Visit current URL
       </li>
     </ul>
     <small>

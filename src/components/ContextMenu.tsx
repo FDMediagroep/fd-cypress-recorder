@@ -97,16 +97,16 @@ export default class ContextMenu extends PureComponent<Props, any> {
                     <ul>
                         <li className="label">Interactions</li>
                         <li className="clickable" onMouseDown={this.handleClick}>Click</li>
+                        <li className="clickable" onMouseDown={this.handleEnterText}>Enter text</li>
                         <li className="clickable" onMouseDown={this.handleHover}>Hover</li>
                         <li className="label">Asserts</li>
-                        <li className="clickable" onMouseDown={this.handleCheckExists}>Exists</li>
-                        <li className="clickable" onMouseDown={this.handleCheckText}>Contains text</li>
                         <li className="clickable" onMouseDown={this.handleCheckAttribute}>Attributes...</li>
-                        <li className="clickable" onMouseDown={this.handleAwaitLocationContains}>URL contains</li>
+                        <li className="clickable" onMouseDown={this.handleCheckText}>Contains text</li>
+                        <li className="clickable" onMouseDown={this.handleCheckExists}>Exists</li>
                         <li className="label">Global</li>
                         <li className="clickable" onMouseDown={this.handleAwaitLocation}>Match current URL</li>
+                        <li className="clickable" onMouseDown={this.handleAwaitLocationContains}>URL contains</li>
                         <li className="clickable" onMouseDown={this.handleVisit}>Visit current URL</li>
-                        <li className="clickable" onMouseDown={this.handleEnterText}>Enter text</li>
                     </ul>
                 )}
                 <small>{this.props.selector}</small>
