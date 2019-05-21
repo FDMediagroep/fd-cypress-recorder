@@ -4,6 +4,7 @@ import {TextInput} from '@fdmg/fd-inputs';
 import { AllFdEvents, getCode } from "../utils/CypressDictionary";
 import { ButtonEditorial } from "@fdmg/fd-buttons";
 import FdEvent from "./FdEvent";
+import EventsList from "./EventsList";
 
 export interface Props {
     basicAuth: boolean;
@@ -32,7 +33,8 @@ export default class CypressGenerator extends PureComponent<Props, any> {
         if (prevProps.testSuite !== this.props.testSuite
             || prevProps.testDescription !== this.props.testDescription
             || prevProps.events.length !== this.props.events.length
-            || prevProps.basicAuth !== this.props.basicAuth) {
+            || prevProps.basicAuth !== this.props.basicAuth
+            || JSON.stringify(prevProps.events) != JSON.stringify(this.props.events)) {
             this.setState({cypressCode: this.generateCodeFromEvents(this.props.events)});
         }
     }
@@ -96,15 +98,7 @@ export default class CypressGenerator extends PureComponent<Props, any> {
                 {
                     this.state.view === 'code' ?
                     <textarea onChange={this.handleChange} value={this.state.cypressCode.join('')} placeholder="Start using the website to record some events" readOnly={false} spellCheck={false}/>
-                    : (
-                        <ul>
-                            {this.props.events.map((event: AllFdEvents, idx: number) => (
-                                <li key={idx}>
-                                    <FdEvent event={event}/><ButtonEditorial className="toggle-view" data-index={idx} onClick={this.removeEvent} title="Delete event">x</ButtonEditorial>
-                                </li>
-                            ))}
-                        </ul>
-                    )
+                    : <EventsList events={this.props.events} onRemoveEvent={this.removeEvent}/>
                 }
                 <ButtonEditorial className="toggle-view" onClick={this.toggleView} title="Toggle between code and event view">{this.state.view === 'code' ? 'Show events' : 'Show code'}</ButtonEditorial>
             </StyledCodeContainer>

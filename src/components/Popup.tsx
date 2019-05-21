@@ -132,8 +132,12 @@ export default class Popup extends ComponentBase<Props, PopupState> {
     }
 
     protected _buildState(props: any, initialBuild: boolean): PopupState {
+        const events = EventsStore.getEvents();
+        events.forEach((event: any, idx: number) => {
+            event.id = idx;
+        });
         return {
-            events: EventsStore.getEvents(),
+            events,
             futures: EventsStore.getFutures(),
             undoneEvents: EventsStore.getUndoneEvents(),
             templates: TemplatesStore.getTemplates(),
