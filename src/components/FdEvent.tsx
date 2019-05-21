@@ -19,11 +19,19 @@ export default function FdEvent(props: Props) {
 }
 
 const StyledEvent = styled.span`
+    display: flex;
+    flex-wrap: wrap;
+
+    span {
+        margin-right: .5rem;
+    }
+
     .event-type {
         font-weight: bold;
     }
 
     .event-target {
+        flex: 1 1 100%;
         font-style: italic;
         color: #677381;
     }

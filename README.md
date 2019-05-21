@@ -4,7 +4,7 @@
 # Fd Cypress Recorder
 
 `Fd Cypress Recorder` is a minimal plugin which records user interactions with a website. The interactions are then converted to Cypress test code which you can copy and paste into a Cypress test.
-The plugin only automatically record click on `anchors`. If you want to do some custom actions, e.g. click on `span`, you can open up the context menu to record custom actions.
+The plugin only automatically record click on `anchors` and `buttons`. If you want to do some custom actions, e.g. click on `span`, you can open up the context menu to record custom actions.
 
 ## Installation
 
