@@ -23,6 +23,17 @@ Or manually:
 1. Press `Record` and the scenario recording starts
     1. Make sure the website has focus
     1. Press `CTRL`+`Print Screen` to open up a context menu with extra test options
+    1. Interact with your website
+1. Click the Fd Cypress Recorder extension icon to open the popup
+1. Click `Stop` to stop recording.
+1. Optional:
+    1. Fill in the `Test suite name` and `Description`.
+    1. You can now save these interactions as a template by pressing the `+` button
+    1. Click `Show events` to see the recorded interactions in a list.
+    1. You can remove or re-order the interactions as you see fit.
+1. Copy the code from the text area and paste it into a Cypress test file.
+1. Run the Cypress test.
+
 
 ### Templates
 
