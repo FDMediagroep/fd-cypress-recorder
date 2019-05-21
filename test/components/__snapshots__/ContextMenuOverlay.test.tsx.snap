@@ -2,16 +2,16 @@
 
 exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] = `
 <div
-  className="sc-htpNat hCcVFS"
+  className="sc-bxivhb leSYpr"
   onClick={[MockFunction]}
 >
   <div
-    className="sc-bwzfXH eljiXW"
+    className="sc-htpNat gKXcbp"
     height={0}
     width={0}
   />
   <div
-    className="sc-bdVaJa krjyUP"
+    className="sc-bwzfXH jQIhHb"
   >
     <ul>
       <li
@@ -47,6 +47,12 @@ exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] =
         onMouseDown={[Function]}
       >
         Contains text
+      </li>
+      <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
+        Attributes...
       </li>
       <li
         className="clickable"

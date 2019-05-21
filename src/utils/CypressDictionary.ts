@@ -1,4 +1,7 @@
 export enum FdEventType {
+    ATTRIBUTE_VALUE_CONTAINS = 'attribute-value-contains',
+    ATTRIBUTE_VALUE_EQUALS = 'attribute-value-equals',
+    ATTRIBUTE_VALUE_EXISTS = 'attribute-value-exists',
     CLEAR_COOKIES = 'clear-cookies',
     CLICK = 'click',
     CONTAINS_TEXT = 'contains-text',
@@ -13,6 +16,17 @@ export enum FdEventType {
 
 export interface FdEvent {
     type: FdEventType;
+}
+
+export interface FdAttributeValueEvent extends FdEvent {
+    target: string; // CSS Selector
+    name: string;
+    value: string;
+}
+
+export interface FdAttributeExistsEvent extends FdEvent {
+    target: string; // CSS Selector
+    name: string;
 }
 
 export interface FdTypeEvent extends FdEvent {
@@ -55,6 +69,8 @@ export interface FdExistsEvent extends FdEvent {
 }
 
 export type AllFdEvents = FdEvent
+    | FdAttributeValueEvent
+    | FdAttributeExistsEvent
     | FdClickEvent
     | FdHoverEvent
     | FdLocationEvent
@@ -105,6 +121,12 @@ export function getCode(event: AllFdEvents, options?: Options) {
             return `cy.get('${(event as FdTypeEvent).target}').type('${(event as FdTypeEvent).value}');`;
         case FdEventType.VIEWPORT_SIZE:
             return `cy.viewport(${(event as FdViewportSizeEvent).width}, ${(event as FdViewportSizeEvent).height});`;
+        case FdEventType.ATTRIBUTE_VALUE_EQUALS:
+            return `cy.get('${(event as FdAttributeValueEvent).target}').then((el: any) => el.attr('${(event as FdAttributeValueEvent).name}')).then((attr: string) => expect(attr).to.eq('${(event as FdAttributeValueEvent).value.replace(new RegExp("'", 'g'), "\\\'")}'))`;
+        case FdEventType.ATTRIBUTE_VALUE_CONTAINS:
+            return `cy.get('${(event as FdAttributeValueEvent).target}').then((el: any) => el.attr('${(event as FdAttributeValueEvent).name}')).then((attr: string) => expect(attr).to.contain('${(event as FdAttributeValueEvent).value.replace(new RegExp("'", 'g'), "\\\'")}'))`;
+        case FdEventType.ATTRIBUTE_VALUE_EXISTS:
+            return `cy.get('${(event as FdAttributeExistsEvent).target}').should('have.attr', '${(event as FdAttributeExistsEvent).name}');`;
         default:
             return `// ${JSON.stringify(event)}`;
     }

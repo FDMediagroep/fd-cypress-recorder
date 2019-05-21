@@ -2,7 +2,7 @@
 
 exports[`Context Menu should render context menu correctly 1`] = `
 <div
-  className="sc-bdVaJa krjyUP"
+  className="sc-bwzfXH jQIhHb"
 >
   <ul>
     <li
@@ -38,6 +38,12 @@ exports[`Context Menu should render context menu correctly 1`] = `
       onMouseDown={[Function]}
     >
       Contains text
+    </li>
+    <li
+      className="clickable"
+      onMouseDown={[Function]}
+    >
+      Attributes...
     </li>
     <li
       className="clickable"

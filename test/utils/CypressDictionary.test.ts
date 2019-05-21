@@ -10,7 +10,9 @@ import {
     FdLocationContainsEvent,
     FdVisitEvent,
     FdTypeEvent,
-    FdViewportSizeEvent
+    FdViewportSizeEvent,
+    FdAttributeValueEvent,
+    FdAttributeExistsEvent
 } from '../../src/utils/CypressDictionary';
 
 describe('Cypress Dictionary', () => {
@@ -67,5 +69,20 @@ describe('Cypress Dictionary', () => {
     it('should return the Viewport Size event Cypress code', () => {
         const event: FdViewportSizeEvent = {type: FdEventType.VIEWPORT_SIZE, width: 320, height: 240};
         expect(getCode(event)).toBe(`cy.viewport(${event.width}, ${event.height});`);
+    });
+
+    it('should return the Check Attribute Equals event Cypress code', () => {
+        const event: FdAttributeValueEvent = {type: FdEventType.ATTRIBUTE_VALUE_EQUALS, target: 'document.body', name: 'checked', value: 'checked'};
+        expect(getCode(event)).toBe(`cy.get('${event.target}').then((el: any) => el.attr('${event.name}')).then((attr: string) => expect(attr).to.eq('${event.value.replace(new RegExp("'", 'g'), "\\\'")}'))`);
+    });
+
+    it('should return the Check Attribute Contains event Cypress code', () => {
+        const event: FdAttributeValueEvent = {type: FdEventType.ATTRIBUTE_VALUE_CONTAINS, target: 'document.body', name: 'class', value: 'red'};
+        expect(getCode(event)).toBe(`cy.get('${event.target}').then((el: any) => el.attr('${event.name}')).then((attr: string) => expect(attr).to.contain('${event.value.replace(new RegExp("'", 'g'), "\\\'")}'))`);
+    });
+
+    it('should return the Check Attribute Exists event Cypress code', () => {
+        const event: FdAttributeExistsEvent = {type: FdEventType.ATTRIBUTE_VALUE_EXISTS, target: 'document.body', name: 'type'};
+        expect(getCode(event)).toBe(`cy.get('${event.target}').should('have.attr', '${event.name}');`);
     });
 });

@@ -1,7 +1,8 @@
 import React, { PureComponent } from "react";
 import styled from "styled-components";
 import EventsStore = require("../stores/EventsStore");
-import { FdEventType } from "../utils/CypressDictionary";
+import { FdEventType, FdAttributeValueEvent, FdAttributeExistsEvent } from "../utils/CypressDictionary";
+import ContextULCheckAttribute from "./ContextULCheckAttribute";
 
 export interface Props {
     target: HTMLElement;
@@ -12,6 +13,7 @@ export interface Props {
  * This component renders the context menu.
  */
 export default class ContextMenu extends PureComponent<Props, any> {
+    state: any = {};
     private top = 0;
     private left = 0;
     private w = 0;
@@ -72,22 +74,37 @@ export default class ContextMenu extends PureComponent<Props, any> {
         }
     }
 
+    handleAttributeAssert = (event: FdAttributeValueEvent | FdAttributeExistsEvent) => {
+        EventsStore.addEvent(event);
+    }
+
+    handleCheckAttribute = (e: React.MouseEvent<HTMLElement>) => {
+        e.preventDefault();
+        this.setState({
+            customContextMenu: <ContextULCheckAttribute target={this.props.target} selector={this.props.selector} onMouseDown={this.handleAttributeAssert}/>
+        });
+    }
+
     render() {
         return (
             <StyledContextMenu top={this.top} left={this.left}>
-                <ul>
-                    <li className="label">Interactions</li>
-                    <li className="clickable" onMouseDown={this.handleClick}>Click</li>
-                    <li className="clickable" onMouseDown={this.handleHover}>Hover</li>
-                    <li className="label">Asserts</li>
-                    <li className="clickable" onMouseDown={this.handleCheckExists}>Exists</li>
-                    <li className="clickable" onMouseDown={this.handleCheckText}>Contains text</li>
-                    <li className="clickable" onMouseDown={this.handleAwaitLocationContains}>URL contains</li>
-                    <li className="label">Global</li>
-                    <li className="clickable" onMouseDown={this.handleAwaitLocation}>Match current URL</li>
-                    <li className="clickable" onMouseDown={this.handleVisit}>Visit current URL</li>
-                    <li className="clickable" onMouseDown={this.handleEnterText}>Enter text</li>
-                </ul>
+                {this.state.customContextMenu ? this.state.customContextMenu :
+                (
+                    <ul>
+                        <li className="label">Interactions</li>
+                        <li className="clickable" onMouseDown={this.handleClick}>Click</li>
+                        <li className="clickable" onMouseDown={this.handleHover}>Hover</li>
+                        <li className="label">Asserts</li>
+                        <li className="clickable" onMouseDown={this.handleCheckExists}>Exists</li>
+                        <li className="clickable" onMouseDown={this.handleCheckText}>Contains text</li>
+                        <li className="clickable" onMouseDown={this.handleCheckAttribute}>Attributes...</li>
+                        <li className="clickable" onMouseDown={this.handleAwaitLocationContains}>URL contains</li>
+                        <li className="label">Global</li>
+                        <li className="clickable" onMouseDown={this.handleAwaitLocation}>Match current URL</li>
+                        <li className="clickable" onMouseDown={this.handleVisit}>Visit current URL</li>
+                        <li className="clickable" onMouseDown={this.handleEnterText}>Enter text</li>
+                    </ul>
+                )}
                 <small>{this.props.selector}</small>
             </StyledContextMenu>
         );
