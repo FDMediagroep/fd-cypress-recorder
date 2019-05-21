@@ -30,19 +30,22 @@ Or manually:
     1. Fill in the `Test suite name` and `Description`.
     1. You can now save these interactions as a template by pressing the `+` button
     1. Click `Show events` to see the recorded interactions in a list.
+    ![Events](/fd-cypress-recorder/screenshot3.jpg?raw=true "Events")
     1. You can remove or re-order the interactions as you see fit.
 1. Copy the code from the text area and paste it into a Cypress test file.
 1. Run the Cypress test.
 
 
 ### Templates
-
 `Fd Cypress Recorder` has the option to save your current interactions as a template. The philosophy behind this is to provide the user the ability to start recording from a certain point.
 For instance when you want to record various scenarios for which the user needs to be logged in then you can record all actions necessary to log in and save these interactions as template. The next time you can decide to go to the page which comes after login and load saved the template and continue from there.
 Alternatively you can also decide to navigate to a whole different page and load the template. You can open the Context Menu and use the `Visit current url` option to record this navigation step.
+![Templates](/fd-cypress-recorder/screenshot2.jpg?raw=true "Templates")
+
 
 ### Context Menu
 Functionality provided by the context menu records the corresponding interactions.
+![Context Menu](/fd-cypress-recorder/screenshot.jpg?raw=true "Context Menu")
 
 #### Click
 Dispatches the `click` event to the element. Use this function on elements other than `a` or `button` which has a custom click interaction.
