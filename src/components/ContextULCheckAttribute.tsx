@@ -5,6 +5,7 @@ import styled from "styled-components";
 export interface Props {
     target: HTMLElement;
     selector: string;
+    onBack?: () => void;
     onMouseDown: (event: FdAttributeValueEvent | FdAttributeExistsEvent) => void;
 }
 
@@ -38,15 +39,20 @@ export default function ContextULCheckAttribute(props: Props) {
         });
     }
 
+    function handleBack(e: React.MouseEvent<HTMLElement>) {
+        e.preventDefault();
+        if (props.onBack) { props.onBack(); }
+    }
+
     return (
         <ul>
-            {(props.target as HTMLElement).attributes.length === 0 ? <li className="label">No attributes found</li> : <li className="label">Attributes</li>}
+            {(props.target as HTMLElement).attributes.length === 0 ? <li className="label back" onMouseDown={handleBack}>&lt; No attributes found</li> : <li className="label back"onMouseDown={handleBack}>&lt; Attributes</li>}
             {
                 [].slice.call((props.target as HTMLElement).attributes).map((attribute: any) => {
                     if (typeof attribute == 'object') {
                         return (
                             <>
-                                <li className="label"><b>{attribute.name}</b></li>
+                                <li className="label separator"><b>{attribute.name}</b></li>
                                 <li className="clickable" data-name={attribute.name} data-value={attribute.value} onMouseDown={handleAttributeValueContains}>Contains...</li>
                                 <li className="clickable" data-name={attribute.name} data-value={attribute.value} onMouseDown={handleAttributeValueEquals}><StyledDiv>Equals<small>{attribute.value}</small></StyledDiv></li>
                                 <li className="clickable" data-name={attribute.name} data-value={attribute.value} onMouseDown={handleAttributeExists}>Exists</li>
@@ -63,4 +69,7 @@ export default function ContextULCheckAttribute(props: Props) {
 const StyledDiv = styled.div`
     display: flex;
     flex-direction: column;
+    small {
+        padding: 0;
+    }
 `;

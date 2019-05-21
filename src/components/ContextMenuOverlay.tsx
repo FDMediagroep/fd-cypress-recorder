@@ -16,6 +16,7 @@ export default class ContextMenuOverlay extends PureComponent<Props, any> {
     render() {
         return (
             <StyledContextOverlay onClick={this.props.onClick}>
+                <StyledContextOverlayFixed onClick={this.props.onClick}/>
                 <StyledContextContainer
                     top={document.documentElement.scrollTop + this.props.target.getBoundingClientRect().top}
                     width={this.props.target.getBoundingClientRect().width}
@@ -37,6 +38,7 @@ const StyledContextContainer: any = styled.div`
     width: ${(props: any) => props.width}px;
     height: ${(props: any) => props.height}px;
     left: ${(props: any) => props.left}px;
+    z-index: 2;
 `;
 
 const StyledContextOverlay = styled.div`
@@ -46,4 +48,13 @@ const StyledContextOverlay = styled.div`
     right: 0;
     bottom: 0;
     z-index: 9999;
+`;
+
+const StyledContextOverlayFixed = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
 `;

@@ -23,7 +23,7 @@ export default class ContextMenu extends PureComponent<Props, any> {
         this.top = Math.max(document.documentElement.scrollTop + this.props.target.getBoundingClientRect().top + this.props.target.getBoundingClientRect().height, 0);
         this.left = Math.max(document.documentElement.scrollLeft + this.props.target.getBoundingClientRect().left + this.props.target.getBoundingClientRect().width, 0);
         this.w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-        if (this.left + 200 > this.w) {
+        if (this.left + 250 > this.w) {
             this.left = Math.max(document.documentElement.scrollLeft + this.props.target.getBoundingClientRect().left - 200, 0);
         }
     }
@@ -81,8 +81,12 @@ export default class ContextMenu extends PureComponent<Props, any> {
     handleCheckAttribute = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
         this.setState({
-            customContextMenu: <ContextULCheckAttribute target={this.props.target} selector={this.props.selector} onMouseDown={this.handleAttributeAssert}/>
+            customContextMenu: <ContextULCheckAttribute target={this.props.target} selector={this.props.selector} onMouseDown={this.handleAttributeAssert} onBack={this.handleContextMenuBack}/>
         });
+    }
+
+    handleContextMenuBack = () => {
+        this.setState({customContextMenu: null});
     }
 
     render() {
@@ -112,13 +116,43 @@ export default class ContextMenu extends PureComponent<Props, any> {
 }
 
 const StyledContextMenu: any = styled.div`
+    z-index: 2;
     position: absolute;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 5px #999;
     top: ${(props: any) => props.top}px;
     left: ${(props: any) => props.left}px;
-    width: 200px;
+    width: 250px;
+    max-height: 500px;
+    word-break: break-all;
+    overflow: auto;
+    overscroll-behavior: contain;
+    ::-webkit-scrollbar {
+        width: .5rem;
+        height: .5rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-border-radius: .25rem;
+        border-radius: .25rem;
+        background:rgba(0,0,0,0.1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: .25rem;
+        border-radius: .25rem;
+        background:rgba(0,0,0,0.2);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(0,0,0,0.4);
+    }
+
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background: rgba(0,0,0,0.05);
+    }
+
     ul {
         list-style-type: none;
         padding: 0;
@@ -131,6 +165,12 @@ const StyledContextMenu: any = styled.div`
             &.label {
                 justify-content: center;
                 color: #49a4a2;
+                &.separator {
+                    background-color: rgba(0, 0, 0, .1);
+                }
+                &.back {
+                    cursor: pointer;
+                }
             }
             &.clickable {
                 cursor: pointer;
@@ -140,7 +180,7 @@ const StyledContextMenu: any = styled.div`
             }
         }
     }
-    small {
+    > small {
         color: #677381;
         display: block;
         padding: 1rem;
