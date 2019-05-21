@@ -24,11 +24,46 @@ Or manually:
     1. Make sure the website has focus
     1. Press `CTRL`+`Print Screen` to open up a context menu with extra test options
 
-## Templates
+### Templates
 
 `Fd Cypress Recorder` has the option to save your current interactions as a template. The philosophy behind this is to provide the user the ability to start recording from a certain point.
 For instance when you want to record various scenarios for which the user needs to be logged in then you can record all actions necessary to log in and save these interactions as template. The next time you can decide to go to the page which comes after login and load saved the template and continue from there.
 Alternatively you can also decide to navigate to a whole different page and load the template. You can open the Context Menu and use the `Visit current url` option to record this navigation step.
+
+### Context Menu
+Functionality provided by the context menu records the corresponding interactions.
+
+#### Click
+Dispatches the `click` event to the element. Use this function on elements other than `a` or `button` which has a custom click interaction.
+Note: `a` and `button` already have click handlers so this menu-item would cause a double interaction entry. You can easily remove the double interaction through the plugin popup `Show events` view.
+
+#### Enter text
+This allows you to enter text into standard text fields.
+Note: Non-standard text fields are not supported.
+
+#### Hover
+Triggers the mouse `hover` interaction.
+
+#### Attributes...
+Opens another context menu with extra options to assert the HTML attributes on the hovered element. All attributes existing on the hovered element are shown in the following context menu. And each attribute gives you the following options:
+1. `Contains`: Check if attribute contains given text.
+1. `Equals`: Check if attribute value equals current value.
+1. `Exists`: Check if attribute exists
+
+#### Contains text
+Checks if the hovered element contains given text.
+
+#### Exists
+Checks if hovered element exists.
+
+#### Match current URL
+Uses the current URL as value to create a check if the current URL is the same. This is useful when you have recorded multiple interactions and some interactions causes you to navigate to another URL. You can use this option to check if you have landed on the expected URL.
+
+#### URL contains
+Check if current URL contains given text. This is useful if you want to check if after a series of interactions the URL contains a certain text. You'll use this functionality instead of `Match current URL` in the event the URL contains dynamic portions which are unpredictable. With this functionality you can assert the static portion of the URL.
+
+#### Visit current URL
+Use this function if you want to navigate to a certain URL not caused by another interaction like a click on an anchor or via submitting a form.
 
 ## Disclaimer
 
