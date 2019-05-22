@@ -16,6 +16,16 @@ let hoveredElement: HTMLElement;
 let recording: boolean = false;
 let contextMenu = false;
 
+const style: any = document.createElement('style');
+const css = `a:hover, button:hover {
+    background-color: rgba(73, 164, 162, 0.5) !important;
+}`;
+if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+} else {
+    style.appendChild(document.createTextNode(css));
+}
+
 /**
  * Persist the events and recording state to browser storage.
  */
@@ -104,6 +114,7 @@ function beforeUnload() {
  */
 function stop() {
     recording = false;
+    document.getElementsByTagName('head')[0].removeChild(style);
     [].slice.call(document.querySelectorAll('*')).forEach((el: HTMLElement) => {
         switch (el.nodeName) {
             case 'A':
@@ -124,6 +135,8 @@ function stop() {
  */
 function record() {
     recording = true;
+    document.getElementsByTagName('head')[0].appendChild(style);
+
     const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     const height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
