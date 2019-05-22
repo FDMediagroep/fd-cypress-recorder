@@ -93,10 +93,10 @@ export default class Popup extends ComponentBase<Props, PopupState> {
                     <span>FD Cypress Recorder</span>
                     <span className="button-container">
                         {this.state.recording ? <ButtonCallToAction onClick={this.toggleRecord} title="Stop recording">Stop</ButtonCallToAction> : <ButtonEditorial onClick={this.toggleRecord} title="Record interactions">Record</ButtonEditorial>}
-                        {this.state.events.length ? (
+                        {this.state.events.length || (this.state.futures.length && this.state.futures[0].length) ? (
                             <span>
-                                <ButtonEditorial onClick={this.undo} title="Remove last interaction">Step back</ButtonEditorial>
-                                {this.state.futures.length && this.state.futures[0].length ? <ButtonEditorial onClick={this.redo} title="Redo">Redo</ButtonEditorial> : null}
+                                <ButtonEditorial onClick={this.undo} title="Remove last interaction" {...{disabled: !this.state.events.length}}><i className="arrow left"/></ButtonEditorial>
+                                <ButtonEditorial onClick={this.redo} title="Redo" {...{disabled: !(this.state.futures.length && this.state.futures[0].length)}}><i className="arrow right"/></ButtonEditorial>
                             </span>)
                             : null
                         }
@@ -165,6 +165,24 @@ const GlobalStyle = createGlobalStyle`
             flex: 1 1 auto;
             span {
                 display: inline-flex;
+            }
+
+            [disabled] {
+                opacity: 0.3;
+            }
+
+            .arrow {
+                border: solid white;
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+
+                &.left {
+                    transform: rotate(135deg);
+                }
+                &.right {
+                    transform: rotate(-45deg);
+                }
             }
         }
     }
