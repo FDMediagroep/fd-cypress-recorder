@@ -100,7 +100,7 @@ export function getCode(event: AllFdEvents, options?: Options) {
         case FdEventType.CLEAR_COOKIES:
             return `cy.clearCookies();`;
         case FdEventType.CLICK:
-            return `cy.get('${(event as FdClickEvent).target}').should('exist').click();`;
+            return `cy.get('${(event as FdClickEvent).target}').click();`;
         case FdEventType.CONTAINS_TEXT:
             return `cy.get('${(event as FdTextContentEvent).target}').contains('${(event as FdTextContentEvent).value.replace(new RegExp("'", 'g'), "\\\'")}');`;
         case FdEventType.EXISTS:

@@ -23,7 +23,7 @@ describe('Cypress Dictionary', () => {
 
     it('should return the Click event Cypress code', () => {
         const event: FdClickEvent = {type: FdEventType.CLICK, target: 'document.body'};
-        expect(getCode(event)).toBe(`cy.get('${event.target}').should('exist').click();`);
+        expect(getCode(event)).toBe(`cy.get('${event.target}').click();`);
     });
 
     it('should return the Contains Text event Cypress code', () => {
