@@ -76,6 +76,7 @@ export default class ContextMenu extends PureComponent<Props, any> {
     }
 
     handleEnterText = () => {
+        this.props.target.focus();
         const value = prompt('Type your text') || '';
         if (value) {
             EventsStore.addEvent({ type: FdEventType.TYPE, target: this.props.selector, value });
