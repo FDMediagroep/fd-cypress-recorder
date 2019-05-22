@@ -4,6 +4,8 @@ import EventsStore = require("../stores/EventsStore");
 import { FdEventType, FdAttributeValueEvent, FdAttributeExistsEvent } from "../utils/CypressDictionary";
 import ContextULCheckAttribute from "./ContextULCheckAttribute";
 
+declare var window: Window;
+
 export interface Props {
     target: HTMLElement;
     selector: string;
@@ -65,12 +67,18 @@ export default class ContextMenu extends PureComponent<Props, any> {
         }
     }
 
+    handleGoToLocation = () => {
+        const value = prompt('URL to visit', 'https://') || '';
+        if (value) {
+            EventsStore.addEvent({ type: FdEventType.VISIT, href: value });
+            window.location.assign(value);
+        }
+    }
+
     handleEnterText = () => {
-        const el = this.props.target as HTMLInputElement;
         const value = prompt('Type your text') || '';
         if (value) {
             EventsStore.addEvent({ type: FdEventType.TYPE, target: this.props.selector, value });
-            el.value = value;
         }
     }
 
@@ -104,6 +112,7 @@ export default class ContextMenu extends PureComponent<Props, any> {
                         <li className="clickable" onMouseDown={this.handleCheckText}>Contains text</li>
                         <li className="clickable" onMouseDown={this.handleCheckExists}>Exists</li>
                         <li className="label">Global</li>
+                        <li className="clickable" onMouseDown={this.handleGoToLocation}>Go to URL...</li>
                         <li className="clickable" onMouseDown={this.handleAwaitLocation}>Match current URL</li>
                         <li className="clickable" onMouseDown={this.handleAwaitLocationContains}>URL contains</li>
                         <li className="clickable" onMouseDown={this.handleVisit}>Visit current URL</li>

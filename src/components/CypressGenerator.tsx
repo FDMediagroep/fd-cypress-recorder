@@ -124,6 +124,7 @@ const StyledCodeContainer = styled.div`
     ul, textarea {
         flex: 1 1 auto;
         margin-bottom: .5rem;
+        word-break: break-all;
 
         ::-webkit-scrollbar {
             width: .5rem;

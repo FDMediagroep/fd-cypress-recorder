@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Fd Cypress Recorder",
-  "version": "0.04",
+  "version": "0.05",
   "description": "Fd Cypress Recorder captures user interactions and generates Cypress test code.",
   "author": {
     "name": "Willem Liu",
@@ -36,7 +36,8 @@
   },
   "permissions": [
     "*://*/",
-    "storage"
+    "storage",
+    "debugger"
   ],
   "options_ui": {
     "page": "options.html",

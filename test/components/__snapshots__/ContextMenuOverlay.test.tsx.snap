@@ -73,6 +73,12 @@ exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] =
         className="clickable"
         onMouseDown={[Function]}
       >
+        Go to URL...
+      </li>
+      <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
         Match current URL
       </li>
       <li

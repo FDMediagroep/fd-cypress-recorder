@@ -52,8 +52,7 @@ Dispatches the `click` event to the element. Use this function on elements other
 Note: `a` and `button` already have click handlers so this menu-item would cause a double interaction entry. You can easily remove the double interaction through the plugin popup `Show events` view.
 
 #### Enter text
-This allows you to enter text into standard text fields.
-Note: Non-standard text fields are not supported.
+This allows you to enter text into text fields. The field must have focus in order for this to work correctly.
 
 #### Hover
 Triggers the mouse `hover` interaction.

@@ -2,7 +2,7 @@
 
 exports[`Cypress Generator should render empty test correctly 1`] = `
 <div
-  className="sc-bwzfXH jtddVV"
+  className="sc-bwzfXH gbkqhM"
 >
   <div
     className="fd-input testSuite"
@@ -113,7 +113,7 @@ describe('Test Suite ...', () => {
 
 exports[`Cypress Generator should render events correctly 1`] = `
 <div
-  className="sc-bwzfXH jtddVV"
+  className="sc-bwzfXH gbkqhM"
 >
   <div
     className="fd-input testSuite"
@@ -226,7 +226,7 @@ describe('Test Suite ...', () => {
 
 exports[`Cypress Generator should render test with suite name and description correctly 1`] = `
 <div
-  className="sc-bwzfXH jtddVV"
+  className="sc-bwzfXH gbkqhM"
 >
   <div
     className="fd-input testSuite"
