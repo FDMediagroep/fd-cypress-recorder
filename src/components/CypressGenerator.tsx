@@ -34,7 +34,7 @@ export default class CypressGenerator extends PureComponent<Props, any> {
             || prevProps.testDescription !== this.props.testDescription
             || prevProps.events.length !== this.props.events.length
             || prevProps.basicAuth !== this.props.basicAuth
-            || JSON.stringify(prevProps.events) != JSON.stringify(this.props.events)) {
+            || JSON.stringify(prevProps.events) !== JSON.stringify(this.props.events)) {
             this.setState({cypressCode: this.generateCodeFromEvents(this.props.events)});
         }
     }

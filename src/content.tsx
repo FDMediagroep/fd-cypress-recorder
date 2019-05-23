@@ -16,6 +16,8 @@ let hoveredElement: HTMLElement;
 let recording: boolean = false;
 let contextMenu = false;
 
+let subscriptionToken: number = 0;
+
 const style: any = document.createElement('style');
 const css = `a:hover, button:hover {
     background-color: rgba(73, 164, 162, 0.5) !important;
@@ -29,12 +31,11 @@ if (style.styleSheet) {
 /**
  * Persist the events and recording state to browser storage.
  */
-function save(cb?: () => void) {
+function saveEvents() {
     const events = EventsStore.getEvents();
     // Save it using the Chrome extension storage API.
     chrome.storage.local.set({
-        'fd-cypress-chrome-extension-events': events,
-        'fd-cypress-chrome-extension-record': recording
+        'fd-cypress-chrome-extension-events': events
     });
     removeContextMenu();
 }
@@ -44,7 +45,7 @@ function save(cb?: () => void) {
  */
 function loadEvents() {
     chrome.storage.local.get({'fd-cypress-chrome-extension-events': null}, (items: any) => {
-        EventsStore.setEvents(items[storageName]);
+        EventsStore.setEvents(items[storageName], 'loadEvents');
     });
 }
 
@@ -106,7 +107,8 @@ function keyUpListener(e: KeyboardEvent) {
  * Save the events and recording state when navigating away from the current page.
  */
 function beforeUnload() {
-    save();
+    console.log('before unload');
+    saveEvents();
 }
 
 /**
@@ -114,6 +116,10 @@ function beforeUnload() {
  */
 function stop() {
     recording = false;
+    chrome.storage.local.set({ 'fd-cypress-chrome-extension-record': recording });
+
+    EventsStore.unsubscribe(subscriptionToken);
+
     document.getElementsByTagName('head')[0].removeChild(style);
     [].slice.call(document.querySelectorAll('*')).forEach((el: HTMLElement) => {
         switch (el.nodeName) {
@@ -127,7 +133,6 @@ function stop() {
     window.removeEventListener('mouseover', mouseOverListener);
     window.removeEventListener('keyup', keyUpListener);
     window.removeEventListener('beforeunload', beforeUnload);
-    save();
 }
 
 /**
@@ -135,6 +140,14 @@ function stop() {
  */
 function record() {
     recording = true;
+
+    chrome.storage.local.set({ 'fd-cypress-chrome-extension-record': recording });
+
+    subscriptionToken = EventsStore.subscribe((keys?: string[]) => {
+        if (keys && keys.length && keys[0] === 'loadEvents') { return; } // Prevent an infinite loop.
+        saveEvents();
+    }, StoreBase.Key_All);
+
     document.getElementsByTagName('head')[0].appendChild(style);
 
     const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -162,25 +175,29 @@ function record() {
  * This ultimately results in the views always correctly reflecting the current application state.
  */
 chrome.storage.onChanged.addListener((changes: any, namespace: any) => {
-    for (const key in changes) {
-        if (changes[key]) {
-            const storageChange = changes[key];
-            // console.log('Storage key "%s" in namespace "%s" changed. ' +
-            //           'Old value was "%s", new value is "%s".',
-            //           key,
-            //           namespace,
-            //           storageChange.oldValue,
-            //           storageChange.newValue);
-            switch (key) {
-                case storageName:
-                    loadEvents();
-                    break;
-                case storageRecord:
-                    storageChange.newValue ? record() : stop();
-                    break;
+    chrome.runtime.sendMessage({get: "tabId"}, (response: any) => {
+        if (response.activeTabId !== response.ownTabId) { return; }
+
+        for (const key in changes) {
+            if (changes[key]) {
+                const storageChange = changes[key];
+                // console.log('Storage key "%s" in namespace "%s" changed. ' +
+                //           'Old value was "%s", new value is "%s".',
+                //           key,
+                //           namespace,
+                //           storageChange.oldValue,
+                //           storageChange.newValue);
+                switch (key) {
+                    case storageName:
+                        loadEvents();
+                        break;
+                    case storageRecord:
+                        storageChange.newValue ? record() : stop();
+                        break;
+                }
             }
         }
-    }
+    });
 });
 
 /**
@@ -201,9 +218,9 @@ chrome.storage.local.get({
             }
         });
 
-        EventsStore.subscribe(() => {
-            save();
-        }, StoreBase.Key_All);
+        window.addEventListener('focus', () => {
+            chrome.runtime.sendMessage({head: "activeTabId"});
+        });
 
         if (items[storageName]) {
             EventsStore.setEvents(items[storageName]);

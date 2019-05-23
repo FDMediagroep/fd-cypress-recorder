@@ -163,6 +163,7 @@ chrome.storage.onChanged.addListener((changes: any, namespace: any) => {
                     namespace,
                     storageChange.oldValue,
                     storageChange.newValue);
+            console.log(storageChange.oldValue, storageChange.newValue);
             switch (key) {
                 case storageName:
                     storageChange.newValue ? EventsStore.setEvents(storageChange.newValue) : EventsStore.clear();

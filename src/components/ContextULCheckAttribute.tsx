@@ -49,7 +49,7 @@ export default function ContextULCheckAttribute(props: Props) {
             {(props.target as HTMLElement).attributes.length === 0 ? <li className="label back" onMouseDown={handleBack}>&lt; No attributes found</li> : <li className="label back"onMouseDown={handleBack}>&lt; Attributes</li>}
             {
                 [].slice.call((props.target as HTMLElement).attributes).map((attribute: any, idx: number) => {
-                    if (typeof attribute == 'object') {
+                    if (typeof attribute === 'object') {
                         return (
                             <React.Fragment key={attribute.name}>
                                 <li className="label separator"><b>{attribute.name}</b></li>

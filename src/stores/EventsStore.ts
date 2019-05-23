@@ -12,7 +12,7 @@ class EventsStore extends StoreBase {
         if (currentEvents.length) {
             currentEvents.pop();
             this.events = currentEvents;
-            this.trigger();
+            this.trigger('stepBack');
         }
     }
 
@@ -37,7 +37,7 @@ class EventsStore extends StoreBase {
     addEvent(event: AllFdEvents) {
         this.clearUndone();
         this.events = this.events.concat(event);
-        this.trigger();
+        this.trigger('addEvent');
     }
 
     /**
@@ -49,7 +49,7 @@ class EventsStore extends StoreBase {
             this.clearUndone();
             this.events = [...this.events, event];
         }
-        this.trigger();
+        this.trigger('addUniqueEvent');
     }
 
     /**
@@ -69,21 +69,21 @@ class EventsStore extends StoreBase {
             });
             this.events = copy;
         }
-        this.trigger();
+        this.trigger('setEvent');
     }
 
-    setEvents(events: AllFdEvents[]) {
+    setEvents(events: AllFdEvents[], triggerKey?: string | number | string[] | number[]) {
         if (this.events && events && this.events.length !== events.length) {
             this.clearUndone();
         }
         this.events = events || [];
-        this.trigger();
+        this.trigger(triggerKey ? triggerKey : 'setEvents');
     }
 
     clear() {
         this.clearUndone();
         this.events = [];
-        this.trigger();
+        this.trigger('clear');
     }
 
     @autoSubscribe
