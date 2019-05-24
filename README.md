@@ -66,6 +66,14 @@ Opens another context menu with extra options to assert the HTML attributes on t
 #### Contains text
 Checks if the hovered element contains given text.
 
+#### Count...
+Counts the recurrence of the currently hovered element type within it's parent.
+Note: it can often be difficult to select the correct container element.
+1. `Equals(`_`n`_`)`: Check that element of type within parent equals this number.
+1. `Equals...`: Check that element of type within parent equals given number.
+1. `Greater...`: Check that element of type within parent is greater than given number.
+1. `Less...`: Check that element of type within parent is less than given number.
+
 #### Exists
 Checks if hovered element exists.
 
