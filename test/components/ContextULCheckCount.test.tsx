@@ -27,8 +27,8 @@ describe('Context Menu Count', () => {
         document.body.removeChild(dummyTarget);
         target.remove();
         dummyTarget.remove();
-        equalsMock.mockClear();
-        backMock.mockClear();
+        equalsMock.mockReset();
+        backMock.mockReset();
     });
 
     it('should render correctly', () => {
@@ -49,4 +49,66 @@ describe('Context Menu Count', () => {
             value: 2
         });
     });
+
+    it('should handle Equals custom value event correctly', () => {
+        const promptMock  = jest.fn();
+        promptMock.mockReturnValue('11');
+        window.prompt = promptMock;
+        [].slice.call(target.querySelectorAll('li')).forEach((li: HTMLLIElement) => {
+            if (li.textContent && li.textContent.toLowerCase() === 'equals...') {
+                li.dispatchEvent(mouseDownEvt);
+            }
+        });
+        expect(equalsMock).toHaveBeenCalledTimes(1);
+        expect(equalsMock).toBeCalledWith({
+            type: FdEventType.COUNT_EQUALS,
+            target: 'body > DIV',
+            value: 11
+        });
+    });
+
+    it('should handle Greater than value event correctly', () => {
+        const promptMock  = jest.fn();
+        promptMock.mockReturnValue('30');
+        window.prompt = promptMock;
+        [].slice.call(target.querySelectorAll('li')).forEach((li: HTMLLIElement) => {
+            if (li.textContent && li.textContent.toLowerCase() === 'greater than...') {
+                li.dispatchEvent(mouseDownEvt);
+            }
+        });
+        expect(equalsMock).toHaveBeenCalledTimes(1);
+        expect(equalsMock).toBeCalledWith({
+            type: FdEventType.COUNT_GREATER_THAN,
+            target: 'body > DIV',
+            value: 30
+        });
+    });
+
+    it('should handle Less than value event correctly', () => {
+        const promptMock  = jest.fn();
+        promptMock.mockReturnValue('60');
+        window.prompt = promptMock;
+        [].slice.call(target.querySelectorAll('li')).forEach((li: HTMLLIElement) => {
+            if (li.textContent && li.textContent.toLowerCase() === 'less than...') {
+                li.dispatchEvent(mouseDownEvt);
+            }
+        });
+        expect(equalsMock).toHaveBeenCalledTimes(1);
+        expect(equalsMock).toBeCalledWith({
+            type: FdEventType.COUNT_LESS_THAN,
+            target: 'body > DIV',
+            value: 60
+        });
+        promptMock.mockReset();
+    });
+
+    it('should handle Back event correctly', () => {
+        [].slice.call(target.querySelectorAll('li')).forEach((li: HTMLLIElement) => {
+            if (li.textContent && li.classList.contains('back')) {
+                li.dispatchEvent(mouseDownEvt);
+            }
+        });
+        expect(backMock).toHaveBeenCalledTimes(1);
+    });
+
 });
