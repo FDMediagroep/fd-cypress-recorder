@@ -12,6 +12,7 @@ addons:
 branches:
   only:
   - master
+  - /^greenkeeper/.*$/
 stages:
   - test
 install:
