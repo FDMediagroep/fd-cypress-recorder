@@ -44,7 +44,6 @@ export default class ContextMenu extends PureComponent<Props, any> {
         const textContent = prompt('Text content of selected element should contain') || '';
         if (textContent) {
             EventsStore.addEvent({ type: FdEventType.CONTAINS_TEXT, target: this.props.selector, value: textContent });
-            alert(`Check text is "${textContent}" added`);
         }
     }
 

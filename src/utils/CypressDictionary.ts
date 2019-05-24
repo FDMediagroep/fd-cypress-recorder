@@ -12,6 +12,9 @@ export enum FdEventType {
     LOCATION = 'location',
     LOCATION_CONTAINS = 'location-contains',
     EXISTS = 'exists',
+    /**
+     * Type text
+     */
     TYPE = 'type',
     VIEWPORT_SIZE = 'viewport-size',
     VISIT = 'visit',
