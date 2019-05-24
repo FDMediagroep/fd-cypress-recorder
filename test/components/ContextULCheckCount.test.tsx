@@ -7,7 +7,7 @@ import ContextULCheckCount from '../../src/components/ContextULCheckCount';
 describe('Context Menu Count', () => {
     let target: HTMLElement;
     let dummyTarget: HTMLElement;
-    const equalsMock = jest.fn();
+    const mouseDownMock = jest.fn();
     const backMock = jest.fn();
     const mouseDownEvt = new MouseEvent('mousedown', {bubbles: true});
 
@@ -18,7 +18,7 @@ describe('Context Menu Count', () => {
         document.body.appendChild(target);
         document.body.appendChild(dummyTarget);
         act(() => {
-            ReactDOM.render(<ContextULCheckCount onBack={backMock} onMouseDown={equalsMock} selector=".context-menu-count-test" target={target}/>, target);
+            ReactDOM.render(<ContextULCheckCount onBack={backMock} onMouseDown={mouseDownMock} selector=".context-menu-count-test" target={target}/>, target);
         });
     });
 
@@ -27,7 +27,7 @@ describe('Context Menu Count', () => {
         document.body.removeChild(dummyTarget);
         target.remove();
         dummyTarget.remove();
-        equalsMock.mockReset();
+        mouseDownMock.mockReset();
         backMock.mockReset();
     });
 
@@ -42,8 +42,8 @@ describe('Context Menu Count', () => {
                 li.dispatchEvent(mouseDownEvt);
             }
         });
-        expect(equalsMock).toHaveBeenCalledTimes(1);
-        expect(equalsMock).toBeCalledWith({
+        expect(mouseDownMock).toHaveBeenCalledTimes(1);
+        expect(mouseDownMock).toBeCalledWith({
             type: FdEventType.COUNT_EQUALS,
             target: 'body > DIV',
             value: 2
@@ -59,8 +59,8 @@ describe('Context Menu Count', () => {
                 li.dispatchEvent(mouseDownEvt);
             }
         });
-        expect(equalsMock).toHaveBeenCalledTimes(1);
-        expect(equalsMock).toBeCalledWith({
+        expect(mouseDownMock).toHaveBeenCalledTimes(1);
+        expect(mouseDownMock).toBeCalledWith({
             type: FdEventType.COUNT_EQUALS,
             target: 'body > DIV',
             value: 11
@@ -76,8 +76,8 @@ describe('Context Menu Count', () => {
                 li.dispatchEvent(mouseDownEvt);
             }
         });
-        expect(equalsMock).toHaveBeenCalledTimes(1);
-        expect(equalsMock).toBeCalledWith({
+        expect(mouseDownMock).toHaveBeenCalledTimes(1);
+        expect(mouseDownMock).toBeCalledWith({
             type: FdEventType.COUNT_GREATER_THAN,
             target: 'body > DIV',
             value: 30
@@ -93,8 +93,8 @@ describe('Context Menu Count', () => {
                 li.dispatchEvent(mouseDownEvt);
             }
         });
-        expect(equalsMock).toHaveBeenCalledTimes(1);
-        expect(equalsMock).toBeCalledWith({
+        expect(mouseDownMock).toHaveBeenCalledTimes(1);
+        expect(mouseDownMock).toBeCalledWith({
             type: FdEventType.COUNT_LESS_THAN,
             target: 'body > DIV',
             value: 60

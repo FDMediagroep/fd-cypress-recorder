@@ -6,7 +6,7 @@ import { FdEventType } from '../../src/utils/CypressDictionary';
 
 describe('Context Menu Attribute', () => {
     let target: HTMLElement;
-    const existsMock = jest.fn();
+    const mouseDownMock = jest.fn();
     const backMock = jest.fn();
     const mouseDownEvt = new MouseEvent('mousedown', {bubbles: true});
 
@@ -15,14 +15,14 @@ describe('Context Menu Attribute', () => {
         target.classList.add('context-menu-attributes-test');
         document.body.appendChild(target);
         act(() => {
-            ReactDOM.render(<ContextULCheckAttribute onBack={backMock} onMouseDown={existsMock} selector=".context-menu-attributes-test" target={target}/>, target);
+            ReactDOM.render(<ContextULCheckAttribute onBack={backMock} onMouseDown={mouseDownMock} selector=".context-menu-attributes-test" target={target}/>, target);
         });
     });
 
     afterEach(() => {
         document.body.removeChild(target);
         target.remove();
-        existsMock.mockClear();
+        mouseDownMock.mockClear();
         backMock.mockClear();
     });
 
@@ -42,8 +42,8 @@ describe('Context Menu Attribute', () => {
                 li.dispatchEvent(mouseDownEvt);
             }
         });
-        expect(existsMock).toHaveBeenCalledTimes(1);
-        expect(existsMock).toBeCalledWith({
+        expect(mouseDownMock).toHaveBeenCalledTimes(1);
+        expect(mouseDownMock).toBeCalledWith({
             type: FdEventType.ATTRIBUTE_VALUE_EXISTS,
             target: '.context-menu-attributes-test',
             name: 'class'
@@ -56,8 +56,8 @@ describe('Context Menu Attribute', () => {
                 li.dispatchEvent(mouseDownEvt);
             }
         });
-        expect(existsMock).toHaveBeenCalledTimes(1);
-        expect(existsMock).toBeCalledWith({
+        expect(mouseDownMock).toHaveBeenCalledTimes(1);
+        expect(mouseDownMock).toBeCalledWith({
             type: FdEventType.ATTRIBUTE_VALUE_EQUALS,
             target: '.context-menu-attributes-test',
             name: 'class',
@@ -72,6 +72,25 @@ describe('Context Menu Attribute', () => {
             }
         });
         expect(backMock).toHaveBeenCalledTimes(1);
+    });
+
+    it('should handle Equals custom value event correctly', () => {
+        const promptMock  = jest.fn();
+        promptMock.mockReturnValue('contains something');
+        window.prompt = promptMock;
+        [].slice.call(target.querySelectorAll('li')).forEach((li: HTMLLIElement) => {
+            if (li.textContent && li.textContent.toLowerCase() === 'contains...') {
+                li.dispatchEvent(mouseDownEvt);
+                return false; // Exit loop
+            }
+        });
+        expect(mouseDownMock).toHaveBeenCalledTimes(1);
+        expect(mouseDownMock).toBeCalledWith({
+            type: FdEventType.ATTRIBUTE_VALUE_CONTAINS,
+            target: '.context-menu-attributes-test',
+            name: 'class',
+            value: 'contains something'
+        });
     });
 
 });
