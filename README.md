@@ -9,7 +9,7 @@ The plugin only automatically record click on `anchors` and `buttons`. If you wa
 
 ## Installation
 
-Via Chrome Web Store: 
+Via Chrome Web Store: _coming soon_
 
 Or manually:
 * From [zip-file](https://github.com/FDMediagroep/fd-cypress-recorder/releases/latest)
