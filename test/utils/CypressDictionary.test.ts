@@ -12,7 +12,10 @@ import {
     FdTypeEvent,
     FdViewportSizeEvent,
     FdAttributeValueEvent,
-    FdAttributeExistsEvent
+    FdAttributeExistsEvent,
+    FdCountEqualsEvent,
+    FdCountGreaterThanEvent,
+    FdCountLessThanEvent
 } from '../../src/utils/CypressDictionary';
 
 describe('Cypress Dictionary', () => {
@@ -29,6 +32,21 @@ describe('Cypress Dictionary', () => {
     it('should return the Contains Text event Cypress code', () => {
         const event: FdTextContentEvent = {type: FdEventType.CONTAINS_TEXT, target: 'document.body', value: `Testing'some"Text`};
         expect(getCode(event)).toBe(`cy.get('${event.target}').contains('${event.value.replace(new RegExp("'", 'g'), "\\\'")}');`);
+    });
+
+    it('should return the Count equals event Cypress code', () => {
+        const event: FdCountEqualsEvent = {type: FdEventType.COUNT_EQUALS, target: 'document.body', value: 10};
+        expect(getCode(event)).toBe(`cy.get('${event.target}').should('have.length', ${event.value});`);
+    });
+
+    it('should return the Count greater than event Cypress code', () => {
+        const event: FdCountGreaterThanEvent = {type: FdEventType.COUNT_GREATER_THAN, target: 'document.body', value: 30};
+        expect(getCode(event)).toBe(`cy.get('${event.target}').should('have.length.gt', ${event.value});`);
+    });
+
+    it('should return the Count less than event Cypress code', () => {
+        const event: FdCountLessThanEvent = {type: FdEventType.COUNT_LESS_THAN, target: 'document.body', value: 60};
+        expect(getCode(event)).toBe(`cy.get('${event.target}').should('have.length.lt', ${event.value});`);
     });
 
     it('should return the Exists event Cypress code', () => {
