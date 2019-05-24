@@ -5,6 +5,9 @@ export enum FdEventType {
     CLEAR_COOKIES = 'clear-cookies',
     CLICK = 'click',
     CONTAINS_TEXT = 'contains-text',
+    COUNT_EQUALS = 'count-equals',
+    COUNT_GREATER_THAN = 'count-greater-than',
+    COUNT_LESS_THAN = 'count-less-than',
     HOVER = 'hover',
     LOCATION = 'location',
     LOCATION_CONTAINS = 'location-contains',
@@ -68,18 +71,37 @@ export interface FdExistsEvent extends FdEvent {
     target: string; // CSS Selector
 }
 
+export interface FdCountEqualsEvent extends FdEvent {
+    target: string; // CSS Selector
+    value: number;
+}
+
+export interface FdCountGreaterThanEvent extends FdEvent {
+    target: string; // CSS Selector
+    value: number;
+}
+
+export interface FdCountLessThanEvent extends FdEvent {
+    target: string; // CSS Selector
+    value: number;
+}
+
 export type AllFdEvents = FdEvent
     | FdAttributeValueEvent
     | FdAttributeExistsEvent
     | FdClickEvent
+    | FdCountEqualsEvent
+    | FdCountGreaterThanEvent
+    | FdCountLessThanEvent
+    | FdExistsEvent
     | FdHoverEvent
     | FdLocationEvent
     | FdLocationContainsEvent
-    | FdVisitEvent
     | FdTextContentEvent
+    | FdTypeEvent
     | FdViewportSizeEvent
-    | FdExistsEvent
-    | FdTypeEvent;
+    | FdVisitEvent
+;
 
 export interface Template {
     name: string;
@@ -103,6 +125,12 @@ export function getCode(event: AllFdEvents, options?: Options) {
             return `cy.get('${(event as FdClickEvent).target}').click();`;
         case FdEventType.CONTAINS_TEXT:
             return `cy.get('${(event as FdTextContentEvent).target}').contains('${(event as FdTextContentEvent).value.replace(new RegExp("'", 'g'), "\\\'")}');`;
+        case FdEventType.COUNT_EQUALS:
+            return `cy.get('${(event as FdCountEqualsEvent).target}').should('have.length', ${(event as FdCountEqualsEvent).value});`;
+        case FdEventType.COUNT_GREATER_THAN:
+            return `cy.get('${(event as FdCountEqualsEvent).target}').should('have.length.gt', ${(event as FdCountEqualsEvent).value});`;
+        case FdEventType.COUNT_LESS_THAN:
+            return `cy.get('${(event as FdCountEqualsEvent).target}').should('have.length.lt', ${(event as FdCountEqualsEvent).value});`;
         case FdEventType.EXISTS:
             return `cy.get('${(event as FdExistsEvent).target}').should('exist');`;
         case FdEventType.HOVER:

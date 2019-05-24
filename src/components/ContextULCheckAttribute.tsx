@@ -1,12 +1,12 @@
 import React from "react";
-import { FdEventType, FdAttributeValueEvent, FdAttributeExistsEvent } from "../utils/CypressDictionary";
+import { FdEventType, AllFdEvents } from "../utils/CypressDictionary";
 import styled from "styled-components";
 
 export interface Props {
     target: HTMLElement;
     selector: string;
     onBack?: () => void;
-    onMouseDown: (event: FdAttributeValueEvent | FdAttributeExistsEvent) => void;
+    onMouseDown: (event: AllFdEvents) => void;
 }
 
 export default function ContextULCheckAttribute(props: Props) {

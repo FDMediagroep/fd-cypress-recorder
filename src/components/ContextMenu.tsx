@@ -1,8 +1,9 @@
 import React, { PureComponent } from "react";
 import styled from "styled-components";
 import EventsStore = require("../stores/EventsStore");
-import { FdEventType, FdAttributeValueEvent, FdAttributeExistsEvent } from "../utils/CypressDictionary";
+import { FdEventType, FdAttributeValueEvent, FdAttributeExistsEvent, AllFdEvents } from "../utils/CypressDictionary";
 import ContextULCheckAttribute from "./ContextULCheckAttribute";
+import ContextULCheckCount from "./ContextULCheckCount";
 
 declare var window: Window;
 
@@ -83,14 +84,27 @@ export default class ContextMenu extends PureComponent<Props, any> {
         }
     }
 
-    handleAttributeAssert = (event: FdAttributeValueEvent | FdAttributeExistsEvent) => {
+    handleSubContextMenuAssert = (event: AllFdEvents) => {
         EventsStore.addEvent(event);
     }
 
+    /**
+     * Open Check Attribute context menu
+     */
     handleCheckAttribute = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
         this.setState({
-            customContextMenu: <ContextULCheckAttribute target={this.props.target} selector={this.props.selector} onMouseDown={this.handleAttributeAssert} onBack={this.handleContextMenuBack}/>
+            customContextMenu: <ContextULCheckAttribute target={this.props.target} selector={this.props.selector} onMouseDown={this.handleSubContextMenuAssert} onBack={this.handleContextMenuBack}/>
+        });
+    }
+
+    /**
+     * Open Check Count context menu
+     */
+    handleCheckCount = (e: React.MouseEvent<HTMLElement>) => {
+        e.preventDefault();
+        this.setState({
+            customContextMenu: <ContextULCheckCount target={this.props.target} selector={this.props.selector} onMouseDown={this.handleSubContextMenuAssert} onBack={this.handleContextMenuBack}/>
         });
     }
 
@@ -106,16 +120,17 @@ export default class ContextMenu extends PureComponent<Props, any> {
                     <ul>
                         <li className="label">Interactions</li>
                         <li className="clickable" onMouseDown={this.handleClick}>Click</li>
-                        <li className="clickable" onMouseDown={this.handleEnterText}>Enter text</li>
+                        <li className="clickable" onMouseDown={this.handleEnterText}>Enter text...</li>
                         <li className="clickable" onMouseDown={this.handleHover}>Hover</li>
                         <li className="label">Asserts</li>
                         <li className="clickable" onMouseDown={this.handleCheckAttribute}>Attributes...</li>
-                        <li className="clickable" onMouseDown={this.handleCheckText}>Contains text</li>
+                        <li className="clickable" onMouseDown={this.handleCheckText}>Contains text...</li>
+                        <li className="clickable" onMouseDown={this.handleCheckCount}>Count...</li>
                         <li className="clickable" onMouseDown={this.handleCheckExists}>Exists</li>
                         <li className="label">Global</li>
                         <li className="clickable" onMouseDown={this.handleGoToLocation}>Go to URL...</li>
                         <li className="clickable" onMouseDown={this.handleAwaitLocation}>Match current URL</li>
-                        <li className="clickable" onMouseDown={this.handleAwaitLocationContains}>URL contains</li>
+                        <li className="clickable" onMouseDown={this.handleAwaitLocationContains}>URL contains...</li>
                         <li className="clickable" onMouseDown={this.handleVisit}>Visit current URL</li>
                     </ul>
                 )}

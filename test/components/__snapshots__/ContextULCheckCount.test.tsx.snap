@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Context Menu Count should render correctly 1`] = `
+<ul>
+  <li
+    className="label back"
+    onMouseDown={[Function]}
+  >
+    &lt; Count
+  </li>
+  <li
+    className="label separator sc-bdVaJa jFNXxd"
+  >
+    <i>
+      body &gt; DIV
+    </i>
+    <span>
+      (
+      2
+      )
+    </span>
+  </li>
+  <li
+    className="clickable"
+    onMouseDown={[Function]}
+  >
+    Equals 
+    2
+  </li>
+  <li
+    className="clickable"
+    onMouseDown={[Function]}
+  >
+    Equals...
+  </li>
+  <li
+    className="clickable"
+    onMouseDown={[Function]}
+  >
+    Greater than...
+  </li>
+  <li
+    className="clickable"
+    onMouseDown={[Function]}
+  >
+    Less than...
+  </li>
+</ul>
+`;

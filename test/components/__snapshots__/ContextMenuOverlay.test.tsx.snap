@@ -2,20 +2,20 @@
 
 exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] = `
 <div
-  className="sc-bxivhb leSYpr"
+  className="sc-ifAKCX EmPKX"
   onClick={[MockFunction]}
 >
   <div
-    className="sc-ifAKCX igdDAu"
+    className="sc-EHOje hFkCuy"
     onClick={[MockFunction]}
   />
   <div
-    className="sc-htpNat hInhjZ"
+    className="sc-bxivhb hfIupT"
     height={0}
     width={0}
   />
   <div
-    className="sc-bwzfXH jxhsCW"
+    className="sc-htpNat cXRxnn"
   >
     <ul>
       <li
@@ -33,7 +33,7 @@ exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] =
         className="clickable"
         onMouseDown={[Function]}
       >
-        Enter text
+        Enter text...
       </li>
       <li
         className="clickable"
@@ -56,7 +56,13 @@ exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] =
         className="clickable"
         onMouseDown={[Function]}
       >
-        Contains text
+        Contains text...
+      </li>
+      <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
+        Count...
       </li>
       <li
         className="clickable"
@@ -85,7 +91,7 @@ exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] =
         className="clickable"
         onMouseDown={[Function]}
       >
-        URL contains
+        URL contains...
       </li>
       <li
         className="clickable"
