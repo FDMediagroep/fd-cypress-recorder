@@ -153,9 +153,9 @@ export function getCode(event: AllFdEvents, options?: Options) {
         case FdEventType.VIEWPORT_SIZE:
             return `cy.viewport(${(event as FdViewportSizeEvent).width}, ${(event as FdViewportSizeEvent).height});`;
         case FdEventType.ATTRIBUTE_VALUE_EQUALS:
-            return `cy.get('${(event as FdAttributeValueEvent).target}').then((el: any) => el.attr('${(event as FdAttributeValueEvent).name}')).then((attr: string) => expect(attr).to.eq('${(event as FdAttributeValueEvent).value.replace(new RegExp("'", 'g'), "\\\'")}'))`;
+            return `cy.get('${(event as FdAttributeValueEvent).target}').should('have.attr', '${(event as FdAttributeValueEvent).name}', '${(event as FdAttributeValueEvent).value.replace(new RegExp("'", 'g'), "\\\'")}');`;
         case FdEventType.ATTRIBUTE_VALUE_CONTAINS:
-            return `cy.get('${(event as FdAttributeValueEvent).target}').then((el: any) => el.attr('${(event as FdAttributeValueEvent).name}')).then((attr: string) => expect(attr).to.contain('${(event as FdAttributeValueEvent).value.replace(new RegExp("'", 'g'), "\\\'")}'))`;
+            return `cy.get('${(event as FdAttributeValueEvent).target}').should('have.attr', '${(event as FdAttributeValueEvent).name}').then((attr) => expect(attr).to.contain('${(event as FdAttributeValueEvent).value.replace(new RegExp("'", 'g'), "\\\'")}'));`;
         case FdEventType.ATTRIBUTE_VALUE_EXISTS:
             return `cy.get('${(event as FdAttributeExistsEvent).target}').should('have.attr', '${(event as FdAttributeExistsEvent).name}');`;
         default:
