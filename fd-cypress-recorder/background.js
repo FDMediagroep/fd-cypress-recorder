@@ -41,7 +41,7 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
           if (storageChange.newValue && storageChange.newValue.length > 0) {
             const lastEvent = storageChange.newValue[storageChange.newValue.length - 1];
             if (lastEvent.type === 'type') {
-              chrome.tabs.query({active: true}, function(tabs) {
+              chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
                 tabId = tabs[0].id;
                 chrome.debugger.attach({ tabId }, "1.0");
                 chrome.debugger.sendCommand({ tabId }, 'Input.insertText', { text: lastEvent.value }, () => {
