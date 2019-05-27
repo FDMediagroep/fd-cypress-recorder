@@ -1,5 +1,5 @@
 import { StoreBase, AutoSubscribeStore, autoSubscribe } from 'resub';
-import { Template } from '../utils/CypressDictionary';
+import { Template } from '../utils/FdEvents';
 
 @AutoSubscribeStore
 class TemplatesStore extends StoreBase {

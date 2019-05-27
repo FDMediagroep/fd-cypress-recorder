@@ -1,5 +1,5 @@
 import { StoreBase, AutoSubscribeStore, autoSubscribe } from 'resub';
-import { AllFdEvents } from '../utils/CypressDictionary';
+import { AllFdEvents } from '../utils/FdEvents';
 
 @AutoSubscribeStore
 class EventsStore extends StoreBase {

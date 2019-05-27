@@ -1,7 +1,7 @@
 import React from "react";
 import unique from 'unique-selector';
-import { AllFdEvents, FdEventType } from "../utils/CypressDictionary";
 import styled from "styled-components";
+import { AllFdEvents, FdEventType } from "../utils/FdEvents";
 
 export interface Props {
     target: HTMLElement;

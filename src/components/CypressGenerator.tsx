@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
 import styled from "styled-components";
 import {TextInput} from '@fdmg/fd-inputs';
-import { AllFdEvents, getCode } from "../utils/CypressDictionary";
+import { getCode } from "../utils/Dictionary";
+import { AllFdEvents } from "../utils/FdEvents";
 import { ButtonEditorial } from "@fdmg/fd-buttons";
-import FdEvent from "./FdEvent";
 import EventsList from "./EventsList";
 
 export interface Props {
@@ -59,35 +59,9 @@ export default class CypressGenerator extends PureComponent<Props, any> {
     }
 
     generateCodeFromEvents = (events: AllFdEvents[]) => {
-        let code: any[] = events.reduce((resultArray: any[], event: any) => {
-            resultArray.push(`${getCode(event, {basicAuth: this.props.basicAuth})}\r\n`);
-            return resultArray;
-        }, []);
-
         const suite = this.props.testSuite ? this.props.testSuite.replace(new RegExp("'", 'g'), "\\\'") : 'Test Suite ...';
         const description = this.props.testDescription ? this.props.testDescription.replace(new RegExp("'", 'g'), "\\\'") : 'should ...';
-        // Add tabs for existing lines
-        code = code.map((line: string) => {
-            return `\t\t${line}`;
-        });
-
-        code.unshift(...[
-            `/**\r\n`,
-            ` * Code generated with Fd Cypress Recorder.\r\n`,
-            ` * https://github.com/FDMediagroep/fd-cypress-recorder\r\n`,
-            ` */\r\n\r\n`,
-            `/// <reference types="Cypress" />\r\n`,
-            `describe('${suite}', () => {\r\n`,
-            `\tafterEach(() => {\r\n`,
-            `\t\tcy.clearCookies();\r\n`,
-            `\t});\r\n\r\n`,
-            `\tit('${description}', () => {\r\n`
-        ]);
-
-        code.push('\t});\r\n');
-        code.push('});\r\n');
-
-        return code;
+        return getCode(suite, description, events, {basicAuth: this.props.basicAuth});
     }
 
     render() {

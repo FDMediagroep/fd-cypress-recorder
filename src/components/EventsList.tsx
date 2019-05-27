@@ -1,4 +1,4 @@
-import { AllFdEvents } from "../utils/CypressDictionary";
+import { AllFdEvents } from "../utils/FdEvents";
 import React from "react";
 import { ButtonEditorial } from "@fdmg/fd-buttons";
 import FdEvent from "./FdEvent";

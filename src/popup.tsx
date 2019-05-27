@@ -5,7 +5,7 @@ import EventsStore = require('./stores/EventsStore');
 import Popup from './components/Popup';
 import TestSuiteStore = require('./stores/TestSuiteStore');
 import TemplatesStore = require('./stores/TemplatesStore');
-import { Template } from './utils/CypressDictionary';
+import { Template } from './utils/FdEvents';
 
 declare var chrome: any;
 

@@ -1,6 +1,6 @@
 import React from "react";
-import { FdEventType, AllFdEvents } from "../utils/CypressDictionary";
 import styled from "styled-components";
+import { AllFdEvents, FdEventType } from "../utils/FdEvents";
 
 export interface Props {
     target: HTMLElement;

@@ -3,7 +3,7 @@ import CypressGenerator from './CypressGenerator';
 import EventsStore = require('../stores/EventsStore');
 import { createGlobalStyle } from 'styled-components';
 import {ButtonCallToAction, ButtonEditorial} from '@fdmg/fd-buttons';
-import { Template, AllFdEvents } from '../utils/CypressDictionary';
+import { AllFdEvents, Template } from "../utils/FdEvents";
 import { ComponentBase } from 'resub';
 import TemplatesStore = require('../stores/TemplatesStore');
 import TestSuiteStore = require('../stores/TestSuiteStore');

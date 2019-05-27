@@ -3,7 +3,7 @@ import EventsStore = require('./stores/EventsStore');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ContextMenuOverlay from './components/ContextMenuOverlay';
-import { FdEventType, UNIQUE_SELECTOR_OPTIONS } from './utils/CypressDictionary';
+import { FdEventType, UNIQUE_SELECTOR_OPTIONS } from './utils/FdEvents';
 import { StoreBase } from 'resub';
 
 declare var chrome: any;
