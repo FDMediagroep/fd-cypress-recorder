@@ -48,6 +48,15 @@ For instance when you want to record various scenarios for which the user needs 
 Alternatively you can also decide to navigate to a whole different page and load the template. You can open the Context Menu and use the `Visit current url` option to record this navigation step.
 ![Templates](/fd-cypress-recorder/screenshot2.jpg?raw=true "Templates")
 
+#### Load templates
+Click on the name of the template to load it. This action will overwrite your current interactions if you have any.
+
+#### Append templates
+Click on the `[+]` button next to the template name to load and append the template interactions to your current existing interactions. This is useful if you have created your templates as small building blocks which can succeed each other. I.e. `cookiewall accept` + `login` + `click article`.
+This allows greater flexibility when it comes to rewriting templates. If for instance your cookiewall has changed and the test needs to be rewritten you now only have to change that particular template and you can then join all other relevant templates together quickly to replace the failing test.
+
+#### Remove template
+Click on the `[x]` button next to the template name to delete the template completely. This action can not be undone.
 
 ### Context Menu
 Functionality provided by the context menu, records the corresponding interactions.
