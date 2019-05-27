@@ -50,7 +50,7 @@ Alternatively you can also decide to navigate to a whole different page and load
 
 
 ### Context Menu
-Functionality provided by the context menu records the corresponding interactions.
+Functionality provided by the context menu, records the corresponding interactions.
 ![Context Menu](/fd-cypress-recorder/screenshot.jpg?raw=true "Context Menu")
 
 #### Click
