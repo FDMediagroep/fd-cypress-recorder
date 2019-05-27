@@ -104,6 +104,8 @@ Use this function if you want to navigate to a certain URL not caused by another
 ## Fork for other Testing frameworks
 This plugin is mainly a recorder. The literal code generation is handled in `Dictionary.ts`. If you think the recording functionality and interface is useful and want to re-use it for the purpose of generating code for other Testing frameworks then you only need to modify `Dictionary.ts` for it.
 
+In short: For this repository and modify `Dictionary.ts` to return the corresponding code for the testing framework of your choice add a backlink crediting this repository and you're done.
+
 ## Disclaimer
 
 As with all extensions, `Fd Cypress Recorder` has an impact on the user-experience while using your browser. And also because of its ability to listen for keyboard and mouse interactions it is recommended that you disable this plugin when you're not making use of it. 
