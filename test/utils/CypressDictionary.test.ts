@@ -91,12 +91,12 @@ describe('Cypress Dictionary', () => {
 
     it('should return the Check Attribute Equals event Cypress code', () => {
         const event: FdAttributeValueEvent = {type: FdEventType.ATTRIBUTE_VALUE_EQUALS, target: 'document.body', name: 'checked', value: 'checked'};
-        expect(getCode(event)).toBe(`cy.get('${event.target}').then((el: any) => el.attr('${event.name}')).then((attr: string) => expect(attr).to.eq('${event.value.replace(new RegExp("'", 'g'), "\\\'")}'))`);
+        expect(getCode(event)).toBe(`cy.get('${event.target}').then((el) => expect(el.attr('${event.name}')).to.eq('${event.value.replace(new RegExp("'", 'g'), "\\\'")}'));`);
     });
 
     it('should return the Check Attribute Contains event Cypress code', () => {
         const event: FdAttributeValueEvent = {type: FdEventType.ATTRIBUTE_VALUE_CONTAINS, target: 'document.body', name: 'class', value: 'red'};
-        expect(getCode(event)).toBe(`cy.get('${event.target}').then((el: any) => el.attr('${event.name}')).then((attr: string) => expect(attr).to.contain('${event.value.replace(new RegExp("'", 'g'), "\\\'")}'))`);
+        expect(getCode(event)).toBe(`cy.get('${event.target}').then((el) => expect(el.attr('${event.name}')).to.contain('${event.value.replace(new RegExp("'", 'g'), "\\\'")}'));`);
     });
 
     it('should return the Check Attribute Exists event Cypress code', () => {
