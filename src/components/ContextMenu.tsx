@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import styled from "styled-components";
 import EventsStore = require("../stores/EventsStore");
-import { FdEventType, FdAttributeValueEvent, FdAttributeExistsEvent, AllFdEvents } from "../utils/CypressDictionary";
+import { FdEventType, AllFdEvents } from "../utils/CypressDictionary";
 import ContextULCheckAttribute from "./ContextULCheckAttribute";
 import ContextULCheckCount from "./ContextULCheckCount";
 

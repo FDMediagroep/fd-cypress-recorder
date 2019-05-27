@@ -34,6 +34,7 @@ function handleTestDescriptionChange(testDescription: string|null) {
 
 function handleRemoveEvent(index: number) {
     if (confirm('Do you really want to delete this event? This can not be undone.')) {
+        chrome.runtime.sendMessage({post: "oldEvent", body: true});
         EventsStore.addFuture([...EventsStore.getEvents()]);
         const events = [...EventsStore.getEvents()];
         events.splice(index, 1);
@@ -45,6 +46,7 @@ function handleRemoveEvent(index: number) {
  * Undo the last step.
  */
 function undo() {
+    chrome.runtime.sendMessage({post: "oldEvent", body: true});
     EventsStore.addFuture([...EventsStore.getEvents()]);
     EventsStore.stepBack();
     chrome.storage.local.set({'fd-cypress-chrome-extension-events': EventsStore.getEvents()});
@@ -54,6 +56,7 @@ function undo() {
  * Redo undone step provided no other action has been recorded since the undo.
  */
 function redo() {
+    chrome.runtime.sendMessage({post: "oldEvent", body: true});
     chrome.storage.local.set({'fd-cypress-chrome-extension-events': EventsStore.popFuture()});
 }
 
@@ -109,12 +112,26 @@ function saveTemplate() {
  * @param templateName
  */
 function handleLoadTemplate(templateName: string|null|undefined) {
-    if (templateName && confirm(`Are you sure you want to load "${templateName}"?`)) {
+    if (templateName && confirm(`Are you sure you want to load "${templateName}" and replace your current interactions?`)) {
         const templates = [...TemplatesStore.getTemplates()];
         chrome.storage.local.set({
             'fd-cypress-chrome-extension-testSuite': templates[templates.findIndex((template: Template) => template.name === templateName)].name,
             'fd-cypress-chrome-extension-testDescription': templates[templates.findIndex((template: Template) => template.name === templateName)].description,
             'fd-cypress-chrome-extension-events': templates[templates.findIndex((template: Template) => template.name === templateName)].events
+        });
+    }
+}
+
+/**
+ * Load the selected template and append to the existing events.
+ * @param templateName
+ */
+function handleLoadAppendTemplate(templateName: string|null|undefined) {
+    if (templateName && confirm(`Are you sure you want to load "${templateName}" and append the interactions to the end of your existing interactions?`)) {
+        const templates = [...TemplatesStore.getTemplates()];
+        const events = [...EventsStore.getEvents(), ...templates[templates.findIndex((template: Template) => template.name === templateName)].events];
+        chrome.storage.local.set({
+            'fd-cypress-chrome-extension-events': events
         });
     }
 }
@@ -220,6 +237,7 @@ chrome.storage.local.get({
                 onRemoveEvent={handleRemoveEvent}
                 onSaveTemplate={saveTemplate}
                 onLoadTemplate={handleLoadTemplate}
+                onLoadAppendTemplate={handleLoadAppendTemplate}
                 onRecordingChange={handleRecording}
                 onRemoveTemplate={removeTemplate}
                 onTestSuiteChange={handleTestSuiteChange}

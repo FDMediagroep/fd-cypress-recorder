@@ -34,6 +34,7 @@ export interface Props extends React.Props<any> {
     onClear: () => void;
     onSaveTemplate: () => void;
     onLoadTemplate: (templateName: string|null) => void;
+    onLoadAppendTemplate: (templateName: string|null) => void;
     onBasicAuthChange: (basicAuth: boolean) => void;
 }
 
@@ -81,6 +82,10 @@ export default class Popup extends ComponentBase<Props, PopupState> {
         this.props.onRemoveTemplate(e.currentTarget.getAttribute('data-value'));
     }
 
+    loadAppendTemplate = (e: React.MouseEvent<HTMLElement>) => {
+        this.props.onLoadAppendTemplate(e.currentTarget.getAttribute('data-value'));
+    }
+
     handleBasicAuth = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.props.onBasicAuthChange(e.currentTarget.checked);
     }
@@ -107,7 +112,7 @@ export default class Popup extends ComponentBase<Props, PopupState> {
                     <div className="fd-cypress-templates-container">
                         <h3>Templates <ButtonCallToAction onClick={this.saveAsTemplate} title="Save as template">+</ButtonCallToAction></h3>
                         <ul>
-                            {this.state.templates.map((template: Template) => template.name ? <li key={template.name}><span onClick={this.loadTemplate} data-value={template.name}>{template.name}</span><ButtonEditorial  data-value={template.name} onClick={this.removeTemplate} title="Delete template">X</ButtonEditorial></li> : null)}
+                            {this.state.templates.map((template: Template) => template.name ? <li key={template.name}><span onClick={this.loadTemplate} data-value={template.name}>{template.name}</span><span><ButtonEditorial  data-value={template.name} onClick={this.loadAppendTemplate} title="Append template">+</ButtonEditorial><ButtonEditorial  data-value={template.name} onClick={this.removeTemplate} title="Delete template">X</ButtonEditorial></span></li> : null)}
                         </ul>
                         <div>
                             <label><input type="checkbox" onChange={this.handleBasicAuth} checked={this.state.basicAuth}/> Basic Auth</label>
@@ -247,6 +252,9 @@ const GlobalStyle = createGlobalStyle`
                     padding: 0.5rem;
                     span {
                         cursor: pointer;
+                    }
+                    span + span {
+                        display: flex;
                     }
                 }
             }

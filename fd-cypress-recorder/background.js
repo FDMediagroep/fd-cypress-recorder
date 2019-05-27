@@ -1,6 +1,7 @@
 const storageName = 'fd-cypress-chrome-extension-events';
 const storageRecord = 'fd-cypress-chrome-extension-record';
 
+let oldEvent = false;
 let tabId;
 
 chrome.tabs.getCurrent((tab) => {
@@ -40,14 +41,14 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
         case storageName:
           if (storageChange.newValue && storageChange.newValue.length > 0) {
             const lastEvent = storageChange.newValue[storageChange.newValue.length - 1];
-            if (lastEvent.type === 'type') {
+            if (!oldEvent && lastEvent.type === 'type') {
               chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
                 tabId = tabs[0].id;
                 chrome.debugger.attach({ tabId }, "1.0");
                 chrome.debugger.sendCommand({ tabId }, 'Input.insertText', { text: lastEvent.value }, () => {
                   chrome.debugger.detach({ tabId });
                 });
-              });          
+              });
             }
           }
           break;
@@ -77,7 +78,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
     if (request.head === 'activeTabId') {
       chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-        console.log('old tab', tabId, 'new tab', tabs[0].id);
+        // console.log('old tab', tabId, 'new tab', tabs[0].id);
         tabId = tabs[0].id;
       });
     }
@@ -88,7 +89,7 @@ chrome.windows.onFocusChanged.addListener((windowId) => {
     if (window.focused && window.tabs) {
       window.tabs.forEach((tab) => {
         if (tab.active) {
-          console.log('window focus', 'old tab', tabId, 'new tab', tab.id);
+          // console.log('window focus', 'old tab', tabId, 'new tab', tab.id);
           tabId = tab.id;
         }
       });
