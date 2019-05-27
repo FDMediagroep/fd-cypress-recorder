@@ -34,7 +34,6 @@ function handleTestDescriptionChange(testDescription: string|null) {
 
 function handleRemoveEvent(index: number) {
     if (confirm('Do you really want to delete this event? This can not be undone.')) {
-        chrome.runtime.sendMessage({post: "oldEvent", body: true});
         EventsStore.addFuture([...EventsStore.getEvents()]);
         const events = [...EventsStore.getEvents()];
         events.splice(index, 1);
@@ -46,7 +45,6 @@ function handleRemoveEvent(index: number) {
  * Undo the last step.
  */
 function undo() {
-    chrome.runtime.sendMessage({post: "oldEvent", body: true});
     EventsStore.addFuture([...EventsStore.getEvents()]);
     EventsStore.stepBack();
     chrome.storage.local.set({'fd-cypress-chrome-extension-events': EventsStore.getEvents()});
@@ -56,7 +54,6 @@ function undo() {
  * Redo undone step provided no other action has been recorded since the undo.
  */
 function redo() {
-    chrome.runtime.sendMessage({post: "oldEvent", body: true});
     chrome.storage.local.set({'fd-cypress-chrome-extension-events': EventsStore.popFuture()});
 }
 
