@@ -1,4 +1,4 @@
-import { FdEventType, FdVisitEvent } from "../../src/utils/CypressDictionary";
+import { FdEventType, FdVisitEvent } from "../../src/utils/FdEvents";
 import EventsStore = require("../../src/stores/EventsStore");
 
 describe('Events Store', () => {

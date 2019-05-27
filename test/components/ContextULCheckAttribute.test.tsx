@@ -2,7 +2,7 @@ import React from 'react';
 import TestRenderer, { act } from 'react-test-renderer';
 import ContextULCheckAttribute from '../../src/components/ContextULCheckAttribute';
 import ReactDOM from 'react-dom';
-import { FdEventType } from '../../src/utils/CypressDictionary';
+import { FdEventType } from '../../src/utils/FdEvents';
 
 describe('Context Menu Attribute', () => {
     let target: HTMLElement;

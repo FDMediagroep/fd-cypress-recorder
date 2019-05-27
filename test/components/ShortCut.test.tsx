@@ -1,6 +1,6 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import { FdEventType } from '../../src/utils/CypressDictionary';
+import { FdEventType } from '../../src/utils/FdEvents';
 import ShortCut from '../../src/components/ShortCut';
 
 describe('Shortcut', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import TestRenderer, { act } from 'react-test-renderer';
 import ReactDOM from 'react-dom';
-import { FdEventType } from '../../src/utils/CypressDictionary';
+import { FdEventType } from '../../src/utils/FdEvents';
 import ContextULCheckCount from '../../src/components/ContextULCheckCount';
 
 describe('Context Menu Count', () => {

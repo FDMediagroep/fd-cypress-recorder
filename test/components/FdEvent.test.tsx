@@ -1,7 +1,7 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import FdEvent from '../../src/components/FdEvent';
-import { FdEventType } from '../../src/utils/CypressDictionary';
+import { FdEventType } from '../../src/utils/FdEvents';
 
 describe('Fd Event', () => {
     it('should render event type correctly', () => {

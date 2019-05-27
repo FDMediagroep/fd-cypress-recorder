@@ -4,7 +4,7 @@ import TestRenderer from 'react-test-renderer';
 import ContextMenu from '../../src/components/ContextMenu';
 import ReactDOM from 'react-dom';
 import EventsStore = require('../../src/stores/EventsStore');
-import { FdEventType, FdClickEvent, FdVisitEvent, FdHoverEvent, FdExistsEvent, FdLocationEvent, FdTextContentEvent, FdTypeEvent, FdLocationContainsEvent } from '../../src/utils/CypressDictionary';
+import { FdEventType, FdClickEvent, FdVisitEvent, FdHoverEvent, FdExistsEvent, FdLocationEvent, FdTextContentEvent, FdTypeEvent, FdLocationContainsEvent } from '../../src/utils/FdEvents';
 
 describe('Context Menu', () => {
     let target: HTMLElement;

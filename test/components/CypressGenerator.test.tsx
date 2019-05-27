@@ -1,7 +1,7 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import CypressGenerator from '../../src/components/CypressGenerator';
-import { FdEventType } from '../../src/utils/CypressDictionary';
+import { FdEventType } from '../../src/utils/FdEvents';
 
 describe('Cypress Generator', () => {
     const onSuiteChange = jest.fn();
