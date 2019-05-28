@@ -114,6 +114,22 @@ function keyUpListener(e: KeyboardEvent) {
 }
 
 /**
+ * CTRL + Context Menu: open context menu.
+ * @param e
+ */
+function mouseRightClickListener(e: MouseEvent) {
+    if (e.ctrlKey) {
+        e.preventDefault();
+        removeContextMenu();
+        contextMenu = true;
+        const el = document.createElement('section');
+        el.setAttribute('class', 'fd-cypress-chrome-extension');
+        document.body.appendChild(el);
+        ReactDOM.render(<ContextMenuOverlay target={hoveredElement} selector={unique(hoveredElement, UNIQUE_SELECTOR_OPTIONS)} onClick={removeContextMenu}/>, el);
+    }
+}
+
+/**
  * Save the events and recording state when navigating away from the current page.
  */
 function beforeUnload() {
@@ -142,6 +158,7 @@ function stop() {
 
     window.removeEventListener('mouseover', mouseOverListener);
     window.removeEventListener('keyup', keyUpListener);
+    window.removeEventListener('contextmenu', mouseRightClickListener);
     window.removeEventListener('beforeunload', beforeUnload);
 }
 
@@ -176,6 +193,7 @@ function record() {
     });
     window.addEventListener('mouseover', mouseOverListener);
     window.addEventListener('keyup', keyUpListener);
+    window.addEventListener('contextmenu', mouseRightClickListener);
     window.addEventListener('beforeunload', beforeUnload);
 }
 
