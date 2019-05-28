@@ -83,6 +83,8 @@ function removeContextMenu() {
 /**
  * Handle keyboard events.
  *
+ * ALT + b: open context menu for hovered element.
+ *
  * ALT + r: open context menu for hovered element.
  *
  * ALT + ContextMenu: open context menu for hovered element.
@@ -96,7 +98,8 @@ function removeContextMenu() {
 function keyUpListener(e: KeyboardEvent) {
     if (e.ctrlKey && e.keyCode === 44 ||
         e.altKey && e.key === 'c' ||
-        e.altKey && e.key === 'ContextMenu') {
+        e.altKey && e.key === 'ContextMenu' ||
+        e.altKey && e.key === 'b') {
         // Print screen
         removeContextMenu();
         contextMenu = true;
