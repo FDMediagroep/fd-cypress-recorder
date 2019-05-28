@@ -83,13 +83,20 @@ function removeContextMenu() {
 /**
  * Handle keyboard events.
  *
+ * ALT + r: open context menu for hovered element.
+ *
+ * ALT + ContextMenu: open context menu for hovered element.
+ *
  * CTRL + Print Screen: open context menu for hovered element.
+ *
  * CTRL + Pause/Break: toggle recording state.
  *
  * @param e KeyboardEvent
  */
 function keyUpListener(e: KeyboardEvent) {
-    if (e.ctrlKey && e.keyCode === 44) {
+    if (e.ctrlKey && e.keyCode === 44 ||
+        e.altKey && e.key === 'c' ||
+        e.altKey && e.key === 'ContextMenu') {
         // Print screen
         removeContextMenu();
         contextMenu = true;
@@ -212,7 +219,8 @@ chrome.storage.local.get({
     console.log('FD Cypress enabled', items.enable);
     if (items.enable) {
         window.addEventListener('keyup', (e: KeyboardEvent) => {
-            if (e.ctrlKey && e.keyCode === 3) {
+            if (e.ctrlKey && e.keyCode === 3 ||
+                e.altKey && e.key === 'r') {
                 // Break/Pause
                 recording ? stop() : record();
             }

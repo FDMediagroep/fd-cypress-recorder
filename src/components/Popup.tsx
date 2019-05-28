@@ -128,8 +128,8 @@ export default class Popup extends ComponentBase<Props, PopupState> {
                             testDescription={this.state.testDescription}
                             onRemoveEvent={this.handleRemoveEvent}
                         />
-                        <small><ShortCut>CTRL</ShortCut> + <ShortCut className="shortcut-button">Print Screen</ShortCut>: open context menu for hovered element in page. Tip: make sure the page has focus.</small>
-                        <small><ShortCut>CTRL</ShortCut> + <ShortCut className="shortcut-button">Scroll Lock</ShortCut>: Toggle recording state. Tip: make sure the page has focus.</small>
+                        <small><ShortCut>CTRL</ShortCut> + <ShortCut className="shortcut-button">Print Screen</ShortCut> or <ShortCut>ALT</ShortCut> + <ShortCut className="shortcut-button">c</ShortCut>: open context menu for hovered element in page. Tip: make sure the page has focus and recording has started.</small>
+                        <small><ShortCut>CTRL</ShortCut> + <ShortCut className="shortcut-button">Scroll Lock</ShortCut> or <ShortCut>ALT</ShortCut> + <ShortCut className="shortcut-button">r</ShortCut>: Toggle recording state. Tip: make sure the page has focus.</small>
                     </div>
                 </div>
             </>
