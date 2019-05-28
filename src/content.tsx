@@ -253,7 +253,7 @@ chrome.storage.local.get({
                     chrome.runtime.sendMessage({head: "activeTabId"});
                 }
             } catch (e) {
-                console.error(e);
+                console.log(e);
             }
         });
 
