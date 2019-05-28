@@ -248,7 +248,13 @@ chrome.storage.local.get({
         });
 
         window.addEventListener('focus', () => {
-            chrome.runtime.sendMessage({head: "activeTabId"});
+            try {
+                if (chrome && chrome.runtime) {
+                    chrome.runtime.sendMessage({head: "activeTabId"});
+                }
+            } catch (e) {
+                console.error(e);
+            }
         });
 
         if (items[storageName]) {
