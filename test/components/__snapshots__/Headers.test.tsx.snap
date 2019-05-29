@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Headers should render correctly 1`] = `
+<div
+  className="ReactTable"
+  style={
+    Object {
+      "maxHeight": "263px",
+    }
+  }
+>
+  <div
+    className="rt-table"
+    role="grid"
+  >
+    <div
+      className="rt-thead -header"
+      style={
+        Object {
+          "minWidth": "200px",
+        }
+      }
+    >
+      <div
+        className="rt-tr"
+        role="row"
+      >
+        <div
+          className="rt-th rt-resizable-header -cursor-pointer"
+          onClick={[Function]}
+          role="columnheader"
+          style={
+            Object {
+              "flex": "100 0 auto",
+              "maxWidth": null,
+              "width": "100px",
+            }
+          }
+          tabIndex="-1"
+        >
+          <div
+            className="rt-resizable-header-content"
+          >
+            Property
+          </div>
+          <div
+            className="rt-resizer"
+            onMouseDown={[Function]}
+            onTouchStart={[Function]}
+          />
+        </div>
+        <div
+          className="rt-th rt-resizable-header -cursor-pointer"
+          onClick={[Function]}
+          role="columnheader"
+          style={
+            Object {
+              "flex": "100 0 auto",
+              "maxWidth": null,
+              "width": "100px",
+            }
+          }
+          tabIndex="-1"
+        >
+          <div
+            className="rt-resizable-header-content"
+          >
+            Value
+          </div>
+          <div
+            className="rt-resizer"
+            onMouseDown={[Function]}
+            onTouchStart={[Function]}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="rt-tbody"
+      style={
+        Object {
+          "minWidth": "200px",
+        }
+      }
+    >
+      <div
+        className="rt-tr-group"
+        role="rowgroup"
+      >
+        <div
+          className="rt-tr -odd"
+          role="row"
+        >
+          <div
+            className="rt-td"
+            onClick={[Function]}
+            role="gridcell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "maxWidth": null,
+                "width": "100px",
+              }
+            }
+          >
+            <input
+              className="property sc-bdVaJa gPWuut"
+              data-column="property"
+              data-row={0}
+              defaultValue=""
+              onChange={[Function]}
+              type="text"
+            />
+          </div>
+          <div
+            className="rt-td"
+            onClick={[Function]}
+            role="gridcell"
+            style={
+              Object {
+                "flex": "100 0 auto",
+                "maxWidth": null,
+                "width": "100px",
+              }
+            }
+          >
+            <input
+              className="value sc-bdVaJa gPWuut"
+              data-column="value"
+              data-row={0}
+              defaultValue=""
+              onChange={[Function]}
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="-loading"
+  >
+    <div
+      className="-loading-inner"
+    >
+      Loading...
+    </div>
+  </div>
+</div>
+`;
