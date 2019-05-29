@@ -79,10 +79,16 @@ describe('Cypress Dictionary', () => {
         expect(getCodeFromEvent(event, {basicAuth: true})).toBe(`cy.visit('${event.href}', {auth: {username: Cypress.env('BASIC_USER') || '', password: Cypress.env('BASIC_PASS') || ''}});`);
     });
 
-    it('should return the Visit event Cypress code with basic authentication and extra headers', () => {
+    it('should return the Visit event Cypress code with basic authentication and extra header', () => {
         const event: FdVisitEvent = {type: FdEventType.VISIT, href: 'http://willemliu.nl'};
         expect(getCodeFromEvent(event, {basicAuth: true, headers: [{property: 'Content-type', value: 'application/json'}]}))
         .toBe(`cy.visit('${event.href}', {auth: {username: Cypress.env('BASIC_USER') || '', password: Cypress.env('BASIC_PASS') || ''}, headers: {"Content-type": "application/json"}});`);
+    });
+
+    it('should return the Visit event Cypress code with extra header', () => {
+        const event: FdVisitEvent = {type: FdEventType.VISIT, href: 'http://willemliu.nl'};
+        expect(getCodeFromEvent(event, {headers: [{property: 'Content-type', value: 'application/json'}, {property: 'x-platform', value: 'Android'}]}))
+        .toBe(`cy.visit('${event.href}', {headers: {"Content-type": "application/json", "x-platform": "Android"}});`);
     });
 
     it('should return the Visit event Cypress code with extra headers', () => {
