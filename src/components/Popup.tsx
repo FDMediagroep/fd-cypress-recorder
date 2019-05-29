@@ -3,15 +3,17 @@ import CypressGenerator from './CypressGenerator';
 import EventsStore = require('../stores/EventsStore');
 import { createGlobalStyle } from 'styled-components';
 import {ButtonCallToAction, ButtonEditorial} from '@fdmg/fd-buttons';
-import { AllFdEvents, Template } from "../utils/FdEvents";
+import { AllFdEvents, Template, Header } from "../utils/FdEvents";
 import { ComponentBase } from 'resub';
 import TemplatesStore = require('../stores/TemplatesStore');
 import TestSuiteStore = require('../stores/TestSuiteStore');
 import ShortCut from './ShortCut';
+import HeadersStore = require('../stores/HeadersStore');
 
 interface PopupState {
     events: AllFdEvents[];
     futures: [AllFdEvents[]];
+    headers: Header[];
     undoneEvents: AllFdEvents[];
     templates: Template[];
     testSuite?: string;
@@ -114,21 +116,20 @@ export default class Popup extends ComponentBase<Props, PopupState> {
                         <ul>
                             {this.state.templates.map((template: Template) => template.name ? <li key={template.name}><span onClick={this.loadTemplate} data-value={template.name}>{template.name}</span><span><ButtonEditorial  data-value={template.name} onClick={this.loadAppendTemplate} title="Append template">+</ButtonEditorial><ButtonEditorial  data-value={template.name} onClick={this.removeTemplate} title="Delete template">X</ButtonEditorial></span></li> : null)}
                         </ul>
-                        <div>
-                            <label><input type="checkbox" onChange={this.handleBasicAuth} checked={this.state.basicAuth}/> Basic Auth</label>
-                        </div>
                     </div>
                     <div className="fd-cypress-code-container">
                         <CypressGenerator
                             basicAuth={this.state.basicAuth}
+                            headers={this.state.headers}
                             events={this.state.events}
                             onSuiteChange={this.handleSuiteChange}
                             testSuite={this.state.testSuite}
                             onDescriptionChange={this.handleDescriptionChange}
                             testDescription={this.state.testDescription}
                             onRemoveEvent={this.handleRemoveEvent}
+                            onBasicAuth={this.handleBasicAuth}
                         />
-                        <small><ShortCut>CTRL</ShortCut> + <ShortCut className="shortcut-button">Print Screen</ShortCut> or <ShortCut>ALT</ShortCut> + <ShortCut className="shortcut-button">c</ShortCut> or <ShortCut>ALT</ShortCut> + <ShortCut className="shortcut-button">b</ShortCut>: open context menu for hovered element in page. Tip: make sure the page has focus and recording has started.</small>
+                        <small><ShortCut>CTRL</ShortCut> + <ShortCut className="shortcut-button">Right Mouse Click</ShortCut>: open context menu for hovered element in page. Tip: make sure the page has focus and recording has started.</small>
                         <small><ShortCut>CTRL</ShortCut> + <ShortCut className="shortcut-button">Scroll Lock</ShortCut> or <ShortCut>ALT</ShortCut> + <ShortCut className="shortcut-button">r</ShortCut>: Toggle recording state. Tip: make sure the page has focus.</small>
                     </div>
                 </div>
@@ -144,6 +145,7 @@ export default class Popup extends ComponentBase<Props, PopupState> {
         return {
             events,
             futures: EventsStore.getFutures(),
+            headers: HeadersStore.getHeaders(),
             undoneEvents: EventsStore.getUndoneEvents(),
             templates: TemplatesStore.getTemplates(),
             testSuite: TestSuiteStore.getTestSuite(),
@@ -266,6 +268,32 @@ const GlobalStyle = createGlobalStyle`
             flex: 1 1 auto;
             display: flex;
             flex-direction: column;
+            overflow: auto;
+            ::-webkit-scrollbar {
+                width: .5rem;
+                height: .5rem;
+            }
+
+            ::-webkit-scrollbar-track {
+                -webkit-border-radius: .25rem;
+                border-radius: .25rem;
+                background:rgba(0,0,0,0.1);
+            }
+
+            ::-webkit-scrollbar-thumb {
+                -webkit-border-radius: .25rem;
+                border-radius: .25rem;
+                background:rgba(0,0,0,0.2);
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: rgba(0,0,0,0.4);
+            }
+
+            ::-webkit-scrollbar-thumb:window-inactive {
+                background: rgba(0,0,0,0.05);
+            }
+
             small {
                 display: block;
                 margin-bottom: .5rem;

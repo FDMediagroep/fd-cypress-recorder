@@ -2,24 +2,32 @@ import React, { PureComponent } from "react";
 import styled from "styled-components";
 import {TextInput} from '@fdmg/fd-inputs';
 import { getCode } from "../utils/Dictionary";
-import { AllFdEvents } from "../utils/FdEvents";
+import { AllFdEvents, Header } from "../utils/FdEvents";
 import { ButtonEditorial } from "@fdmg/fd-buttons";
 import EventsList from "./EventsList";
+import Headers from './Headers';
 
 export interface Props {
     basicAuth: boolean;
+    headers?: Header[];
     testSuite: string;
     testDescription: string;
     events: AllFdEvents[];
+    onBasicAuth: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onDescriptionChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onRemoveEvent: (index: number) => void;
     onSuiteChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    onDescriptionChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+interface State {
+    cypressCode?: string[];
+    view: 'code' | 'events' | 'headers';
 }
 
 /**
  * This component can show the recorded events as code or as a list of individual events.
  */
-export default class CypressGenerator extends PureComponent<Props, any> {
+export default class CypressGenerator extends PureComponent<Props, State> {
     state: any = {
         view: 'code'
     };
@@ -34,7 +42,8 @@ export default class CypressGenerator extends PureComponent<Props, any> {
             || prevProps.testDescription !== this.props.testDescription
             || prevProps.events.length !== this.props.events.length
             || prevProps.basicAuth !== this.props.basicAuth
-            || JSON.stringify(prevProps.events) !== JSON.stringify(this.props.events)) {
+            || JSON.stringify(prevProps.events) !== JSON.stringify(this.props.events)
+            || JSON.stringify(prevProps.headers) !== JSON.stringify(this.props.headers)) {
             this.setState({cypressCode: this.generateCodeFromEvents(this.props.events)});
         }
     }
@@ -50,8 +59,16 @@ export default class CypressGenerator extends PureComponent<Props, any> {
     handleChange = () => {
     }
 
-    toggleView = () => {
-        this.setState({view: this.state.view === 'code' ? 'events' : 'code'});
+    showCode = () => {
+        this.setState({view: 'code'});
+    }
+
+    showEvents = () => {
+        this.setState({view: 'events'});
+    }
+
+    showHeaders = () => {
+        this.setState({view: 'headers'});
     }
 
     removeEvent = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -61,7 +78,7 @@ export default class CypressGenerator extends PureComponent<Props, any> {
     generateCodeFromEvents = (events: AllFdEvents[]) => {
         const suite = this.props.testSuite ? this.props.testSuite.replace(new RegExp("'", 'g'), "\\\'") : 'Test Suite ...';
         const description = this.props.testDescription ? this.props.testDescription.replace(new RegExp("'", 'g'), "\\\'") : 'should ...';
-        return getCode(suite, description, events, {basicAuth: this.props.basicAuth});
+        return getCode(suite, description, events, {basicAuth: this.props.basicAuth, headers: this.props.headers});
     }
 
     render() {
@@ -70,11 +87,20 @@ export default class CypressGenerator extends PureComponent<Props, any> {
                 <TextInput id="testSuite" className="testSuite" type="text" label="Test suite name" onChange={this.handleTestSuiteChange} value={this.props.testSuite ? this.props.testSuite : ''} errorMessage="Please enter a name for your test suite"/>
                 <TextInput id="testDescription" className="testDescription" type="text" label="Description" onChange={this.handleTestDescriptionChange} value={this.props.testDescription ? this.props.testDescription : ''} errorMessage="Please enter a description for your test"/>
                 {
-                    this.state.view === 'code' ?
-                    <textarea onChange={this.handleChange} value={this.state.cypressCode.join('')} placeholder="Start using the website to record some events" readOnly={false} spellCheck={false}/>
-                    : <EventsList events={this.props.events} onRemoveEvent={this.removeEvent}/>
+                    this.state.view === 'code' ? <textarea onChange={this.handleChange} value={this.state.cypressCode.join('')} placeholder="Start using the website to record some events" readOnly={false} spellCheck={false}/> : null
                 }
-                <ButtonEditorial className="toggle-view" onClick={this.toggleView} title="Toggle between code and event view">{this.state.view === 'code' ? 'Show events' : 'Show code'}</ButtonEditorial>
+                {
+                    this.state.view === 'events' ? <EventsList events={this.props.events} onRemoveEvent={this.removeEvent}/> : null
+                }
+                {
+                    this.state.view === 'headers' ? <StyledHeadersContainer><Headers headers={this.props.headers}/></StyledHeadersContainer> : null
+                }
+                <StyledExtraOptions>
+                    <ButtonEditorial className={this.state.view === 'code' ? ' selected' : ''} onClick={this.showCode} title="Show code">Code</ButtonEditorial>
+                    <ButtonEditorial className={this.state.view === 'events' ? ' selected' : ''} onClick={this.showEvents} title="Show events">Events</ButtonEditorial>
+                    <ButtonEditorial className={this.state.view === 'headers' ? ' selected' : ''} onClick={this.showHeaders} title="Show headers">Headers</ButtonEditorial>
+                    <label className="basic-auth"><input type="checkbox" onChange={this.props.onBasicAuth} checked={this.props.basicAuth}/> Basic Auth</label>
+                </StyledExtraOptions>
             </StyledCodeContainer>
         );
     }
@@ -93,11 +119,11 @@ const StyledCodeContainer = styled.div`
 
     textarea {
         white-space: nowrap;
+        border-color: rgba(0, 0, 0, 0.1);
     }
 
     ul, textarea {
         flex: 1 1 auto;
-        margin-bottom: .5rem;
         word-break: break-all;
 
         ::-webkit-scrollbar {
@@ -139,8 +165,36 @@ const StyledCodeContainer = styled.div`
             padding: .5rem 1rem;
         }
     }
-    .toggle-view {
-        margin-bottom: .5rem;
-    }
+`;
 
+const StyledExtraOptions = styled.div`
+display: flex;
+justify-content: flex-start;
+align-items: center;
+margin-bottom: .5rem;
+margin-top: -1px;
+
+.fd-button {
+    color: rgba(0, 0, 0, 0.1);
+    background: white;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    &.selected {
+        color: #191919;
+        border-top: 1px solid white;
+    }
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    margin-right: .5rem;
+    box-shadow: none;
+}
+
+.basic-auth {
+    flex: 0 0 auto;
+}
+`;
+
+const StyledHeadersContainer = styled.div`
+flex: 1 1 auto;
+border: 1px solid rgba(0, 0, 0, 0.1);
 `;

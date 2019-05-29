@@ -2,7 +2,7 @@
 
 exports[`Cypress Generator should render empty test correctly 1`] = `
 <div
-  className="sc-bwzfXH gbkqhM"
+  className="sc-ifAKCX jneUDR"
 >
   <div
     className="fd-input testSuite"
@@ -101,19 +101,47 @@ describe('Test Suite ...', () => {
 });
 "
   />
-  <button
-    className="fd-button toggle-view"
-    onClick={[Function]}
-    title="Toggle between code and event view"
+  <div
+    className="sc-EHOje fLJYEd"
   >
-    Show events
-  </button>
+    <button
+      className="fd-button  selected"
+      onClick={[Function]}
+      title="Show code"
+    >
+      Code
+    </button>
+    <button
+      className="fd-button"
+      onClick={[Function]}
+      title="Show events"
+    >
+      Events
+    </button>
+    <button
+      className="fd-button"
+      onClick={[Function]}
+      title="Show headers"
+    >
+      Headers
+    </button>
+    <label
+      className="basic-auth"
+    >
+      <input
+        checked={false}
+        onChange={[MockFunction]}
+        type="checkbox"
+      />
+       Basic Auth
+    </label>
+  </div>
 </div>
 `;
 
 exports[`Cypress Generator should render events correctly 1`] = `
 <div
-  className="sc-bwzfXH gbkqhM"
+  className="sc-ifAKCX jneUDR"
 >
   <div
     className="fd-input testSuite"
@@ -214,19 +242,47 @@ describe('Test Suite ...', () => {
 });
 "
   />
-  <button
-    className="fd-button toggle-view"
-    onClick={[Function]}
-    title="Toggle between code and event view"
+  <div
+    className="sc-EHOje fLJYEd"
   >
-    Show events
-  </button>
+    <button
+      className="fd-button  selected"
+      onClick={[Function]}
+      title="Show code"
+    >
+      Code
+    </button>
+    <button
+      className="fd-button"
+      onClick={[Function]}
+      title="Show events"
+    >
+      Events
+    </button>
+    <button
+      className="fd-button"
+      onClick={[Function]}
+      title="Show headers"
+    >
+      Headers
+    </button>
+    <label
+      className="basic-auth"
+    >
+      <input
+        checked={false}
+        onChange={[MockFunction]}
+        type="checkbox"
+      />
+       Basic Auth
+    </label>
+  </div>
 </div>
 `;
 
 exports[`Cypress Generator should render test with suite name and description correctly 1`] = `
 <div
-  className="sc-bwzfXH gbkqhM"
+  className="sc-ifAKCX jneUDR"
 >
   <div
     className="fd-input testSuite"
@@ -325,12 +381,40 @@ describe('Test suite name', () => {
 });
 "
   />
-  <button
-    className="fd-button toggle-view"
-    onClick={[Function]}
-    title="Toggle between code and event view"
+  <div
+    className="sc-EHOje fLJYEd"
   >
-    Show events
-  </button>
+    <button
+      className="fd-button  selected"
+      onClick={[Function]}
+      title="Show code"
+    >
+      Code
+    </button>
+    <button
+      className="fd-button"
+      onClick={[Function]}
+      title="Show events"
+    >
+      Events
+    </button>
+    <button
+      className="fd-button"
+      onClick={[Function]}
+      title="Show headers"
+    >
+      Headers
+    </button>
+    <label
+      className="basic-auth"
+    >
+      <input
+        checked={false}
+        onChange={[MockFunction]}
+        type="checkbox"
+      />
+       Basic Auth
+    </label>
+  </div>
 </div>
 `;

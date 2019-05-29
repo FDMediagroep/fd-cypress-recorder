@@ -6,6 +6,8 @@ import Popup from './components/Popup';
 import TestSuiteStore = require('./stores/TestSuiteStore');
 import TemplatesStore = require('./stores/TemplatesStore');
 import { Template } from './utils/FdEvents';
+import HeadersStore = require('./stores/HeadersStore');
+import { StoreBase } from 'resub';
 
 declare var chrome: any;
 
@@ -15,6 +17,7 @@ const storageTestDescriptionName = 'fd-cypress-chrome-extension-testDescription'
 const storageRecord = 'fd-cypress-chrome-extension-record';
 const storageTemplates = 'fd-cypress-chrome-extension-templates';
 const storageBasicAuth = 'fd-cypress-chrome-extension-basic-auth';
+const storageHeaders = 'fd-cypress-chrome-extension-headers';
 
 /**
  * Persist the new test-suite name to browser storage.
@@ -61,7 +64,8 @@ function redo() {
  * Purge the browser storage from the recorded events, test suite name and test description.
  */
 function clear() {
-    chrome.storage.local.remove([storageName, storageTestSuiteName, storageTestDescriptionName]);
+    chrome.storage.local.remove([storageName, storageTestSuiteName, storageTestDescriptionName, storageHeaders]);
+    HeadersStore.clear();
 }
 
 /**
@@ -212,10 +216,18 @@ chrome.storage.local.get({
     'fd-cypress-chrome-extension-basic-auth': false,
     'fd-cypress-chrome-extension-testSuite': '',
     'fd-cypress-chrome-extension-testDescription': '',
-    'fd-cypress-chrome-extension-templates': []
+    'fd-cypress-chrome-extension-templates': [],
+    'fd-cypress-chrome-extension-headers': [{property: '', value: ''}]
 }, (items: any) => {
     const recording = items[storageRecord];
     chrome.browserAction.setIcon({path: recording ? 'record.png' : '48x48.png'});
+
+    /**
+     * Listen for changes to Headers and save them to storage.
+     */
+    HeadersStore.subscribe((keys?: string[]) => {
+        chrome.storage.local.set({'fd-cypress-chrome-extension-headers': HeadersStore.getHeaders()});
+    }, StoreBase.Key_All);
 
     TestSuiteStore.setRecording(recording);
     TestSuiteStore.setTestSuite(items[storageTestSuiteName]);
@@ -223,6 +235,7 @@ chrome.storage.local.get({
     TestSuiteStore.setBasicAuth(items[storageBasicAuth]);
     TemplatesStore.setTemplates(items[storageTemplates]);
     EventsStore.setEvents(items[storageName]);
+    HeadersStore.setHeaders(items[storageHeaders]);
     ReactDOM.render((
         <div id="popup">
             <GlobalStyle/>

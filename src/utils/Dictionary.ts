@@ -56,7 +56,7 @@ import { AllFdEvents,
  * @param event
  * @param options
  */
-export function getCodeFromEvent(event: AllFdEvents, options: Options = {}): string {
+export function getCodeFromEvent(event: AllFdEvents, options?: Options): string {
     switch (event.type) {
         case FdEventType.ATTRIBUTE_VALUE_CONTAINS:
             return `cy.get('${(event as FdAttributeValueEvent).target}').then((el) => expect(el.attr('${(event as FdAttributeValueEvent).name}')).to.contain('${(event as FdAttributeValueEvent).value.replace(new RegExp("'", 'g'), "\\\'")}'));`;
@@ -85,11 +85,36 @@ export function getCodeFromEvent(event: AllFdEvents, options: Options = {}): str
         case FdEventType.LOCATION_CONTAINS:
             return `cy.location('href', {timeout: 10000}).should('contain', '${(event as FdLocationContainsEvent).value}');`;
         case FdEventType.VISIT:
-            if (options && options.basicAuth) {
-                return `cy.visit('${(event as FdLocationEvent).href}', {auth: {username: Cypress.env('BASIC_USER') || '', password: Cypress.env('BASIC_PASS') || ''}});`;
-            } else {
-                return `cy.visit('${(event as FdLocationEvent).href}');`;
+            let opt = '';
+            if (options) {
+                if (options.basicAuth) {
+                    opt = `auth: {username: Cypress.env('BASIC_USER') || '', password: Cypress.env('BASIC_PASS') || ''}`;
+                }
+                if (options.headers && options.headers.length) {
+                    let headers = '';
+                    options.headers.forEach((h) => {
+                        if (h.property !== '') {
+                            const prop = h.property.replace(/\\/g, '\\\\').replace(new RegExp('"', 'g'), '\\"');
+                            const value = h.value.replace(/\\/g, '\\\\').replace(new RegExp('"', 'g'), '\\"');
+                            if (headers) {
+                                headers += `, "${prop}": "${value}"`;
+                            } else {
+                                headers += `"${prop}": "${value}"`;
+                            }
+                        }
+                    });
+                    headers = `headers: {${headers}}`;
+                    if (opt) {
+                        opt = `${opt}, ${headers}`;
+                    } else {
+                        opt = headers;
+                    }
+                }
+                if (opt) {
+                    opt = `, {${opt}}`;
+                }
             }
+            return `cy.visit('${(event as FdLocationEvent).href}'${opt});`;
         case FdEventType.TYPE:
             return `cy.get('${(event as FdTypeEvent).target}').type('${(event as FdTypeEvent).value}');`;
         case FdEventType.VIEWPORT_SIZE:
@@ -99,8 +124,8 @@ export function getCodeFromEvent(event: AllFdEvents, options: Options = {}): str
     }
 }
 
-export function getCode(suite: string, description: string, events: AllFdEvents[], options: Options = {}) {
-    const code: any[] = [
+export function getCode(suite: string, description: string, events: AllFdEvents[], options?: Options) {
+    const code: string[] = [
 `/**
   * Code generated with Fd Cypress Recorder.
   * https://github.com/FDMediagroep/fd-cypress-recorder
@@ -115,7 +140,7 @@ describe('${suite}', () => {
   it('${description}', () => {
 `];
     events.forEach((event) => {
-        code.push(`    ${getCodeFromEvent(event, {basicAuth: options.basicAuth})}\r\n`);
+        code.push(`    ${getCodeFromEvent(event, options)}\r\n`);
     });
     code.push('  });\r\n');
     code.push('});\r\n');

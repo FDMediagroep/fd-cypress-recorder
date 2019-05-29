@@ -79,6 +79,18 @@ describe('Cypress Dictionary', () => {
         expect(getCodeFromEvent(event, {basicAuth: true})).toBe(`cy.visit('${event.href}', {auth: {username: Cypress.env('BASIC_USER') || '', password: Cypress.env('BASIC_PASS') || ''}});`);
     });
 
+    it('should return the Visit event Cypress code with basic authentication and extra headers', () => {
+        const event: FdVisitEvent = {type: FdEventType.VISIT, href: 'http://willemliu.nl'};
+        expect(getCodeFromEvent(event, {basicAuth: true, headers: [{property: 'Content-type', value: 'application/json'}]}))
+        .toBe(`cy.visit('${event.href}', {auth: {username: Cypress.env('BASIC_USER') || '', password: Cypress.env('BASIC_PASS') || ''}, headers: {"Content-type": "application/json"}});`);
+    });
+
+    it('should return the Visit event Cypress code with extra headers', () => {
+        const event: FdVisitEvent = {type: FdEventType.VISIT, href: 'http://willemliu.nl'};
+        expect(getCodeFromEvent(event, {headers: [{property: 'Content-type', value: 'application/json'}]}))
+        .toBe(`cy.visit('${event.href}', {headers: {"Content-type": "application/json"}});`);
+    });
+
     it('should return the Type event Cypress code', () => {
         const event: FdTypeEvent = {type: FdEventType.TYPE, target: 'document.body', value: 'Willem Liu'};
         expect(getCodeFromEvent(event)).toBe(`cy.get('${event.target}').type('${event.value}');`);

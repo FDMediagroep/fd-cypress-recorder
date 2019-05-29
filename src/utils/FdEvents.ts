@@ -1,3 +1,8 @@
+export interface Header {
+    property: string;
+    value: string;
+}
+
 export enum FdEventType {
     ATTRIBUTE_VALUE_CONTAINS = 'attribute-value-contains',
     ATTRIBUTE_VALUE_EQUALS = 'attribute-value-equals',
@@ -118,4 +123,5 @@ export const UNIQUE_SELECTOR_OPTIONS = {
 
 export interface Options {
     basicAuth?: boolean;
+    headers?: Header[];
 }
