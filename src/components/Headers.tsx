@@ -16,11 +16,11 @@ export default class Headers extends ComponentBase<any, State> {
     private columns: Array<Column<any>> = [{
         Header: 'Property',
         accessor: 'property',
-        Cell: (props: CellInfo<any>) => <StyledTableCellInput type="text" className='property' defaultValue={props.value} data-row={props.index} data-column='property' onChange={this.handleHeaderChange}/>
+        Cell: (props: CellInfo) => <StyledTableCellInput type="text" className='property' defaultValue={props.value} data-row={props.index} data-column='property' onChange={this.handleHeaderChange}/>
     }, {
         Header: 'Value',
         accessor: 'value',
-        Cell: (props: CellInfo<any>) => <StyledTableCellInput type="text" className='value' defaultValue={props.value} data-row={props.index} data-column='value' onChange={this.handleHeaderChange}/>
+        Cell: (props: CellInfo) => <StyledTableCellInput type="text" className='value' defaultValue={props.value} data-row={props.index} data-column='value' onChange={this.handleHeaderChange}/>
     }];
 
     handleHeaderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
