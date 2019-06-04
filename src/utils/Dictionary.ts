@@ -11,7 +11,8 @@ import { AllFdEvents,
     FdTypeEvent,
     FdViewportSizeEvent,
     FdAttributeValueEvent,
-    FdAttributeExistsEvent
+    FdAttributeExistsEvent,
+    FdVisitEvent
 } from "./FdEvents";
 
 /**
@@ -125,6 +126,14 @@ export function getCodeFromEvent(event: AllFdEvents, options?: Options): string 
 }
 
 export function getCode(suite: string, description: string, events: AllFdEvents[], options?: Options) {
+    let firstVisitUrl = '';
+    for (let i = 0; i < events.length; ++i) {
+        const event = events[i];
+        if (event.type === FdEventType.VISIT) {
+            firstVisitUrl = (event as FdVisitEvent).href;
+        }
+    }
+  
     const code: string[] = [
 `/**
   * Code generated with Fd Cypress Recorder.
@@ -133,7 +142,15 @@ export function getCode(suite: string, description: string, events: AllFdEvents[
 
 /// <reference types="Cypress" />
 describe('${suite}', () => {
-  beforeEach(() => {
+  ${firstVisitUrl ?
+  `beforeEach(() => {
+    cy.visit('${firstVisitUrl}'${options && options.basicAuth ? `, {auth: {username: Cypress.env('BASIC_USER') || '', password: Cypress.env('BASIC_PASS') || ''}}` : ''});
+    cy.clearCookies();
+    cy.reload(true);
+  });` : ''
+  }
+
+  afterEach(() => {
     cy.clearCookies();
   });
 
