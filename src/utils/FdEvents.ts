@@ -23,6 +23,7 @@ export enum FdEventType {
     TYPE = 'type',
     VIEWPORT_SIZE = 'viewport-size',
     VISIT = 'visit',
+    WAIT = 'wait',
 }
 
 export interface FdEvent {
@@ -94,6 +95,10 @@ export interface FdCountLessThanEvent extends FdEvent {
     value: number;
 }
 
+export interface FdWaitEvent extends FdEvent {
+    value: number;
+}
+
 export type AllFdEvents = FdEvent
     | FdAttributeValueEvent
     | FdAttributeExistsEvent
@@ -109,6 +114,7 @@ export type AllFdEvents = FdEvent
     | FdTypeEvent
     | FdViewportSizeEvent
     | FdVisitEvent
+    | FdWaitEvent
 ;
 
 export interface Template {

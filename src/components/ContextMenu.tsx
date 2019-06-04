@@ -83,6 +83,13 @@ export default class ContextMenu extends PureComponent<Props, any> {
         }
     }
 
+    handleWait = () => {
+        const value = prompt('Wait for n milliseconds') || '';
+        if (value) {
+            EventsStore.addEvent({ type: FdEventType.WAIT, value });
+        }
+    }
+
     handleSubContextMenuAssert = (event: AllFdEvents) => {
         EventsStore.addEvent(event);
     }
@@ -121,6 +128,7 @@ export default class ContextMenu extends PureComponent<Props, any> {
                         <li className="clickable" onMouseDown={this.handleClick}>Click</li>
                         <li className="clickable" onMouseDown={this.handleEnterText}>Enter text...</li>
                         <li className="clickable" onMouseDown={this.handleHover}>Hover</li>
+                        <li className="clickable" onMouseDown={this.handleWait}>Wait...</li>
                         <li className="label">Asserts</li>
                         <li className="clickable" onMouseDown={this.handleCheckAttribute}>Attributes...</li>
                         <li className="clickable" onMouseDown={this.handleCheckText}>Contains text...</li>

@@ -12,7 +12,8 @@ import { AllFdEvents,
     FdViewportSizeEvent,
     FdAttributeValueEvent,
     FdAttributeExistsEvent,
-    FdVisitEvent
+    FdVisitEvent,
+    FdWaitEvent
 } from "./FdEvents";
 
 /**
@@ -53,6 +54,8 @@ import { AllFdEvents,
  * FdEventType.TYPE: type a certain text into the focused element
  *
  * FdEventType.VIEWPORT_SIZE: set the viewport size
+ *
+ * FdEventType.WAIT: wait _n_ milliseconds
  *
  * @param event
  * @param options
@@ -120,6 +123,8 @@ export function getCodeFromEvent(event: AllFdEvents, options?: Options): string 
             return `cy.get('${(event as FdTypeEvent).target}').type('${(event as FdTypeEvent).value}');`;
         case FdEventType.VIEWPORT_SIZE:
             return `cy.viewport(${(event as FdViewportSizeEvent).width}, ${(event as FdViewportSizeEvent).height});`;
+        case FdEventType.WAIT:
+            return `cy.wait(${(event as FdWaitEvent).value});`;
         default:
             return `// ${JSON.stringify(event)}`;
     }
