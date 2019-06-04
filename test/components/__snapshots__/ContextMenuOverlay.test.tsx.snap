@@ -42,6 +42,12 @@ exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] =
         Hover
       </li>
       <li
+        className="clickable"
+        onMouseDown={[Function]}
+      >
+        Wait...
+      </li>
+      <li
         className="label"
       >
         Asserts

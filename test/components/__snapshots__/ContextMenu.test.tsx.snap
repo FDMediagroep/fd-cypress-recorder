@@ -29,6 +29,12 @@ exports[`Context Menu should render context menu correctly 1`] = `
       Hover
     </li>
     <li
+      className="clickable"
+      onMouseDown={[Function]}
+    >
+      Wait...
+    </li>
+    <li
       className="label"
     >
       Asserts
