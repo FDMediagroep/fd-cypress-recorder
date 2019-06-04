@@ -72,6 +72,9 @@ This allows you to enter text into text fields. The field must have focus in ord
 #### Hover
 Triggers the mouse `hover` interaction.
 
+#### Wait
+This allows you to wait a number of milliseconds before the next event triggers in the test.
+
 #### Attributes...
 Opens another context menu with extra options to assert the HTML attributes on the hovered element. All attributes existing on the hovered element are shown in the following context menu. And each attribute gives you the following options:
 1. `Contains`: Check if attribute contains given text.
