@@ -56,7 +56,7 @@ describe('Cypress Dictionary', () => {
 
     it('should return the Hover event Cypress code', () => {
         const event: FdHoverEvent = {type: FdEventType.HOVER, target: 'document.body'};
-        expect(getCodeFromEvent(event)).toBe(`cy.get('${event.target}').trigger('mouseover');`);
+        expect(getCodeFromEvent(event)).toBe(`cy.get('${event.target}').trigger('mouseover').trigger('mousemove');`);
     });
 
     it('should return the Location event Cypress code', () => {
