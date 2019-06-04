@@ -92,6 +92,8 @@ exports[`Cypress Generator should render empty test correctly 1`] = `
 
 /// <reference types=\\"Cypress\\" />
 describe('Test Suite ...', () => {
+  
+
   afterEach(() => {
     cy.clearCookies();
   });
@@ -231,6 +233,12 @@ exports[`Cypress Generator should render events correctly 1`] = `
 
 /// <reference types=\\"Cypress\\" />
 describe('Test Suite ...', () => {
+  beforeEach(() => {
+    cy.visit('http://willemliu.nl');
+    cy.clearCookies();
+    cy.reload(true);
+  });
+
   afterEach(() => {
     cy.clearCookies();
   });
@@ -372,6 +380,12 @@ exports[`Cypress Generator should render headers correctly 1`] = `
 
 /// <reference types=\\"Cypress\\" />
 describe('Test Suite ...', () => {
+  beforeEach(() => {
+    cy.visit('http://willemliu.nl');
+    cy.clearCookies();
+    cy.reload(true);
+  });
+
   afterEach(() => {
     cy.clearCookies();
   });
@@ -513,6 +527,8 @@ exports[`Cypress Generator should render test with suite name and description co
 
 /// <reference types=\\"Cypress\\" />
 describe('Test suite name', () => {
+  
+
   afterEach(() => {
     cy.clearCookies();
   });
