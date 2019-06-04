@@ -14,7 +14,8 @@ import {
     FdAttributeExistsEvent,
     FdCountEqualsEvent,
     FdCountGreaterThanEvent,
-    FdCountLessThanEvent
+    FdCountLessThanEvent,
+    FdWaitEvent
 } from '../../src/utils/FdEvents';
 import { getCodeFromEvent } from '../../src/utils/Dictionary';
 
@@ -120,5 +121,10 @@ describe('Cypress Dictionary', () => {
     it('should return the Check Attribute Exists event Cypress code', () => {
         const event: FdAttributeExistsEvent = {type: FdEventType.ATTRIBUTE_VALUE_EXISTS, target: 'document.body', name: 'type'};
         expect(getCodeFromEvent(event)).toBe(`cy.get('${event.target}').should('have.attr', '${event.name}');`);
+    });
+
+    it('should return the Wait event Cypress code', () => {
+        const event: FdWaitEvent = {type: FdEventType.WAIT, value: 1000};
+        expect(getCodeFromEvent(event)).toBe(`cy.wait(${event.value});`);
     });
 });
