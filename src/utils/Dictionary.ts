@@ -133,7 +133,7 @@ export function getCode(suite: string, description: string, events: AllFdEvents[
 
 /// <reference types="Cypress" />
 describe('${suite}', () => {
-  afterEach(() => {
+  beforeEach(() => {
     cy.clearCookies();
   });
 
