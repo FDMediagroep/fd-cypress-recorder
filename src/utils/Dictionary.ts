@@ -83,7 +83,7 @@ export function getCodeFromEvent(event: AllFdEvents, options?: Options): string 
         case FdEventType.EXISTS:
             return `cy.get('${(event as FdExistsEvent).target}').should('exist');`;
         case FdEventType.HOVER:
-            return `cy.get('${(event as FdHoverEvent).target}').trigger('mouseover');`;
+            return `cy.get('${(event as FdHoverEvent).target}').trigger('mouseover').trigger('mousemove');`;
         case FdEventType.LOCATION:
             return `cy.location('href', {timeout: 10000}).should('eq', '${(event as FdLocationEvent).href}');`;
         case FdEventType.LOCATION_CONTAINS:
