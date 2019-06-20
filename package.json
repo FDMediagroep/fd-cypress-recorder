@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@fdmg/fd-buttons": "^1.0.27",
-    "@fdmg/fd-inputs": "^1.0.24",
+    "@fdmg/fd-inputs": "^2.0.0",
     "@fdmg/fd-typography": "^1.0.31",
     "react": "^16.8.6",
     "react-beautiful-dnd": "^11.0.3",
