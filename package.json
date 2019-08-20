@@ -1,74 +1,74 @@
 {
-  "name": "fd-cypress-recorder",
-  "version": "0.0.1",
-  "description": "Fd Cypress Recorder captures user interactions and generates Cypress test code.",
-  "main": "fd-cypress-recorder/content.js",
-  "scripts": {
-    "lint": "tslint -p .",
-    "test": "jest",
-    "watch": "cross-env NODE_ENV=production webpack --mode production --display-modules -w",
-    "watch-dev": "cross-env NODE_ENV=development webpack --mode development --display-modules -w",
-    "webpack": "cross-env NODE_ENV=production webpack --mode production --display-modules -p"
-  },
-  "author": "Willem Liu",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/chrome": "0.0.86",
-    "@types/jest": "^24.0.13",
-    "@types/react": "^16.8.19",
-    "@types/react-beautiful-dnd": "^11.0.2",
-    "@types/react-dom": "^16.8.3",
-    "@types/react-table": "^6.8.3",
-    "@types/react-test-renderer": "^16.8.1",
-    "@types/styled-components": "^4.1.15",
-    "@types/webpack-env": "^1.13.9",
-    "awesome-typescript-loader": "^5.2.1",
-    "coveralls": "^3.0.3",
-    "cross-env": "^5.2.0",
-    "css-loader": "^2.1.1",
-    "jest": "^24.8.0",
-    "jest-cli": "^24.8.0",
-    "react-test-renderer": "^16.8.6",
-    "style-loader": "^0.23.1",
-    "ts-jest": "^24.0.2",
-    "tslint": "^5.17.0",
-    "tslint-react": "^4.0.0",
-    "typescript": "^3.5.1",
-    "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2"
-  },
-  "dependencies": {
-    "@fdmg/fd-buttons": "^1.0.27",
-    "@fdmg/fd-inputs": "^1.0.24",
-    "@fdmg/fd-typography": "^1.0.31",
-    "react": "^16.8.6",
-    "react-beautiful-dnd": "^11.0.3",
-    "react-dom": "^16.8.6",
-    "react-table": "^6.10.0",
-    "resub": "^1.0.13",
-    "styled-components": "^4.3.0",
-    "unique-selector": "^0.4.1"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
+    "name": "fd-cypress-recorder",
+    "version": "0.0.2",
+    "description": "Fd Cypress Recorder captures user interactions and generates Cypress test code.",
+    "main": "fd-cypress-recorder/content.js",
+    "scripts": {
+        "lint": "tslint -p .",
+        "test": "jest",
+        "watch": "cross-env NODE_ENV=production webpack --mode production --display-modules -w",
+        "watch-dev": "cross-env NODE_ENV=development webpack --mode development --display-modules -w",
+        "webpack": "cross-env NODE_ENV=production webpack --mode production --display-modules -p"
     },
-    "testRegex": "test/(.*)(test|spec)\\.(jsx?|tsx?)$",
-    "setupFiles": [],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ],
-    "collectCoverage": true,
-    "coverageDirectory": "dist/coverage",
-    "coverageReporters": [
-      "json",
-      "lcov",
-      "text",
-      "text-summary"
-    ]
-  }
+    "author": "Willem Liu",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/chrome": "0.0.86",
+        "@types/jest": "^24.0.18",
+        "@types/react": "^16.9.2",
+        "@types/react-beautiful-dnd": "^11.0.3",
+        "@types/react-dom": "^16.9.0",
+        "@types/react-table": "^6.8.5",
+        "@types/react-test-renderer": "^16.9.0",
+        "@types/styled-components": "^4.1.18",
+        "@types/webpack-env": "^1.14.0",
+        "awesome-typescript-loader": "^5.2.1",
+        "coveralls": "^3.0.6",
+        "cross-env": "^5.2.0",
+        "css-loader": "^2.1.1",
+        "jest": "^24.9.0",
+        "jest-cli": "^24.9.0",
+        "react-test-renderer": "^16.9.0",
+        "style-loader": "^0.23.1",
+        "ts-jest": "^24.0.2",
+        "tslint": "^5.18.0",
+        "tslint-react": "^4.0.0",
+        "typescript": "^3.5.3",
+        "webpack": "^4.39.2",
+        "webpack-cli": "^3.3.7"
+    },
+    "dependencies": {
+        "@fdmg/fd-buttons": "^1.0.27",
+        "@fdmg/fd-inputs": "^1.0.24",
+        "@fdmg/fd-typography": "^1.0.31",
+        "react": "^16.9.0",
+        "react-beautiful-dnd": "^11.0.5",
+        "react-dom": "^16.9.0",
+        "react-table": "^6.10.0",
+        "resub": "^1.2.2",
+        "styled-components": "^4.3.0",
+        "unique-selector": "^0.4.1"
+    },
+    "jest": {
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "testRegex": "test/(.*)(test|spec)\\.(jsx?|tsx?)$",
+        "setupFiles": [],
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json"
+        ],
+        "collectCoverage": true,
+        "coverageDirectory": "dist/coverage",
+        "coverageReporters": [
+            "json",
+            "lcov",
+            "text",
+            "text-summary"
+        ]
+    }
 }
