@@ -1,26 +1,27 @@
 language: node_js
 node_js:
-  - node
+    - node
 python:
-  - "3.6"
+    - "3.6"
 cache:
-  - pip
+    - pip
 addons:
-  apt:
-    packages:
-    - nodejs-legacy
+    apt:
+        packages:
+            - nodejs-legacy
 branches:
-  only:
-  - master
-  - /^greenkeeper/.*$/
+    only:
+        - master
+        - /^greenkeeper/.*$/
 stages:
-  - test
+    - test
 install:
-  - npm install
+    - npm install
 jobs:
-  include:
-    - stage: test
-      name: "Unit test"
-      script: npm test
+    include:
+        - stage: test
+          name: "Unit test"
+          script: npm test
+webhooks: https://outlook.office.com/webhook/09d65d9c-ba4d-4ce4-8ff9-985e1ea578a1@8f2a0bdd-25fe-430a-adb5-0d2367dd50ee/TravisCI/308b447ae6eb4c3f9c7e153e97a4bd25/aaeb5e7b-fe7b-4d97-9adf-3089c10da2cc
 after_success:
-- cat ./dist/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+    - cat ./dist/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
