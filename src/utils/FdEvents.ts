@@ -124,6 +124,10 @@ export interface Template {
 }
 
 export const UNIQUE_SELECTOR_OPTIONS = {
+    selectorTypes: ['ID', 'Tag', 'NthChild']
+};
+
+export const UNIQUE_SELECTOR_OPTIONS_WITHOUT_ID = {
     selectorTypes: ['Tag', 'NthChild']
 };
 

@@ -28,6 +28,14 @@ if (style.styleSheet) {
     style.appendChild(document.createTextNode(css));
 }
 
+function uniqueWithRetry(target: HTMLElement) {
+    try {
+        return unique(target, UNIQUE_SELECTOR_OPTIONS);
+    } catch (e) {
+        return unique(target, UNIQUE_SELECTOR_OPTIONS_WITHOUT_ID);
+    }
+}
+
 /**
  * Persist the events and recording state to browser storage.
  */
@@ -55,7 +63,7 @@ function loadEvents() {
 function clickListener(e: Event) {
     const target = e.currentTarget as HTMLElement;
     if (target) {
-        EventsStore.addEvent({type: FdEventType.CLICK, target: unique(target, UNIQUE_SELECTOR_OPTIONS)});
+        EventsStore.addEvent({type: FdEventType.CLICK, target: uniqueWithRetry(target)});
     }
 }
 
@@ -106,7 +114,7 @@ function keyUpListener(e: KeyboardEvent) {
         const el = document.createElement('section');
         el.setAttribute('class', 'fd-cypress-chrome-extension');
         document.body.appendChild(el);
-        ReactDOM.render(<ContextMenuOverlay target={hoveredElement} selector={unique(hoveredElement, UNIQUE_SELECTOR_OPTIONS)} onClick={removeContextMenu}/>, el);
+        ReactDOM.render(<ContextMenuOverlay target={hoveredElement} selector={uniqueWithRetry(hoveredElement)} onClick={removeContextMenu}/>, el);
     } else if (e.keyCode === 27) {
         // Escape
         removeContextMenu();
@@ -125,7 +133,7 @@ function mouseRightClickListener(e: MouseEvent) {
         const el = document.createElement('section');
         el.setAttribute('class', 'fd-cypress-chrome-extension');
         document.body.appendChild(el);
-        ReactDOM.render(<ContextMenuOverlay target={hoveredElement} selector={unique(hoveredElement, UNIQUE_SELECTOR_OPTIONS)} onClick={removeContextMenu}/>, el);
+        ReactDOM.render(<ContextMenuOverlay target={hoveredElement} selector={uniqueWithRetry(hoveredElement)} onClick={removeContextMenu}/>, el);
     }
 }
 
