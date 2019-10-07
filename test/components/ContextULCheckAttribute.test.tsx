@@ -1,19 +1,19 @@
-import React from "react";
-import { act } from "react-dom/test-utils";
-import TestRenderer from "react-test-renderer";
-import ContextULCheckAttribute from "../../src/components/ContextULCheckAttribute";
-import ReactDOM from "react-dom";
-import { FdEventType } from "../../src/utils/FdEvents";
+import React from 'react';
+import { act } from 'react-dom/test-utils';
+import TestRenderer from 'react-test-renderer';
+import ContextULCheckAttribute from '../../src/components/ContextULCheckAttribute';
+import ReactDOM from 'react-dom';
+import { FdEventType } from '../../src/utils/FdEvents';
 
-describe("Context Menu Attribute", () => {
+describe('Context Menu Attribute', () => {
     let target: HTMLElement;
     const mouseDownMock = jest.fn();
     const backMock = jest.fn();
-    const mouseDownEvt = new MouseEvent("mousedown", { bubbles: true });
+    const mouseDownEvt = new MouseEvent('mousedown', { bubbles: true });
 
     beforeEach(() => {
-        target = document.createElement("div");
-        target.classList.add("context-menu-attributes-test");
+        target = document.createElement('div');
+        target.classList.add('context-menu-attributes-test');
         document.body.appendChild(target);
         act(() => {
             ReactDOM.render(
@@ -35,7 +35,7 @@ describe("Context Menu Attribute", () => {
         backMock.mockClear();
     });
 
-    it("should render without attributes correctly", () => {
+    it('should render without attributes correctly', () => {
         let contextMenu = TestRenderer.create(
             <ContextULCheckAttribute
                 onMouseDown={() => {}}
@@ -46,7 +46,7 @@ describe("Context Menu Attribute", () => {
         expect(contextMenu.toJSON()).toMatchSnapshot();
     });
 
-    it("should render with attributes correctly", () => {
+    it('should render with attributes correctly', () => {
         let contextMenu = TestRenderer.create(
             <ContextULCheckAttribute
                 onMouseDown={() => {}}
@@ -57,13 +57,13 @@ describe("Context Menu Attribute", () => {
         expect(contextMenu.toJSON()).toMatchSnapshot();
     });
 
-    it("should handle Exists event correctly", () => {
+    it('should handle Exists event correctly', () => {
         [].slice
-            .call(target.querySelectorAll("li"))
+            .call(target.querySelectorAll('li'))
             .forEach((li: HTMLLIElement) => {
                 if (
                     li.textContent &&
-                    li.textContent.toLowerCase() === "exists"
+                    li.textContent.toLowerCase() === 'exists'
                 ) {
                     li.dispatchEvent(mouseDownEvt);
                 }
@@ -71,18 +71,18 @@ describe("Context Menu Attribute", () => {
         expect(mouseDownMock).toHaveBeenCalledTimes(1);
         expect(mouseDownMock).toBeCalledWith({
             type: FdEventType.ATTRIBUTE_VALUE_EXISTS,
-            target: ".context-menu-attributes-test",
-            name: "class"
+            target: '.context-menu-attributes-test',
+            name: 'class',
         });
     });
 
-    it("should handle Equals event correctly", () => {
+    it('should handle Equals event correctly', () => {
         [].slice
-            .call(target.querySelectorAll("li"))
+            .call(target.querySelectorAll('li'))
             .forEach((li: HTMLLIElement) => {
                 if (
                     li.textContent &&
-                    li.textContent.toLowerCase().indexOf("equals") > -1
+                    li.textContent.toLowerCase().indexOf('equals') > -1
                 ) {
                     li.dispatchEvent(mouseDownEvt);
                 }
@@ -90,33 +90,33 @@ describe("Context Menu Attribute", () => {
         expect(mouseDownMock).toHaveBeenCalledTimes(1);
         expect(mouseDownMock).toBeCalledWith({
             type: FdEventType.ATTRIBUTE_VALUE_EQUALS,
-            target: ".context-menu-attributes-test",
-            name: "class",
-            value: "context-menu-attributes-test"
+            target: '.context-menu-attributes-test',
+            name: 'class',
+            value: 'context-menu-attributes-test',
         });
     });
 
-    it("should handle Back event correctly", () => {
+    it('should handle Back event correctly', () => {
         [].slice
-            .call(target.querySelectorAll("li"))
+            .call(target.querySelectorAll('li'))
             .forEach((li: HTMLLIElement) => {
-                if (li.textContent && li.classList.contains("back")) {
+                if (li.textContent && li.classList.contains('back')) {
                     li.dispatchEvent(mouseDownEvt);
                 }
             });
         expect(backMock).toHaveBeenCalledTimes(1);
     });
 
-    it("should handle Equals custom value event correctly", () => {
+    it('should handle Equals custom value event correctly', () => {
         const promptMock = jest.fn();
-        promptMock.mockReturnValue("contains something");
+        promptMock.mockReturnValue('contains something');
         window.prompt = promptMock;
         [].slice
-            .call(target.querySelectorAll("li"))
+            .call(target.querySelectorAll('li'))
             .forEach((li: HTMLLIElement) => {
                 if (
                     li.textContent &&
-                    li.textContent.toLowerCase() === "contains..."
+                    li.textContent.toLowerCase() === 'contains...'
                 ) {
                     li.dispatchEvent(mouseDownEvt);
                     return false; // Exit loop
@@ -125,9 +125,9 @@ describe("Context Menu Attribute", () => {
         expect(mouseDownMock).toHaveBeenCalledTimes(1);
         expect(mouseDownMock).toBeCalledWith({
             type: FdEventType.ATTRIBUTE_VALUE_CONTAINS,
-            target: ".context-menu-attributes-test",
-            name: "class",
-            value: "contains something"
+            target: '.context-menu-attributes-test',
+            name: 'class',
+            value: 'contains something',
         });
     });
 });

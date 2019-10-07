@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { AllFdEvents, FdEventType } from "../utils/FdEvents";
+import React from 'react';
+import styled from 'styled-components';
+import { AllFdEvents, FdEventType } from '../utils/FdEvents';
 
 export interface Props {
     target: HTMLElement;
@@ -15,7 +15,7 @@ export default function ContextULCheckAttribute(props: Props) {
             type: FdEventType.ATTRIBUTE_VALUE_EQUALS,
             target: props.selector,
             name: e.currentTarget.getAttribute('data-name') as string,
-            value: e.currentTarget.getAttribute('data-value') as string
+            value: e.currentTarget.getAttribute('data-value') as string,
         });
     }
 
@@ -26,7 +26,7 @@ export default function ContextULCheckAttribute(props: Props) {
                 type: FdEventType.ATTRIBUTE_VALUE_CONTAINS,
                 target: props.selector,
                 name: e.currentTarget.getAttribute('data-name') as string,
-                value
+                value,
             });
         }
     }
@@ -35,33 +35,68 @@ export default function ContextULCheckAttribute(props: Props) {
         props.onMouseDown({
             type: FdEventType.ATTRIBUTE_VALUE_EXISTS,
             target: props.selector,
-            name: e.currentTarget.getAttribute('data-name') as string
+            name: e.currentTarget.getAttribute('data-name') as string,
         });
     }
 
     function handleBack(e: React.MouseEvent<HTMLElement>) {
         e.preventDefault();
-        if (props.onBack) { props.onBack(); }
+        if (props.onBack) {
+            props.onBack();
+        }
     }
 
     return (
         <ul>
-            {(props.target as HTMLElement).attributes.length === 0 ? <li className="label back" onMouseDown={handleBack}>&lt; No attributes found</li> : <li className="label back"onMouseDown={handleBack}>&lt; Attributes</li>}
-            {
-                [].slice.call((props.target as HTMLElement).attributes).map((attribute: any, idx: number) => {
+            {(props.target as HTMLElement).attributes.length === 0 ? (
+                <li className="label back" onMouseDown={handleBack}>
+                    &lt; No attributes found
+                </li>
+            ) : (
+                <li className="label back" onMouseDown={handleBack}>
+                    &lt; Attributes
+                </li>
+            )}
+            {[].slice
+                .call((props.target as HTMLElement).attributes)
+                .map((attribute: any) => {
                     if (typeof attribute === 'object') {
                         return (
                             <React.Fragment key={attribute.name}>
-                                <li className="label separator"><b>{attribute.name}</b></li>
-                                <li className="clickable" data-name={attribute.name} data-value={attribute.value} onMouseDown={handleAttributeValueContains}>Contains...</li>
-                                <li className="clickable" data-name={attribute.name} data-value={attribute.value} onMouseDown={handleAttributeValueEquals}><StyledDiv>Equals<small>{attribute.value}</small></StyledDiv></li>
-                                <li className="clickable" data-name={attribute.name} data-value={attribute.value} onMouseDown={handleAttributeExists}>Exists</li>
+                                <li className="label separator">
+                                    <b>{attribute.name}</b>
+                                </li>
+                                <li
+                                    className="clickable"
+                                    data-name={attribute.name}
+                                    data-value={attribute.value}
+                                    onMouseDown={handleAttributeValueContains}
+                                >
+                                    Contains...
+                                </li>
+                                <li
+                                    className="clickable"
+                                    data-name={attribute.name}
+                                    data-value={attribute.value}
+                                    onMouseDown={handleAttributeValueEquals}
+                                >
+                                    <StyledDiv>
+                                        Equals<small>{attribute.value}</small>
+                                    </StyledDiv>
+                                </li>
+                                <li
+                                    className="clickable"
+                                    data-name={attribute.name}
+                                    data-value={attribute.value}
+                                    onMouseDown={handleAttributeExists}
+                                >
+                                    Exists
+                                </li>
                             </React.Fragment>
                         );
                     }
                     return null;
-                })
-            }
+                })}
         </ul>
     );
 }

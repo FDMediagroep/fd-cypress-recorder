@@ -56,7 +56,7 @@ class EventsStore extends StoreBase {
      * Add event if not already exists. Otherwise override existing.
      */
     setEvent(event: AllFdEvents) {
-        const foundEvent = this.events.filter((ev) => ev.type === event.type );
+        const foundEvent = this.events.filter((ev) => ev.type === event.type);
         this.clearUndone();
         if (foundEvent.length === 0) {
             this.events = this.events.concat(event);
@@ -72,7 +72,10 @@ class EventsStore extends StoreBase {
         this.trigger('setEvent');
     }
 
-    setEvents(events: AllFdEvents[], triggerKey?: string | number | string[] | number[]) {
+    setEvents(
+        events: AllFdEvents[],
+        triggerKey?: string | number | string[] | number[]
+    ) {
         if (this.events && events && this.events.length !== events.length) {
             this.clearUndone();
         }

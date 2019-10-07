@@ -9,11 +9,12 @@ import { Template } from './utils/FdEvents';
 import HeadersStore = require('./stores/HeadersStore');
 import { StoreBase } from 'resub';
 
-declare var chrome: any;
+declare let chrome: any;
 
 const storageName = 'fd-cypress-chrome-extension-events';
 const storageTestSuiteName = 'fd-cypress-chrome-extension-testSuite';
-const storageTestDescriptionName = 'fd-cypress-chrome-extension-testDescription';
+const storageTestDescriptionName =
+    'fd-cypress-chrome-extension-testDescription';
 const storageRecord = 'fd-cypress-chrome-extension-record';
 const storageTemplates = 'fd-cypress-chrome-extension-templates';
 const storageBasicAuth = 'fd-cypress-chrome-extension-basic-auth';
@@ -23,24 +24,34 @@ const storageHeaders = 'fd-cypress-chrome-extension-headers';
  * Persist the new test-suite name to browser storage.
  * @param testSuiteName
  */
-function handleTestSuiteChange(testSuiteName: string|null) {
-    chrome.storage.local.set({'fd-cypress-chrome-extension-testSuite': testSuiteName});
+function handleTestSuiteChange(testSuiteName: string | null) {
+    chrome.storage.local.set({
+        'fd-cypress-chrome-extension-testSuite': testSuiteName,
+    });
 }
 
 /**
  * Persist the new test description to browser storage.
  * @param testDescription
  */
-function handleTestDescriptionChange(testDescription: string|null) {
-    chrome.storage.local.set({'fd-cypress-chrome-extension-testDescription': testDescription});
+function handleTestDescriptionChange(testDescription: string | null) {
+    chrome.storage.local.set({
+        'fd-cypress-chrome-extension-testDescription': testDescription,
+    });
 }
 
 function handleRemoveEvent(index: number) {
-    if (confirm('Do you really want to delete this event? This can not be undone.')) {
+    if (
+        confirm(
+            'Do you really want to delete this event? This can not be undone.'
+        )
+    ) {
         EventsStore.addFuture([...EventsStore.getEvents()]);
         const events = [...EventsStore.getEvents()];
         events.splice(index, 1);
-        chrome.storage.local.set({'fd-cypress-chrome-extension-events': events});
+        chrome.storage.local.set({
+            'fd-cypress-chrome-extension-events': events,
+        });
     }
 }
 
@@ -50,21 +61,30 @@ function handleRemoveEvent(index: number) {
 function undo() {
     EventsStore.addFuture([...EventsStore.getEvents()]);
     EventsStore.stepBack();
-    chrome.storage.local.set({'fd-cypress-chrome-extension-events': EventsStore.getEvents()});
+    chrome.storage.local.set({
+        'fd-cypress-chrome-extension-events': EventsStore.getEvents(),
+    });
 }
 
 /**
  * Redo undone step provided no other action has been recorded since the undo.
  */
 function redo() {
-    chrome.storage.local.set({'fd-cypress-chrome-extension-events': EventsStore.popFuture()});
+    chrome.storage.local.set({
+        'fd-cypress-chrome-extension-events': EventsStore.popFuture(),
+    });
 }
 
 /**
  * Purge the browser storage from the recorded events, test suite name and test description.
  */
 function clear() {
-    chrome.storage.local.remove([storageName, storageTestSuiteName, storageTestDescriptionName, storageHeaders]);
+    chrome.storage.local.remove([
+        storageName,
+        storageTestSuiteName,
+        storageTestDescriptionName,
+        storageHeaders,
+    ]);
     HeadersStore.clear();
 }
 
@@ -77,22 +97,32 @@ function saveTemplate() {
     const testSuiteName = TestSuiteStore.getTestSuite();
     const testDescription = TestSuiteStore.getTestDescription();
     if (templates.length && testSuiteName) {
-        const foundTemplate = templates.filter((template: Template) => template.name === testSuiteName);
+        const foundTemplate = templates.filter(
+            (template: Template) => template.name === testSuiteName
+        );
         if (foundTemplate.length) {
             templates.forEach((template: Template) => {
                 if (template.name === testSuiteName) {
-                    if (confirm(`Template with name "${testSuiteName}" already exists. Overwrite?`)) {
+                    if (
+                        confirm(
+                            `Template with name "${testSuiteName}" already exists. Overwrite?`
+                        )
+                    ) {
                         template.description = testDescription;
                         template.events = events;
                         chrome.storage.local.set({
-                            'fd-cypress-chrome-extension-templates': templates
+                            'fd-cypress-chrome-extension-templates': templates,
                         });
                     }
                 }
             });
         } else {
             chrome.storage.local.set({
-                'fd-cypress-chrome-extension-templates': templates.concat({name: testSuiteName, description: testDescription, events})
+                'fd-cypress-chrome-extension-templates': templates.concat({
+                    name: testSuiteName,
+                    description: testDescription,
+                    events,
+                }),
             });
             alert(`Saved ${testSuiteName}`);
         }
@@ -101,7 +131,11 @@ function saveTemplate() {
             alert('Please enter a test suite name to save your template.');
         } else {
             chrome.storage.local.set({
-                'fd-cypress-chrome-extension-templates': templates.concat({name: testSuiteName, description: testDescription, events})
+                'fd-cypress-chrome-extension-templates': templates.concat({
+                    name: testSuiteName,
+                    description: testDescription,
+                    events,
+                }),
             });
             alert(`Saved ${testSuiteName}`);
         }
@@ -112,13 +146,33 @@ function saveTemplate() {
  * Load the selected template and replace the existing events, test suite name and description by the template values.
  * @param templateName
  */
-function handleLoadTemplate(templateName: string|null|undefined) {
-    if (templateName && confirm(`Are you sure you want to load "${templateName}" and replace your current interactions?`)) {
+function handleLoadTemplate(templateName: string | null | undefined) {
+    if (
+        templateName &&
+        confirm(
+            `Are you sure you want to load "${templateName}" and replace your current interactions?`
+        )
+    ) {
         const templates = [...TemplatesStore.getTemplates()];
         chrome.storage.local.set({
-            'fd-cypress-chrome-extension-testSuite': templates[templates.findIndex((template: Template) => template.name === templateName)].name,
-            'fd-cypress-chrome-extension-testDescription': templates[templates.findIndex((template: Template) => template.name === templateName)].description,
-            'fd-cypress-chrome-extension-events': templates[templates.findIndex((template: Template) => template.name === templateName)].events
+            'fd-cypress-chrome-extension-testSuite':
+                templates[
+                    templates.findIndex(
+                        (template: Template) => template.name === templateName
+                    )
+                ].name,
+            'fd-cypress-chrome-extension-testDescription':
+                templates[
+                    templates.findIndex(
+                        (template: Template) => template.name === templateName
+                    )
+                ].description,
+            'fd-cypress-chrome-extension-events':
+                templates[
+                    templates.findIndex(
+                        (template: Template) => template.name === templateName
+                    )
+                ].events,
         });
     }
 }
@@ -127,12 +181,24 @@ function handleLoadTemplate(templateName: string|null|undefined) {
  * Load the selected template and append to the existing events.
  * @param templateName
  */
-function handleLoadAppendTemplate(templateName: string|null|undefined) {
-    if (templateName && confirm(`Are you sure you want to load "${templateName}" and append the interactions to the end of your existing interactions?`)) {
+function handleLoadAppendTemplate(templateName: string | null | undefined) {
+    if (
+        templateName &&
+        confirm(
+            `Are you sure you want to load "${templateName}" and append the interactions to the end of your existing interactions?`
+        )
+    ) {
         const templates = [...TemplatesStore.getTemplates()];
-        const events = [...EventsStore.getEvents(), ...templates[templates.findIndex((template: Template) => template.name === templateName)].events];
+        const events = [
+            ...EventsStore.getEvents(),
+            ...templates[
+                templates.findIndex(
+                    (template: Template) => template.name === templateName
+                )
+            ].events,
+        ];
         chrome.storage.local.set({
-            'fd-cypress-chrome-extension-events': events
+            'fd-cypress-chrome-extension-events': events,
         });
     }
 }
@@ -141,21 +207,28 @@ function handleLoadAppendTemplate(templateName: string|null|undefined) {
  * Remove the selected template from the browser storage.
  * @param templateName
  */
-function removeTemplate(templateName: string|null|undefined) {
-    if (templateName && confirm(`Are you sure you want to delete "${templateName}"?`)) {
+function removeTemplate(templateName: string | null | undefined) {
+    if (
+        templateName &&
+        confirm(`Are you sure you want to delete "${templateName}"?`)
+    ) {
         const templates = [...TemplatesStore.getTemplates()];
-        const idx = templates.findIndex((template: Template) => template.name === templateName);
+        const idx = templates.findIndex(
+            (template: Template) => template.name === templateName
+        );
         if (idx > -1) {
             templates.splice(idx, 1);
             chrome.storage.local.set({
-                'fd-cypress-chrome-extension-templates': templates
+                'fd-cypress-chrome-extension-templates': templates,
             });
         }
     }
 }
 
 function handleBasicAuthChange(basicAuth: boolean) {
-    chrome.storage.local.set({'fd-cypress-chrome-extension-basic-auth': basicAuth});
+    chrome.storage.local.set({
+        'fd-cypress-chrome-extension-basic-auth': basicAuth,
+    });
 }
 
 /**
@@ -163,7 +236,9 @@ function handleBasicAuthChange(basicAuth: boolean) {
  * @param recording
  */
 function handleRecording(recording: boolean) {
-    chrome.storage.local.set({'fd-cypress-chrome-extension-record': recording});
+    chrome.storage.local.set({
+        'fd-cypress-chrome-extension-record': recording,
+    });
 }
 
 /**
@@ -175,26 +250,38 @@ chrome.storage.onChanged.addListener((changes: any, namespace: any) => {
     for (const key in changes) {
         if (changes[key]) {
             const storageChange = changes[key];
-            console.log('Storage key "%s" in namespace "%s" changed. ' +
+            console.log(
+                'Storage key "%s" in namespace "%s" changed. ' +
                     'Old value was "%s", new value is "%s".',
-                    key,
-                    namespace,
-                    storageChange.oldValue,
-                    storageChange.newValue);
+                key,
+                namespace,
+                storageChange.oldValue,
+                storageChange.newValue
+            );
             console.log(storageChange.oldValue, storageChange.newValue);
             switch (key) {
                 case storageName:
-                    storageChange.newValue ? EventsStore.setEvents(storageChange.newValue) : EventsStore.clear();
+                    storageChange.newValue
+                        ? EventsStore.setEvents(storageChange.newValue)
+                        : EventsStore.clear();
                     break;
                 case storageTestSuiteName:
-                    TestSuiteStore.setTestSuite(storageChange.newValue ? storageChange.newValue : null);
+                    TestSuiteStore.setTestSuite(
+                        storageChange.newValue ? storageChange.newValue : null
+                    );
                     break;
                 case storageTestDescriptionName:
-                    TestSuiteStore.setTestDescription(storageChange.newValue ? storageChange.newValue : null);
+                    TestSuiteStore.setTestDescription(
+                        storageChange.newValue ? storageChange.newValue : null
+                    );
                     break;
                 case storageRecord:
                     TestSuiteStore.setRecording(!!storageChange.newValue);
-                    chrome.browserAction.setIcon({path: !!storageChange.newValue ? 'record.png' : '48x48.png'});
+                    chrome.browserAction.setIcon({
+                        path: !storageChange.newValue
+                            ? '48x48.png'
+                            : 'record.png',
+                    });
                     break;
                 case storageTemplates:
                     TemplatesStore.setTemplates(storageChange.newValue);
@@ -210,52 +297,60 @@ chrome.storage.onChanged.addListener((changes: any, namespace: any) => {
 /**
  * Entry point.
  */
-chrome.storage.local.get({
-    'fd-cypress-chrome-extension-events': null,
-    'fd-cypress-chrome-extension-record': false,
-    'fd-cypress-chrome-extension-basic-auth': false,
-    'fd-cypress-chrome-extension-testSuite': '',
-    'fd-cypress-chrome-extension-testDescription': '',
-    'fd-cypress-chrome-extension-templates': [],
-    'fd-cypress-chrome-extension-headers': [{property: '', value: ''}]
-}, (items: any) => {
-    const recording = items[storageRecord];
-    chrome.browserAction.setIcon({path: recording ? 'record.png' : '48x48.png'});
+chrome.storage.local.get(
+    {
+        'fd-cypress-chrome-extension-events': null,
+        'fd-cypress-chrome-extension-record': false,
+        'fd-cypress-chrome-extension-basic-auth': false,
+        'fd-cypress-chrome-extension-testSuite': '',
+        'fd-cypress-chrome-extension-testDescription': '',
+        'fd-cypress-chrome-extension-templates': [],
+        'fd-cypress-chrome-extension-headers': [{ property: '', value: '' }],
+    },
+    (items: any) => {
+        const recording = items[storageRecord];
+        chrome.browserAction.setIcon({
+            path: recording ? 'record.png' : '48x48.png',
+        });
 
-    /**
-     * Listen for changes to Headers and save them to storage.
-     */
-    HeadersStore.subscribe((keys?: string[]) => {
-        chrome.storage.local.set({'fd-cypress-chrome-extension-headers': HeadersStore.getHeaders()});
-    }, StoreBase.Key_All);
+        /**
+         * Listen for changes to Headers and save them to storage.
+         */
+        HeadersStore.subscribe(() => {
+            chrome.storage.local.set({
+                'fd-cypress-chrome-extension-headers': HeadersStore.getHeaders(),
+            });
+        }, StoreBase.Key_All);
 
-    TestSuiteStore.setRecording(recording);
-    TestSuiteStore.setTestSuite(items[storageTestSuiteName]);
-    TestSuiteStore.setTestDescription(items[storageTestDescriptionName]);
-    TestSuiteStore.setBasicAuth(items[storageBasicAuth]);
-    TemplatesStore.setTemplates(items[storageTemplates]);
-    EventsStore.setEvents(items[storageName]);
-    HeadersStore.setHeaders(items[storageHeaders]);
-    ReactDOM.render((
-        <div id="popup">
-            <GlobalStyle/>
-            <Popup
-                onBasicAuthChange={handleBasicAuthChange}
-                onUndo={undo}
-                onRedo={redo}
-                onClear={clear}
-                onRemoveEvent={handleRemoveEvent}
-                onSaveTemplate={saveTemplate}
-                onLoadTemplate={handleLoadTemplate}
-                onLoadAppendTemplate={handleLoadAppendTemplate}
-                onRecordingChange={handleRecording}
-                onRemoveTemplate={removeTemplate}
-                onTestSuiteChange={handleTestSuiteChange}
-                onTestDescriptionChange={handleTestDescriptionChange}
-            />
-        </div>
-    ), document.querySelector('#popup'));
-});
+        TestSuiteStore.setRecording(recording);
+        TestSuiteStore.setTestSuite(items[storageTestSuiteName]);
+        TestSuiteStore.setTestDescription(items[storageTestDescriptionName]);
+        TestSuiteStore.setBasicAuth(items[storageBasicAuth]);
+        TemplatesStore.setTemplates(items[storageTemplates]);
+        EventsStore.setEvents(items[storageName]);
+        HeadersStore.setHeaders(items[storageHeaders]);
+        ReactDOM.render(
+            <div id="popup">
+                <GlobalStyle />
+                <Popup
+                    onBasicAuthChange={handleBasicAuthChange}
+                    onUndo={undo}
+                    onRedo={redo}
+                    onClear={clear}
+                    onRemoveEvent={handleRemoveEvent}
+                    onSaveTemplate={saveTemplate}
+                    onLoadTemplate={handleLoadTemplate}
+                    onLoadAppendTemplate={handleLoadAppendTemplate}
+                    onRecordingChange={handleRecording}
+                    onRemoveTemplate={removeTemplate}
+                    onTestSuiteChange={handleTestSuiteChange}
+                    onTestDescriptionChange={handleTestDescriptionChange}
+                />
+            </div>,
+            document.querySelector('#popup')
+        );
+    }
+);
 
 const GlobalStyle = createGlobalStyle`
 #popup {

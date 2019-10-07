@@ -2,7 +2,7 @@
 
 exports[`Cypress Generator should render empty test correctly 1`] = `
 <div
-  className="sc-ifAKCX jneUDR"
+  className="sc-ifAKCX iILkrY"
 >
   <div
     className="fd-input testSuite"
@@ -104,7 +104,7 @@ describe('Test Suite ...', () => {
 "
   />
   <div
-    className="sc-EHOje fLJYEd"
+    className="sc-EHOje gXMykk"
   >
     <button
       className="fd-button  selected"
@@ -135,7 +135,8 @@ describe('Test Suite ...', () => {
         onChange={[MockFunction]}
         type="checkbox"
       />
-       Basic Auth
+       
+      Basic Auth
     </label>
   </div>
 </div>
@@ -143,7 +144,7 @@ describe('Test Suite ...', () => {
 
 exports[`Cypress Generator should render events correctly 1`] = `
 <div
-  className="sc-ifAKCX jneUDR"
+  className="sc-ifAKCX iILkrY"
 >
   <div
     className="fd-input testSuite"
@@ -251,7 +252,7 @@ describe('Test Suite ...', () => {
 "
   />
   <div
-    className="sc-EHOje fLJYEd"
+    className="sc-EHOje gXMykk"
   >
     <button
       className="fd-button  selected"
@@ -282,7 +283,8 @@ describe('Test Suite ...', () => {
         onChange={[MockFunction]}
         type="checkbox"
       />
-       Basic Auth
+       
+      Basic Auth
     </label>
   </div>
 </div>
@@ -290,7 +292,7 @@ describe('Test Suite ...', () => {
 
 exports[`Cypress Generator should render headers correctly 1`] = `
 <div
-  className="sc-ifAKCX jneUDR"
+  className="sc-ifAKCX iILkrY"
 >
   <div
     className="fd-input testSuite"
@@ -398,7 +400,7 @@ describe('Test Suite ...', () => {
 "
   />
   <div
-    className="sc-EHOje fLJYEd"
+    className="sc-EHOje gXMykk"
   >
     <button
       className="fd-button  selected"
@@ -429,7 +431,8 @@ describe('Test Suite ...', () => {
         onChange={[MockFunction]}
         type="checkbox"
       />
-       Basic Auth
+       
+      Basic Auth
     </label>
   </div>
 </div>
@@ -437,7 +440,7 @@ describe('Test Suite ...', () => {
 
 exports[`Cypress Generator should render test with suite name and description correctly 1`] = `
 <div
-  className="sc-ifAKCX jneUDR"
+  className="sc-ifAKCX iILkrY"
 >
   <div
     className="fd-input testSuite"
@@ -539,7 +542,7 @@ describe('Test suite name', () => {
 "
   />
   <div
-    className="sc-EHOje fLJYEd"
+    className="sc-EHOje gXMykk"
   >
     <button
       className="fd-button  selected"
@@ -570,7 +573,8 @@ describe('Test suite name', () => {
         onChange={[MockFunction]}
         type="checkbox"
       />
-       Basic Auth
+       
+      Basic Auth
     </label>
   </div>
 </div>

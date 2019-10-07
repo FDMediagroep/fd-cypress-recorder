@@ -99,7 +99,8 @@ export interface FdWaitEvent extends FdEvent {
     value: number;
 }
 
-export type AllFdEvents = FdEvent
+export type AllFdEvents =
+    | FdEvent
     | FdAttributeValueEvent
     | FdAttributeExistsEvent
     | FdClickEvent
@@ -114,8 +115,7 @@ export type AllFdEvents = FdEvent
     | FdTypeEvent
     | FdViewportSizeEvent
     | FdVisitEvent
-    | FdWaitEvent
-;
+    | FdWaitEvent;
 
 export interface Template {
     name: string;
@@ -124,11 +124,11 @@ export interface Template {
 }
 
 export const UNIQUE_SELECTOR_OPTIONS = {
-    selectorTypes: ['ID', 'Tag', 'NthChild']
+    selectorTypes: ['ID', 'Tag', 'NthChild'],
 };
 
 export const UNIQUE_SELECTOR_OPTIONS_WITHOUT_ID = {
-    selectorTypes: ['Tag', 'NthChild']
+    selectorTypes: ['Tag', 'NthChild'],
 };
 
 export interface Options {

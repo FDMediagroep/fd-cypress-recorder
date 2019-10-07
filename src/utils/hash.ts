@@ -1,3 +1,4 @@
+declare let Uint8Array: Uint8ArrayConstructor;
 /**
  * Convert given ArrayBuffer to HEX-string.
  * @param buffer
@@ -6,9 +7,9 @@ export function hexString(buffer: ArrayBuffer) {
     const byteArray = new Uint8Array(buffer);
 
     const hexCodes = [...byteArray].map((value) => {
-      const hexCode = value.toString(16);
-      const paddedHexCode = hexCode.padStart(2, '0');
-      return paddedHexCode;
+        const hexCode = value.toString(16);
+        const paddedHexCode = hexCode.padStart(2, '0');
+        return paddedHexCode;
     });
 
     return hexCodes.join('');
@@ -41,5 +42,12 @@ export async function digest(message: string) {
 export async function isEven(message: string) {
     const arrayBuffer = await digestMessage(message);
     const byteArray = new Uint8Array(arrayBuffer);
-    return byteArray.reduce((previousValue: number, currentValue: number) => previousValue + currentValue) % 2 === 0;
+    return (
+        byteArray.reduce(
+            (previousValue: number, currentValue: number) =>
+                previousValue + currentValue
+        ) %
+            2 ===
+        0
+    );
 }

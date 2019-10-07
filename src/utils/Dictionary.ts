@@ -1,4 +1,5 @@
-import { AllFdEvents,
+import {
+    AllFdEvents,
     Options,
     FdEventType,
     FdClickEvent,
@@ -13,8 +14,8 @@ import { AllFdEvents,
     FdAttributeValueEvent,
     FdAttributeExistsEvent,
     FdVisitEvent,
-    FdWaitEvent
-} from "./FdEvents";
+    FdWaitEvent,
+} from './FdEvents';
 
 /**
  * Converts event to corresponding code and returns the code.
@@ -60,36 +61,80 @@ import { AllFdEvents,
  * @param event
  * @param options
  */
-export function getCodeFromEvent(event: AllFdEvents, options?: Options): string {
+export function getCodeFromEvent(
+    event: AllFdEvents,
+    options?: Options
+): string {
+    let opt = '';
     switch (event.type) {
         case FdEventType.ATTRIBUTE_VALUE_CONTAINS:
-            return `cy.get('${(event as FdAttributeValueEvent).target}').then((el) => expect(el.attr('${(event as FdAttributeValueEvent).name}')).to.contain('${(event as FdAttributeValueEvent).value.replace(new RegExp("'", 'g'), "\\\'")}'));`;
+            return `cy.get('${
+                (event as FdAttributeValueEvent).target
+            }').then((el) => expect(el.attr('${
+                (event as FdAttributeValueEvent).name
+            }')).to.contain('${(event as FdAttributeValueEvent).value.replace(
+                new RegExp("'", 'g'),
+                "\\'"
+            )}'));`;
         case FdEventType.ATTRIBUTE_VALUE_EQUALS:
-            return `cy.get('${(event as FdAttributeValueEvent).target}').then((el) => expect(el.attr('${(event as FdAttributeValueEvent).name}')).to.eq('${(event as FdAttributeValueEvent).value.replace(new RegExp("'", 'g'), "\\\'")}'));`;
+            return `cy.get('${
+                (event as FdAttributeValueEvent).target
+            }').then((el) => expect(el.attr('${
+                (event as FdAttributeValueEvent).name
+            }')).to.eq('${(event as FdAttributeValueEvent).value.replace(
+                new RegExp("'", 'g'),
+                "\\'"
+            )}'));`;
         case FdEventType.ATTRIBUTE_VALUE_EXISTS:
-            return `cy.get('${(event as FdAttributeExistsEvent).target}').should('have.attr', '${(event as FdAttributeExistsEvent).name}');`;
+            return `cy.get('${
+                (event as FdAttributeExistsEvent).target
+            }').should('have.attr', '${
+                (event as FdAttributeExistsEvent).name
+            }');`;
         case FdEventType.CLEAR_COOKIES:
             return `cy.clearCookies();`;
         case FdEventType.CLICK:
             return `cy.get('${(event as FdClickEvent).target}').click();`;
         case FdEventType.CONTAINS_TEXT:
-            return `cy.get('${(event as FdTextContentEvent).target}').contains('${(event as FdTextContentEvent).value.replace(new RegExp("'", 'g'), "\\\'")}');`;
+            return `cy.get('${
+                (event as FdTextContentEvent).target
+            }').contains('${(event as FdTextContentEvent).value.replace(
+                new RegExp("'", 'g'),
+                "\\'"
+            )}');`;
         case FdEventType.COUNT_EQUALS:
-            return `cy.get('${(event as FdCountEqualsEvent).target}').should('have.length', ${(event as FdCountEqualsEvent).value});`;
+            return `cy.get('${
+                (event as FdCountEqualsEvent).target
+            }').should('have.length', ${(event as FdCountEqualsEvent).value});`;
         case FdEventType.COUNT_GREATER_THAN:
-            return `cy.get('${(event as FdCountEqualsEvent).target}').should('have.length.gt', ${(event as FdCountEqualsEvent).value});`;
+            return `cy.get('${
+                (event as FdCountEqualsEvent).target
+            }').should('have.length.gt', ${
+                (event as FdCountEqualsEvent).value
+            });`;
         case FdEventType.COUNT_LESS_THAN:
-            return `cy.get('${(event as FdCountEqualsEvent).target}').should('have.length.lt', ${(event as FdCountEqualsEvent).value});`;
+            return `cy.get('${
+                (event as FdCountEqualsEvent).target
+            }').should('have.length.lt', ${
+                (event as FdCountEqualsEvent).value
+            });`;
         case FdEventType.EXISTS:
-            return `cy.get('${(event as FdExistsEvent).target}').should('exist');`;
+            return `cy.get('${
+                (event as FdExistsEvent).target
+            }').should('exist');`;
         case FdEventType.HOVER:
-            return `cy.get('${(event as FdHoverEvent).target}').trigger('mouseover').trigger('mousemove');`;
+            return `cy.get('${
+                (event as FdHoverEvent).target
+            }').trigger('mouseover').trigger('mousemove');`;
         case FdEventType.LOCATION:
-            return `cy.location('href', {timeout: 10000}).should('eq', '${(event as FdLocationEvent).href}');`;
+            return `cy.location('href', {timeout: 10000}).should('eq', '${
+                (event as FdLocationEvent).href
+            }');`;
         case FdEventType.LOCATION_CONTAINS:
-            return `cy.location('href', {timeout: 10000}).should('contain', '${(event as FdLocationContainsEvent).value}');`;
+            return `cy.location('href', {timeout: 10000}).should('contain', '${
+                (event as FdLocationContainsEvent).value
+            }');`;
         case FdEventType.VISIT:
-            let opt = '';
             if (options) {
                 if (options.basicAuth) {
                     opt = `auth: {username: Cypress.env('BASIC_USER') || '', password: Cypress.env('BASIC_PASS') || ''}`;
@@ -98,8 +143,12 @@ export function getCodeFromEvent(event: AllFdEvents, options?: Options): string 
                     let headers = '';
                     options.headers.forEach((h) => {
                         if (h.property !== '') {
-                            const prop = h.property.replace(/\\/g, '\\\\').replace(new RegExp('"', 'g'), '\\"');
-                            const value = h.value.replace(/\\/g, '\\\\').replace(new RegExp('"', 'g'), '\\"');
+                            const prop = h.property
+                                .replace(/\\/g, '\\\\')
+                                .replace(new RegExp('"', 'g'), '\\"');
+                            const value = h.value
+                                .replace(/\\/g, '\\\\')
+                                .replace(new RegExp('"', 'g'), '\\"');
                             if (headers) {
                                 headers += `, "${prop}": "${value}"`;
                             } else {
@@ -120,9 +169,13 @@ export function getCodeFromEvent(event: AllFdEvents, options?: Options): string 
             }
             return `cy.visit('${(event as FdLocationEvent).href}'${opt});`;
         case FdEventType.TYPE:
-            return `cy.get('${(event as FdTypeEvent).target}').type('${(event as FdTypeEvent).value}');`;
+            return `cy.get('${(event as FdTypeEvent).target}').type('${
+                (event as FdTypeEvent).value
+            }');`;
         case FdEventType.VIEWPORT_SIZE:
-            return `cy.viewport(${(event as FdViewportSizeEvent).width}, ${(event as FdViewportSizeEvent).height});`;
+            return `cy.viewport(${(event as FdViewportSizeEvent).width}, ${
+                (event as FdViewportSizeEvent).height
+            });`;
         case FdEventType.WAIT:
             return `cy.wait(${(event as FdWaitEvent).value});`;
         default:
@@ -130,7 +183,12 @@ export function getCodeFromEvent(event: AllFdEvents, options?: Options): string 
     }
 }
 
-export function getCode(suite: string, description: string, events: AllFdEvents[], options?: Options) {
+export function getCode(
+    suite: string,
+    description: string,
+    events: AllFdEvents[],
+    options?: Options
+) {
     let firstVisitUrl = '';
     for (const event of events) {
         if (event.type === FdEventType.VISIT) {
@@ -139,19 +197,25 @@ export function getCode(suite: string, description: string, events: AllFdEvents[
     }
 
     const code: string[] = [
-`/**
+        `/**
   * Code generated with Fd Cypress Recorder.
   * https://github.com/FDMediagroep/fd-cypress-recorder
   */
 
 /// <reference types="Cypress" />
 describe('${suite}', () => {
-  ${firstVisitUrl ?
-  `beforeEach(() => {
-    cy.visit('${firstVisitUrl}'${options && options.basicAuth ? `, {auth: {username: Cypress.env('BASIC_USER') || '', password: Cypress.env('BASIC_PASS') || ''}}` : ''});
+  ${
+      firstVisitUrl
+          ? `beforeEach(() => {
+    cy.visit('${firstVisitUrl}'${
+                options && options.basicAuth
+                    ? `, {auth: {username: Cypress.env('BASIC_USER') || '', password: Cypress.env('BASIC_PASS') || ''}}`
+                    : ''
+            });
     cy.clearCookies();
     cy.reload(true);
-  });` : ''
+  });`
+          : ''
   }
 
   afterEach(() => {
@@ -159,7 +223,8 @@ describe('${suite}', () => {
   });
 
   it('${description}', () => {
-`];
+`,
+    ];
     events.forEach((event) => {
         code.push(`    ${getCodeFromEvent(event, options)}\r\n`);
     });

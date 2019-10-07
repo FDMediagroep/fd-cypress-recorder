@@ -3,7 +3,7 @@
  * @param fn
  */
 export function embed(fn: (text: string) => void) {
-    const script = document.createElement("script");
+    const script = document.createElement('script');
     script.text = `(${fn.toString()})();`;
     document.documentElement.appendChild(script);
 }

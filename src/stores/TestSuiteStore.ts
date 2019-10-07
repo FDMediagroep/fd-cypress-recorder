@@ -2,10 +2,10 @@ import { StoreBase, AutoSubscribeStore, autoSubscribe } from 'resub';
 
 @AutoSubscribeStore
 class TestSuiteStore extends StoreBase {
-    private testSuite: string|undefined;
-    private testDescription: string|undefined;
-    private recording: boolean = false;
-    private basicAuth: boolean = false;
+    private testSuite: string | undefined;
+    private testDescription: string | undefined;
+    private recording = false;
+    private basicAuth = false;
 
     setTestSuite(testSuite: string) {
         this.testSuite = testSuite;

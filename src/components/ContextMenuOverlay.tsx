@@ -1,7 +1,7 @@
-import { PureComponent } from "react";
-import React from "react";
-import styled from "styled-components";
-import ContextMenu from "./ContextMenu";
+import { PureComponent } from 'react';
+import React from 'react';
+import styled from 'styled-components';
+import ContextMenu from './ContextMenu';
 
 export interface Props {
     target: HTMLElement;
@@ -16,14 +16,23 @@ export default class ContextMenuOverlay extends PureComponent<Props, any> {
     render() {
         return (
             <StyledContextOverlay onClick={this.props.onClick}>
-                <StyledContextOverlayFixed onClick={this.props.onClick}/>
+                <StyledContextOverlayFixed onClick={this.props.onClick} />
                 <StyledContextContainer
-                    top={document.documentElement.scrollTop + this.props.target.getBoundingClientRect().top}
+                    top={
+                        document.documentElement.scrollTop +
+                        this.props.target.getBoundingClientRect().top
+                    }
                     width={this.props.target.getBoundingClientRect().width}
                     height={this.props.target.getBoundingClientRect().height}
-                    left={document.documentElement.scrollLeft + this.props.target.getBoundingClientRect().left}
+                    left={
+                        document.documentElement.scrollLeft +
+                        this.props.target.getBoundingClientRect().left
+                    }
                 />
-                <ContextMenu target={this.props.target} selector={this.props.selector}/>
+                <ContextMenu
+                    target={this.props.target}
+                    selector={this.props.selector}
+                />
             </StyledContextOverlay>
         );
     }
@@ -31,9 +40,9 @@ export default class ContextMenuOverlay extends PureComponent<Props, any> {
 
 const StyledContextContainer: any = styled.div`
     position: absolute;
-    box-shadow: 0 0 0 1000px rgba(0,0,0,.5);
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
     /* for real browsers */
-    box-shadow: 0 0 0 100vmax rgba(0,0,0,.5);
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
     top: ${(props: any) => props.top}px;
     width: ${(props: any) => props.width}px;
     height: ${(props: any) => props.height}px;

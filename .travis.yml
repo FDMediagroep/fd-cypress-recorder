@@ -20,6 +20,12 @@ install:
 jobs:
     include:
         - stage: test
+          name: "Lint"
+          script: npm run lint
+        - stage: test
+          name: "Prettier"
+          script: npm run prettier
+        - stage: test
           name: "Unit test"
           script: npm test
 notifications:

@@ -2,8 +2,8 @@ import React from 'react';
 import CypressGenerator from './CypressGenerator';
 import EventsStore = require('../stores/EventsStore');
 import { createGlobalStyle } from 'styled-components';
-import {ButtonCallToAction, ButtonEditorial} from '@fdmg/fd-buttons';
-import { AllFdEvents, Template, Header } from "../utils/FdEvents";
+import { ButtonCallToAction, ButtonEditorial } from '@fdmg/fd-buttons';
+import { AllFdEvents, Template, Header } from '../utils/FdEvents';
 import { ComponentBase } from 'resub';
 import TemplatesStore = require('../stores/TemplatesStore');
 import TestSuiteStore = require('../stores/TestSuiteStore');
@@ -26,95 +26,170 @@ interface PopupState {
  * This is the Chrome plugin popup window.
  */
 export interface Props extends React.Props<any> {
-    onTestSuiteChange: (testSuiteName: string|null) => void;
-    onTestDescriptionChange: (testDescription: string|null) => void;
+    onTestSuiteChange: (testSuiteName: string | null) => void;
+    onTestDescriptionChange: (testDescription: string | null) => void;
     onRecordingChange: (recording: boolean) => void;
-    onRemoveTemplate: (templateName: string|null) => void;
+    onRemoveTemplate: (templateName: string | null) => void;
     onRemoveEvent: (index: number) => void;
     onRedo: () => void;
     onUndo: () => void;
     onClear: () => void;
     onSaveTemplate: () => void;
-    onLoadTemplate: (templateName: string|null) => void;
-    onLoadAppendTemplate: (templateName: string|null) => void;
+    onLoadTemplate: (templateName: string | null) => void;
+    onLoadAppendTemplate: (templateName: string | null) => void;
     onBasicAuthChange: (basicAuth: boolean) => void;
 }
 
 export default class Popup extends ComponentBase<Props, PopupState> {
-    state: any = {
-    };
+    state: any = {};
 
     handleSuiteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.props.onTestSuiteChange(e.currentTarget.value);
-    }
+    };
 
     handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.props.onTestDescriptionChange(e.currentTarget.value);
-    }
+    };
 
     handleRemoveEvent = (index: number) => {
         this.props.onRemoveEvent(index);
-    }
+    };
 
     toggleRecord = () => {
         this.props.onRecordingChange(!this.state.recording);
-    }
+    };
 
     undo = () => {
         this.props.onUndo();
-    }
+    };
 
     redo = () => {
         this.props.onRedo();
-    }
+    };
 
     clear = () => {
         this.props.onClear();
-    }
+    };
 
     saveAsTemplate = () => {
         this.props.onSaveTemplate();
-    }
+    };
 
     loadTemplate = (e: React.MouseEvent<HTMLElement>) => {
         this.props.onLoadTemplate(e.currentTarget.getAttribute('data-value'));
-    }
+    };
 
     removeTemplate = (e: React.MouseEvent<HTMLElement>) => {
         this.props.onRemoveTemplate(e.currentTarget.getAttribute('data-value'));
-    }
+    };
 
     loadAppendTemplate = (e: React.MouseEvent<HTMLElement>) => {
-        this.props.onLoadAppendTemplate(e.currentTarget.getAttribute('data-value'));
-    }
+        this.props.onLoadAppendTemplate(
+            e.currentTarget.getAttribute('data-value')
+        );
+    };
 
     handleBasicAuth = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.props.onBasicAuthChange(e.currentTarget.checked);
-    }
+    };
 
     render() {
         return (
             <>
-                <GlobalStyle/>
+                <GlobalStyle />
                 <h1>
                     <span>FD Cypress Recorder</span>
                     <span className="button-container">
-                        {this.state.recording ? <ButtonCallToAction onClick={this.toggleRecord} title="Stop recording">Stop</ButtonCallToAction> : <ButtonEditorial onClick={this.toggleRecord} title="Record interactions">Record</ButtonEditorial>}
-                        {this.state.events.length || (this.state.futures.length && this.state.futures[0].length) ? (
+                        {this.state.recording ? (
+                            <ButtonCallToAction
+                                onClick={this.toggleRecord}
+                                title="Stop recording"
+                            >
+                                Stop
+                            </ButtonCallToAction>
+                        ) : (
+                            <ButtonEditorial
+                                onClick={this.toggleRecord}
+                                title="Record interactions"
+                            >
+                                Record
+                            </ButtonEditorial>
+                        )}
+                        {this.state.events.length ||
+                        (this.state.futures.length &&
+                            this.state.futures[0].length) ? (
                             <span>
-                                <ButtonEditorial onClick={this.undo} title="Remove last interaction" {...{disabled: !this.state.events.length}}><i className="arrow left"/></ButtonEditorial>
-                                <ButtonEditorial onClick={this.redo} title="Redo" {...{disabled: !(this.state.futures.length && this.state.futures[0].length)}}><i className="arrow right"/></ButtonEditorial>
-                            </span>)
-                            : null
-                        }
-                        <ButtonEditorial onClick={this.clear} title="Clear current session">Clear</ButtonEditorial>
+                                <ButtonEditorial
+                                    onClick={this.undo}
+                                    title="Remove last interaction"
+                                    {...{ disabled: !this.state.events.length }}
+                                >
+                                    <i className="arrow left" />
+                                </ButtonEditorial>
+                                <ButtonEditorial
+                                    onClick={this.redo}
+                                    title="Redo"
+                                    {...{
+                                        disabled: !(
+                                            this.state.futures.length &&
+                                            this.state.futures[0].length
+                                        ),
+                                    }}
+                                >
+                                    <i className="arrow right" />
+                                </ButtonEditorial>
+                            </span>
+                        ) : null}
+                        <ButtonEditorial
+                            onClick={this.clear}
+                            title="Clear current session"
+                        >
+                            Clear
+                        </ButtonEditorial>
                     </span>
                 </h1>
                 <div className="fd-cypress-popup-layout">
                     <div className="fd-cypress-templates-container">
-                        <h3>Templates <ButtonCallToAction onClick={this.saveAsTemplate} title="Save as template">+</ButtonCallToAction></h3>
+                        <h3>
+                            Templates{' '}
+                            <ButtonCallToAction
+                                onClick={this.saveAsTemplate}
+                                title="Save as template"
+                            >
+                                +
+                            </ButtonCallToAction>
+                        </h3>
                         <ul>
-                            {this.state.templates.map((template: Template) => template.name ? <li key={template.name}><span onClick={this.loadTemplate} data-value={template.name}>{template.name}</span><span><ButtonEditorial  data-value={template.name} onClick={this.loadAppendTemplate} title="Append template">+</ButtonEditorial><ButtonEditorial  data-value={template.name} onClick={this.removeTemplate} title="Delete template">X</ButtonEditorial></span></li> : null)}
+                            {this.state.templates.map((template: Template) =>
+                                template.name ? (
+                                    <li key={template.name}>
+                                        <span
+                                            onClick={this.loadTemplate}
+                                            data-value={template.name}
+                                        >
+                                            {template.name}
+                                        </span>
+                                        <span>
+                                            <ButtonEditorial
+                                                data-value={template.name}
+                                                onClick={
+                                                    this.loadAppendTemplate
+                                                }
+                                                title="Append template"
+                                            >
+                                                +
+                                            </ButtonEditorial>
+                                            <ButtonEditorial
+                                                data-value={template.name}
+                                                onClick={this.removeTemplate}
+                                                title="Delete template"
+                                            >
+                                                X
+                                            </ButtonEditorial>
+                                        </span>
+                                    </li>
+                                ) : null
+                            )}
                         </ul>
                     </div>
                     <div className="fd-cypress-code-container">
@@ -129,15 +204,32 @@ export default class Popup extends ComponentBase<Props, PopupState> {
                             onRemoveEvent={this.handleRemoveEvent}
                             onBasicAuth={this.handleBasicAuth}
                         />
-                        <small><ShortCut>CTRL</ShortCut> + <ShortCut className="shortcut-button">Right Mouse Click</ShortCut>: open context menu for hovered element in page. Tip: make sure the page has focus and recording has started.</small>
-                        <small><ShortCut>CTRL</ShortCut> + <ShortCut className="shortcut-button">Scroll Lock</ShortCut> or <ShortCut>ALT</ShortCut> + <ShortCut className="shortcut-button">r</ShortCut>: Toggle recording state. Tip: make sure the page has focus.</small>
+                        <small>
+                            <ShortCut>CTRL</ShortCut> +{' '}
+                            <ShortCut className="shortcut-button">
+                                Right Mouse Click
+                            </ShortCut>
+                            : open context menu for hovered element in page.
+                            Tip: make sure the page has focus and recording has
+                            started.
+                        </small>
+                        <small>
+                            <ShortCut>CTRL</ShortCut> +{' '}
+                            <ShortCut className="shortcut-button">
+                                Scroll Lock
+                            </ShortCut>{' '}
+                            or <ShortCut>ALT</ShortCut> +{' '}
+                            <ShortCut className="shortcut-button">r</ShortCut>:
+                            Toggle recording state. Tip: make sure the page has
+                            focus.
+                        </small>
                     </div>
                 </div>
             </>
         );
     }
 
-    protected _buildState(props: any, initialBuild: boolean): PopupState {
+    protected _buildState(): PopupState {
         const events = EventsStore.getEvents();
         events.forEach((event: any, idx: number) => {
             event.id = idx;
@@ -151,7 +243,7 @@ export default class Popup extends ComponentBase<Props, PopupState> {
             testSuite: TestSuiteStore.getTestSuite(),
             testDescription: TestSuiteStore.getTestDescription(),
             recording: TestSuiteStore.getRecording(),
-            basicAuth: TestSuiteStore.getBasicAuth()
+            basicAuth: TestSuiteStore.getBasicAuth(),
         };
     }
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import { createGlobalStyle } from "styled-components";
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
 
 /**
  * Returns a styled shortcut button.
@@ -7,7 +7,7 @@ import { createGlobalStyle } from "styled-components";
 export default function ShortCut(props: any) {
     return (
         <>
-            <GlobalStyle/>
+            <GlobalStyle />
             <span className="shortcut-button">{props.children}</span>
         </>
     );

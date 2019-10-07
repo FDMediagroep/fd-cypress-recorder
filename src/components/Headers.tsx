@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentBase } from "resub";
+import { ComponentBase } from 'resub';
 import ReactTable, { Column, CellInfo } from 'react-table';
 import styled, { createGlobalStyle } from 'styled-components';
 import HeadersStore = require('../stores/HeadersStore');
@@ -10,79 +10,106 @@ interface State {
 }
 
 export default class Headers extends ComponentBase<any, State> {
-    state: any = {
-    };
+    state: any = {};
 
-    private columns: Array<Column<any>> = [{
-        Header: 'Property',
-        accessor: 'property',
-        Cell: (props: CellInfo) => <StyledTableCellInput type="text" className='property' defaultValue={props.value} data-row={props.index} data-column='property' onChange={this.handleHeaderChange}/>
-    }, {
-        Header: 'Value',
-        accessor: 'value',
-        Cell: (props: CellInfo) => <StyledTableCellInput type="text" className='value' defaultValue={props.value} data-row={props.index} data-column='value' onChange={this.handleHeaderChange}/>
-    }];
+    /* eslint-disable */
+    private columns: Array<Column<any>> = [
+        {
+            Header: 'Property',
+            accessor: 'property',
+            Cell: (props: CellInfo) => (
+                <StyledTableCellInput
+                    type="text"
+                    className="property"
+                    defaultValue={props.value}
+                    data-row={props.index}
+                    data-column="property"
+                    onChange={this.handleHeaderChange}
+                />
+            ),
+        },
+        {
+            Header: 'Value',
+            accessor: 'value',
+            Cell: (props: CellInfo) => (
+                <StyledTableCellInput
+                    type="text"
+                    className="value"
+                    defaultValue={props.value}
+                    data-row={props.index}
+                    data-column="value"
+                    onChange={this.handleHeaderChange}
+                />
+            ),
+        },
+    ];
 
     handleHeaderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const changedCol = e.currentTarget.getAttribute('data-column');
-        const changedRow = parseInt(e.currentTarget.getAttribute('data-row') || '-1', 10);
+        const changedRow = parseInt(
+            e.currentTarget.getAttribute('data-row') || '-1',
+            10
+        );
         let tableData = [...this.state.tableData];
         let addNewRow = true;
         tableData = tableData.map((data: Header, rowIndex) => {
             if (rowIndex === changedRow) {
                 switch (changedCol) {
                     case 'property':
-                        return {...data, property: e.currentTarget.value};
+                        return { ...data, property: e.currentTarget.value };
                     case 'value':
-                        return {...data, value: e.currentTarget.value};
+                        return { ...data, value: e.currentTarget.value };
                 }
             } else {
-                return {...data};
+                return { ...data };
             }
             if (!data.property && !data.value) {
                 addNewRow = false;
             }
         });
         if (addNewRow) {
-            tableData.push({property: '', value: ''});
+            tableData.push({ property: '', value: '' });
         }
         tableData = this.removeMultipleEmptyRows(tableData);
         HeadersStore.setHeaders(tableData);
-    }
+    };
 
     removeMultipleEmptyRows = (tableData: Header[]) => {
         return tableData.reduce((prev: Header[], header) => {
-            const found = prev.find((h: Header) => h.property === header.property && h.value === header.value);
+            const found = prev.find(
+                (h: Header) =>
+                    h.property === header.property && h.value === header.value
+            );
             if (!found || header.property !== '' || header.value !== '') {
                 prev.push(header);
             }
             return prev;
         }, []);
-    }
+    };
 
     render() {
         return (
             <>
-                <GlobalStyle/>
+                <GlobalStyle />
                 <ReactTable
                     data={this.state.tableData}
                     columns={this.columns}
                     showPagination={false}
                     showPageSizeOptions={false}
-                    style={{maxHeight: '263px'}}
+                    style={{ maxHeight: '263px' }}
                     minRows={1}
                 />
             </>
         );
     }
 
-    protected _buildState(props: any, initialBuild: boolean): State {
+    protected _buildState(props: any): State {
         const headers = HeadersStore.getHeaders() || props.headers;
         if (headers.length === 0) {
-            headers.push({property: '', value: ''});
+            headers.push({ property: '', value: '' });
         }
         return {
-            tableData: headers
+            tableData: headers,
         };
     }
 }
@@ -92,5 +119,5 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const StyledTableCellInput = styled.input`
-width: 100%;
+    width: 100%;
 `;

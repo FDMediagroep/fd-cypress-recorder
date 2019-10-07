@@ -3,20 +3,24 @@ import EventsStore = require('./stores/EventsStore');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ContextMenuOverlay from './components/ContextMenuOverlay';
-import { FdEventType, UNIQUE_SELECTOR_OPTIONS, UNIQUE_SELECTOR_OPTIONS_WITHOUT_ID } from './utils/FdEvents';
+import {
+    FdEventType,
+    UNIQUE_SELECTOR_OPTIONS,
+    UNIQUE_SELECTOR_OPTIONS_WITHOUT_ID,
+} from './utils/FdEvents';
 import { StoreBase } from 'resub';
 
-declare var chrome: any;
+declare let chrome: any;
 
 const storageName = 'fd-cypress-chrome-extension-events';
 const storageRecord = 'fd-cypress-chrome-extension-record';
 
 let hoveredElement: HTMLElement;
 
-let recording: boolean = false;
+let recording = false;
 let contextMenu = false;
 
-let subscriptionToken: number = 0;
+let subscriptionToken = 0;
 
 const style: any = document.createElement('style');
 const css = `a:hover, button:hover {
@@ -42,13 +46,24 @@ function uniqueWithRetry(target: HTMLElement) {
 }
 
 /**
+ * Remove the context menu and its overlay.
+ */
+function removeContextMenu() {
+    const existingEl = document.querySelector('.fd-cypress-chrome-extension');
+    if (existingEl) {
+        existingEl.remove();
+    }
+    contextMenu = false;
+}
+
+/**
  * Persist the events and recording state to browser storage.
  */
 function saveEvents() {
     const events = EventsStore.getEvents();
     // Save it using the Chrome extension storage API.
     chrome.storage.local.set({
-        'fd-cypress-chrome-extension-events': events
+        'fd-cypress-chrome-extension-events': events,
     });
     removeContextMenu();
 }
@@ -57,9 +72,12 @@ function saveEvents() {
  * Load events from browser storage.
  */
 function loadEvents() {
-    chrome.storage.local.get({'fd-cypress-chrome-extension-events': null}, (items: any) => {
-        EventsStore.setEvents(items[storageName], 'loadEvents');
-    });
+    chrome.storage.local.get(
+        { 'fd-cypress-chrome-extension-events': null },
+        (items: any) => {
+            EventsStore.setEvents(items[storageName], 'loadEvents');
+        }
+    );
 }
 
 /**
@@ -68,7 +86,10 @@ function loadEvents() {
 function clickListener(e: Event) {
     const target = e.currentTarget as HTMLElement;
     if (target) {
-        EventsStore.addEvent({type: FdEventType.CLICK, target: uniqueWithRetry(target)});
+        EventsStore.addEvent({
+            type: FdEventType.CLICK,
+            target: uniqueWithRetry(target),
+        });
     }
 }
 
@@ -80,17 +101,6 @@ function mouseOverListener(e: MouseEvent) {
     if (!contextMenu) {
         hoveredElement = e.target as HTMLElement;
     }
-}
-
-/**
- * Remove the context menu and its overlay.
- */
-function removeContextMenu() {
-    const existingEl = document.querySelector('.fd-cypress-chrome-extension');
-    if (existingEl) {
-        existingEl.remove();
-    }
-    contextMenu = false;
 }
 
 /**
@@ -109,17 +119,26 @@ function removeContextMenu() {
  * @param e KeyboardEvent
  */
 function keyUpListener(e: KeyboardEvent) {
-    if (e.ctrlKey && e.keyCode === 44 ||
-        e.altKey && e.key === 'c' ||
-        e.altKey && e.key === 'ContextMenu' ||
-        e.altKey && e.key === 'b') {
+    if (
+        (e.ctrlKey && e.keyCode === 44) ||
+        (e.altKey && e.key === 'c') ||
+        (e.altKey && e.key === 'ContextMenu') ||
+        (e.altKey && e.key === 'b')
+    ) {
         // Print screen
         removeContextMenu();
         contextMenu = true;
         const el = document.createElement('section');
         el.setAttribute('class', 'fd-cypress-chrome-extension');
         document.body.appendChild(el);
-        ReactDOM.render(<ContextMenuOverlay target={hoveredElement} selector={uniqueWithRetry(hoveredElement)} onClick={removeContextMenu}/>, el);
+        ReactDOM.render(
+            <ContextMenuOverlay
+                target={hoveredElement}
+                selector={uniqueWithRetry(hoveredElement)}
+                onClick={removeContextMenu}
+            />,
+            el
+        );
     } else if (e.keyCode === 27) {
         // Escape
         removeContextMenu();
@@ -138,7 +157,14 @@ function mouseRightClickListener(e: MouseEvent) {
         const el = document.createElement('section');
         el.setAttribute('class', 'fd-cypress-chrome-extension');
         document.body.appendChild(el);
-        ReactDOM.render(<ContextMenuOverlay target={hoveredElement} selector={uniqueWithRetry(hoveredElement)} onClick={removeContextMenu}/>, el);
+        ReactDOM.render(
+            <ContextMenuOverlay
+                target={hoveredElement}
+                selector={uniqueWithRetry(hoveredElement)}
+                onClick={removeContextMenu}
+            />,
+            el
+        );
     }
 }
 
@@ -155,7 +181,9 @@ function beforeUnload() {
  */
 function stop() {
     recording = false;
-    chrome.storage.local.set({ 'fd-cypress-chrome-extension-record': recording });
+    chrome.storage.local.set({
+        'fd-cypress-chrome-extension-record': recording,
+    });
 
     EventsStore.unsubscribe(subscriptionToken);
 
@@ -181,20 +209,37 @@ function stop() {
 function record() {
     recording = true;
 
-    chrome.storage.local.set({ 'fd-cypress-chrome-extension-record': recording });
+    chrome.storage.local.set({
+        'fd-cypress-chrome-extension-record': recording,
+    });
 
     subscriptionToken = EventsStore.subscribe((keys?: string[]) => {
-        if (keys && keys.length && keys[0] === 'loadEvents') { return; } // Prevent an infinite loop.
+        if (keys && keys.length && keys[0] === 'loadEvents') {
+            return;
+        } // Prevent an infinite loop.
         saveEvents();
     }, StoreBase.Key_All);
 
     document.getElementsByTagName('head')[0].appendChild(style);
 
-    const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    const height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    const width = Math.max(
+        document.documentElement.clientWidth,
+        window.innerWidth || 0
+    );
+    const height = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0
+    );
 
-    EventsStore.addUniqueEvent({type: FdEventType.VIEWPORT_SIZE, width, height});
-    EventsStore.addUniqueEvent({type: FdEventType.VISIT, href: window.location.href});
+    EventsStore.addUniqueEvent({
+        type: FdEventType.VIEWPORT_SIZE,
+        width,
+        height,
+    });
+    EventsStore.addUniqueEvent({
+        type: FdEventType.VISIT,
+        href: window.location.href,
+    });
 
     [].slice.call(document.querySelectorAll('*')).forEach((el: HTMLElement) => {
         switch (el.nodeName) {
@@ -215,9 +260,11 @@ function record() {
  * We modify corresponding Application data stores which in turn propagates to the views that rely on the data.
  * This ultimately results in the views always correctly reflecting the current application state.
  */
-chrome.storage.onChanged.addListener((changes: any, namespace: any) => {
-    chrome.runtime.sendMessage({get: "tabId"}, (response: any) => {
-        if (response.activeTabId !== response.ownTabId) { return; }
+chrome.storage.onChanged.addListener((changes: any) => {
+    chrome.runtime.sendMessage({ get: 'tabId' }, (response: any) => {
+        if (response.activeTabId !== response.ownTabId) {
+            return;
+        }
 
         for (const key in changes) {
             if (changes[key]) {
@@ -244,37 +291,42 @@ chrome.storage.onChanged.addListener((changes: any, namespace: any) => {
 /**
  * Entry point.
  */
-chrome.storage.local.get({
-    'enable': true,
-    'fd-cypress-chrome-extension-events': null,
-    'fd-cypress-chrome-extension-record': false
-}, (items: any) => {
-    recording = !!items[storageRecord];
-    console.log('FD Cypress enabled', items.enable);
-    if (items.enable) {
-        window.addEventListener('keyup', (e: KeyboardEvent) => {
-            if (e.ctrlKey && e.keyCode === 3 ||
-                e.altKey && e.key === 'r') {
-                // Break/Pause
-                recording ? stop() : record();
-            }
-        });
-
-        window.addEventListener('focus', () => {
-            try {
-                if (chrome && chrome.runtime) {
-                    chrome.runtime.sendMessage({head: "activeTabId"});
+chrome.storage.local.get(
+    {
+        enable: true,
+        'fd-cypress-chrome-extension-events': null,
+        'fd-cypress-chrome-extension-record': false,
+    },
+    (items: any) => {
+        recording = !!items[storageRecord];
+        console.log('FD Cypress enabled', items.enable);
+        if (items.enable) {
+            window.addEventListener('keyup', (e: KeyboardEvent) => {
+                if (
+                    (e.ctrlKey && e.keyCode === 3) ||
+                    (e.altKey && e.key === 'r')
+                ) {
+                    // Break/Pause
+                    recording ? stop() : record();
                 }
-            } catch (e) {
-                console.log(e);
-            }
-        });
+            });
 
-        if (items[storageName]) {
-            EventsStore.setEvents(items[storageName]);
-        }
-        if (recording) {
-            record();
+            window.addEventListener('focus', () => {
+                try {
+                    if (chrome && chrome.runtime) {
+                        chrome.runtime.sendMessage({ head: 'activeTabId' });
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
+            });
+
+            if (items[storageName]) {
+                EventsStore.setEvents(items[storageName]);
+            }
+            if (recording) {
+                record();
+            }
         }
     }
-});
+);

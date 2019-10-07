@@ -1,10 +1,10 @@
-import { FdEventType, FdVisitEvent } from "../../src/utils/FdEvents";
-import EventsStore = require("../../src/stores/EventsStore");
+import { FdEventType, FdVisitEvent } from '../../src/utils/FdEvents';
+import EventsStore = require('../../src/stores/EventsStore');
 
 describe('Events Store', () => {
     const events = [
-        {type: FdEventType.VIEWPORT_SIZE, width: 320, height: 240},
-        {type: FdEventType.VISIT, href: 'http://willemliu.nl'}
+        { type: FdEventType.VIEWPORT_SIZE, width: 320, height: 240 },
+        { type: FdEventType.VISIT, href: 'http://willemliu.nl' },
     ];
 
     afterEach(() => {
@@ -37,10 +37,15 @@ describe('Events Store', () => {
         expect(storedEvents.length).toBe(0);
 
         EventsStore.setEvents(events);
-        EventsStore.setEvent({type: FdEventType.VISIT, href: 'http://willim.nl'});
+        EventsStore.setEvent({
+            type: FdEventType.VISIT,
+            href: 'http://willim.nl',
+        });
 
         expect(EventsStore.getEvents().length).toBe(2);
-        expect((EventsStore.getEvents()[1] as FdVisitEvent).href).toBe('http://willim.nl');
+        expect((EventsStore.getEvents()[1] as FdVisitEvent).href).toBe(
+            'http://willim.nl'
+        );
     });
 
     it('should add event when not existing', () => {
@@ -48,10 +53,15 @@ describe('Events Store', () => {
         expect(storedEvents.length).toBe(0);
 
         EventsStore.setEvents(events);
-        EventsStore.addUniqueEvent({type: FdEventType.VISIT, href: 'http://willim.nl'});
+        EventsStore.addUniqueEvent({
+            type: FdEventType.VISIT,
+            href: 'http://willim.nl',
+        });
 
         expect(EventsStore.getEvents().length).toBe(2);
-        expect((EventsStore.getEvents()[1] as FdVisitEvent).href).toBe('http://willemliu.nl');
+        expect((EventsStore.getEvents()[1] as FdVisitEvent).href).toBe(
+            'http://willemliu.nl'
+        );
     });
 
     it('should add event', () => {
@@ -59,11 +69,18 @@ describe('Events Store', () => {
         expect(storedEvents.length).toBe(0);
 
         EventsStore.setEvents(events);
-        EventsStore.addEvent({type: FdEventType.VISIT, href: 'http://willim.nl'});
+        EventsStore.addEvent({
+            type: FdEventType.VISIT,
+            href: 'http://willim.nl',
+        });
 
         expect(EventsStore.getEvents().length).toBe(3);
-        expect((EventsStore.getEvents()[1] as FdVisitEvent).href).toBe('http://willemliu.nl');
-        expect((EventsStore.getEvents()[2] as FdVisitEvent).href).toBe('http://willim.nl');
+        expect((EventsStore.getEvents()[1] as FdVisitEvent).href).toBe(
+            'http://willemliu.nl'
+        );
+        expect((EventsStore.getEvents()[2] as FdVisitEvent).href).toBe(
+            'http://willim.nl'
+        );
     });
 
     it('should be able to step back and step forward', () => {
@@ -78,12 +95,15 @@ describe('Events Store', () => {
         expect(EventsStore.getEvents().length).toBe(1);
         expect(EventsStore.getFutures().length).toBe(1);
         expect(EventsStore.getFutures()[0].length).toBe(2);
-        expect((EventsStore.getFutures()[0][1] as FdVisitEvent).href).toBe('http://willemliu.nl');
+        expect((EventsStore.getFutures()[0][1] as FdVisitEvent).href).toBe(
+            'http://willemliu.nl'
+        );
 
         EventsStore.setEvents(EventsStore.popFuture());
         expect(EventsStore.getEvents().length).toBe(2);
         expect(EventsStore.getFutures().length).toBe(0);
-        expect((EventsStore.getEvents()[1] as FdVisitEvent).href).toBe('http://willemliu.nl');        
+        expect((EventsStore.getEvents()[1] as FdVisitEvent).href).toBe(
+            'http://willemliu.nl'
+        );
     });
-
 });

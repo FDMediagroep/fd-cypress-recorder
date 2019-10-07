@@ -104,7 +104,7 @@ exports[`Headers should render correctly 1`] = `
             }
           >
             <input
-              className="property sc-bdVaJa gPWuut"
+              className="sc-bdVaJa gZdsYr property"
               data-column="property"
               data-row={0}
               defaultValue=""
@@ -125,7 +125,7 @@ exports[`Headers should render correctly 1`] = `
             }
           >
             <input
-              className="value sc-bdVaJa gPWuut"
+              className="sc-bdVaJa gZdsYr value"
               data-column="value"
               data-row={0}
               defaultValue=""
