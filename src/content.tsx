@@ -3,7 +3,7 @@ import EventsStore = require('./stores/EventsStore');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ContextMenuOverlay from './components/ContextMenuOverlay';
-import { FdEventType, UNIQUE_SELECTOR_OPTIONS } from './utils/FdEvents';
+import { FdEventType, UNIQUE_SELECTOR_OPTIONS, UNIQUE_SELECTOR_OPTIONS_WITHOUT_ID } from './utils/FdEvents';
 import { StoreBase } from 'resub';
 
 declare var chrome: any;
@@ -26,6 +26,19 @@ if (style.styleSheet) {
     style.styleSheet.cssText = css;
 } else {
     style.appendChild(document.createTextNode(css));
+}
+
+/**
+ * A small wrapper that first tries to call unique an additional ID selector.
+ * Should that fail, because for instance IDs are ill-formated in the html it
+ * tries again without the ID selector.
+ */
+function uniqueWithRetry(target: HTMLElement) {
+    try {
+        return unique(target, UNIQUE_SELECTOR_OPTIONS);
+    } catch (e) {
+        return unique(target, UNIQUE_SELECTOR_OPTIONS_WITHOUT_ID);
+    }
 }
 
 /**
@@ -55,7 +68,7 @@ function loadEvents() {
 function clickListener(e: Event) {
     const target = e.currentTarget as HTMLElement;
     if (target) {
-        EventsStore.addEvent({type: FdEventType.CLICK, target: unique(target, UNIQUE_SELECTOR_OPTIONS)});
+        EventsStore.addEvent({type: FdEventType.CLICK, target: uniqueWithRetry(target)});
     }
 }
 
@@ -106,7 +119,7 @@ function keyUpListener(e: KeyboardEvent) {
         const el = document.createElement('section');
         el.setAttribute('class', 'fd-cypress-chrome-extension');
         document.body.appendChild(el);
-        ReactDOM.render(<ContextMenuOverlay target={hoveredElement} selector={unique(hoveredElement, UNIQUE_SELECTOR_OPTIONS)} onClick={removeContextMenu}/>, el);
+        ReactDOM.render(<ContextMenuOverlay target={hoveredElement} selector={uniqueWithRetry(hoveredElement)} onClick={removeContextMenu}/>, el);
     } else if (e.keyCode === 27) {
         // Escape
         removeContextMenu();
@@ -125,7 +138,7 @@ function mouseRightClickListener(e: MouseEvent) {
         const el = document.createElement('section');
         el.setAttribute('class', 'fd-cypress-chrome-extension');
         document.body.appendChild(el);
-        ReactDOM.render(<ContextMenuOverlay target={hoveredElement} selector={unique(hoveredElement, UNIQUE_SELECTOR_OPTIONS)} onClick={removeContextMenu}/>, el);
+        ReactDOM.render(<ContextMenuOverlay target={hoveredElement} selector={uniqueWithRetry(hoveredElement)} onClick={removeContextMenu}/>, el);
     }
 }
 

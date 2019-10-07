@@ -15,6 +15,7 @@
     "devDependencies": {
         "@types/chrome": "0.0.89",
         "@types/jest": "^24.0.18",
+        "@types/lodash": "^4.14.141",
         "@types/react": "^16.9.2",
         "@types/react-beautiful-dnd": "^11.0.3",
         "@types/react-dom": "^16.9.0",

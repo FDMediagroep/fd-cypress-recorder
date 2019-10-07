@@ -132,13 +132,12 @@ export function getCodeFromEvent(event: AllFdEvents, options?: Options): string 
 
 export function getCode(suite: string, description: string, events: AllFdEvents[], options?: Options) {
     let firstVisitUrl = '';
-    for (let i = 0; i < events.length; ++i) {
-        const event = events[i];
+    for (const event of events) {
         if (event.type === FdEventType.VISIT) {
             firstVisitUrl = (event as FdVisitEvent).href;
         }
     }
-  
+
     const code: string[] = [
 `/**
   * Code generated with Fd Cypress Recorder.
