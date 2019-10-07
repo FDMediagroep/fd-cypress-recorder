@@ -123,6 +123,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://www.willemliu.nl"><img src="https://avatars0.githubusercontent.com/u/5611802?v=4" width="100px;" alt="Willem Liu"/><br /><sub><b>Willem Liu</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliufdmg" title="Code">💻</a> <a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliufdmg" title="Documentation">📖</a> <a href="#example-willemliufdmg" title="Examples">💡</a> <a href="#maintenance-willemliufdmg" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="http://www.willim.nl"><img src="https://avatars1.githubusercontent.com/u/974906?v=4" width="100px;" alt="Willem Liu"/><br /><sub><b>Willem Liu</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliu" title="Code">💻</a> <a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliu" title="Documentation">📖</a> <a href="#example-willemliu" title="Examples">💡</a> <a href="#maintenance-willemliu" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 

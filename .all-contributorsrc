@@ -16,7 +16,19 @@
         "example",
         "maintenance"
       ]
+    }, {
+      "login": "willemliu",
+      "name": "Willem Liu",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/974906?v=4",
+      "profile": "http://www.willim.nl",
+      "contributions": [
+        "code",
+        "doc",
+        "example",
+        "maintenance"
+      ]
     }
+
   ],
   "contributorsPerLine": 7,
   "projectName": "fd-cypress-recorder",
