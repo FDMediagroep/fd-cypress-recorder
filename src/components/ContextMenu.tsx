@@ -13,7 +13,7 @@ export interface Props {
 }
 
 /**
- * This component renders the context menu.
+ * This component renders the right mouse-click context menu.
  */
 export default class ContextMenu extends PureComponent<Props, any> {
     state: any = {};

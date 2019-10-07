@@ -25,7 +25,8 @@ interface State {
 }
 
 /**
- * This component can show the recorded events as code or as a list of individual events.
+ * This component can show the recorded events as code or as a list of individual events
+ * or show the custom HTTP headers.
  */
 export default class CypressGenerator extends PureComponent<Props, State> {
     state: any = {

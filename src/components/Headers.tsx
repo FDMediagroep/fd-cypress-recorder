@@ -9,6 +9,9 @@ interface State {
     tableData: Header[];
 }
 
+/**
+ * Layout of the HTTP Headers tab in the Chrome Plugin UI
+ */
 export default class Headers extends ComponentBase<any, State> {
     state: any = {};
 

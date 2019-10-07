@@ -18,6 +18,10 @@ export interface Props {
     onRemoveEvent: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
+/**
+ * Layout of the Events tab in the Chrome Plugin UI
+ * @param props
+ */
 export default function EventsList(props: Props) {
     function handleDragEnd(result: DropResult) {
         if (!result.destination) {
