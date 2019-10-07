@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/FDMediagroep/fd-cypress-recorder.svg?branch=master)](https://travis-ci.org/FDMediagroep/fd-cypress-recorder)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![Coverage Status](https://coveralls.io/repos/github/FDMediagroep/fd-cypress-recorder/badge.svg?branch=master)](https://coveralls.io/github/FDMediagroep/fd-cypress-recorder?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/FDMediagroep/fd-cypress-recorder.svg)](https://greenkeeper.io/)
 
@@ -112,3 +113,19 @@ In short: Fork this repository and modify `Dictionary.ts` to return the correspo
 ## Disclaimer
 
 As with all extensions, `Fd Cypress Recorder` has an impact on the user-experience while using your browser. And also because of its ability to listen for keyboard and mouse interactions it is recommended that you disable this plugin when you're not making use of it. 
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="http://www.willemliu.nl"><img src="https://avatars0.githubusercontent.com/u/5611802?v=4" width="100px;" alt="Willem Liu"/><br /><sub><b>Willem Liu</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliufdmg" title="Code">💻</a> <a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliufdmg" title="Documentation">📖</a> <a href="#example-willemliufdmg" title="Examples">💡</a> <a href="#maintenance-willemliufdmg" title="Maintenance">🚧</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
