@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/FDMediagroep/fd-cypress-recorder.svg?branch=master)](https://travis-ci.org/FDMediagroep/fd-cypress-recorder)
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 [![Coverage Status](https://coveralls.io/repos/github/FDMediagroep/fd-cypress-recorder/badge.svg?branch=master)](https://coveralls.io/github/FDMediagroep/fd-cypress-recorder?branch=master)
 [![Greenkeeper badge](https://badges.greenkeeper.io/FDMediagroep/fd-cypress-recorder.svg)](https://greenkeeper.io/)
 
@@ -124,6 +124,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://www.willemliu.nl"><img src="https://avatars0.githubusercontent.com/u/5611802?v=4" width="100px;" alt="Willem Liu"/><br /><sub><b>Willem Liu</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliufdmg" title="Code">💻</a> <a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliufdmg" title="Documentation">📖</a> <a href="#example-willemliufdmg" title="Examples">💡</a> <a href="#maintenance-willemliufdmg" title="Maintenance">🚧</a></td>
     <td align="center"><a href="http://www.willim.nl"><img src="https://avatars1.githubusercontent.com/u/974906?v=4" width="100px;" alt="Willem Liu"/><br /><sub><b>Willem Liu</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliu" title="Code">💻</a> <a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliu" title="Documentation">📖</a> <a href="#example-willemliu" title="Examples">💡</a> <a href="#maintenance-willemliu" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/burner"><img src="https://avatars0.githubusercontent.com/u/13327?v=4" width="100px;" alt="Robert Schadek"/><br /><sub><b>Robert Schadek</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=burner" title="Code">💻</a> <a href="#review-burner" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
