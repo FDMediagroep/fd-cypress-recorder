@@ -49,7 +49,7 @@
         "@fdmg/fd-inputs": "^1.0.24",
         "@fdmg/fd-typography": "^1.0.31",
         "react": "^16.10.2",
-        "react-beautiful-dnd": "^11.0.5",
+        "react-beautiful-dnd": "^12.0.0",
         "react-dom": "^16.10.2",
         "react-table": "^6.10.3",
         "resub": "^1.2.2",
