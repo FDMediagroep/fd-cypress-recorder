@@ -47,11 +47,21 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "atilacamurca",
+      "name": "Átila Camurça Alves",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/508624?v=4",
+      "profile": "http://www.mad3linux.org",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "fd-cypress-recorder",
   "projectOwner": "FDMediagroep",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
