@@ -7,6 +7,8 @@ import {
     FdEventType,
     UNIQUE_SELECTOR_OPTIONS,
     UNIQUE_SELECTOR_OPTIONS_WITHOUT_ID,
+    UNIQUE_ATTR_SELECTOR_OPTIONS,
+    UNIQUE_ATTR_SELECTOR_OPTIONS_WITHOUT_ID,
 } from './utils/FdEvents';
 import { StoreBase } from 'resub';
 
@@ -15,6 +17,7 @@ declare let chrome: any;
 const storageName = 'fd-cypress-chrome-extension-events';
 const storageRecord = 'fd-cypress-chrome-extension-record';
 
+let useAttributeSelectorFirst = false;
 let hoveredElement: HTMLElement;
 
 let recording = false;
@@ -39,9 +42,19 @@ if (style.styleSheet) {
  */
 function uniqueWithRetry(target: HTMLElement) {
     try {
-        return unique(target, UNIQUE_SELECTOR_OPTIONS);
+        return unique(
+            target,
+            useAttributeSelectorFirst
+                ? UNIQUE_ATTR_SELECTOR_OPTIONS
+                : UNIQUE_SELECTOR_OPTIONS
+        );
     } catch (e) {
-        return unique(target, UNIQUE_SELECTOR_OPTIONS_WITHOUT_ID);
+        return unique(
+            target,
+            useAttributeSelectorFirst
+                ? UNIQUE_ATTR_SELECTOR_OPTIONS_WITHOUT_ID
+                : UNIQUE_SELECTOR_OPTIONS_WITHOUT_ID
+        );
     }
 }
 
@@ -294,6 +307,7 @@ chrome.storage.onChanged.addListener((changes: any) => {
 chrome.storage.local.get(
     {
         enable: true,
+        attributeSelectorFirst: false,
         'fd-cypress-chrome-extension-events': null,
         'fd-cypress-chrome-extension-record': false,
     },
@@ -301,6 +315,7 @@ chrome.storage.local.get(
         recording = !!items[storageRecord];
         console.log('FD Cypress enabled', items.enable);
         if (items.enable) {
+            useAttributeSelectorFirst = items.attributeSelectorFirst;
             window.addEventListener('keyup', (e: KeyboardEvent) => {
                 if (
                     (e.ctrlKey && e.keyCode === 3) ||

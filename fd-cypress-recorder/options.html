@@ -1,22 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>FD Cypress options</title>
-  <style>
-    body { padding: 10px; }
-    label { white-space: nowrap; }
-    button { margin: 10px; }
-  </style>
-</head>
+    <head>
+        <title>FD Cypress options</title>
+        <style>
+            body {
+                padding: 10px;
+            }
+            label {
+                white-space: nowrap;
+            }
+            button {
+                margin: 10px;
+            }
+        </style>
+    </head>
 
-<body>
-  <label for="enable">Enable: <input type="checkbox" id="enable" name="enable" value="true"/></label>
+    <body>
+        <div>
+            <label for="enable">Enable: </label>
+            <input type="checkbox" id="enable" name="enable" value="true" />
+        </div>
 
-  <hr>
-  
-  <div id="status"></div>
-  <button id="save">Save</button>
+        <div>
+            <label for="attributeSelectorFirst"
+                >Attribute selector first:
+                <a
+                    href="https://docs.cypress.io/guides/references/best-practices.html#Selecting-Elements"
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    >[?]</a
+                ></label
+            >
+            <input
+                type="checkbox"
+                id="attributeSelectorFirst"
+                name="attributeSelectorFirst"
+                value="true"
+            />
+        </div>
 
-  <script src="options.js"></script>
-</body>
+        <hr />
+
+        <div id="status"></div>
+        <button id="save">Save</button>
+
+        <script src="options.js"></script>
+    </body>
 </html>

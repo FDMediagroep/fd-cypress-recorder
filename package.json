@@ -51,7 +51,7 @@
         "react": "^16.10.2",
         "react-beautiful-dnd": "^12.0.0",
         "react-dom": "^16.10.2",
-        "react-table": "^6.10.3",
+        "react-table": "^6.11.5",
         "resub": "^1.2.2",
         "styled-components": "^4.4.0",
         "unique-selector": "^0.4.1"

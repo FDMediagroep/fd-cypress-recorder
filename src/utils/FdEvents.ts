@@ -131,6 +131,14 @@ export const UNIQUE_SELECTOR_OPTIONS_WITHOUT_ID = {
     selectorTypes: ['Tag', 'NthChild'],
 };
 
+export const UNIQUE_ATTR_SELECTOR_OPTIONS = {
+    selectorTypes: ['Attributes', 'ID', 'Tag', 'NthChild'],
+};
+
+export const UNIQUE_ATTR_SELECTOR_OPTIONS_WITHOUT_ID = {
+    selectorTypes: ['Attributes', 'Tag', 'NthChild'],
+};
+
 export interface Options {
     basicAuth?: boolean;
     headers?: Header[];
