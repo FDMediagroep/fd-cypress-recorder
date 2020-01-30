@@ -148,16 +148,20 @@ As with all extensions, `Fd Cypress Recorder` has an impact on the user-experien
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://www.willemliu.nl"><img src="https://avatars0.githubusercontent.com/u/5611802?v=4" width="100px;" alt="Willem Liu"/><br /><sub><b>Willem Liu</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliufdmg" title="Code">💻</a> <a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliufdmg" title="Documentation">📖</a> <a href="#example-willemliufdmg" title="Examples">💡</a> <a href="#maintenance-willemliufdmg" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="http://www.willim.nl"><img src="https://avatars1.githubusercontent.com/u/974906?v=4" width="100px;" alt="Willem Liu"/><br /><sub><b>Willem Liu</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliu" title="Code">💻</a> <a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliu" title="Documentation">📖</a> <a href="#example-willemliu" title="Examples">💡</a> <a href="#maintenance-willemliu" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="https://github.com/burner"><img src="https://avatars0.githubusercontent.com/u/13327?v=4" width="100px;" alt="Robert Schadek"/><br /><sub><b>Robert Schadek</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=burner" title="Code">💻</a> <a href="#review-burner" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://greenkeeper.io/"><img src="https://avatars2.githubusercontent.com/u/13812225?v=4" width="100px;" alt="Greenkeeper"/><br /><sub><b>Greenkeeper</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=greenkeeperio" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.willemliu.nl"><img src="https://avatars0.githubusercontent.com/u/5611802?v=4" width="100px;" alt=""/><br /><sub><b>Willem Liu</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliufdmg" title="Code">💻</a> <a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliufdmg" title="Documentation">📖</a> <a href="#example-willemliufdmg" title="Examples">💡</a> <a href="#maintenance-willemliufdmg" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="http://www.willim.nl"><img src="https://avatars1.githubusercontent.com/u/974906?v=4" width="100px;" alt=""/><br /><sub><b>Willem Liu</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliu" title="Code">💻</a> <a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=willemliu" title="Documentation">📖</a> <a href="#example-willemliu" title="Examples">💡</a> <a href="#maintenance-willemliu" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/burner"><img src="https://avatars0.githubusercontent.com/u/13327?v=4" width="100px;" alt=""/><br /><sub><b>Robert Schadek</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=burner" title="Code">💻</a> <a href="https://github.com/FDMediagroep/fd-cypress-recorder/pulls?q=is%3Apr+reviewed-by%3Aburner" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://greenkeeper.io/"><img src="https://avatars2.githubusercontent.com/u/13812225?v=4" width="100px;" alt=""/><br /><sub><b>Greenkeeper</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=greenkeeperio" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.mad3linux.org"><img src="https://avatars3.githubusercontent.com/u/508624?v=4" width="100px;" alt=""/><br /><sub><b>Átila Camurça Alves</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=atilacamurca" title="Code">💻</a></td>
   </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
