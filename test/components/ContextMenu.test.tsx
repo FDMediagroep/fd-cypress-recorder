@@ -16,6 +16,10 @@ import {
     FdLocationContainsEvent,
 } from '../../src/utils/FdEvents';
 
+declare let global: any;
+
+global.window = Object.create(window);
+
 describe('Context Menu', () => {
     let target: HTMLElement;
     const clickMock = jest.fn();
@@ -93,7 +97,12 @@ describe('Context Menu', () => {
         const promptMock = jest.fn();
         promptMock.mockReturnValue('some random text');
         window.prompt = promptMock;
-        window.location.assign = jest.fn();
+        Object.defineProperty(window, 'location', {
+            value: {
+                assign: jest.fn(),
+            },
+        });
+
         [].slice
             .call(target.querySelectorAll('li'))
             .forEach((li: HTMLLIElement) => {
@@ -154,7 +163,11 @@ describe('Context Menu', () => {
         const promptMock = jest.fn();
         promptMock.mockReturnValue('http://willemliu.nl');
         window.prompt = promptMock;
-        window.location.assign = jest.fn();
+        Object.defineProperty(window, 'location', {
+            value: {
+                assign: jest.fn(),
+            },
+        });
         [].slice
             .call(target.querySelectorAll('li'))
             .forEach((li: HTMLLIElement) => {
@@ -174,6 +187,7 @@ describe('Context Menu', () => {
     });
 
     it('should handle Visit event correctly', () => {
+        window.location.href = 'http://localhost/';
         [].slice
             .call(target.querySelectorAll('li'))
             .forEach((li: HTMLLIElement) => {
@@ -193,6 +207,7 @@ describe('Context Menu', () => {
     });
 
     it('should handle Match Current URL event correctly', () => {
+        window.location.href = 'http://localhost/';
         [].slice
             .call(target.querySelectorAll('li'))
             .forEach((li: HTMLLIElement) => {
@@ -215,7 +230,11 @@ describe('Context Menu', () => {
         const promptMock = jest.fn();
         promptMock.mockReturnValue('willemliu');
         window.prompt = promptMock;
-        window.location.assign = jest.fn();
+        Object.defineProperty(window, 'location', {
+            value: {
+                assign: jest.fn(),
+            },
+        });
         [].slice
             .call(target.querySelectorAll('li'))
             .forEach((li: HTMLLIElement) => {
