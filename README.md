@@ -43,12 +43,22 @@ or
 1. Copy the code from the text area and paste it into a Cypress test file.
 1. Run the Cypress test.
 
+### Extension options
+
+1. Right-click the extension icon to open the browser context-menu.
+1. Click `Extension options` to open the options screen for the extension.
+
+#### Prioritize attribute as unique selector
+
+According to the [best practices](https://docs.cypress.io/guides/references/best-practices.html#Selecting-Elements) of Cypress.io one should have `data-*` attributes on elements. You can configure the Fd Cypress Recorder extension to prioritize attributes as unique DOM Selector to accomodate this best practice. This is turned off by default so you need to go to the `Extension options` to turn this option on.
+![Templates](/screenshots/extension-options.jpg?raw=true 'Extension options')
+
 ### Templates
 
 `Fd Cypress Recorder` has the option to save your current interactions as a template. The philosophy behind this is to provide the user the ability to start recording from a certain point.
 For instance when you want to record various scenarios for which the user needs to be logged in then you can record all actions necessary to log in and save these interactions as template. The next time you can decide to go to the page which comes after login and load the saved template and continue from there.
 Alternatively you can also decide to navigate to a whole different page and load the template. You can open the Context Menu and use the `Visit current url` option to record this navigation step.
-![Templates](/fd-cypress-recorder/screenshot2.jpg?raw=true 'Templates')
+![Templates](/screenshots/screenshot2.jpg?raw=true 'Templates')
 
 #### Load templates
 
@@ -66,7 +76,7 @@ Click on the `[x]` button next to the template name to delete the template compl
 ### Context Menu
 
 Functionality provided by the context menu, records the corresponding interactions.
-![Context Menu](/fd-cypress-recorder/screenshot.jpg?raw=true 'Context Menu')
+![Context Menu](/screenshots/screenshot.jpg?raw=true 'Context Menu')
 
 #### Click
 
