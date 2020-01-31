@@ -10,6 +10,14 @@ import HeadersStore = require('./stores/HeadersStore');
 import { StoreBase } from 'resub';
 
 declare let chrome: any;
+declare let browser: any;
+
+const browserAction =
+    typeof browser !== 'undefined'
+        ? browser.browserAction
+        : chrome.browserAction;
+const storage =
+    typeof browser !== 'undefined' ? browser.storage : chrome.storage;
 
 const storageName = 'fd-cypress-chrome-extension-events';
 const storageTestSuiteName = 'fd-cypress-chrome-extension-testSuite';
@@ -25,7 +33,7 @@ const storageHeaders = 'fd-cypress-chrome-extension-headers';
  * @param testSuiteName
  */
 function handleTestSuiteChange(testSuiteName: string | null) {
-    chrome.storage.local.set({
+    storage.local.set({
         'fd-cypress-chrome-extension-testSuite': testSuiteName,
     });
 }
@@ -35,7 +43,7 @@ function handleTestSuiteChange(testSuiteName: string | null) {
  * @param testDescription
  */
 function handleTestDescriptionChange(testDescription: string | null) {
-    chrome.storage.local.set({
+    storage.local.set({
         'fd-cypress-chrome-extension-testDescription': testDescription,
     });
 }
@@ -49,7 +57,7 @@ function handleRemoveEvent(index: number) {
         EventsStore.addFuture([...EventsStore.getEvents()]);
         const events = [...EventsStore.getEvents()];
         events.splice(index, 1);
-        chrome.storage.local.set({
+        storage.local.set({
             'fd-cypress-chrome-extension-events': events,
         });
     }
@@ -61,7 +69,7 @@ function handleRemoveEvent(index: number) {
 function undo() {
     EventsStore.addFuture([...EventsStore.getEvents()]);
     EventsStore.stepBack();
-    chrome.storage.local.set({
+    storage.local.set({
         'fd-cypress-chrome-extension-events': EventsStore.getEvents(),
     });
 }
@@ -70,7 +78,7 @@ function undo() {
  * Redo undone step provided no other action has been recorded since the undo.
  */
 function redo() {
-    chrome.storage.local.set({
+    storage.local.set({
         'fd-cypress-chrome-extension-events': EventsStore.popFuture(),
     });
 }
@@ -79,7 +87,7 @@ function redo() {
  * Purge the browser storage from the recorded events, test suite name and test description.
  */
 function clear() {
-    chrome.storage.local.remove([
+    storage.local.remove([
         storageName,
         storageTestSuiteName,
         storageTestDescriptionName,
@@ -110,14 +118,14 @@ function saveTemplate() {
                     ) {
                         template.description = testDescription;
                         template.events = events;
-                        chrome.storage.local.set({
+                        storage.local.set({
                             'fd-cypress-chrome-extension-templates': templates,
                         });
                     }
                 }
             });
         } else {
-            chrome.storage.local.set({
+            storage.local.set({
                 'fd-cypress-chrome-extension-templates': templates.concat({
                     name: testSuiteName,
                     description: testDescription,
@@ -130,7 +138,7 @@ function saveTemplate() {
         if (!testSuiteName) {
             alert('Please enter a test suite name to save your template.');
         } else {
-            chrome.storage.local.set({
+            storage.local.set({
                 'fd-cypress-chrome-extension-templates': templates.concat({
                     name: testSuiteName,
                     description: testDescription,
@@ -154,7 +162,7 @@ function handleLoadTemplate(templateName: string | null | undefined) {
         )
     ) {
         const templates = [...TemplatesStore.getTemplates()];
-        chrome.storage.local.set({
+        storage.local.set({
             'fd-cypress-chrome-extension-testSuite':
                 templates[
                     templates.findIndex(
@@ -197,7 +205,7 @@ function handleLoadAppendTemplate(templateName: string | null | undefined) {
                 )
             ].events,
         ];
-        chrome.storage.local.set({
+        storage.local.set({
             'fd-cypress-chrome-extension-events': events,
         });
     }
@@ -218,7 +226,7 @@ function removeTemplate(templateName: string | null | undefined) {
         );
         if (idx > -1) {
             templates.splice(idx, 1);
-            chrome.storage.local.set({
+            storage.local.set({
                 'fd-cypress-chrome-extension-templates': templates,
             });
         }
@@ -226,7 +234,7 @@ function removeTemplate(templateName: string | null | undefined) {
 }
 
 function handleBasicAuthChange(basicAuth: boolean) {
-    chrome.storage.local.set({
+    storage.local.set({
         'fd-cypress-chrome-extension-basic-auth': basicAuth,
     });
 }
@@ -236,7 +244,7 @@ function handleBasicAuthChange(basicAuth: boolean) {
  * @param recording
  */
 function handleRecording(recording: boolean) {
-    chrome.storage.local.set({
+    storage.local.set({
         'fd-cypress-chrome-extension-record': recording,
     });
 }
@@ -246,7 +254,7 @@ function handleRecording(recording: boolean) {
  * We modify corresponding Application data stores which in turn propagates to the views that rely on the data.
  * This ultimately results in the views always correctly reflecting the current application state.
  */
-chrome.storage.onChanged.addListener((changes: any, namespace: any) => {
+storage.onChanged.addListener((changes: any, namespace: any) => {
     for (const key in changes) {
         if (changes[key]) {
             const storageChange = changes[key];
@@ -277,7 +285,7 @@ chrome.storage.onChanged.addListener((changes: any, namespace: any) => {
                     break;
                 case storageRecord:
                     TestSuiteStore.setRecording(!!storageChange.newValue);
-                    chrome.browserAction.setIcon({
+                    browserAction.setIcon({
                         path: !storageChange.newValue
                             ? '48x48.png'
                             : 'record.png',
@@ -297,7 +305,7 @@ chrome.storage.onChanged.addListener((changes: any, namespace: any) => {
 /**
  * Entry point.
  */
-chrome.storage.local.get(
+storage.local.get(
     {
         'fd-cypress-chrome-extension-events': null,
         'fd-cypress-chrome-extension-record': false,
@@ -309,7 +317,7 @@ chrome.storage.local.get(
     },
     (items: any) => {
         const recording = items[storageRecord];
-        chrome.browserAction.setIcon({
+        browserAction.setIcon({
             path: recording ? 'record.png' : '48x48.png',
         });
 
@@ -317,7 +325,7 @@ chrome.storage.local.get(
          * Listen for changes to Headers and save them to storage.
          */
         HeadersStore.subscribe(() => {
-            chrome.storage.local.set({
+            storage.local.set({
                 'fd-cypress-chrome-extension-headers': HeadersStore.getHeaders(),
             });
         }, StoreBase.Key_All);

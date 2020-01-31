@@ -1,15 +1,21 @@
 {
     "name": "fd-cypress-recorder",
-    "version": "0.16.0",
+    "version": "0.18.0",
     "description": "Fd Cypress Recorder captures user interactions and generates Cypress test code.",
     "main": "fd-cypress-recorder/content.js",
     "scripts": {
         "lint": "eslint src/**/*",
         "prettier": "prettier -c src/**/*.{tsx,ts}",
+        "release:chrome": "cpx -p manifest/chrome/manifest.json fd-cypress-recorder",
+        "release:firefox": "cpx -p manifest/firefox/manifest.json fd-cypress-recorder",
         "test": "jest",
         "watch": "cross-env NODE_ENV=production webpack --mode production --display-modules -w",
         "watch-dev": "cross-env NODE_ENV=development webpack --mode development --display-modules -w",
         "webpack": "cross-env NODE_ENV=production webpack --mode production --display-modules -p"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:FDMediagroep/fd-cypress-recorder.git"
     },
     "author": "Willem Liu",
     "license": "ISC",
@@ -20,7 +26,6 @@
         "@types/react": "^16.9.5",
         "@types/react-beautiful-dnd": "^11.0.3",
         "@types/react-dom": "^16.9.1",
-        "@types/react-table": "^6.8.5",
         "@types/react-test-renderer": "^16.9.0",
         "@types/styled-components": "^4.1.19",
         "@types/webpack-env": "^1.14.0",
@@ -28,6 +33,7 @@
         "@typescript-eslint/parser": "^2.3.2",
         "awesome-typescript-loader": "^5.2.1",
         "coveralls": "^3.0.6",
+        "cpx": "^1.5.0",
         "cross-env": "^7.0.0",
         "css-loader": "^3.2.1",
         "eslint": "^6.5.1",
@@ -51,7 +57,6 @@
         "react": "^16.10.2",
         "react-beautiful-dnd": "^12.0.0",
         "react-dom": "^16.10.2",
-        "react-table": "^6.11.5",
         "resub": "^1.2.2",
         "styled-components": "^4.4.0",
         "unique-selector": "^0.4.1"

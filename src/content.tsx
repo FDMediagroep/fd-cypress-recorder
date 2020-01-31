@@ -13,6 +13,12 @@ import {
 import { StoreBase } from 'resub';
 
 declare let chrome: any;
+declare let browser: any;
+
+const runtime =
+    typeof browser !== 'undefined' ? browser.runtime : chrome.runtime;
+const storage =
+    typeof browser !== 'undefined' ? browser.storage : chrome.storage;
 
 const storageName = 'fd-cypress-chrome-extension-events';
 const storageRecord = 'fd-cypress-chrome-extension-record';
@@ -75,7 +81,7 @@ function removeContextMenu() {
 function saveEvents() {
     const events = EventsStore.getEvents();
     // Save it using the Chrome extension storage API.
-    chrome.storage.local.set({
+    storage.local.set({
         'fd-cypress-chrome-extension-events': events,
     });
     removeContextMenu();
@@ -85,7 +91,7 @@ function saveEvents() {
  * Load events from browser storage.
  */
 function loadEvents() {
-    chrome.storage.local.get(
+    storage.local.get(
         { 'fd-cypress-chrome-extension-events': null },
         (items: any) => {
             EventsStore.setEvents(items[storageName], 'loadEvents');
@@ -194,7 +200,7 @@ function beforeUnload() {
  */
 function stop() {
     recording = false;
-    chrome.storage.local.set({
+    storage.local.set({
         'fd-cypress-chrome-extension-record': recording,
     });
 
@@ -222,7 +228,7 @@ function stop() {
 function record() {
     recording = true;
 
-    chrome.storage.local.set({
+    storage.local.set({
         'fd-cypress-chrome-extension-record': recording,
     });
 
@@ -273,8 +279,8 @@ function record() {
  * We modify corresponding Application data stores which in turn propagates to the views that rely on the data.
  * This ultimately results in the views always correctly reflecting the current application state.
  */
-chrome.storage.onChanged.addListener((changes: any) => {
-    chrome.runtime.sendMessage({ get: 'tabId' }, (response: any) => {
+storage.onChanged.addListener((changes: any) => {
+    runtime.sendMessage({ get: 'tabId' }, (response: any) => {
         if (response.activeTabId !== response.ownTabId) {
             return;
         }
@@ -304,7 +310,7 @@ chrome.storage.onChanged.addListener((changes: any) => {
 /**
  * Entry point.
  */
-chrome.storage.local.get(
+storage.local.get(
     {
         enable: true,
         attributeSelectorFirst: false,
@@ -328,8 +334,8 @@ chrome.storage.local.get(
 
             window.addEventListener('focus', () => {
                 try {
-                    if (chrome && chrome.runtime) {
-                        chrome.runtime.sendMessage({ head: 'activeTabId' });
+                    if (runtime) {
+                        runtime.sendMessage({ head: 'activeTabId' });
                     }
                 } catch (e) {
                     console.log(e);

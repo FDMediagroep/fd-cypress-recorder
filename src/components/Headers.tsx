@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentBase } from 'resub';
-import ReactTable, { Column, CellInfo } from 'react-table';
 import styled, { createGlobalStyle } from 'styled-components';
 import HeadersStore = require('../stores/HeadersStore');
 import { Header } from '../utils/FdEvents';
@@ -13,39 +12,9 @@ interface State {
  * Layout of the HTTP Headers tab in the Chrome Plugin UI
  */
 export default class Headers extends ComponentBase<any, State> {
-    state: any = {};
-
-    /* eslint-disable */
-    private columns: Array<Column<any>> = [
-        {
-            Header: 'Property',
-            accessor: 'property',
-            Cell: (props: CellInfo) => (
-                <StyledTableCellInput
-                    type="text"
-                    className="property"
-                    defaultValue={props.value}
-                    data-row={props.index}
-                    data-column="property"
-                    onChange={this.handleHeaderChange}
-                />
-            ),
-        },
-        {
-            Header: 'Value',
-            accessor: 'value',
-            Cell: (props: CellInfo) => (
-                <StyledTableCellInput
-                    type="text"
-                    className="value"
-                    defaultValue={props.value}
-                    data-row={props.index}
-                    data-column="value"
-                    onChange={this.handleHeaderChange}
-                />
-            ),
-        },
-    ];
+    state: State = {
+        tableData: [],
+    };
 
     handleHeaderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const changedCol = e.currentTarget.getAttribute('data-column');
@@ -53,23 +22,24 @@ export default class Headers extends ComponentBase<any, State> {
             e.currentTarget.getAttribute('data-row') || '-1',
             10
         );
-        let tableData = [...this.state.tableData];
+        let tableData: Header[] = [...this.state.tableData];
         let addNewRow = true;
-        tableData = tableData.map((data: Header, rowIndex) => {
-            if (rowIndex === changedRow) {
-                switch (changedCol) {
-                    case 'property':
-                        return { ...data, property: e.currentTarget.value };
-                    case 'value':
-                        return { ...data, value: e.currentTarget.value };
+        tableData =
+            tableData.map<any>((data: Header, rowIndex) => {
+                if (rowIndex === changedRow) {
+                    switch (changedCol) {
+                        case 'property':
+                            return { ...data, property: e.currentTarget.value };
+                        case 'value':
+                            return { ...data, value: e.currentTarget.value };
+                    }
+                } else {
+                    return { ...data };
                 }
-            } else {
-                return { ...data };
-            }
-            if (!data.property && !data.value) {
-                addNewRow = false;
-            }
-        });
+                if (!data.property && !data.value) {
+                    addNewRow = false;
+                }
+            }) || [];
         if (addNewRow) {
             tableData.push({ property: '', value: '' });
         }
@@ -94,14 +64,38 @@ export default class Headers extends ComponentBase<any, State> {
         return (
             <>
                 <GlobalStyle />
-                <ReactTable
-                    data={this.state.tableData}
-                    columns={this.columns}
-                    showPagination={false}
-                    showPageSizeOptions={false}
-                    style={{ maxHeight: '263px' }}
-                    minRows={1}
-                />
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Property</td>
+                            <td>Value</td>
+                        </tr>
+                    </thead>
+                    {this.state.tableData.map((tableData, rowIndex) => (
+                        <tr key={rowIndex}>
+                            <td>
+                                <StyledTableCellInput
+                                    type="text"
+                                    className="property"
+                                    defaultValue={tableData.property}
+                                    data-row={rowIndex}
+                                    data-column="property"
+                                    onChange={this.handleHeaderChange}
+                                />
+                            </td>
+                            <td>
+                                <StyledTableCellInput
+                                    type="text"
+                                    className="value"
+                                    defaultValue={tableData.value}
+                                    data-row={rowIndex}
+                                    data-column="value"
+                                    onChange={this.handleHeaderChange}
+                                />
+                            </td>
+                        </tr>
+                    ))}
+                </table>
             </>
         );
     }

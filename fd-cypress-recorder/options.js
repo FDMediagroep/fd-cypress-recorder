@@ -1,29 +1,32 @@
-// Saves options to chrome.storage.
+const storage =
+    typeof browser !== 'undefined' ? browser.storage : chrome.storage;
+
+// Saves options to storage.
 function saveOptions() {
-    var enable = document.getElementById('enable').checked;
-    chrome.storage.local.set(
+    const enable = document.getElementById('enable').checked;
+    storage.local.set(
         {
             enable,
         },
         function() {
             // Update status to let user know options were saved.
-            var status = document.getElementById('status');
+            const status = document.getElementById('status');
             status.textContent = 'Options saved.';
             setTimeout(function() {
                 status.textContent = '';
             }, 750);
         }
     );
-    var attributeSelectorFirst = document.getElementById(
+    const attributeSelectorFirst = document.getElementById(
         'attributeSelectorFirst'
     ).checked;
-    chrome.storage.local.set(
+    storage.local.set(
         {
             attributeSelectorFirst,
         },
         function() {
             // Update status to let user know options were saved.
-            var status = document.getElementById('status');
+            const status = document.getElementById('status');
             status.textContent = 'Options saved.';
             setTimeout(function() {
                 status.textContent = '';
@@ -33,9 +36,9 @@ function saveOptions() {
 }
 
 // Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
+// stored in storage.
 function restoreOptions() {
-    chrome.storage.local.get(
+    storage.local.get(
         {
             enable: true,
             attributeSelectorFirst: false,
