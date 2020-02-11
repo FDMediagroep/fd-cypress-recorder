@@ -14,8 +14,13 @@ import styled from 'styled-components';
 declare let chrome: any;
 declare let browser: any;
 
-const storage =
-    typeof browser !== 'undefined' ? browser.storage : chrome.storage;
+let storage: any;
+
+if (typeof browser !== 'undefined') {
+    storage = browser?.storage || undefined;
+} else if (typeof chrome !== 'undefined') {
+    storage = chrome?.storage || undefined;
+}
 
 export interface Props {
     events: AllFdEvents[];
