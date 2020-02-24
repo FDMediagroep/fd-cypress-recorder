@@ -56,7 +56,7 @@
         "@fdmg/fd-inputs": "^1.0.24",
         "@fdmg/fd-typography": "^1.0.31",
         "react": "^16.10.2",
-        "react-beautiful-dnd": "^12.2.0",
+        "react-beautiful-dnd": "^13.0.0",
         "react-dom": "^16.12.0",
         "resub": "^1.2.2",
         "styled-components": "^4.4.1",
