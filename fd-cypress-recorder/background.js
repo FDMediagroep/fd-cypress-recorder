@@ -1,24 +1,38 @@
+const browserAction =
+    typeof browser !== 'undefined'
+        ? browser.browserAction
+        : chrome.browserAction;
+const browserDebugger =
+    typeof browser !== 'undefined' ? browser.debugger : chrome.debugger;
+const runtime =
+    typeof browser !== 'undefined' ? browser.runtime : chrome.runtime;
+const tabs = typeof browser !== 'undefined' ? browser.tabs : chrome.tabs;
+const storage =
+    typeof browser !== 'undefined' ? browser.storage : chrome.storage;
+const windows =
+    typeof browser !== 'undefined' ? browser.windows : chrome.windows;
+
 const storageName = 'fd-cypress-chrome-extension-events';
 const storageRecord = 'fd-cypress-chrome-extension-record';
 
-let oldEvent = false;
+const oldEvent = false;
 let tabId;
 
-chrome.tabs.getCurrent((tab) => {
+tabs.getCurrent((tab) => {
     if (tab) {
         tabId = tab.id;
     }
     console.log('current tab', tabId);
 });
 
-chrome.storage.local.get(
+storage.local.get(
     {
         'fd-cypress-chrome-extension-record': false,
     },
     function(items) {
         if (items['fd-cypress-chrome-extension-record']) {
             setTimeout(() => {
-                chrome.browserAction.setIcon({ path: 'record.png' });
+                browserAction.setIcon({ path: 'record.png' });
             }, 200);
         }
     }
@@ -27,7 +41,7 @@ chrome.storage.local.get(
 /**
  * Add listener to browser storage change events.
  */
-chrome.storage.onChanged.addListener((changes, namespace) => {
+storage.onChanged.addListener((changes, namespace) => {
     for (const key in changes) {
         if (changes[key]) {
             const storageChange = changes[key];
@@ -39,7 +53,7 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
             //           storageChange.newValue);
             switch (key) {
                 case storageRecord:
-                    chrome.browserAction.setIcon({
+                    browserAction.setIcon({
                         path: !!storageChange.newValue
                             ? 'record.png'
                             : '48x48.png',
@@ -55,17 +69,17 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
                                 storageChange.newValue.length - 1
                             ];
                         if (!oldEvent && lastEvent.type === 'type') {
-                            chrome.tabs.query(
+                            tabs.query(
                                 { active: true, currentWindow: true },
                                 (tabs) => {
                                     tabId = tabs[0].id;
-                                    chrome.debugger.attach({ tabId }, '1.0');
-                                    chrome.debugger.sendCommand(
+                                    browserDebugger.attach({ tabId }, '1.0');
+                                    browserDebugger.sendCommand(
                                         { tabId },
                                         'Input.insertText',
                                         { text: lastEvent.value },
                                         () => {
-                                            chrome.debugger.detach({ tabId });
+                                            browserDebugger.detach({ tabId });
                                         }
                                     );
                                 }
@@ -78,35 +92,35 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
     }
 });
 
-chrome.debugger.onEvent.addListener((source) => {
+browserDebugger.onEvent.addListener((source) => {
     console.log(source);
 });
-chrome.debugger.onDetach.addListener((source, reason) => {
+browserDebugger.onDetach.addListener((source, reason) => {
     console.log(source, reason);
 });
 
-chrome.tabs.onActivated.addListener((activeInfo) => {
+tabs.onActivated.addListener((activeInfo) => {
     tabId = activeInfo.tabId;
 });
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.get === 'tabId') {
         sendResponse({ activeTabId: tabId, ownTabId: sender.tab.id });
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        tabs.query({ active: true, currentWindow: true }, (tabs) => {
             tabId = tabs[0].id;
         });
     }
 
     if (request.head === 'activeTabId') {
-        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        tabs.query({ active: true, currentWindow: true }, (tabs) => {
             // console.log('old tab', tabId, 'new tab', tabs[0].id);
             tabId = tabs[0].id;
         });
     }
 });
 
-chrome.windows.onFocusChanged.addListener((windowId) => {
-    chrome.windows.getCurrent({ populate: true }, (window) => {
+windows.onFocusChanged.addListener((windowId) => {
+    windows.getCurrent({ populate: true }, (window) => {
         if (window.focused && window.tabs) {
             window.tabs.forEach((tab) => {
                 if (tab.active) {

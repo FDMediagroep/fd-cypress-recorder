@@ -12,6 +12,15 @@ import EventsStore = require('../stores/EventsStore');
 import styled from 'styled-components';
 
 declare let chrome: any;
+declare let browser: any;
+
+let storage: any;
+
+if (typeof browser !== 'undefined') {
+    storage = browser?.storage || undefined;
+} else if (typeof chrome !== 'undefined') {
+    storage = chrome?.storage || undefined;
+}
 
 export interface Props {
     events: AllFdEvents[];
@@ -42,7 +51,7 @@ export default function EventsList(props: Props) {
         events = reorder(events, result.source.index, result.destination.index);
         EventsStore.addFuture([...EventsStore.getEvents()]);
         EventsStore.setEvents(events);
-        chrome.storage.local.set({
+        storage.local.set({
             'fd-cypress-chrome-extension-events': events,
         });
     }

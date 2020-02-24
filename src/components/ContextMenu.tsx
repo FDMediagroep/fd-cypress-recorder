@@ -323,6 +323,7 @@ const StyledContextMenu: any = styled.div`
             }
             &.clickable {
                 cursor: pointer;
+                color: #222;
                 &:hover {
                     text-decoration: underline;
                 }

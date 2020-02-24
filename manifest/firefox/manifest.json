@@ -3,9 +3,11 @@
     "name": "Fd Cypress Recorder",
     "version": "0.18",
     "description": "Fd Cypress Recorder captures user interactions and generates Cypress test code.",
-    "author": {
-        "name": "Willem Liu",
-        "url": "https://www.willemliu.nl"
+    "author": "Willem Liu",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{75fcd322-e663-48cd-8145-3dcc6c74a4de}"
+        }
     },
     "icons": {
         "48": "48x48.png",
@@ -37,7 +39,7 @@
     "permissions": ["*://*/", "storage", "debugger", "tabs"],
     "options_ui": {
         "page": "options.html",
-        "chrome_style": true
+        "browser_style": true
     },
     "content_scripts": [
         {
