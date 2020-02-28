@@ -63,6 +63,7 @@ export default class CypressGenerator extends PureComponent<Props, State> {
         this.props.onDescriptionChange(e);
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     handleChange = () => {};
 
     showCode = () => {
