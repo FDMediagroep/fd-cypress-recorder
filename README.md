@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/FDMediagroep/fd-cypress-recorder.svg?branch=master)](https://travis-ci.org/FDMediagroep/fd-cypress-recorder)
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 [![Coverage Status](https://coveralls.io/repos/github/FDMediagroep/fd-cypress-recorder/badge.svg?branch=master)](https://coveralls.io/github/FDMediagroep/fd-cypress-recorder?branch=master)
-[![Greenkeeper badge](https://badges.greenkeeper.io/FDMediagroep/fd-cypress-recorder.svg)](https://greenkeeper.io/)
+
 
 # Fd Cypress Recorder
 
