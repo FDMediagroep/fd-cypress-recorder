@@ -54,9 +54,9 @@
         "@fdmg/fd-buttons": "^1.0.27",
         "@fdmg/fd-inputs": "^1.0.24",
         "@fdmg/fd-typography": "^1.0.31",
-        "react": "^16.13.0",
+        "react": "^16.13.1",
         "react-beautiful-dnd": "^12.2.0",
-        "react-dom": "^16.13.0",
+        "react-dom": "^16.13.1",
         "resub": "^1.2.2",
         "styled-components": "^4.4.1",
         "unique-selector": "^0.4.1"
