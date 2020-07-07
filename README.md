@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.org/FDMediagroep/fd-cypress-recorder.svg?branch=master)](https://travis-ci.org/FDMediagroep/fd-cypress-recorder)
+![Build](https://github.com/FDMediagroep/fd-cypress-recorder/workflows/Build/badge.svg)
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 [![Coverage Status](https://coveralls.io/repos/github/FDMediagroep/fd-cypress-recorder/badge.svg?branch=master)](https://coveralls.io/github/FDMediagroep/fd-cypress-recorder?branch=master)
-
 
 # Fd Cypress Recorder
 
@@ -162,6 +161,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
