@@ -15,7 +15,7 @@ exports[`Headers should render correctly 1`] = `
   <tr>
     <td>
       <input
-        className="sc-bdVaJa gZdsYr property"
+        className="sc-AxjAm jxQczW property"
         data-column="property"
         data-row={0}
         defaultValue=""
@@ -25,7 +25,7 @@ exports[`Headers should render correctly 1`] = `
     </td>
     <td>
       <input
-        className="sc-bdVaJa gZdsYr value"
+        className="sc-AxjAm jxQczW value"
         data-column="value"
         data-row={0}
         defaultValue=""

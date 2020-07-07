@@ -2,20 +2,20 @@
 
 exports[`Context Menu Overlay should render Context Menu Overlay correctly 1`] = `
 <div
-  className="sc-ifAKCX EmPKX"
+  className="sc-AxhUy kroXt"
   onClick={[MockFunction]}
 >
   <div
-    className="sc-EHOje hFkCuy"
+    className="sc-AxgMl kDyObb"
     onClick={[MockFunction]}
   />
   <div
-    className="sc-bxivhb dzPEtI"
+    className="sc-AxhCb eQBpeO"
     height={0}
     width={0}
   />
   <div
-    className="sc-htpNat eiGWKe"
+    className="sc-AxiKw gaMLKL"
   >
     <ul>
       <li

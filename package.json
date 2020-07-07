@@ -9,6 +9,7 @@
         "release:chrome": "cpx -p manifest/chrome/manifest.json fd-cypress-recorder",
         "release:firefox": "cpx -p manifest/firefox/manifest.json fd-cypress-recorder",
         "test": "jest",
+        "test:updateSnapshot": "jest -u",
         "watch": "cross-env NODE_ENV=production webpack --mode production --display-modules -w",
         "watch-dev": "cross-env NODE_ENV=development webpack --mode development --display-modules -w",
         "webpack": "cross-env NODE_ENV=production webpack --mode production --display-modules -p"

@@ -2,7 +2,7 @@
 
 exports[`Cypress Generator should render empty test correctly 1`] = `
 <div
-  className="sc-ifAKCX iILkrY"
+  className="sc-AxhUy iJlaZL"
 >
   <div
     className="fd-input testSuite"
@@ -104,7 +104,7 @@ describe('Test Suite ...', () => {
 "
   />
   <div
-    className="sc-EHOje gXMykk"
+    className="sc-AxgMl kmwFLF"
   >
     <button
       className="fd-button  selected"
@@ -144,7 +144,7 @@ describe('Test Suite ...', () => {
 
 exports[`Cypress Generator should render events correctly 1`] = `
 <div
-  className="sc-ifAKCX iILkrY"
+  className="sc-AxhUy iJlaZL"
 >
   <div
     className="fd-input testSuite"
@@ -252,7 +252,7 @@ describe('Test Suite ...', () => {
 "
   />
   <div
-    className="sc-EHOje gXMykk"
+    className="sc-AxgMl kmwFLF"
   >
     <button
       className="fd-button  selected"
@@ -292,7 +292,7 @@ describe('Test Suite ...', () => {
 
 exports[`Cypress Generator should render headers correctly 1`] = `
 <div
-  className="sc-ifAKCX iILkrY"
+  className="sc-AxhUy iJlaZL"
 >
   <div
     className="fd-input testSuite"
@@ -400,7 +400,7 @@ describe('Test Suite ...', () => {
 "
   />
   <div
-    className="sc-EHOje gXMykk"
+    className="sc-AxgMl kmwFLF"
   >
     <button
       className="fd-button  selected"
@@ -440,7 +440,7 @@ describe('Test Suite ...', () => {
 
 exports[`Cypress Generator should render test with suite name and description correctly 1`] = `
 <div
-  className="sc-ifAKCX iILkrY"
+  className="sc-AxhUy iJlaZL"
 >
   <div
     className="fd-input testSuite"
@@ -542,7 +542,7 @@ describe('Test suite name', () => {
 "
   />
   <div
-    className="sc-EHOje gXMykk"
+    className="sc-AxgMl kmwFLF"
   >
     <button
       className="fd-button  selected"
