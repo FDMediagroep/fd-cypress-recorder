@@ -4,6 +4,9 @@
     "description": "Fd Cypress Recorder captures user interactions and generates Cypress test code.",
     "main": "fd-cypress-recorder/content.js",
     "scripts": {
+        "build": "npm run build:chrome",
+        "build:chrome": "npm run release:chrome && npm run webpack",
+        "build:firefox": "npm run release:firefox && npm run webpack",
         "lint": "eslint src/**/*",
         "prettier": "prettier -c src/**/*.{tsx,ts}",
         "release:chrome": "cpx -p manifest/chrome/manifest.json fd-cypress-recorder",
