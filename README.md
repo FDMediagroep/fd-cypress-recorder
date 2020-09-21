@@ -4,6 +4,9 @@
 
 # Fd Cypress Recorder
 
+**Before you get started**
+Note that since the inception of this project a lot of other projects with similar functionality has been created. One very promising project is [Microsoft Playwright](https://github.com/microsoft/playwright) which now comes with a [CLI-tool](https://github.com/microsoft/playwright-cli) which allows you to spawn a browser process within which you can record your interactions and have it output Playwright scripts. I can highly recommend it. Playwright supports cross-browser testing on Mac, Windows and Linux. It is actively being developed and backed by one of the largest software companies out there with an amazing track-record in OSS. **End Message**
+
 `Fd Cypress Recorder` is a minimal plugin which records user interactions with a website. The interactions are then converted to Cypress test code which you can copy and paste into a Cypress test.
 The plugin only automatically record click on `anchors` and `buttons`. If you want to do some custom actions, e.g. click on `span`, you can open up the context menu to record custom actions.
 
