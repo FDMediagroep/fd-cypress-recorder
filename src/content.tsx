@@ -41,12 +41,21 @@ if (style.styleSheet) {
     style.appendChild(document.createTextNode(css));
 }
 
+function uniqueWithRetry(el: HTMLElement){
+    const matches = Array.from(el.attributes).filter(e => e.name.indexOf('data-') === 0)
+    if (matches.length){
+        console.log(`[${matches[0].name}=${matches[0].value}]`)
+        return `[${matches[0].name}=${matches[0].value}`
+    }
+    return altUnique(el)
+}
 /**
  * A small wrapper that first tries to call unique an additional ID selector.
  * Should that fail, because for instance IDs are ill-formated in the html it
  * tries again without the ID selector.
  */
-function uniqueWithRetry(target: HTMLElement) {
+function altUnique(target: HTMLElement) {
+
     try {
         return unique(
             target,
