@@ -94,8 +94,9 @@ export default function Headers(props: Props) {
                     <tr key={rowIndex}>
                         <td>
                             <TextInput
-                                id={`${data.property}-${data.value}`}
+                                id={`${data.property}-${data.value}-property`}
                                 type="text"
+                                name="property"
                                 className={styles.input}
                                 defaultValue={data.property}
                                 data-row={rowIndex}
@@ -106,8 +107,9 @@ export default function Headers(props: Props) {
                         </td>
                         <td>
                             <TextInput
-                                id={`${data.property}-${data.value}`}
+                                id={`${data.property}-${data.value}-value`}
                                 type="text"
+                                name="value"
                                 className={styles.input}
                                 defaultValue={data.value}
                                 data-row={rowIndex}
