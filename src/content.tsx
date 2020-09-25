@@ -321,6 +321,7 @@ storage.local.get(
     (items: any) => {
         recording = !!items[storageRecord];
         console.log('FD Cypress enabled', items.enable);
+
         if (items.enable) {
             useAttributeSelectorFirst = items.attributeSelectorFirst;
             window.addEventListener('keyup', (e: KeyboardEvent) => {

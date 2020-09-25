@@ -32,7 +32,7 @@ export interface Props {
  * This is the Chrome plugin popup window.
  */
 export default function Popup(props: Props) {
-    const [events, setEvents] = useState<AllFdEvents[]>([]);
+    const [events, setEvents] = useState(EventsStore.getEvents());
     const [recording, setRecording] = useState(TestSuiteStore.getRecording());
     const [futures, setFutures] = useState(EventsStore.getFutures());
     const [headers, setHeaders] = useState(HeadersStore.getHeaders());

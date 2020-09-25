@@ -43213,7 +43213,7 @@ var ReSubstitute_1 = __webpack_require__(/*! ../utils/ReSubstitute */ "./src/uti
  * This is the Chrome plugin popup window.
  */
 function Popup(props) {
-    var _a = __read(react_1.useState([]), 2), events = _a[0], setEvents = _a[1];
+    var _a = __read(react_1.useState(EventsStore.getEvents()), 2), events = _a[0], setEvents = _a[1];
     var _b = __read(react_1.useState(TestSuiteStore.getRecording()), 2), recording = _b[0], setRecording = _b[1];
     var _c = __read(react_1.useState(EventsStore.getFutures()), 2), futures = _c[0], setFutures = _c[1];
     var _d = __read(react_1.useState(HeadersStore.getHeaders()), 2), headers = _d[0], setHeaders = _d[1];
