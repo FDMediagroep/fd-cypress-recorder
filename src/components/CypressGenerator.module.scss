@@ -1,0 +1,74 @@
+.cypressGenerator {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-width: 450px;
+
+    .testSuite,
+    .testDescription {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    ul,
+    .textArea {
+        flex: 1 1 auto;
+        word-break: break-all;
+
+        ::-webkit-scrollbar {
+            width: 0.5rem;
+            height: 0.5rem;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-border-radius: 0.25rem;
+            border-radius: 0.25rem;
+            background: var(--dividers);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 0.25rem;
+            border-radius: 0.25rem;
+            background: var(--meta-copy);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--functional-copy);
+        }
+
+        ::-webkit-scrollbar-thumb:window-inactive {
+            background: rgba(0, 0, 0, 0.1);
+        }
+    }
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        overflow: auto;
+        max-height: 290px;
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--dividers);
+            padding: 0.5rem 1rem;
+        }
+    }
+}
+
+.extraOptions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    margin-top: -1px;
+
+    .basic-auth {
+        flex: 0 0 auto;
+    }
+}
+
+.headerContainer {
+    flex: 1 1 auto;
+    border: 1px solid var(--dividers);
+}

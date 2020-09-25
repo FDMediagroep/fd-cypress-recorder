@@ -1,6 +1,6 @@
 import { AllFdEvents } from '../utils/FdEvents';
 import React from 'react';
-import { ButtonEditorial } from '@fdmg/fd-buttons';
+import { ButtonGhost } from '@fdmg/design-system/components/button/ButtonGhost';
 import FdEvent from './FdEvent';
 import {
     DragDropContext,
@@ -9,7 +9,7 @@ import {
     Draggable,
 } from 'react-beautiful-dnd';
 import EventsStore = require('../stores/EventsStore');
-import styled from 'styled-components';
+import styles from './EventsList.module.scss';
 
 declare let chrome: any;
 declare let browser: any;
@@ -62,7 +62,8 @@ export default function EventsList(props: Props) {
                 <DragDropContext onDragEnd={handleDragEnd}>
                     <Droppable droppableId="events">
                         {(provided) => (
-                            <StyledUl
+                            <ul
+                                className={styles.ul}
                                 {...provided.droppableProps}
                                 ref={provided.innerRef}
                                 {...provided.droppableProps}
@@ -80,8 +81,9 @@ export default function EventsList(props: Props) {
                                                     {...dragProvided.draggableProps}
                                                     {...dragProvided.dragHandleProps}
                                                 >
+                                                    {`${(event as any).id}`}
                                                     <FdEvent event={event} />
-                                                    <ButtonEditorial
+                                                    <ButtonGhost
                                                         className="toggle-view"
                                                         data-index={idx}
                                                         onClick={
@@ -90,36 +92,23 @@ export default function EventsList(props: Props) {
                                                         title="Delete event"
                                                     >
                                                         x
-                                                    </ButtonEditorial>
+                                                    </ButtonGhost>
                                                 </li>
                                             )}
                                         </Draggable>
                                     )
                                 )}
                                 {provided.placeholder}
-                            </StyledUl>
+                            </ul>
                         )}
                     </Droppable>
                 </DragDropContext>
             ) : (
-                <StyledNoEvents>
+                <div className={styles.noEvents}>
                     Start record and interact with a website to record some
                     events
-                </StyledNoEvents>
+                </div>
             )}
         </>
     );
 }
-
-const StyledUl = styled.ul`
-    flex: 1 1 auto;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-`;
-
-const StyledNoEvents = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1 1 auto;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-`;

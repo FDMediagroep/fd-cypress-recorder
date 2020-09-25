@@ -1,7 +1,7 @@
 import React from 'react';
 import unique from 'unique-selector';
-import styled from 'styled-components';
 import { AllFdEvents, FdEventType } from '../utils/FdEvents';
+import styles from './ContextULCheckCount.module.scss';
 
 export interface Props {
     target: HTMLElement;
@@ -70,29 +70,22 @@ export default function ContextULCheckCount(props: Props) {
             <li className="label back" onMouseDown={handleBack}>
                 &lt; Count
             </li>
-            <React.Fragment>
-                <StyledLI className="label separator">
-                    <i>{selector}</i>
-                    <span>({count})</span>
-                </StyledLI>
-                <li className="clickable" onMouseDown={handleCountEqualsThis}>
-                    Equals {count}
-                </li>
-                <li className="clickable" onMouseDown={handleCountEquals}>
-                    Equals...
-                </li>
-                <li className="clickable" onMouseDown={handleCountGreater}>
-                    Greater than...
-                </li>
-                <li className="clickable" onMouseDown={handleCountLess}>
-                    Less than...
-                </li>
-            </React.Fragment>
+            <li className={`${styles.li} label separator`}>
+                <i>{selector}</i>
+                <span>({count})</span>
+            </li>
+            <li className="clickable" onMouseDown={handleCountEqualsThis}>
+                Equals {count}
+            </li>
+            <li className="clickable" onMouseDown={handleCountEquals}>
+                Equals...
+            </li>
+            <li className="clickable" onMouseDown={handleCountGreater}>
+                Greater than...
+            </li>
+            <li className="clickable" onMouseDown={handleCountLess}>
+                Less than...
+            </li>
         </ul>
     );
 }
-
-const StyledLI = styled.li`
-    display: flex;
-    flex-direction: column;
-`;

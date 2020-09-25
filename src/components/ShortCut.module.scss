@@ -1,0 +1,9 @@
+.shortcut-button {
+    &#{&} {
+        border-radius: 3px;
+        padding: 0.2em 0.5em;
+        font-size: 0.5rem;
+        display: inline-flex;
+        min-height: auto;
+    }
+}

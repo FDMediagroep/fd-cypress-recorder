@@ -1,8 +1,7 @@
-import { StoreBase, AutoSubscribeStore, autoSubscribe } from 'resub';
+import { ReSubstitute } from '../utils/ReSubstitute';
 import { Template } from '../utils/FdEvents';
 
-@AutoSubscribeStore
-class TemplatesStore extends StoreBase {
+class TemplatesStore extends ReSubstitute {
     private templates: Template[] = [];
 
     addTemplate(template: Template) {
@@ -33,7 +32,6 @@ class TemplatesStore extends StoreBase {
         this.trigger();
     }
 
-    @autoSubscribe
     getTemplates() {
         return this.templates;
     }

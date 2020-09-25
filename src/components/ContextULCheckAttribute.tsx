@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { AllFdEvents, FdEventType } from '../utils/FdEvents';
+import styles from './ContextULCheckAttribute.module.scss';
 
 export interface Props {
     target: HTMLElement;
@@ -80,9 +80,9 @@ export default function ContextULCheckAttribute(props: Props) {
                                     data-value={attribute.value}
                                     onMouseDown={handleAttributeValueEquals}
                                 >
-                                    <StyledDiv>
+                                    <div className={styles.equals}>
                                         Equals<small>{attribute.value}</small>
-                                    </StyledDiv>
+                                    </div>
                                 </li>
                                 <li
                                     className="clickable"
@@ -100,11 +100,3 @@ export default function ContextULCheckAttribute(props: Props) {
         </ul>
     );
 }
-
-const StyledDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-    small {
-        padding: 0;
-    }
-`;

@@ -1,31 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CypressGenerator from './CypressGenerator';
 import EventsStore = require('../stores/EventsStore');
-import { createGlobalStyle } from 'styled-components';
-import '@fdmg/design-system/components/button/Button.css';
 import { Button } from '@fdmg/design-system/components/button/Button';
-import '@fdmg/design-system/components/button/ButtonCta.css';
 import { ButtonCta } from '@fdmg/design-system/components/button/ButtonCta';
-import { AllFdEvents, Template, Header } from '../utils/FdEvents';
-import { ComponentBase } from 'resub';
+import { ButtonGhost } from '@fdmg/design-system/components/button/ButtonGhost';
+import { Template } from '../utils/FdEvents';
 import TemplatesStore = require('../stores/TemplatesStore');
 import TestSuiteStore = require('../stores/TestSuiteStore');
 import ShortCut from './ShortCut';
 import HeadersStore = require('../stores/HeadersStore');
+import styles from './Popup.module.scss';
 
-interface PopupState {
-    events: AllFdEvents[];
-    futures: [AllFdEvents[]];
-    headers: Header[];
-    undoneEvents: AllFdEvents[];
-    templates: Template[];
-    testSuite?: string;
-    testDescription?: string;
-    recording: boolean;
-    basicAuth: boolean;
-}
-
-export interface Props extends React.Props<any> {
+export interface Props {
     onTestSuiteChange: (testSuiteName: string | null) => void;
     onTestDescriptionChange: (testDescription: string | null) => void;
     onRecordingChange: (recording: boolean) => void;
@@ -38,362 +24,235 @@ export interface Props extends React.Props<any> {
     onLoadTemplate: (templateName: string | null) => void;
     onLoadAppendTemplate: (templateName: string | null) => void;
     onBasicAuthChange: (basicAuth: boolean) => void;
+    [x: string]: any;
 }
 
 /**
  * This is the Chrome plugin popup window.
  */
-export default class Popup extends ComponentBase<Props, PopupState> {
-    state: any = {};
+export default function Popup(props: Props) {
+    const [events, setEvents] = useState(EventsStore.getEvents());
+    const [recording, setRecording] = useState(TestSuiteStore.getRecording());
+    const [futures, setFutures] = useState(EventsStore.getFutures());
+    const [headers, setHeaders] = useState(HeadersStore.getHeaders());
+    const [undoneEvents, setUndoneEvents] = useState(
+        EventsStore.getUndoneEvents()
+    );
+    const [templates, setTemplates] = useState(TemplatesStore.getTemplates());
+    const [testSuite, setTestSuite] = useState(TestSuiteStore.getTestSuite());
+    const [testDescription, setTestDescription] = useState(
+        TestSuiteStore.getTestDescription()
+    );
+    const [basicAuth, setBasicAuth] = useState(TestSuiteStore.getBasicAuth());
 
-    handleSuiteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.props.onTestSuiteChange(e.currentTarget.value);
-    };
-
-    handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.props.onTestDescriptionChange(e.currentTarget.value);
-    };
-
-    handleRemoveEvent = (index: number) => {
-        this.props.onRemoveEvent(index);
-    };
-
-    toggleRecord = () => {
-        this.props.onRecordingChange(!this.state.recording);
-    };
-
-    undo = () => {
-        this.props.onUndo();
-    };
-
-    redo = () => {
-        this.props.onRedo();
-    };
-
-    clear = () => {
-        this.props.onClear();
-    };
-
-    saveAsTemplate = () => {
-        this.props.onSaveTemplate();
-    };
-
-    loadTemplate = (e: React.MouseEvent<HTMLElement>) => {
-        this.props.onLoadTemplate(e.currentTarget.getAttribute('data-value'));
-    };
-
-    removeTemplate = (e: React.MouseEvent<HTMLElement>) => {
-        this.props.onRemoveTemplate(e.currentTarget.getAttribute('data-value'));
-    };
-
-    loadAppendTemplate = (e: React.MouseEvent<HTMLElement>) => {
-        this.props.onLoadAppendTemplate(
-            e.currentTarget.getAttribute('data-value')
-        );
-    };
-
-    handleBasicAuth = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.props.onBasicAuthChange(e.currentTarget.checked);
-    };
-
-    render() {
-        return (
-            <>
-                <GlobalStyle />
-                <h1>
-                    <span>FD Cypress Recorder</span>
-                    <span className="button-container">
-                        {this.state.recording ? (
-                            <ButtonCta
-                                onClick={this.toggleRecord}
-                                title="Stop recording"
-                            >
-                                Stop
-                            </ButtonCta>
-                        ) : (
-                            <Button
-                                onClick={this.toggleRecord}
-                                title="Record interactions"
-                            >
-                                Record
-                            </Button>
-                        )}
-                        {this.state.events.length ||
-                        (this.state.futures.length &&
-                            this.state.futures[0].length) ? (
-                            <span>
-                                <Button
-                                    onClick={this.undo}
-                                    title="Remove last interaction"
-                                    {...{ disabled: !this.state.events.length }}
-                                >
-                                    <i className="arrow left" />
-                                </Button>
-                                <Button
-                                    onClick={this.redo}
-                                    title="Redo"
-                                    {...{
-                                        disabled: !(
-                                            this.state.futures.length &&
-                                            this.state.futures[0].length
-                                        ),
-                                    }}
-                                >
-                                    <i className="arrow right" />
-                                </Button>
-                            </span>
-                        ) : null}
-                        <Button
-                            onClick={this.clear}
-                            title="Clear current session"
-                        >
-                            Clear
-                        </Button>
-                    </span>
-                </h1>
-                <div className="fd-cypress-popup-layout">
-                    <div className="fd-cypress-templates-container">
-                        <h3>
-                            Templates{' '}
-                            <ButtonCta
-                                onClick={this.saveAsTemplate}
-                                title="Save as template"
-                            >
-                                +
-                            </ButtonCta>
-                        </h3>
-                        <ul>
-                            {this.state.templates.map((template: Template) =>
-                                template.name ? (
-                                    <li key={template.name}>
-                                        <span
-                                            onClick={this.loadTemplate}
-                                            data-value={template.name}
-                                        >
-                                            {template.name}
-                                        </span>
-                                        <span>
-                                            <Button
-                                                data-value={template.name}
-                                                onClick={
-                                                    this.loadAppendTemplate
-                                                }
-                                                title="Append template"
-                                            >
-                                                +
-                                            </Button>
-                                            <Button
-                                                data-value={template.name}
-                                                onClick={this.removeTemplate}
-                                                title="Delete template"
-                                            >
-                                                X
-                                            </Button>
-                                        </span>
-                                    </li>
-                                ) : null
-                            )}
-                        </ul>
-                    </div>
-                    <div className="fd-cypress-code-container">
-                        <CypressGenerator
-                            basicAuth={this.state.basicAuth}
-                            headers={this.state.headers}
-                            events={this.state.events}
-                            onSuiteChange={this.handleSuiteChange}
-                            testSuite={this.state.testSuite}
-                            onDescriptionChange={this.handleDescriptionChange}
-                            testDescription={this.state.testDescription}
-                            onRemoveEvent={this.handleRemoveEvent}
-                            onBasicAuth={this.handleBasicAuth}
-                        />
-                        <small>
-                            <ShortCut>CTRL</ShortCut> +{' '}
-                            <ShortCut className="shortcut-button">
-                                Right Mouse Click
-                            </ShortCut>
-                            : open context menu for hovered element in page.
-                            Tip: make sure the page has focus and recording has
-                            started.
-                        </small>
-                        <small>
-                            <ShortCut>CTRL</ShortCut> +{' '}
-                            <ShortCut className="shortcut-button">
-                                Scroll Lock
-                            </ShortCut>{' '}
-                            or <ShortCut>ALT</ShortCut> +{' '}
-                            <ShortCut className="shortcut-button">r</ShortCut>:
-                            Toggle recording state. Tip: make sure the page has
-                            focus.
-                        </small>
-                    </div>
-                </div>
-            </>
-        );
-    }
-
-    protected _buildState(): PopupState {
-        const events = EventsStore.getEvents();
-        events.forEach((event: any, idx: number) => {
-            event.id = idx;
+    useEffect(() => {
+        const eventId = EventsStore.subscribe(() => {
+            const evts = EventsStore.getEvents();
+            evts.forEach((event: any, idx: number) => {
+                event.id = idx;
+            });
+            setEvents(evts);
+            setFutures(EventsStore.getFutures());
+            setUndoneEvents(EventsStore.getUndoneEvents());
         });
-        return {
-            events,
-            futures: EventsStore.getFutures(),
-            headers: HeadersStore.getHeaders(),
-            undoneEvents: EventsStore.getUndoneEvents(),
-            templates: TemplatesStore.getTemplates(),
-            testSuite: TestSuiteStore.getTestSuite(),
-            testDescription: TestSuiteStore.getTestDescription(),
-            recording: TestSuiteStore.getRecording(),
-            basicAuth: TestSuiteStore.getBasicAuth(),
+
+        const testSuiteId = TestSuiteStore.subscribe(() => {
+            setTestSuite(TestSuiteStore.getTestSuite());
+            setTestDescription(TestSuiteStore.getTestDescription());
+            setRecording(TestSuiteStore.getRecording());
+            setBasicAuth(TestSuiteStore.getBasicAuth());
+        });
+
+        const headerId = HeadersStore.subscribe(() => {
+            setHeaders(HeadersStore.getHeaders());
+        });
+
+        const templateId = TemplatesStore.subscribe(() => {
+            setTemplates(TemplatesStore.getTemplates());
+        });
+
+        return () => {
+            EventsStore.unsubscribe(eventId);
+            TestSuiteStore.unsubscribe(testSuiteId);
+            HeadersStore.unsubscribe(headerId);
+            TemplatesStore.unsubscribe(templateId);
         };
-    }
+    }, []);
+
+    const handleSuiteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        props.onTestSuiteChange(e.currentTarget.value);
+    };
+
+    const handleDescriptionChange = (
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        props.onTestDescriptionChange(e.currentTarget.value);
+    };
+
+    const handleRemoveEvent = (index: number) => {
+        props.onRemoveEvent(index);
+    };
+
+    const toggleRecord = () => {
+        props.onRecordingChange(!recording);
+    };
+
+    const undo = () => {
+        props.onUndo();
+    };
+
+    const redo = () => {
+        props.onRedo();
+    };
+
+    const clear = () => {
+        props.onClear();
+    };
+
+    const saveAsTemplate = () => {
+        props.onSaveTemplate();
+    };
+
+    const loadTemplate = (e: React.MouseEvent<HTMLElement>) => {
+        props.onLoadTemplate(e.currentTarget.getAttribute('data-value'));
+    };
+
+    const removeTemplate = (e: React.MouseEvent<HTMLElement>) => {
+        props.onRemoveTemplate(e.currentTarget.getAttribute('data-value'));
+    };
+
+    const loadAppendTemplate = (e: React.MouseEvent<HTMLElement>) => {
+        props.onLoadAppendTemplate(e.currentTarget.getAttribute('data-value'));
+    };
+
+    const handleBasicAuth = (e: React.ChangeEvent<HTMLInputElement>) => {
+        props.onBasicAuthChange(e.currentTarget.checked);
+    };
+
+    // render() {
+    return (
+        <div
+            className={`${styles.popup}${
+                props.className ? ` ${props.className}` : ''
+            }`}
+        >
+            <h1>
+                <span>FD Cypress Recorder</span>
+                <span className={styles['button-container']}>
+                    {recording ? (
+                        <ButtonCta
+                            onClick={toggleRecord}
+                            title="Stop recording"
+                        >
+                            Stop
+                        </ButtonCta>
+                    ) : (
+                        <Button
+                            onClick={toggleRecord}
+                            title="Record interactions"
+                        >
+                            Record
+                        </Button>
+                    )}
+                    {events.length || (futures.length && futures[0].length) ? (
+                        <span>
+                            <Button
+                                onClick={undo}
+                                title="Remove last interaction"
+                                {...{ disabled: !events.length }}
+                            >
+                                <i
+                                    className={`${styles['arrow']} ${styles['left']}`}
+                                />
+                            </Button>
+                            <Button
+                                onClick={redo}
+                                title="Redo"
+                                {...{
+                                    disabled: !(
+                                        futures.length && futures[0].length
+                                    ),
+                                }}
+                            >
+                                <i
+                                    className={`${styles['arrow']} ${styles['right']}`}
+                                />
+                            </Button>
+                        </span>
+                    ) : null}
+                    <ButtonGhost onClick={clear} title="Clear current session">
+                        Clear
+                    </ButtonGhost>
+                </span>
+            </h1>
+            <div className={styles.popupLayout}>
+                <div className={styles.templatesContainer}>
+                    <h3>
+                        Templates{' '}
+                        <ButtonCta
+                            onClick={saveAsTemplate}
+                            title="Save as template"
+                        >
+                            +
+                        </ButtonCta>
+                    </h3>
+                    <ul>
+                        {templates.map((template: Template) =>
+                            template.name ? (
+                                <li key={template.name}>
+                                    <span
+                                        onClick={loadTemplate}
+                                        data-value={template.name}
+                                    >
+                                        {template.name}
+                                    </span>
+                                    <span>
+                                        <Button
+                                            data-value={template.name}
+                                            onClick={loadAppendTemplate}
+                                            title="Append template"
+                                        >
+                                            +
+                                        </Button>
+                                        <Button
+                                            data-value={template.name}
+                                            onClick={removeTemplate}
+                                            title="Delete template"
+                                        >
+                                            X
+                                        </Button>
+                                    </span>
+                                </li>
+                            ) : null
+                        )}
+                    </ul>
+                </div>
+                <div className={styles.codeContainer}>
+                    <CypressGenerator
+                        basicAuth={basicAuth}
+                        headers={headers}
+                        events={events}
+                        onSuiteChange={handleSuiteChange}
+                        testSuite={testSuite}
+                        onDescriptionChange={handleDescriptionChange}
+                        testDescription={testDescription}
+                        onRemoveEvent={handleRemoveEvent}
+                        onBasicAuth={handleBasicAuth}
+                    />
+                    <small>
+                        <ShortCut>CTRL</ShortCut> +{' '}
+                        <ShortCut>Right Mouse Click</ShortCut>: open context
+                        menu for hovered element in page. Tip: make sure the
+                        page has focus and recording has started.
+                    </small>
+                    <small>
+                        <ShortCut>CTRL</ShortCut> +{' '}
+                        <ShortCut>Scroll Lock</ShortCut> or{' '}
+                        <ShortCut>ALT</ShortCut> + <ShortCut>r</ShortCut>:
+                        Toggle recording Tip: make sure the page has focus.
+                    </small>
+                </div>
+            </div>
+        </div>
+    );
 }
-
-const GlobalStyle = createGlobalStyle`
-#popup {
-    h1 {
-        font-size: 1.2rem;
-        display: flex;
-        justify-content: space-between;
-        > span:first-of-type {
-            flex: 0 1 200px;
-            margin-right: 2rem;
-        }
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-            flex: 1 1 auto;
-            span {
-                display: inline-flex;
-            }
-
-            [disabled] {
-                opacity: 0.3;
-            }
-
-            .arrow {
-                border: solid white;
-                border-width: 0 3px 3px 0;
-                display: inline-block;
-                padding: 3px;
-
-                &.left {
-                    transform: rotate(135deg);
-                }
-                &.right {
-                    transform: rotate(-45deg);
-                }
-            }
-        }
-    }
-
-    .fd-cypress-popup-layout {
-        display: flex;
-        .fd-cypress-templates-container {
-            flex: 0 1 auto;
-            min-width: 200px;
-            border-right: 1px solid rgba(0, 0, 0, 0.1);
-            box-sizing: content-box;
-            padding-right: 1rem;
-            margin-right: 1rem;
-            height: 500px;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            h3 {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0.5rem;
-            }
-            ul {
-                padding: 0;
-                margin: 0;
-                overflow: auto;
-                flex: 1 1 auto;
-                ::-webkit-scrollbar {
-                    width: .5rem;
-                    height: .5rem;
-                }
-
-                ::-webkit-scrollbar-track {
-                    -webkit-border-radius: .25rem;
-                    border-radius: .25rem;
-                    background:rgba(0,0,0,0.1);
-                }
-
-                ::-webkit-scrollbar-thumb {
-                    -webkit-border-radius: .25rem;
-                    border-radius: .25rem;
-                    background:rgba(0,0,0,0.2);
-                }
-
-                ::-webkit-scrollbar-thumb:hover {
-                    background: rgba(0,0,0,0.4);
-                }
-
-                ::-webkit-scrollbar-thumb:window-inactive {
-                    background: rgba(0,0,0,0.05);
-                }
-
-                li {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    &:first-of-type {
-                        border-top: 1px solid rgba(0, 0, 0, 0.1);
-                    }
-                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-                    padding: 0.5rem;
-                    span {
-                        cursor: pointer;
-                    }
-                    span + span {
-                        display: flex;
-                    }
-                }
-            }
-            label {
-                user-select: none;
-            }
-        }
-        .fd-cypress-code-container {
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            overflow: auto;
-            ::-webkit-scrollbar {
-                width: .5rem;
-                height: .5rem;
-            }
-
-            ::-webkit-scrollbar-track {
-                -webkit-border-radius: .25rem;
-                border-radius: .25rem;
-                background:rgba(0,0,0,0.1);
-            }
-
-            ::-webkit-scrollbar-thumb {
-                -webkit-border-radius: .25rem;
-                border-radius: .25rem;
-                background:rgba(0,0,0,0.2);
-            }
-
-            ::-webkit-scrollbar-thumb:hover {
-                background: rgba(0,0,0,0.4);
-            }
-
-            ::-webkit-scrollbar-thumb:window-inactive {
-                background: rgba(0,0,0,0.05);
-            }
-
-            small {
-                display: block;
-                margin-bottom: .5rem;
-            }
-        }
-    }
-}
-`;

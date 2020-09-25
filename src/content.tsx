@@ -10,7 +10,6 @@ import {
     UNIQUE_ATTR_SELECTOR_OPTIONS,
     UNIQUE_ATTR_SELECTOR_OPTIONS_WITHOUT_ID,
 } from './utils/FdEvents';
-import { StoreBase } from 'resub';
 
 declare let chrome: any;
 declare let browser: any;
@@ -232,12 +231,15 @@ function record() {
         'fd-cypress-chrome-extension-record': recording,
     });
 
-    subscriptionToken = EventsStore.subscribe((keys?: string[]) => {
+    subscriptionToken = EventsStore.subscribe((keys) => {
+        console.log('Save events', keys);
+
         if (keys && keys.length && keys[0] === 'loadEvents') {
             return;
         } // Prevent an infinite loop.
+        console.log('Save events', keys);
         saveEvents();
-    }, StoreBase.Key_All);
+    });
 
     document.getElementsByTagName('head')[0].appendChild(style);
 

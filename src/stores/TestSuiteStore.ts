@@ -1,7 +1,6 @@
-import { StoreBase, AutoSubscribeStore, autoSubscribe } from 'resub';
+import { ReSubstitute } from '../utils/ReSubstitute';
 
-@AutoSubscribeStore
-class TestSuiteStore extends StoreBase {
+class TestSuiteStore extends ReSubstitute {
     private testSuite: string | undefined;
     private testDescription: string | undefined;
     private recording = false;
@@ -34,22 +33,18 @@ class TestSuiteStore extends StoreBase {
         this.trigger();
     }
 
-    @autoSubscribe
     getTestSuite() {
         return this.testSuite;
     }
 
-    @autoSubscribe
     getTestDescription() {
         return this.testDescription;
     }
 
-    @autoSubscribe
     getRecording() {
         return this.recording;
     }
 
-    @autoSubscribe
     getBasicAuth() {
         return this.basicAuth;
     }

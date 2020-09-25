@@ -25,7 +25,7 @@
     "author": "Willem Liu",
     "license": "ISC",
     "devDependencies": {
-        "@fdmg/design-system": "^0.4.24-canary.35",
+        "@fdmg/design-system": "^0.4.24-canary.37",
         "@types/chrome": "0.0.98",
         "@types/jest": "^25.2.3",
         "@types/lodash": "^4.14.158",
@@ -33,7 +33,6 @@
         "@types/react-beautiful-dnd": "^12.1.3",
         "@types/react-dom": "^16.9.8",
         "@types/react-test-renderer": "^16.9.2",
-        "@types/styled-components": "^5.1.3",
         "@types/webpack-env": "^1.15.2",
         "@typescript-eslint/eslint-plugin": "^2.34.0",
         "@typescript-eslint/parser": "^2.34.0",
@@ -41,6 +40,7 @@
         "cpx": "^1.5.0",
         "cross-env": "^7.0.2",
         "css-loader": "^3.6.0",
+        "date-input-polyfill": "^2.14.0",
         "eslint": "^6.8.0",
         "eslint-config-prettier": "^6.11.0",
         "eslint-plugin-prettier": "^3.1.4",
@@ -49,6 +49,7 @@
         "jest-cli": "^26.4.2",
         "jest-css-modules": "^2.1.0",
         "mini-css-extract-plugin": "^0.11.2",
+        "null-loader": "^4.0.0",
         "postcss-flexbugs-fixes": "^4.2.1",
         "postcss-loader": "^4.0.2",
         "postcss-normalize": "^9.0.0",
@@ -66,14 +67,9 @@
         "webpack-cli": "^3.3.12"
     },
     "dependencies": {
-        "@fdmg/fd-buttons": "^2.0.1",
-        "@fdmg/fd-inputs": "^1.0.24",
-        "@fdmg/fd-typography": "^1.0.31",
         "react": "^16.13.1",
         "react-beautiful-dnd": "^12.2.0",
         "react-dom": "^16.13.1",
-        "resub": "^1.2.2",
-        "styled-components": "^5.1.1",
         "unique-selector": "^0.4.1"
     },
     "jest": {

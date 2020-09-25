@@ -105,6 +105,12 @@ module.exports = {
     module: {
         rules: [
             { parser: { requireEnsure: false } },
+            {
+                // Test for a polyfill (or any file) and it won't be included in your
+                // bundle
+                test: /date-input-polyfill.dist.js$/,
+                use: 'null-loader',
+            },
             // all files with a `.ts` or `.tsx` extension will be handled by a TypeScript loader
             {
                 test: /\.tsx?$/,
