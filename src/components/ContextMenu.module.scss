@@ -33,6 +33,19 @@
         background: var(--dividers);
     }
 
+    h2 {
+        flex: 1 1 auto;
+        font-size: 1rem;
+        text-align: center;
+        color: var(--primary);
+        &.separator {
+            background-color: var(--dividers);
+        }
+        &.back {
+            cursor: pointer;
+        }
+    }
+
     ul {
         list-style-type: none;
         padding: 0;
@@ -42,16 +55,6 @@
             align-items: center;
             border-bottom: 1px solid var(--dividers);
             padding: 0.5rem 1rem;
-            &.label {
-                justify-content: center;
-                color: var(--primary);
-                &.separator {
-                    background-color: var(--dividers);
-                }
-                &.back {
-                    cursor: pointer;
-                }
-            }
             &.clickable {
                 cursor: pointer;
                 color: var(--content-copy);

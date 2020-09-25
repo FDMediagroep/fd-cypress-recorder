@@ -47,14 +47,14 @@ export default function ContextULCheckAttribute(props: Props) {
     }
 
     return (
-        <ul>
+        <ul className={styles.attribute}>
             {(props.target as HTMLElement).attributes.length === 0 ? (
-                <li className="label back" onMouseDown={handleBack}>
-                    &lt; No attributes found
+                <li className={styles.clickable} onMouseDown={handleBack}>
+                    <h2>&lt; No attributes found</h2>
                 </li>
             ) : (
-                <li className="label back" onMouseDown={handleBack}>
-                    &lt; Attributes
+                <li className={styles.clickable} onMouseDown={handleBack}>
+                    <h2>&lt; Attributes</h2>
                 </li>
             )}
             {[].slice
@@ -63,7 +63,7 @@ export default function ContextULCheckAttribute(props: Props) {
                     if (typeof attribute === 'object') {
                         return (
                             <React.Fragment key={attribute.name}>
-                                <li className="label separator">
+                                <li className="separator">
                                     <b>{attribute.name}</b>
                                 </li>
                                 <li
@@ -81,7 +81,7 @@ export default function ContextULCheckAttribute(props: Props) {
                                     onMouseDown={handleAttributeValueEquals}
                                 >
                                     <div className={styles.equals}>
-                                        Equals<small>{attribute.value}</small>
+                                        Equals <small>{attribute.value}</small>
                                     </div>
                                 </li>
                                 <li

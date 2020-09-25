@@ -67,10 +67,10 @@ export default function ContextULCheckCount(props: Props) {
 
     return (
         <ul>
-            <li className="label back" onMouseDown={handleBack}>
-                &lt; Count
+            <li className={styles.clickable} onMouseDown={handleBack}>
+                <h2>&lt; Count</h2>
             </li>
-            <li className={`${styles.li} label separator`}>
+            <li className={`${styles.li} separator`}>
                 <i>{selector}</i>
                 <span>({count})</span>
             </li>

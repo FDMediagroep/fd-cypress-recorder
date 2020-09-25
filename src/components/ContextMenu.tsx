@@ -187,7 +187,9 @@ export default class ContextMenu extends PureComponent<Props, any> {
                     this.state.customContextMenu
                 ) : (
                     <ul>
-                        <li className={styles.label}>Interactions</li>
+                        <li>
+                            <h2>Interactions</h2>
+                        </li>
                         <li
                             className={styles.clickable}
                             onMouseDown={this.handleClick}
@@ -212,7 +214,9 @@ export default class ContextMenu extends PureComponent<Props, any> {
                         >
                             Wait...
                         </li>
-                        <li className={styles.label}>Asserts</li>
+                        <li>
+                            <h2>Asserts</h2>
+                        </li>
                         <li
                             className={styles.clickable}
                             onMouseDown={this.handleCheckAttribute}
@@ -237,7 +241,9 @@ export default class ContextMenu extends PureComponent<Props, any> {
                         >
                             Exists
                         </li>
-                        <li className={styles.label}>Global</li>
+                        <li>
+                            <h2>Global</h2>
+                        </li>
                         <li
                             className={styles.clickable}
                             onMouseDown={this.handleGoToLocation}

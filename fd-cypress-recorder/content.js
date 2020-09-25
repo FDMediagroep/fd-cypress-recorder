@@ -29251,7 +29251,7 @@ function isUnique(el, selector) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-module.exports = {"contextMenu":"_1cK-_imrba-X6E1cOsZzvg","label":"_2Vp1nbNM1HpJl1tXAdeQfE","separator":"_2ikf1t9B-nGf6JVJAj-Llt","back":"_3PHKilxhJr16D1BZ-ap1Xe","clickable":"_22NbvsnDwSH__a_F8R6mnT"};
+module.exports = {"contextMenu":"_1cK-_imrba-X6E1cOsZzvg","separator":"_2ikf1t9B-nGf6JVJAj-Llt","back":"_3PHKilxhJr16D1BZ-ap1Xe","clickable":"_22NbvsnDwSH__a_F8R6mnT"};
 
 /***/ }),
 
@@ -29433,17 +29433,20 @@ var ContextMenu = /** @class */ (function (_super) {
     ContextMenu.prototype.render = function () {
         return (react_1.default.createElement("div", { className: ContextMenu_module_scss_1.default.contextMenu, style: { top: this.top + "px", left: this.left + "px" } },
             this.state.customContextMenu ? (this.state.customContextMenu) : (react_1.default.createElement("ul", null,
-                react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.label }, "Interactions"),
+                react_1.default.createElement("li", null,
+                    react_1.default.createElement("h2", null, "Interactions")),
                 react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.clickable, onMouseDown: this.handleClick }, "Click"),
                 react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.clickable, onMouseDown: this.handleEnterText }, "Enter text..."),
                 react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.clickable, onMouseDown: this.handleHover }, "Hover"),
                 react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.clickable, onMouseDown: this.handleWait }, "Wait..."),
-                react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.label }, "Asserts"),
+                react_1.default.createElement("li", null,
+                    react_1.default.createElement("h2", null, "Asserts")),
                 react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.clickable, onMouseDown: this.handleCheckAttribute }, "Attributes..."),
                 react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.clickable, onMouseDown: this.handleCheckText }, "Contains text..."),
                 react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.clickable, onMouseDown: this.handleCheckCount }, "Count..."),
                 react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.clickable, onMouseDown: this.handleCheckExists }, "Exists"),
-                react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.label }, "Global"),
+                react_1.default.createElement("li", null,
+                    react_1.default.createElement("h2", null, "Global")),
                 react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.clickable, onMouseDown: this.handleGoToLocation }, "Go to URL..."),
                 react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.clickable, onMouseDown: this.handleAwaitLocation }, "Match current URL"),
                 react_1.default.createElement("li", { className: ContextMenu_module_scss_1.default.clickable, onMouseDown: this.handleAwaitLocationContains }, "URL contains..."),
@@ -29535,7 +29538,7 @@ exports.default = ContextMenuOverlay;
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-module.exports = {"equals":"_3moQRx0uF3ryCgrwlbm1pY","clickable":"_3S7gdykiBWjGH8u7_Lm4ax"};
+module.exports = {"attribute":"_31UzlkIEC59uyz4LoxHkHW","clickable":"_3S7gdykiBWjGH8u7_Lm4ax"};
 
 /***/ }),
 
@@ -29588,19 +29591,21 @@ function ContextULCheckAttribute(props) {
             props.onBack();
         }
     }
-    return (react_1.default.createElement("ul", null,
-        props.target.attributes.length === 0 ? (react_1.default.createElement("li", { className: "label back", onMouseDown: handleBack }, "< No attributes found")) : (react_1.default.createElement("li", { className: "label back", onMouseDown: handleBack }, "< Attributes")),
+    return (react_1.default.createElement("ul", { className: ContextULCheckAttribute_module_scss_1.default.attribute },
+        props.target.attributes.length === 0 ? (react_1.default.createElement("li", { className: ContextULCheckAttribute_module_scss_1.default.clickable, onMouseDown: handleBack },
+            react_1.default.createElement("h2", null, "< No attributes found"))) : (react_1.default.createElement("li", { className: ContextULCheckAttribute_module_scss_1.default.clickable, onMouseDown: handleBack },
+            react_1.default.createElement("h2", null, "< Attributes"))),
         [].slice
             .call(props.target.attributes)
             .map(function (attribute) {
             if (typeof attribute === 'object') {
                 return (react_1.default.createElement(react_1.default.Fragment, { key: attribute.name },
-                    react_1.default.createElement("li", { className: "label separator" },
+                    react_1.default.createElement("li", { className: "separator" },
                         react_1.default.createElement("b", null, attribute.name)),
                     react_1.default.createElement("li", { className: ContextULCheckAttribute_module_scss_1.default.clickable, "data-name": attribute.name, "data-value": attribute.value, onMouseDown: handleAttributeValueContains }, "Contains..."),
                     react_1.default.createElement("li", { className: ContextULCheckAttribute_module_scss_1.default.clickable, "data-name": attribute.name, "data-value": attribute.value, onMouseDown: handleAttributeValueEquals },
                         react_1.default.createElement("div", { className: ContextULCheckAttribute_module_scss_1.default.equals },
-                            "Equals",
+                            "Equals ",
                             react_1.default.createElement("small", null, attribute.value))),
                     react_1.default.createElement("li", { className: ContextULCheckAttribute_module_scss_1.default.clickable, "data-name": attribute.name, "data-value": attribute.value, onMouseDown: handleAttributeExists }, "Exists")));
             }
@@ -29691,8 +29696,9 @@ function ContextULCheckCount(props) {
         }
     }
     return (react_1.default.createElement("ul", null,
-        react_1.default.createElement("li", { className: "label back", onMouseDown: handleBack }, "< Count"),
-        react_1.default.createElement("li", { className: ContextULCheckCount_module_scss_1.default.li + " label separator" },
+        react_1.default.createElement("li", { className: ContextULCheckCount_module_scss_1.default.clickable, onMouseDown: handleBack },
+            react_1.default.createElement("h2", null, "< Count")),
+        react_1.default.createElement("li", { className: ContextULCheckCount_module_scss_1.default.li + " separator" },
             react_1.default.createElement("i", null, selector),
             react_1.default.createElement("span", null,
                 "(",
