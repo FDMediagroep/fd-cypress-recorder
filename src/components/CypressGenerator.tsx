@@ -47,6 +47,17 @@ export default function CypressGenerator(props: Props) {
         generateCodeFromEvents(props.events)
     );
     const [view, setView] = useState<'code' | 'events' | 'headers'>('code');
+    const [testSuite, setTestSuite] = useState(props.testSuite);
+    const [testDescription, setTestDescription] = useState(
+        props.testDescription
+    );
+
+    useEffect(() => {
+        setTestSuite(props.testSuite);
+    }, [props.testSuite]);
+    useEffect(() => {
+        setTestDescription(props.testDescription);
+    }, [props.testDescription]);
 
     useEffect(() => {
         setCypressCode(generateCodeFromEvents(props.events));
@@ -61,12 +72,14 @@ export default function CypressGenerator(props: Props) {
     ]);
 
     const handleTestSuiteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTestSuite(e.currentTarget.value);
         props.onSuiteChange(e);
     };
 
     const handleTestDescriptionChange = (
         e: React.ChangeEvent<HTMLInputElement>
     ) => {
+        setTestDescription(e.currentTarget.value);
         props.onDescriptionChange(e);
     };
 
@@ -100,11 +113,8 @@ export default function CypressGenerator(props: Props) {
                 type="text"
                 label="Test suite name"
                 onChange={handleTestSuiteChange}
-                {...(props.testSuite
-                    ? {
-                          defaultValue: props.testSuite ?? '',
-                      }
-                    : { value: '' })}
+                defaultValue={props.testSuite}
+                value={testSuite}
                 errorMessage="Please enter a name for your test suite"
             />
             <TextInput
@@ -113,11 +123,8 @@ export default function CypressGenerator(props: Props) {
                 type="text"
                 label="Description"
                 onChange={handleTestDescriptionChange}
-                {...(props.testDescription
-                    ? {
-                          defaultValue: props.testDescription ?? '',
-                      }
-                    : { value: '' })}
+                defaultValue={props.testDescription}
+                value={testDescription}
                 errorMessage="Please enter a description for your test"
             />
 

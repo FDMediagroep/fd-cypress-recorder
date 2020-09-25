@@ -1,6 +1,6 @@
 {
     "name": "fd-cypress-recorder",
-    "version": "0.18.0",
+    "version": "0.20.0",
     "description": "Fd Cypress Recorder captures user interactions and generates Cypress test code.",
     "main": "fd-cypress-recorder/content.js",
     "scripts": {

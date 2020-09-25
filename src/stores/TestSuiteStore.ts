@@ -27,8 +27,8 @@ class TestSuiteStore extends ReSubstitute {
     }
 
     clear() {
-        this.testSuite = undefined;
-        this.testDescription = undefined;
+        this.testSuite = '';
+        this.testDescription = '';
         this.recording = false;
         this.trigger();
     }
