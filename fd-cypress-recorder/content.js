@@ -86,6 +86,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@fdmg/design-system/components/design-tokens/design-tokens.css":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/@fdmg/design-system/components/design-tokens/design-tokens.css ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./node_modules/object-assign/index.js":
 /*!*********************************************!*\
   !*** ./node_modules/object-assign/index.js ***!
@@ -29524,7 +29535,7 @@ exports.default = ContextMenuOverlay;
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-module.exports = {"equals":"_3moQRx0uF3ryCgrwlbm1pY"};
+module.exports = {"equals":"_3moQRx0uF3ryCgrwlbm1pY","clickable":"_3S7gdykiBWjGH8u7_Lm4ax"};
 
 /***/ }),
 
@@ -29586,12 +29597,12 @@ function ContextULCheckAttribute(props) {
                 return (react_1.default.createElement(react_1.default.Fragment, { key: attribute.name },
                     react_1.default.createElement("li", { className: "label separator" },
                         react_1.default.createElement("b", null, attribute.name)),
-                    react_1.default.createElement("li", { className: "clickable", "data-name": attribute.name, "data-value": attribute.value, onMouseDown: handleAttributeValueContains }, "Contains..."),
-                    react_1.default.createElement("li", { className: "clickable", "data-name": attribute.name, "data-value": attribute.value, onMouseDown: handleAttributeValueEquals },
+                    react_1.default.createElement("li", { className: ContextULCheckAttribute_module_scss_1.default.clickable, "data-name": attribute.name, "data-value": attribute.value, onMouseDown: handleAttributeValueContains }, "Contains..."),
+                    react_1.default.createElement("li", { className: ContextULCheckAttribute_module_scss_1.default.clickable, "data-name": attribute.name, "data-value": attribute.value, onMouseDown: handleAttributeValueEquals },
                         react_1.default.createElement("div", { className: ContextULCheckAttribute_module_scss_1.default.equals },
                             "Equals",
                             react_1.default.createElement("small", null, attribute.value))),
-                    react_1.default.createElement("li", { className: "clickable", "data-name": attribute.name, "data-value": attribute.value, onMouseDown: handleAttributeExists }, "Exists")));
+                    react_1.default.createElement("li", { className: ContextULCheckAttribute_module_scss_1.default.clickable, "data-name": attribute.name, "data-value": attribute.value, onMouseDown: handleAttributeExists }, "Exists")));
             }
             return null;
         })));
@@ -29609,7 +29620,7 @@ exports.default = ContextULCheckAttribute;
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-module.exports = {"li":"_1WVERIFMgzixWb_GuEA82z"};
+module.exports = {"li":"_1WVERIFMgzixWb_GuEA82z","clickable":"_13s9Qee6PNsf6mCCwIlkvR"};
 
 /***/ }),
 
@@ -29687,12 +29698,12 @@ function ContextULCheckCount(props) {
                 "(",
                 count,
                 ")")),
-        react_1.default.createElement("li", { className: "clickable", onMouseDown: handleCountEqualsThis },
+        react_1.default.createElement("li", { className: ContextULCheckCount_module_scss_1.default.clickable, onMouseDown: handleCountEqualsThis },
             "Equals ",
             count),
-        react_1.default.createElement("li", { className: "clickable", onMouseDown: handleCountEquals }, "Equals..."),
-        react_1.default.createElement("li", { className: "clickable", onMouseDown: handleCountGreater }, "Greater than..."),
-        react_1.default.createElement("li", { className: "clickable", onMouseDown: handleCountLess }, "Less than...")));
+        react_1.default.createElement("li", { className: ContextULCheckCount_module_scss_1.default.clickable, onMouseDown: handleCountEquals }, "Equals..."),
+        react_1.default.createElement("li", { className: ContextULCheckCount_module_scss_1.default.clickable, onMouseDown: handleCountGreater }, "Greater than..."),
+        react_1.default.createElement("li", { className: ContextULCheckCount_module_scss_1.default.clickable, onMouseDown: handleCountLess }, "Less than...")));
 }
 exports.default = ContextULCheckCount;
 
@@ -29719,6 +29730,7 @@ var react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ "./node_m
 var ContextMenuOverlay_1 = __importDefault(__webpack_require__(/*! ./components/ContextMenuOverlay */ "./src/components/ContextMenuOverlay.tsx"));
 var FdEvents_1 = __webpack_require__(/*! ./utils/FdEvents */ "./src/utils/FdEvents.ts");
 var ReSubstitute_1 = __webpack_require__(/*! ./utils/ReSubstitute */ "./src/utils/ReSubstitute.ts");
+__webpack_require__(/*! @fdmg/design-system/components/design-tokens/design-tokens.css */ "./node_modules/@fdmg/design-system/components/design-tokens/design-tokens.css");
 var runtime = typeof browser !== 'undefined' ? browser.runtime : chrome.runtime;
 var storage = typeof browser !== 'undefined' ? browser.storage : chrome.storage;
 var storageName = 'fd-cypress-chrome-extension-events';

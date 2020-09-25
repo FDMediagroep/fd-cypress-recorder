@@ -1,9 +1,8 @@
 .contextMenu {
     z-index: 2;
     position: absolute;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #999;
+    background-color: var(--product-background);
+    box-shadow: var(--card-box-shadow);
     width: 250px;
     max-height: 500px;
     word-break: break-all;
@@ -17,21 +16,21 @@
     ::-webkit-scrollbar-track {
         -webkit-border-radius: 0.25rem;
         border-radius: 0.25rem;
-        background: rgba(0, 0, 0, 0.1);
+        background: var(--dividers);
     }
 
     ::-webkit-scrollbar-thumb {
         -webkit-border-radius: 0.25rem;
         border-radius: 0.25rem;
-        background: rgba(0, 0, 0, 0.2);
+        background: var(--meta-copy);
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: rgba(0, 0, 0, 0.4);
+        background: var(--functional-copy);
     }
 
     ::-webkit-scrollbar-thumb:window-inactive {
-        background: rgba(0, 0, 0, 0.05);
+        background: var(--dividers);
     }
 
     ul {
@@ -41,13 +40,13 @@
         li {
             display: flex;
             align-items: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid var(--dividers);
             padding: 0.5rem 1rem;
             &.label {
                 justify-content: center;
-                color: #49a4a2;
+                color: var(--primary);
                 &.separator {
-                    background-color: rgba(0, 0, 0, 0.1);
+                    background-color: var(--dividers);
                 }
                 &.back {
                     cursor: pointer;
@@ -55,7 +54,7 @@
             }
             &.clickable {
                 cursor: pointer;
-                color: #222;
+                color: var(--content-copy);
                 &:hover {
                     text-decoration: underline;
                 }
@@ -63,7 +62,7 @@
         }
     }
     > small {
-        color: #677381;
+        color: var(--content-copy);
         display: block;
         padding: 1rem;
     }

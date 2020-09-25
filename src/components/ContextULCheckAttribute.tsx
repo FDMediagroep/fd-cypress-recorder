@@ -67,7 +67,7 @@ export default function ContextULCheckAttribute(props: Props) {
                                     <b>{attribute.name}</b>
                                 </li>
                                 <li
-                                    className="clickable"
+                                    className={styles.clickable}
                                     data-name={attribute.name}
                                     data-value={attribute.value}
                                     onMouseDown={handleAttributeValueContains}
@@ -75,7 +75,7 @@ export default function ContextULCheckAttribute(props: Props) {
                                     Contains...
                                 </li>
                                 <li
-                                    className="clickable"
+                                    className={styles.clickable}
                                     data-name={attribute.name}
                                     data-value={attribute.value}
                                     onMouseDown={handleAttributeValueEquals}
@@ -85,7 +85,7 @@ export default function ContextULCheckAttribute(props: Props) {
                                     </div>
                                 </li>
                                 <li
-                                    className="clickable"
+                                    className={styles.clickable}
                                     data-name={attribute.name}
                                     data-value={attribute.value}
                                     onMouseDown={handleAttributeExists}

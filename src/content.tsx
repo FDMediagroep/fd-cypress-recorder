@@ -11,6 +11,7 @@ import {
     UNIQUE_ATTR_SELECTOR_OPTIONS_WITHOUT_ID,
 } from './utils/FdEvents';
 import { ReSubstitute } from './utils/ReSubstitute';
+import '@fdmg/design-system/components/design-tokens/design-tokens.css';
 
 declare let chrome: any;
 declare let browser: any;

@@ -4,4 +4,12 @@
     small {
         padding: 0;
     }
+
+    .clickable {
+        cursor: pointer;
+        color: var(--content-copy);
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }

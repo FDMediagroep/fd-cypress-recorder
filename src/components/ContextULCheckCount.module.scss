@@ -2,3 +2,11 @@
     display: flex;
     flex-direction: column;
 }
+
+.clickable {
+    cursor: pointer;
+    color: var(--content-copy);
+    &:hover {
+        text-decoration: underline;
+    }
+}

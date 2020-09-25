@@ -74,16 +74,19 @@ export default function ContextULCheckCount(props: Props) {
                 <i>{selector}</i>
                 <span>({count})</span>
             </li>
-            <li className="clickable" onMouseDown={handleCountEqualsThis}>
+            <li
+                className={styles.clickable}
+                onMouseDown={handleCountEqualsThis}
+            >
                 Equals {count}
             </li>
-            <li className="clickable" onMouseDown={handleCountEquals}>
+            <li className={styles.clickable} onMouseDown={handleCountEquals}>
                 Equals...
             </li>
-            <li className="clickable" onMouseDown={handleCountGreater}>
+            <li className={styles.clickable} onMouseDown={handleCountGreater}>
                 Greater than...
             </li>
-            <li className="clickable" onMouseDown={handleCountLess}>
+            <li className={styles.clickable} onMouseDown={handleCountLess}>
                 Less than...
             </li>
         </ul>
