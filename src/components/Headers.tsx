@@ -27,11 +27,7 @@ export default function Headers(props: Props) {
             setTableData(getHeaders());
         }, ReSubstitute.Key_All);
 
-        const headers = getHeaders();
-        if (headers.length === 0) {
-            headers.push({ property: '', value: '' });
-            HeadersStore.setHeaders(headers);
-        }
+        HeadersStore.setHeaders(getHeaders());
 
         return () => {
             HeadersStore.unsubscribe(headerId);
