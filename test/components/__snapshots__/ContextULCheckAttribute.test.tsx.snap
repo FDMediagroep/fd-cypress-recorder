@@ -1,15 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Context Menu Attribute should render with attributes correctly 1`] = `
-<ul>
+<ul
+  className="attribute"
+>
   <li
-    className="label back"
+    className="clickable"
     onMouseDown={[Function]}
   >
-    &lt; Attributes
+    <h2>
+      &lt; Attributes
+    </h2>
   </li>
   <li
-    className="label separator"
+    className="separator"
   >
     <b>
       class
@@ -32,7 +36,7 @@ exports[`Context Menu Attribute should render with attributes correctly 1`] = `
     <div
       className="equals"
     >
-      Equals
+      Equals 
       <small>
         context-menu-attributes-test
       </small>
@@ -50,12 +54,16 @@ exports[`Context Menu Attribute should render with attributes correctly 1`] = `
 `;
 
 exports[`Context Menu Attribute should render without attributes correctly 1`] = `
-<ul>
+<ul
+  className="attribute"
+>
   <li
-    className="label back"
+    className="clickable"
     onMouseDown={[Function]}
   >
-    &lt; No attributes found
+    <h2>
+      &lt; No attributes found
+    </h2>
   </li>
 </ul>
 `;
