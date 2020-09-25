@@ -1,0 +1,70 @@
+.contextMenu {
+    z-index: 2;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #999;
+    width: 250px;
+    max-height: 500px;
+    word-break: break-all;
+    overflow: auto;
+    overscroll-behavior: contain;
+    ::-webkit-scrollbar {
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-border-radius: 0.25rem;
+        border-radius: 0.25rem;
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 0.25rem;
+        border-radius: 0.25rem;
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        li {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+            &.label {
+                justify-content: center;
+                color: #49a4a2;
+                &.separator {
+                    background-color: rgba(0, 0, 0, 0.1);
+                }
+                &.back {
+                    cursor: pointer;
+                }
+            }
+            &.clickable {
+                cursor: pointer;
+                color: #222;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    > small {
+        color: #677381;
+        display: block;
+        padding: 1rem;
+    }
+}

@@ -2,7 +2,10 @@ import React from 'react';
 import CypressGenerator from './CypressGenerator';
 import EventsStore = require('../stores/EventsStore');
 import { createGlobalStyle } from 'styled-components';
-import { ButtonCallToAction, ButtonEditorial } from '@fdmg/fd-buttons';
+import '@fdmg/design-system/components/button/Button.css';
+import { Button } from '@fdmg/design-system/components/button/Button';
+import '@fdmg/design-system/components/button/ButtonCta.css';
+import { ButtonCta } from '@fdmg/design-system/components/button/ButtonCta';
 import { AllFdEvents, Template, Header } from '../utils/FdEvents';
 import { ComponentBase } from 'resub';
 import TemplatesStore = require('../stores/TemplatesStore');
@@ -101,32 +104,32 @@ export default class Popup extends ComponentBase<Props, PopupState> {
                     <span>FD Cypress Recorder</span>
                     <span className="button-container">
                         {this.state.recording ? (
-                            <ButtonCallToAction
+                            <ButtonCta
                                 onClick={this.toggleRecord}
                                 title="Stop recording"
                             >
                                 Stop
-                            </ButtonCallToAction>
+                            </ButtonCta>
                         ) : (
-                            <ButtonEditorial
+                            <Button
                                 onClick={this.toggleRecord}
                                 title="Record interactions"
                             >
                                 Record
-                            </ButtonEditorial>
+                            </Button>
                         )}
                         {this.state.events.length ||
                         (this.state.futures.length &&
                             this.state.futures[0].length) ? (
                             <span>
-                                <ButtonEditorial
+                                <Button
                                     onClick={this.undo}
                                     title="Remove last interaction"
                                     {...{ disabled: !this.state.events.length }}
                                 >
                                     <i className="arrow left" />
-                                </ButtonEditorial>
-                                <ButtonEditorial
+                                </Button>
+                                <Button
                                     onClick={this.redo}
                                     title="Redo"
                                     {...{
@@ -137,27 +140,27 @@ export default class Popup extends ComponentBase<Props, PopupState> {
                                     }}
                                 >
                                     <i className="arrow right" />
-                                </ButtonEditorial>
+                                </Button>
                             </span>
                         ) : null}
-                        <ButtonEditorial
+                        <Button
                             onClick={this.clear}
                             title="Clear current session"
                         >
                             Clear
-                        </ButtonEditorial>
+                        </Button>
                     </span>
                 </h1>
                 <div className="fd-cypress-popup-layout">
                     <div className="fd-cypress-templates-container">
                         <h3>
                             Templates{' '}
-                            <ButtonCallToAction
+                            <ButtonCta
                                 onClick={this.saveAsTemplate}
                                 title="Save as template"
                             >
                                 +
-                            </ButtonCallToAction>
+                            </ButtonCta>
                         </h3>
                         <ul>
                             {this.state.templates.map((template: Template) =>
@@ -170,7 +173,7 @@ export default class Popup extends ComponentBase<Props, PopupState> {
                                             {template.name}
                                         </span>
                                         <span>
-                                            <ButtonEditorial
+                                            <Button
                                                 data-value={template.name}
                                                 onClick={
                                                     this.loadAppendTemplate
@@ -178,14 +181,14 @@ export default class Popup extends ComponentBase<Props, PopupState> {
                                                 title="Append template"
                                             >
                                                 +
-                                            </ButtonEditorial>
-                                            <ButtonEditorial
+                                            </Button>
+                                            <Button
                                                 data-value={template.name}
                                                 onClick={this.removeTemplate}
                                                 title="Delete template"
                                             >
                                                 X
-                                            </ButtonEditorial>
+                                            </Button>
                                         </span>
                                     </li>
                                 ) : null

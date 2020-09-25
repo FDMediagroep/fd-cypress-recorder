@@ -8,6 +8,7 @@ import TemplatesStore = require('./stores/TemplatesStore');
 import { Template } from './utils/FdEvents';
 import HeadersStore = require('./stores/HeadersStore');
 import { StoreBase } from 'resub';
+import '@fdmg/design-system/components/design-tokens/design-tokens.css';
 
 declare let chrome: any;
 declare let browser: any;
