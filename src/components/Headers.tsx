@@ -15,24 +15,13 @@ interface Props {
  */
 // export default class Headers extends ComponentBase<any, State> {
 export default function Headers(props: Props) {
-    const getHeaders = useCallback(() => {
-        return HeadersStore.getHeaders().length
-            ? HeadersStore.getHeaders()
-            : props.headers ?? [{ property: '', value: '' }];
-    }, [HeadersStore.getHeaders().length, props.headers]);
-    const [tableData, setTableData] = useState(getHeaders());
+    const [tableData, setTableData] = useState(
+        props.headers ?? [{ property: '', value: '' }]
+    );
 
     useEffect(() => {
-        const headerId = HeadersStore.subscribe(() => {
-            setTableData(getHeaders());
-        }, ReSubstitute.Key_All);
-
-        HeadersStore.setHeaders(getHeaders());
-
-        return () => {
-            HeadersStore.unsubscribe(headerId);
-        };
-    }, [getHeaders]);
+        setTableData(props.headers ?? [{ property: '', value: '' }]);
+    }, [props.headers, props.headers?.length]);
 
     const removeMultipleEmptyRows = (tblData: Header[]) => {
         return tblData.reduce((prev: Header[], header) => {

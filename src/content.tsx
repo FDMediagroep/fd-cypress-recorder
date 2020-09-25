@@ -83,7 +83,7 @@ function saveEvents() {
     const events = EventsStore.getEvents();
     // Save it using the Chrome extension storage API.
     storage.local.set({
-        'fd-cypress-chrome-extension-events': events,
+        [storageName]: events,
     });
     removeContextMenu();
 }
@@ -92,12 +92,9 @@ function saveEvents() {
  * Load events from browser storage.
  */
 function loadEvents() {
-    storage.local.get(
-        { 'fd-cypress-chrome-extension-events': null },
-        (items: any) => {
-            EventsStore.setEvents(items[storageName], 'loadEvents');
-        }
-    );
+    storage.local.get({ [storageName]: null }, (items: any) => {
+        EventsStore.setEvents(items[storageName], 'loadEvents');
+    });
 }
 
 /**
@@ -202,7 +199,7 @@ function beforeUnload() {
 function stop() {
     recording = false;
     storage.local.set({
-        'fd-cypress-chrome-extension-record': recording,
+        [storageRecord]: recording,
     });
 
     EventsStore.unsubscribe(subscriptionToken);
@@ -230,7 +227,7 @@ function record() {
     recording = true;
 
     storage.local.set({
-        'fd-cypress-chrome-extension-record': recording,
+        [storageRecord]: recording,
     });
 
     subscriptionToken = EventsStore.subscribe((keys) => {
@@ -315,8 +312,8 @@ storage.local.get(
     {
         enable: true,
         attributeSelectorFirst: false,
-        'fd-cypress-chrome-extension-events': null,
-        'fd-cypress-chrome-extension-record': false,
+        [storageName]: null,
+        [storageRecord]: false,
     },
     (items: any) => {
         recording = !!items[storageRecord];
@@ -345,7 +342,7 @@ storage.local.get(
             });
 
             if (items[storageName]) {
-                EventsStore.setEvents(items[storageName]);
+                EventsStore.setEvents(items[storageName], 'loadEvents');
             }
             if (recording) {
                 record();

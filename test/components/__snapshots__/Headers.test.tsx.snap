@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Headers should render correctly 1`] = `
-<table>
+<table
+  className="table"
+>
   <thead>
     <tr>
       <td>
@@ -12,6 +14,101 @@ exports[`Headers should render correctly 1`] = `
       </td>
     </tr>
   </thead>
-  <tbody />
+  <tbody>
+    <tr>
+      <td>
+        <div
+          className="_3n6K_fKxrsVm1CJPqwAq8o input"
+        >
+          <div
+            className="_38eXidZASNp7atFrIvNeiv"
+          >
+            <input
+              aria-label="Property"
+              className="input"
+              data-column="property"
+              data-row={0}
+              defaultValue=""
+              id="--property"
+              label="Property"
+              name="property"
+              onChange={[Function]}
+              onInvalid={[Function]}
+              placeholder="New placeholder"
+              title="Property"
+              type="text"
+            />
+            <div>
+              <label
+                htmlFor="--property"
+              >
+                Property
+              </label>
+              <span
+                className="_2r0FisJhjYRQ1B7ApaziUQ"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
+            />
+            <div
+              className="_32QKThU6BOofPz0VKi6SvV"
+            />
+          </div>
+        </div>
+      </td>
+      <td>
+        <div
+          className="_3n6K_fKxrsVm1CJPqwAq8o input"
+        >
+          <div
+            className="_38eXidZASNp7atFrIvNeiv"
+          >
+            <input
+              aria-label="Value"
+              className="input"
+              data-column="value"
+              data-row={0}
+              defaultValue=""
+              id="--value"
+              label="Value"
+              name="value"
+              onChange={[Function]}
+              onInvalid={[Function]}
+              placeholder="New value"
+              title="Value"
+              type="text"
+            />
+            <div>
+              <label
+                htmlFor="--value"
+              >
+                Value
+              </label>
+              <span
+                className="_2r0FisJhjYRQ1B7ApaziUQ"
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+                  }
+                }
+              />
+            </div>
+            <div
+              className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
+            />
+            <div
+              className="_32QKThU6BOofPz0VKi6SvV"
+            />
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
 </table>
 `;

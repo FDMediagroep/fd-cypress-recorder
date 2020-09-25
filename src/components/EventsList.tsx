@@ -55,10 +55,7 @@ export default function EventsList(props: Props) {
                 result.destination.index
             );
             EventsStore.addFuture([...EventsStore.getEvents()]);
-            EventsStore.setEvents(events);
-            storage.local.set({
-                'fd-cypress-chrome-extension-events': events,
-            });
+            EventsStore.setEvents(events, 'storeEvents');
         },
         [props.events]
     );

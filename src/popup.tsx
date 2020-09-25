@@ -42,7 +42,7 @@ const storageHeaders = 'fd-cypress-chrome-extension-headers';
  */
 function handleTestSuiteChange(testSuiteName: string | null) {
     storage.local.set({
-        'fd-cypress-chrome-extension-testSuite': testSuiteName,
+        [storageTestSuiteName]: testSuiteName,
     });
 }
 
@@ -52,7 +52,7 @@ function handleTestSuiteChange(testSuiteName: string | null) {
  */
 function handleTestDescriptionChange(testDescription: string | null) {
     storage.local.set({
-        'fd-cypress-chrome-extension-testDescription': testDescription,
+        [storageTestDescriptionName]: testDescription,
     });
 }
 
@@ -66,7 +66,7 @@ function handleRemoveEvent(index: number) {
         const events = [...EventsStore.getEvents()];
         events.splice(index, 1);
         storage.local.set({
-            'fd-cypress-chrome-extension-events': events,
+            [storageName]: events,
         });
     }
 }
@@ -78,7 +78,7 @@ function undo() {
     EventsStore.addFuture([...EventsStore.getEvents()]);
     EventsStore.stepBack();
     storage.local.set({
-        'fd-cypress-chrome-extension-events': EventsStore.getEvents(),
+        [storageName]: EventsStore.getEvents(),
     });
 }
 
@@ -87,7 +87,7 @@ function undo() {
  */
 function redo() {
     storage.local.set({
-        'fd-cypress-chrome-extension-events': EventsStore.popFuture(),
+        [storageName]: EventsStore.popFuture(),
     });
 }
 
@@ -129,14 +129,14 @@ function saveTemplate() {
                         template.description = testDescription;
                         template.events = events;
                         storage.local.set({
-                            'fd-cypress-chrome-extension-templates': templates,
+                            [storageTemplates]: templates,
                         });
                     }
                 }
             });
         } else {
             storage.local.set({
-                'fd-cypress-chrome-extension-templates': templates.concat({
+                [storageTemplates]: templates.concat({
                     name: testSuiteName,
                     description: testDescription,
                     events,
@@ -149,7 +149,7 @@ function saveTemplate() {
             alert('Please enter a test suite name to save your template.');
         } else {
             storage.local.set({
-                'fd-cypress-chrome-extension-templates': templates.concat({
+                [storageTemplates]: templates.concat({
                     name: testSuiteName,
                     description: testDescription,
                     events,
@@ -173,19 +173,19 @@ function handleLoadTemplate(templateName: string | null | undefined) {
     ) {
         const templates = [...TemplatesStore.getTemplates()];
         storage.local.set({
-            'fd-cypress-chrome-extension-testSuite':
+            [storageTestSuiteName]:
                 templates[
                     templates.findIndex(
                         (template: Template) => template.name === templateName
                     )
                 ].name,
-            'fd-cypress-chrome-extension-testDescription':
+            [storageTestDescriptionName]:
                 templates[
                     templates.findIndex(
                         (template: Template) => template.name === templateName
                     )
                 ].description,
-            'fd-cypress-chrome-extension-events':
+            [storageName]:
                 templates[
                     templates.findIndex(
                         (template: Template) => template.name === templateName
@@ -216,7 +216,7 @@ function handleLoadAppendTemplate(templateName: string | null | undefined) {
             ].events,
         ];
         storage.local.set({
-            'fd-cypress-chrome-extension-events': events,
+            [storageName]: events,
         });
     }
 }
@@ -237,7 +237,7 @@ function removeTemplate(templateName: string | null | undefined) {
         if (idx > -1) {
             templates.splice(idx, 1);
             storage.local.set({
-                'fd-cypress-chrome-extension-templates': templates,
+                [storageTemplates]: templates,
             });
         }
     }
@@ -245,7 +245,7 @@ function removeTemplate(templateName: string | null | undefined) {
 
 function handleBasicAuthChange(basicAuth: boolean) {
     storage.local.set({
-        'fd-cypress-chrome-extension-basic-auth': basicAuth,
+        [storageBasicAuth]: basicAuth,
     });
 }
 
@@ -255,7 +255,7 @@ function handleBasicAuthChange(basicAuth: boolean) {
  */
 function handleRecording(recording: boolean) {
     storage.local.set({
-        'fd-cypress-chrome-extension-record': recording,
+        [storageRecord]: recording,
     });
 }
 
@@ -273,8 +273,8 @@ storage.onChanged.addListener((changes: any, namespace: any) => {
                     'Old value was "%s", new value is "%s".',
                 key,
                 namespace,
-                storageChange.oldValue,
-                storageChange.newValue
+                JSON.stringify(storageChange.oldValue, null, 2),
+                JSON.stringify(storageChange.newValue, null, 2)
             );
             switch (key) {
                 case storageName:
@@ -316,13 +316,13 @@ storage.onChanged.addListener((changes: any, namespace: any) => {
  */
 storage.local.get(
     {
-        'fd-cypress-chrome-extension-events': null,
-        'fd-cypress-chrome-extension-record': false,
-        'fd-cypress-chrome-extension-basic-auth': false,
-        'fd-cypress-chrome-extension-testSuite': '',
-        'fd-cypress-chrome-extension-testDescription': '',
-        'fd-cypress-chrome-extension-templates': [],
-        'fd-cypress-chrome-extension-headers': [{ property: '', value: '' }],
+        [storageName]: null,
+        [storageRecord]: false,
+        [storageBasicAuth]: false,
+        [storageTestSuiteName]: '',
+        [storageTestDescriptionName]: '',
+        [storageTemplates]: [],
+        [storageHeaders]: [{ property: '', value: '' }],
     },
     (items: any) => {
         const recording = items[storageRecord];
@@ -335,9 +335,20 @@ storage.local.get(
          */
         HeadersStore.subscribe(() => {
             storage.local.set({
-                'fd-cypress-chrome-extension-headers': HeadersStore.getHeaders(),
+                [storageHeaders]: HeadersStore.getHeaders().length
+                    ? HeadersStore.getHeaders()
+                    : [{ property: '', value: '' }],
             });
         }, ReSubstitute.Key_All);
+
+        /**
+         * Listen for storeEvents changes and save them to storage.
+         */
+        EventsStore.subscribe(() => {
+            storage.local.set({
+                [storageName]: EventsStore.getEvents(),
+            });
+        }, 'storeEvents');
 
         /**
          * Handle recording state
@@ -351,7 +362,7 @@ storage.local.get(
         TestSuiteStore.setTestDescription(items[storageTestDescriptionName]);
         TestSuiteStore.setBasicAuth(items[storageBasicAuth]);
         TemplatesStore.setTemplates(items[storageTemplates]);
-        EventsStore.setEvents(items[storageName]);
+        EventsStore.setEvents(items[storageName], 'loadEvents');
         HeadersStore.setHeaders(items[storageHeaders]);
         ReactDOM.render(
             <Popup
