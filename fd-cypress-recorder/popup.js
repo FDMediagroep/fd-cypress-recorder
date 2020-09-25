@@ -42769,9 +42769,9 @@ function CypressGenerator(props) {
             }
             : { value: '' }), { errorMessage: "Please enter a description for your test" })),
         react_1.default.createElement("div", { className: CypressGenerator_module_scss_1.default.extraOptions },
-            react_1.default.createElement(Radio_1.Radio, { id: "code", name: "views", onClick: showCode, label: "Show code", value: "code", defaultChecked: true }),
-            react_1.default.createElement(Radio_1.Radio, { id: "events", name: "views", onClick: showEvents, label: "Show events", value: "events" }),
-            react_1.default.createElement(Radio_1.Radio, { id: "headers", name: "views", onClick: showHeaders, label: "Show headers", value: "headers" }),
+            react_1.default.createElement(Radio_1.Radio, { id: "code", name: "views", onClick: showCode, label: "Code", title: "Show code", value: "code", defaultChecked: true }),
+            react_1.default.createElement(Radio_1.Radio, { id: "events", name: "views", onClick: showEvents, label: "Events", title: "Show events", value: "events" }),
+            react_1.default.createElement(Radio_1.Radio, { id: "headers", name: "views", onClick: showHeaders, label: "Headers", title: "Show headers", value: "headers" }),
             react_1.default.createElement(Checkbox_1.Checkbox, { id: "basicAuth", label: "Basic Auth", checked: props.basicAuth, value: "basic-auth", onChange: props.onBasicAuth })),
         view === 'code' ? (react_1.default.createElement(TextArea_1.TextArea, { id: "codeArea", className: CypressGenerator_module_scss_1.default.textArea, onChange: handleChange, value: cypressCode.join(''), placeholder: "Start using the website to record some events", readOnly: true, spellCheck: false })) : null,
         view === 'events' ? (react_1.default.createElement(EventsList_1.default, { events: props.events, onRemoveEvent: removeEvent })) : null,

@@ -126,7 +126,8 @@ export default function CypressGenerator(props: Props) {
                     id="code"
                     name="views"
                     onClick={showCode}
-                    label="Show code"
+                    label="Code"
+                    title="Show code"
                     value="code"
                     defaultChecked={true}
                 />
@@ -134,14 +135,16 @@ export default function CypressGenerator(props: Props) {
                     id="events"
                     name="views"
                     onClick={showEvents}
-                    label="Show events"
+                    label="Events"
+                    title="Show events"
                     value="events"
                 />
                 <Radio
                     id="headers"
                     name="views"
                     onClick={showHeaders}
-                    label="Show headers"
+                    label="Headers"
+                    title="Show headers"
                     value="headers"
                 />
                 <Checkbox
