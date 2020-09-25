@@ -1,6 +1,31 @@
 html {
     background-color: var(--product-background);
     color: var(--content-copy);
+
+    ::-webkit-scrollbar {
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-border-radius: 0.25rem;
+        border-radius: 0.25rem;
+        background: var(--dividers);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 0.25rem;
+        border-radius: 0.25rem;
+        background: var(--meta-copy);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--functional-copy);
+    }
+
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background: var(--dividers);
+    }
 }
 
 #popup {
