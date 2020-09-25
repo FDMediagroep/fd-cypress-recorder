@@ -2,90 +2,192 @@
 
 exports[`Cypress Generator should render empty test correctly 1`] = `
 <div
-  className="sc-AxhUy iJlaZL"
+  className="cypressGenerator"
 >
   <div
-    className="fd-input testSuite"
+    className="_3n6K_fKxrsVm1CJPqwAq8o testSuite"
   >
     <div
-      className="input"
+      className="_38eXidZASNp7atFrIvNeiv"
     >
       <input
+        aria-label="Test suite name"
+        className="testSuite"
+        errorMessage="Please enter a name for your test suite"
         id="testSuite"
-        maxLength={null}
-        minLength={null}
+        label="Test suite name"
         name="testSuite"
         onChange={[Function]}
         onInvalid={[Function]}
         placeholder=" "
-        required={false}
         title="Test suite name"
         type="text"
         value=""
       />
-      <label
-        htmlFor="testSuite"
-      >
-        Test suite name
-         
-        <i
-          className="icon-check"
+      <div>
+        <label
+          htmlFor="testSuite"
+        >
+          Test suite name
+        </label>
+        <span
+          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+            }
+          }
         />
-      </label>
+      </div>
       <div
-        className="input-message error-message"
+        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
       >
         Please enter a name for your test suite
       </div>
       <div
-        className="input-message"
+        className="_32QKThU6BOofPz0VKi6SvV"
       />
     </div>
   </div>
   <div
-    className="fd-input testDescription"
+    className="_3n6K_fKxrsVm1CJPqwAq8o testDescription"
   >
     <div
-      className="input"
+      className="_38eXidZASNp7atFrIvNeiv"
     >
       <input
+        aria-label="Description"
+        className="testDescription"
+        errorMessage="Please enter a description for your test"
         id="testDescription"
-        maxLength={null}
-        minLength={null}
+        label="Description"
         name="testDescription"
         onChange={[Function]}
         onInvalid={[Function]}
         placeholder=" "
-        required={false}
         title="Description"
         type="text"
         value=""
       />
-      <label
-        htmlFor="testDescription"
-      >
-        Description
-         
-        <i
-          className="icon-check"
+      <div>
+        <label
+          htmlFor="testDescription"
+        >
+          Description
+        </label>
+        <span
+          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+            }
+          }
         />
-      </label>
+      </div>
       <div
-        className="input-message error-message"
+        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
       >
         Please enter a description for your test
       </div>
       <div
-        className="input-message"
+        className="_32QKThU6BOofPz0VKi6SvV"
       />
     </div>
   </div>
-  <textarea
-    onChange={[Function]}
-    placeholder="Start using the website to record some events"
-    readOnly={false}
-    spellCheck={false}
-    value="/**
+  <div
+    className="extraOptions"
+  >
+    <label
+      className="J-gTWf2zmkW2ZoUTEfVM1"
+    >
+      <input
+        aria-label="Show code"
+        defaultChecked={true}
+        id="code"
+        name="views"
+        onClick={[Function]}
+        type="radio"
+        value="code"
+      />
+      <span
+        className="_3vOMhlK4xJIv2rBAJOXmvS"
+      >
+        Show code
+      </span>
+    </label>
+    <label
+      className="J-gTWf2zmkW2ZoUTEfVM1"
+    >
+      <input
+        aria-label="Show events"
+        id="events"
+        name="views"
+        onClick={[Function]}
+        type="radio"
+        value="events"
+      />
+      <span
+        className="_3vOMhlK4xJIv2rBAJOXmvS"
+      >
+        Show events
+      </span>
+    </label>
+    <label
+      className="J-gTWf2zmkW2ZoUTEfVM1"
+    >
+      <input
+        aria-label="Show headers"
+        id="headers"
+        name="views"
+        onClick={[Function]}
+        type="radio"
+        value="headers"
+      />
+      <span
+        className="_3vOMhlK4xJIv2rBAJOXmvS"
+      >
+        Show headers
+      </span>
+    </label>
+    <label
+      className="_2xr_2PwwBn0jwkzvvP5PKe"
+    >
+      <input
+        aria-label="Basic Auth"
+        checked={false}
+        id="basicAuth"
+        label="Basic Auth"
+        name="basicAuth"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="basic-auth"
+      />
+      <span
+        className="_1EUjYjpYvYDrup4HQpjJMf"
+      >
+        Basic Auth
+      </span>
+    </label>
+  </div>
+  <div
+    className="N-HkZtzD4J4oU9qn_-yvs textArea"
+  >
+    <div
+      className="_3rymx_8W221gnQrkBW4CCG"
+    >
+      <textarea
+        aria-label="Value"
+        className="textArea"
+        data-show-error={false}
+        id="codeArea"
+        name="codeArea"
+        onChange={[Function]}
+        onInvalid={[Function]}
+        placeholder="Start using the website to record some events"
+        readOnly={true}
+        spellCheck={false}
+        title="Value"
+        value="/**
   * Code generated with Fd Cypress Recorder.
   * https://github.com/FDMediagroep/fd-cypress-recorder
   */
@@ -102,132 +204,223 @@ describe('Test Suite ...', () => {
   });
 });
 "
-  />
-  <div
-    className="sc-AxgMl kmwFLF"
-  >
-    <button
-      className="fd-button  selected"
-      onClick={[Function]}
-      title="Show code"
-    >
-      Code
-    </button>
-    <button
-      className="fd-button"
-      onClick={[Function]}
-      title="Show events"
-    >
-      Events
-    </button>
-    <button
-      className="fd-button"
-      onClick={[Function]}
-      title="Show headers"
-    >
-      Headers
-    </button>
-    <label
-      className="basic-auth"
-    >
-      <input
-        checked={false}
-        onChange={[MockFunction]}
-        type="checkbox"
       />
-       
-      Basic Auth
-    </label>
+      <div>
+        <label
+          htmlFor="codeArea"
+        >
+          Value
+        </label>
+        <span
+          className="_1HGjbdJPl4WE23V2ftyaNX"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+            }
+          }
+        />
+      </div>
+      <div
+        className="_1tzA5J2lU3Dtk5elSSvQHA sf0RpxblxNDZUlesZ5VIc"
+      >
+        Voer een geldige waarde in
+      </div>
+      <div
+        className="_1tzA5J2lU3Dtk5elSSvQHA"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Cypress Generator should render events correctly 1`] = `
 <div
-  className="sc-AxhUy iJlaZL"
+  className="cypressGenerator"
 >
   <div
-    className="fd-input testSuite"
+    className="_3n6K_fKxrsVm1CJPqwAq8o testSuite"
   >
     <div
-      className="input"
+      className="_38eXidZASNp7atFrIvNeiv"
     >
       <input
+        aria-label="Test suite name"
+        className="testSuite"
+        errorMessage="Please enter a name for your test suite"
         id="testSuite"
-        maxLength={null}
-        minLength={null}
+        label="Test suite name"
         name="testSuite"
         onChange={[Function]}
         onInvalid={[Function]}
         placeholder=" "
-        required={false}
         title="Test suite name"
         type="text"
         value=""
       />
-      <label
-        htmlFor="testSuite"
-      >
-        Test suite name
-         
-        <i
-          className="icon-check"
+      <div>
+        <label
+          htmlFor="testSuite"
+        >
+          Test suite name
+        </label>
+        <span
+          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+            }
+          }
         />
-      </label>
+      </div>
       <div
-        className="input-message error-message"
+        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
       >
         Please enter a name for your test suite
       </div>
       <div
-        className="input-message"
+        className="_32QKThU6BOofPz0VKi6SvV"
       />
     </div>
   </div>
   <div
-    className="fd-input testDescription"
+    className="_3n6K_fKxrsVm1CJPqwAq8o testDescription"
   >
     <div
-      className="input"
+      className="_38eXidZASNp7atFrIvNeiv"
     >
       <input
+        aria-label="Description"
+        className="testDescription"
+        errorMessage="Please enter a description for your test"
         id="testDescription"
-        maxLength={null}
-        minLength={null}
+        label="Description"
         name="testDescription"
         onChange={[Function]}
         onInvalid={[Function]}
         placeholder=" "
-        required={false}
         title="Description"
         type="text"
         value=""
       />
-      <label
-        htmlFor="testDescription"
-      >
-        Description
-         
-        <i
-          className="icon-check"
+      <div>
+        <label
+          htmlFor="testDescription"
+        >
+          Description
+        </label>
+        <span
+          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+            }
+          }
         />
-      </label>
+      </div>
       <div
-        className="input-message error-message"
+        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
       >
         Please enter a description for your test
       </div>
       <div
-        className="input-message"
+        className="_32QKThU6BOofPz0VKi6SvV"
       />
     </div>
   </div>
-  <textarea
-    onChange={[Function]}
-    placeholder="Start using the website to record some events"
-    readOnly={false}
-    spellCheck={false}
-    value="/**
+  <div
+    className="extraOptions"
+  >
+    <label
+      className="J-gTWf2zmkW2ZoUTEfVM1"
+    >
+      <input
+        aria-label="Show code"
+        defaultChecked={true}
+        id="code"
+        name="views"
+        onClick={[Function]}
+        type="radio"
+        value="code"
+      />
+      <span
+        className="_3vOMhlK4xJIv2rBAJOXmvS"
+      >
+        Show code
+      </span>
+    </label>
+    <label
+      className="J-gTWf2zmkW2ZoUTEfVM1"
+    >
+      <input
+        aria-label="Show events"
+        id="events"
+        name="views"
+        onClick={[Function]}
+        type="radio"
+        value="events"
+      />
+      <span
+        className="_3vOMhlK4xJIv2rBAJOXmvS"
+      >
+        Show events
+      </span>
+    </label>
+    <label
+      className="J-gTWf2zmkW2ZoUTEfVM1"
+    >
+      <input
+        aria-label="Show headers"
+        id="headers"
+        name="views"
+        onClick={[Function]}
+        type="radio"
+        value="headers"
+      />
+      <span
+        className="_3vOMhlK4xJIv2rBAJOXmvS"
+      >
+        Show headers
+      </span>
+    </label>
+    <label
+      className="_2xr_2PwwBn0jwkzvvP5PKe"
+    >
+      <input
+        aria-label="Basic Auth"
+        checked={false}
+        id="basicAuth"
+        label="Basic Auth"
+        name="basicAuth"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="basic-auth"
+      />
+      <span
+        className="_1EUjYjpYvYDrup4HQpjJMf"
+      >
+        Basic Auth
+      </span>
+    </label>
+  </div>
+  <div
+    className="N-HkZtzD4J4oU9qn_-yvs textArea"
+  >
+    <div
+      className="_3rymx_8W221gnQrkBW4CCG"
+    >
+      <textarea
+        aria-label="Value"
+        className="textArea"
+        data-show-error={false}
+        id="codeArea"
+        name="codeArea"
+        onChange={[Function]}
+        onInvalid={[Function]}
+        placeholder="Start using the website to record some events"
+        readOnly={true}
+        spellCheck={false}
+        title="Value"
+        value="/**
   * Code generated with Fd Cypress Recorder.
   * https://github.com/FDMediagroep/fd-cypress-recorder
   */
@@ -250,132 +443,223 @@ describe('Test Suite ...', () => {
   });
 });
 "
-  />
-  <div
-    className="sc-AxgMl kmwFLF"
-  >
-    <button
-      className="fd-button  selected"
-      onClick={[Function]}
-      title="Show code"
-    >
-      Code
-    </button>
-    <button
-      className="fd-button"
-      onClick={[Function]}
-      title="Show events"
-    >
-      Events
-    </button>
-    <button
-      className="fd-button"
-      onClick={[Function]}
-      title="Show headers"
-    >
-      Headers
-    </button>
-    <label
-      className="basic-auth"
-    >
-      <input
-        checked={false}
-        onChange={[MockFunction]}
-        type="checkbox"
       />
-       
-      Basic Auth
-    </label>
+      <div>
+        <label
+          htmlFor="codeArea"
+        >
+          Value
+        </label>
+        <span
+          className="_1HGjbdJPl4WE23V2ftyaNX"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+            }
+          }
+        />
+      </div>
+      <div
+        className="_1tzA5J2lU3Dtk5elSSvQHA sf0RpxblxNDZUlesZ5VIc"
+      >
+        Voer een geldige waarde in
+      </div>
+      <div
+        className="_1tzA5J2lU3Dtk5elSSvQHA"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Cypress Generator should render headers correctly 1`] = `
 <div
-  className="sc-AxhUy iJlaZL"
+  className="cypressGenerator"
 >
   <div
-    className="fd-input testSuite"
+    className="_3n6K_fKxrsVm1CJPqwAq8o testSuite"
   >
     <div
-      className="input"
+      className="_38eXidZASNp7atFrIvNeiv"
     >
       <input
+        aria-label="Test suite name"
+        className="testSuite"
+        errorMessage="Please enter a name for your test suite"
         id="testSuite"
-        maxLength={null}
-        minLength={null}
+        label="Test suite name"
         name="testSuite"
         onChange={[Function]}
         onInvalid={[Function]}
         placeholder=" "
-        required={false}
         title="Test suite name"
         type="text"
         value=""
       />
-      <label
-        htmlFor="testSuite"
-      >
-        Test suite name
-         
-        <i
-          className="icon-check"
+      <div>
+        <label
+          htmlFor="testSuite"
+        >
+          Test suite name
+        </label>
+        <span
+          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+            }
+          }
         />
-      </label>
+      </div>
       <div
-        className="input-message error-message"
+        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
       >
         Please enter a name for your test suite
       </div>
       <div
-        className="input-message"
+        className="_32QKThU6BOofPz0VKi6SvV"
       />
     </div>
   </div>
   <div
-    className="fd-input testDescription"
+    className="_3n6K_fKxrsVm1CJPqwAq8o testDescription"
   >
     <div
-      className="input"
+      className="_38eXidZASNp7atFrIvNeiv"
     >
       <input
+        aria-label="Description"
+        className="testDescription"
+        errorMessage="Please enter a description for your test"
         id="testDescription"
-        maxLength={null}
-        minLength={null}
+        label="Description"
         name="testDescription"
         onChange={[Function]}
         onInvalid={[Function]}
         placeholder=" "
-        required={false}
         title="Description"
         type="text"
         value=""
       />
-      <label
-        htmlFor="testDescription"
-      >
-        Description
-         
-        <i
-          className="icon-check"
+      <div>
+        <label
+          htmlFor="testDescription"
+        >
+          Description
+        </label>
+        <span
+          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+            }
+          }
         />
-      </label>
+      </div>
       <div
-        className="input-message error-message"
+        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
       >
         Please enter a description for your test
       </div>
       <div
-        className="input-message"
+        className="_32QKThU6BOofPz0VKi6SvV"
       />
     </div>
   </div>
-  <textarea
-    onChange={[Function]}
-    placeholder="Start using the website to record some events"
-    readOnly={false}
-    spellCheck={false}
-    value="/**
+  <div
+    className="extraOptions"
+  >
+    <label
+      className="J-gTWf2zmkW2ZoUTEfVM1"
+    >
+      <input
+        aria-label="Show code"
+        defaultChecked={true}
+        id="code"
+        name="views"
+        onClick={[Function]}
+        type="radio"
+        value="code"
+      />
+      <span
+        className="_3vOMhlK4xJIv2rBAJOXmvS"
+      >
+        Show code
+      </span>
+    </label>
+    <label
+      className="J-gTWf2zmkW2ZoUTEfVM1"
+    >
+      <input
+        aria-label="Show events"
+        id="events"
+        name="views"
+        onClick={[Function]}
+        type="radio"
+        value="events"
+      />
+      <span
+        className="_3vOMhlK4xJIv2rBAJOXmvS"
+      >
+        Show events
+      </span>
+    </label>
+    <label
+      className="J-gTWf2zmkW2ZoUTEfVM1"
+    >
+      <input
+        aria-label="Show headers"
+        id="headers"
+        name="views"
+        onClick={[Function]}
+        type="radio"
+        value="headers"
+      />
+      <span
+        className="_3vOMhlK4xJIv2rBAJOXmvS"
+      >
+        Show headers
+      </span>
+    </label>
+    <label
+      className="_2xr_2PwwBn0jwkzvvP5PKe"
+    >
+      <input
+        aria-label="Basic Auth"
+        checked={false}
+        id="basicAuth"
+        label="Basic Auth"
+        name="basicAuth"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="basic-auth"
+      />
+      <span
+        className="_1EUjYjpYvYDrup4HQpjJMf"
+      >
+        Basic Auth
+      </span>
+    </label>
+  </div>
+  <div
+    className="N-HkZtzD4J4oU9qn_-yvs textArea"
+  >
+    <div
+      className="_3rymx_8W221gnQrkBW4CCG"
+    >
+      <textarea
+        aria-label="Value"
+        className="textArea"
+        data-show-error={false}
+        id="codeArea"
+        name="codeArea"
+        onChange={[Function]}
+        onInvalid={[Function]}
+        placeholder="Start using the website to record some events"
+        readOnly={true}
+        spellCheck={false}
+        title="Value"
+        value="/**
   * Code generated with Fd Cypress Recorder.
   * https://github.com/FDMediagroep/fd-cypress-recorder
   */
@@ -398,132 +682,223 @@ describe('Test Suite ...', () => {
   });
 });
 "
-  />
-  <div
-    className="sc-AxgMl kmwFLF"
-  >
-    <button
-      className="fd-button  selected"
-      onClick={[Function]}
-      title="Show code"
-    >
-      Code
-    </button>
-    <button
-      className="fd-button"
-      onClick={[Function]}
-      title="Show events"
-    >
-      Events
-    </button>
-    <button
-      className="fd-button"
-      onClick={[Function]}
-      title="Show headers"
-    >
-      Headers
-    </button>
-    <label
-      className="basic-auth"
-    >
-      <input
-        checked={false}
-        onChange={[MockFunction]}
-        type="checkbox"
       />
-       
-      Basic Auth
-    </label>
+      <div>
+        <label
+          htmlFor="codeArea"
+        >
+          Value
+        </label>
+        <span
+          className="_1HGjbdJPl4WE23V2ftyaNX"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+            }
+          }
+        />
+      </div>
+      <div
+        className="_1tzA5J2lU3Dtk5elSSvQHA sf0RpxblxNDZUlesZ5VIc"
+      >
+        Voer een geldige waarde in
+      </div>
+      <div
+        className="_1tzA5J2lU3Dtk5elSSvQHA"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Cypress Generator should render test with suite name and description correctly 1`] = `
 <div
-  className="sc-AxhUy iJlaZL"
+  className="cypressGenerator"
 >
   <div
-    className="fd-input testSuite"
+    className="_3n6K_fKxrsVm1CJPqwAq8o testSuite"
   >
     <div
-      className="input"
+      className="_38eXidZASNp7atFrIvNeiv"
     >
       <input
+        aria-label="Test suite name"
+        className="testSuite"
+        defaultValue="Test suite name"
+        errorMessage="Please enter a name for your test suite"
         id="testSuite"
-        maxLength={null}
-        minLength={null}
+        label="Test suite name"
         name="testSuite"
         onChange={[Function]}
         onInvalid={[Function]}
         placeholder=" "
-        required={false}
         title="Test suite name"
         type="text"
-        value="Test suite name"
       />
-      <label
-        htmlFor="testSuite"
-      >
-        Test suite name
-         
-        <i
-          className="icon-check"
+      <div>
+        <label
+          htmlFor="testSuite"
+        >
+          Test suite name
+        </label>
+        <span
+          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+            }
+          }
         />
-      </label>
+      </div>
       <div
-        className="input-message error-message"
+        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
       >
         Please enter a name for your test suite
       </div>
       <div
-        className="input-message"
+        className="_32QKThU6BOofPz0VKi6SvV"
       />
     </div>
   </div>
   <div
-    className="fd-input testDescription"
+    className="_3n6K_fKxrsVm1CJPqwAq8o testDescription"
   >
     <div
-      className="input"
+      className="_38eXidZASNp7atFrIvNeiv"
     >
       <input
+        aria-label="Description"
+        className="testDescription"
+        defaultValue="Test description"
+        errorMessage="Please enter a description for your test"
         id="testDescription"
-        maxLength={null}
-        minLength={null}
+        label="Description"
         name="testDescription"
         onChange={[Function]}
         onInvalid={[Function]}
         placeholder=" "
-        required={false}
         title="Description"
         type="text"
-        value="Test description"
       />
-      <label
-        htmlFor="testDescription"
-      >
-        Description
-         
-        <i
-          className="icon-check"
+      <div>
+        <label
+          htmlFor="testDescription"
+        >
+          Description
+        </label>
+        <span
+          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+            }
+          }
         />
-      </label>
+      </div>
       <div
-        className="input-message error-message"
+        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
       >
         Please enter a description for your test
       </div>
       <div
-        className="input-message"
+        className="_32QKThU6BOofPz0VKi6SvV"
       />
     </div>
   </div>
-  <textarea
-    onChange={[Function]}
-    placeholder="Start using the website to record some events"
-    readOnly={false}
-    spellCheck={false}
-    value="/**
+  <div
+    className="extraOptions"
+  >
+    <label
+      className="J-gTWf2zmkW2ZoUTEfVM1"
+    >
+      <input
+        aria-label="Show code"
+        defaultChecked={true}
+        id="code"
+        name="views"
+        onClick={[Function]}
+        type="radio"
+        value="code"
+      />
+      <span
+        className="_3vOMhlK4xJIv2rBAJOXmvS"
+      >
+        Show code
+      </span>
+    </label>
+    <label
+      className="J-gTWf2zmkW2ZoUTEfVM1"
+    >
+      <input
+        aria-label="Show events"
+        id="events"
+        name="views"
+        onClick={[Function]}
+        type="radio"
+        value="events"
+      />
+      <span
+        className="_3vOMhlK4xJIv2rBAJOXmvS"
+      >
+        Show events
+      </span>
+    </label>
+    <label
+      className="J-gTWf2zmkW2ZoUTEfVM1"
+    >
+      <input
+        aria-label="Show headers"
+        id="headers"
+        name="views"
+        onClick={[Function]}
+        type="radio"
+        value="headers"
+      />
+      <span
+        className="_3vOMhlK4xJIv2rBAJOXmvS"
+      >
+        Show headers
+      </span>
+    </label>
+    <label
+      className="_2xr_2PwwBn0jwkzvvP5PKe"
+    >
+      <input
+        aria-label="Basic Auth"
+        checked={false}
+        id="basicAuth"
+        label="Basic Auth"
+        name="basicAuth"
+        onChange={[MockFunction]}
+        type="checkbox"
+        value="basic-auth"
+      />
+      <span
+        className="_1EUjYjpYvYDrup4HQpjJMf"
+      >
+        Basic Auth
+      </span>
+    </label>
+  </div>
+  <div
+    className="N-HkZtzD4J4oU9qn_-yvs textArea"
+  >
+    <div
+      className="_3rymx_8W221gnQrkBW4CCG"
+    >
+      <textarea
+        aria-label="Value"
+        className="textArea"
+        data-show-error={false}
+        id="codeArea"
+        name="codeArea"
+        onChange={[Function]}
+        onInvalid={[Function]}
+        placeholder="Start using the website to record some events"
+        readOnly={true}
+        spellCheck={false}
+        title="Value"
+        value="/**
   * Code generated with Fd Cypress Recorder.
   * https://github.com/FDMediagroep/fd-cypress-recorder
   */
@@ -540,42 +915,31 @@ describe('Test suite name', () => {
   });
 });
 "
-  />
-  <div
-    className="sc-AxgMl kmwFLF"
-  >
-    <button
-      className="fd-button  selected"
-      onClick={[Function]}
-      title="Show code"
-    >
-      Code
-    </button>
-    <button
-      className="fd-button"
-      onClick={[Function]}
-      title="Show events"
-    >
-      Events
-    </button>
-    <button
-      className="fd-button"
-      onClick={[Function]}
-      title="Show headers"
-    >
-      Headers
-    </button>
-    <label
-      className="basic-auth"
-    >
-      <input
-        checked={false}
-        onChange={[MockFunction]}
-        type="checkbox"
       />
-       
-      Basic Auth
-    </label>
+      <div>
+        <label
+          htmlFor="codeArea"
+        >
+          Value
+        </label>
+        <span
+          className="_1HGjbdJPl4WE23V2ftyaNX"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\"><path d=\\"M-54.371 243.208l313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+            }
+          }
+        />
+      </div>
+      <div
+        className="_1tzA5J2lU3Dtk5elSSvQHA sf0RpxblxNDZUlesZ5VIc"
+      >
+        Voer een geldige waarde in
+      </div>
+      <div
+        className="_1tzA5J2lU3Dtk5elSSvQHA"
+      />
+    </div>
   </div>
 </div>
 `;

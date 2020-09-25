@@ -2,16 +2,16 @@
 
 exports[`Fd Event should render event type correctly 1`] = `
 <span
-  className="sc-AxjAm kFkpPp"
+  className="fdEvent"
 >
   <span
-    className="event-type"
+    className="eventType"
   >
     click
      
   </span>
   <span
-    className="event-target"
+    className="eventTarget"
   >
     h:
     document.body
@@ -22,10 +22,10 @@ exports[`Fd Event should render event type correctly 1`] = `
 
 exports[`Fd Event should render event type with value correctly 1`] = `
 <span
-  className="sc-AxjAm kFkpPp"
+  className="fdEvent"
 >
   <span
-    className="event-type"
+    className="eventType"
   >
     contains-text
      
@@ -37,7 +37,7 @@ exports[`Fd Event should render event type with value correctly 1`] = `
      
   </span>
   <span
-    className="event-target"
+    className="eventTarget"
   >
     h:
     document.body

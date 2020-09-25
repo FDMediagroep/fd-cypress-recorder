@@ -29718,6 +29718,7 @@ var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/r
 var react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
 var ContextMenuOverlay_1 = __importDefault(__webpack_require__(/*! ./components/ContextMenuOverlay */ "./src/components/ContextMenuOverlay.tsx"));
 var FdEvents_1 = __webpack_require__(/*! ./utils/FdEvents */ "./src/utils/FdEvents.ts");
+var ReSubstitute_1 = __webpack_require__(/*! ./utils/ReSubstitute */ "./src/utils/ReSubstitute.ts");
 var runtime = typeof browser !== 'undefined' ? browser.runtime : chrome.runtime;
 var storage = typeof browser !== 'undefined' ? browser.storage : chrome.storage;
 var storageName = 'fd-cypress-chrome-extension-events';
@@ -29889,13 +29890,11 @@ function record() {
         'fd-cypress-chrome-extension-record': recording,
     });
     subscriptionToken = EventsStore.subscribe(function (keys) {
-        console.log('Save events', keys);
         if (keys && keys.length && keys[0] === 'loadEvents') {
             return;
         } // Prevent an infinite loop.
-        console.log('Save events', keys);
         saveEvents();
-    });
+    }, ReSubstitute_1.ReSubstitute.Key_All);
     document.getElementsByTagName('head')[0].appendChild(style);
     var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -30275,6 +30274,7 @@ var ReSubstitute = /** @class */ (function () {
      * @param key limit only to events for this key
      */
     ReSubstitute.prototype.subscribe = function (callback, key) {
+        console.log('sub', key);
         var id = +new Date();
         this.subscriptions.push({ id: id, callback: callback, key: key });
         return id;
@@ -30303,7 +30303,10 @@ var ReSubstitute = /** @class */ (function () {
         var _this = this;
         if (typeof keyOrKeys === 'string') {
             this.subscriptions.forEach(function (subscription) {
-                if (subscription.key === keyOrKeys) {
+                var _a;
+                console.log((_a = subscription.key) !== null && _a !== void 0 ? _a : 'no key', keyOrKeys);
+                if (subscription.key === keyOrKeys ||
+                    subscription.key === ReSubstitute.Key_All) {
                     ReSubstitute.pendingCallbacks.set(subscription.callback, {
                         bypassBlock: _this.bypassTriggerBlocks,
                         keys: [keyOrKeys],
@@ -30314,7 +30317,10 @@ var ReSubstitute = /** @class */ (function () {
         }
         else if (Array.isArray(keyOrKeys)) {
             this.subscriptions.forEach(function (subscription) {
-                if (keyOrKeys.indexOf(subscription.key) !== -1) {
+                var _a;
+                console.log((_a = subscription.key) !== null && _a !== void 0 ? _a : 'no key', keyOrKeys);
+                if (keyOrKeys.indexOf(subscription.key) !== -1 ||
+                    subscription.key === ReSubstitute.Key_All) {
                     ReSubstitute.pendingCallbacks.set(subscription.callback, {
                         bypassBlock: _this.bypassTriggerBlocks,
                         keys: keyOrKeys,
@@ -30353,6 +30359,7 @@ var ReSubstitute = /** @class */ (function () {
             }
         }
     };
+    ReSubstitute.Key_All = 'RESUBSTITUTE_ALL_EVENTS';
     ReSubstitute.pendingCallbacks = new Map();
     ReSubstitute.triggerBlockCount = 0;
     return ReSubstitute;

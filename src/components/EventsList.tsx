@@ -1,5 +1,5 @@
 import { AllFdEvents } from '../utils/FdEvents';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ButtonGhost } from '@fdmg/design-system/components/button/ButtonGhost';
 import FdEvent from './FdEvent';
 import {
@@ -32,29 +32,40 @@ export interface Props {
  * @param props
  */
 export default function EventsList(props: Props) {
-    function handleDragEnd(result: DropResult) {
-        if (!result.destination) {
-            return;
-        }
+    const handleDragEnd = useCallback(
+        (result: DropResult) => {
+            if (!result.destination) {
+                return;
+            }
 
-        let events = [...props.events];
-        const reorder = (
-            list: AllFdEvents[],
-            startIndex: number,
-            endIndex: number
-        ) => {
-            const arrayList = Array.from(list);
-            const [removed] = arrayList.splice(startIndex, 1);
-            arrayList.splice(endIndex, 0, removed);
-            return arrayList;
-        };
-        events = reorder(events, result.source.index, result.destination.index);
-        EventsStore.addFuture([...EventsStore.getEvents()]);
-        EventsStore.setEvents(events);
-        storage.local.set({
-            'fd-cypress-chrome-extension-events': events,
-        });
-    }
+            let events = [...props.events];
+            const reorder = (
+                list: AllFdEvents[],
+                startIndex: number,
+                endIndex: number
+            ) => {
+                const arrayList = Array.from(list);
+                const [removed] = arrayList.splice(startIndex, 1);
+                arrayList.splice(endIndex, 0, removed);
+                return arrayList;
+            };
+            console.log('PRE', events);
+            events = reorder(
+                events,
+                result.source.index,
+                result.destination.index
+            );
+            console.log('AFT', events);
+            EventsStore.addFuture([...EventsStore.getEvents()]);
+            EventsStore.setEvents(events);
+            storage.local.set({
+                'fd-cypress-chrome-extension-events': events,
+            });
+        },
+        [props.events]
+    );
+
+    console.log(props.events);
 
     return (
         <>
@@ -81,7 +92,6 @@ export default function EventsList(props: Props) {
                                                     {...dragProvided.draggableProps}
                                                     {...dragProvided.dragHandleProps}
                                                 >
-                                                    {`${(event as any).id}`}
                                                     <FdEvent event={event} />
                                                     <ButtonGhost
                                                         className="toggle-view"

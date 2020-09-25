@@ -42726,7 +42726,6 @@ function CypressGenerator(props) {
     var _d = __read(react_1.useState(generateCodeFromEvents(props.events)), 2), cypressCode = _d[0], setCypressCode = _d[1];
     var _e = __read(react_1.useState('code'), 2), view = _e[0], setView = _e[1];
     react_1.useEffect(function () {
-        console.log(generateCodeFromEvents(props.events));
         setCypressCode(generateCodeFromEvents(props.events));
     }, [
         props.testSuite,
@@ -42816,6 +42815,25 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __read = (this && this.__read) || function (o, n) {
     var m = typeof Symbol === "function" && o[Symbol.iterator];
     if (!m) return o;
@@ -42840,7 +42858,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var ButtonGhost_1 = __webpack_require__(/*! @fdmg/design-system/components/button/ButtonGhost */ "./node_modules/@fdmg/design-system/components/button/ButtonGhost.js");
 var FdEvent_1 = __importDefault(__webpack_require__(/*! ./FdEvent */ "./src/components/FdEvent.tsx"));
 var react_beautiful_dnd_1 = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
@@ -42858,7 +42876,7 @@ else if (typeof chrome !== 'undefined') {
  * @param props
  */
 function EventsList(props) {
-    function handleDragEnd(result) {
+    var handleDragEnd = react_1.useCallback(function (result) {
         if (!result.destination) {
             return;
         }
@@ -42869,16 +42887,19 @@ function EventsList(props) {
             arrayList.splice(endIndex, 0, removed);
             return arrayList;
         };
+        console.log('PRE', events);
         events = reorder(events, result.source.index, result.destination.index);
+        console.log('AFT', events);
         EventsStore.addFuture(__spread(EventsStore.getEvents()));
         EventsStore.setEvents(events);
         storage.local.set({
             'fd-cypress-chrome-extension-events': events,
         });
-    }
+    }, [props.events]);
+    console.log(props.events);
     return (react_1.default.createElement(react_1.default.Fragment, null, props.events.length ? (react_1.default.createElement(react_beautiful_dnd_1.DragDropContext, { onDragEnd: handleDragEnd },
         react_1.default.createElement(react_beautiful_dnd_1.Droppable, { droppableId: "events" }, function (provided) { return (react_1.default.createElement("ul", __assign({ className: EventsList_module_scss_1.default.ul }, provided.droppableProps, { ref: provided.innerRef }, provided.droppableProps),
-            props.events.map(function (event, idx) { return (react_1.default.createElement(react_beautiful_dnd_1.Draggable, { key: idx, draggableId: "" + event.id, index: idx }, function (dragProvided) { return (react_1.default.createElement("li", __assign({ ref: dragProvided.innerRef }, dragProvided.draggableProps, dragProvided.dragHandleProps), "" + event.id,
+            props.events.map(function (event, idx) { return (react_1.default.createElement(react_beautiful_dnd_1.Draggable, { key: idx, draggableId: "" + event.id, index: idx }, function (dragProvided) { return (react_1.default.createElement("li", __assign({ ref: dragProvided.innerRef }, dragProvided.draggableProps, dragProvided.dragHandleProps),
                 react_1.default.createElement(FdEvent_1.default, { event: event }),
                 react_1.default.createElement(ButtonGhost_1.ButtonGhost, { className: "toggle-view", "data-index": idx, onClick: props.onRemoveEvent, title: "Delete event" }, "x"))); })); }),
             provided.placeholder)); }))) : (react_1.default.createElement("div", { className: EventsList_module_scss_1.default.noEvents }, "Start record and interact with a website to record some events"))));
@@ -43023,6 +43044,7 @@ var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/reac
 var HeadersStore = __webpack_require__(/*! ../stores/HeadersStore */ "./src/stores/HeadersStore.ts");
 var Headers_module_scss_1 = __importDefault(__webpack_require__(/*! ./Headers.module.scss */ "./src/components/Headers.module.scss"));
 var TextInput_1 = __webpack_require__(/*! @fdmg/design-system/components/input/TextInput */ "./node_modules/@fdmg/design-system/components/input/TextInput.js");
+var ReSubstitute_1 = __webpack_require__(/*! ../utils/ReSubstitute */ "./src/utils/ReSubstitute.ts");
 /**
  * Layout of the HTTP Headers tab in the Chrome Plugin UI
  */
@@ -43039,7 +43061,7 @@ function Headers(props) {
                 headers.push({ property: '', value: '' });
             }
             setTableData(headers);
-        });
+        }, ReSubstitute_1.ReSubstitute.Key_All);
         var headers = (_a = HeadersStore.getHeaders()) !== null && _a !== void 0 ? _a : props.headers;
         if (headers.length === 0) {
             headers.push({ property: '', value: '' });
@@ -43186,11 +43208,12 @@ var TestSuiteStore = __webpack_require__(/*! ../stores/TestSuiteStore */ "./src/
 var ShortCut_1 = __importDefault(__webpack_require__(/*! ./ShortCut */ "./src/components/ShortCut.tsx"));
 var HeadersStore = __webpack_require__(/*! ../stores/HeadersStore */ "./src/stores/HeadersStore.ts");
 var Popup_module_scss_1 = __importDefault(__webpack_require__(/*! ./Popup.module.scss */ "./src/components/Popup.module.scss"));
+var ReSubstitute_1 = __webpack_require__(/*! ../utils/ReSubstitute */ "./src/utils/ReSubstitute.ts");
 /**
  * This is the Chrome plugin popup window.
  */
 function Popup(props) {
-    var _a = __read(react_1.useState(EventsStore.getEvents()), 2), events = _a[0], setEvents = _a[1];
+    var _a = __read(react_1.useState([]), 2), events = _a[0], setEvents = _a[1];
     var _b = __read(react_1.useState(TestSuiteStore.getRecording()), 2), recording = _b[0], setRecording = _b[1];
     var _c = __read(react_1.useState(EventsStore.getFutures()), 2), futures = _c[0], setFutures = _c[1];
     var _d = __read(react_1.useState(HeadersStore.getHeaders()), 2), headers = _d[0], setHeaders = _d[1];
@@ -43200,6 +43223,10 @@ function Popup(props) {
     var _h = __read(react_1.useState(TestSuiteStore.getTestDescription()), 2), testDescription = _h[0], setTestDescription = _h[1];
     var _j = __read(react_1.useState(TestSuiteStore.getBasicAuth()), 2), basicAuth = _j[0], setBasicAuth = _j[1];
     react_1.useEffect(function () {
+        var evts = EventsStore.getEvents();
+        evts.forEach(function (event, idx) {
+            event.id = idx;
+        });
         var eventId = EventsStore.subscribe(function () {
             var evts = EventsStore.getEvents();
             evts.forEach(function (event, idx) {
@@ -43208,19 +43235,19 @@ function Popup(props) {
             setEvents(evts);
             setFutures(EventsStore.getFutures());
             setUndoneEvents(EventsStore.getUndoneEvents());
-        });
+        }, ReSubstitute_1.ReSubstitute.Key_All);
         var testSuiteId = TestSuiteStore.subscribe(function () {
             setTestSuite(TestSuiteStore.getTestSuite());
             setTestDescription(TestSuiteStore.getTestDescription());
             setRecording(TestSuiteStore.getRecording());
             setBasicAuth(TestSuiteStore.getBasicAuth());
-        });
+        }, ReSubstitute_1.ReSubstitute.Key_All);
         var headerId = HeadersStore.subscribe(function () {
             setHeaders(HeadersStore.getHeaders());
-        });
+        }, ReSubstitute_1.ReSubstitute.Key_All);
         var templateId = TemplatesStore.subscribe(function () {
             setTemplates(TemplatesStore.getTemplates());
-        });
+        }, ReSubstitute_1.ReSubstitute.Key_All);
         return function () {
             EventsStore.unsubscribe(eventId);
             TestSuiteStore.unsubscribe(testSuiteId);
@@ -43264,7 +43291,6 @@ function Popup(props) {
     var handleBasicAuth = function (e) {
         props.onBasicAuthChange(e.currentTarget.checked);
     };
-    // render() {
     return (react_1.default.createElement("div", { className: "" + Popup_module_scss_1.default.popup + (props.className ? " " + props.className : '') },
         react_1.default.createElement("h1", null,
             react_1.default.createElement("span", null, "FD Cypress Recorder"),
@@ -43415,6 +43441,7 @@ __webpack_require__(/*! @fdmg/design-system/components/input/TextInput.css */ ".
 __webpack_require__(/*! @fdmg/design-system/components/input/TextArea.css */ "./node_modules/@fdmg/design-system/components/input/TextArea.css");
 __webpack_require__(/*! @fdmg/design-system/components/input/Radio.css */ "./node_modules/@fdmg/design-system/components/input/Radio.css");
 __webpack_require__(/*! ./popup.scss */ "./src/popup.scss");
+var ReSubstitute_1 = __webpack_require__(/*! ./utils/ReSubstitute */ "./src/utils/ReSubstitute.ts");
 var browserAction = typeof browser !== 'undefined'
     ? browser.browserAction
     : chrome.browserAction;
@@ -43483,6 +43510,7 @@ function clear() {
         storageHeaders,
     ]);
     EventsStore.clear();
+    HeadersStore.clear();
     TestSuiteStore.clear();
 }
 /**
@@ -43606,7 +43634,6 @@ storage.onChanged.addListener(function (changes, namespace) {
             var storageChange = changes[key];
             console.log('Storage key "%s" in namespace "%s" changed. ' +
                 'Old value was "%s", new value is "%s".', key, namespace, storageChange.oldValue, storageChange.newValue);
-            console.log(storageChange.oldValue, storageChange.newValue);
             switch (key) {
                 case storageName:
                     storageChange.newValue
@@ -43660,7 +43687,7 @@ storage.local.get({
         storage.local.set({
             'fd-cypress-chrome-extension-headers': HeadersStore.getHeaders(),
         });
-    });
+    }, ReSubstitute_1.ReSubstitute.Key_All);
     TestSuiteStore.setRecording(recording);
     TestSuiteStore.setTestSuite(items[storageTestSuiteName]);
     TestSuiteStore.setTestDescription(items[storageTestDescriptionName]);
@@ -44325,6 +44352,7 @@ var ReSubstitute = /** @class */ (function () {
      * @param key limit only to events for this key
      */
     ReSubstitute.prototype.subscribe = function (callback, key) {
+        console.log('sub', key);
         var id = +new Date();
         this.subscriptions.push({ id: id, callback: callback, key: key });
         return id;
@@ -44353,7 +44381,10 @@ var ReSubstitute = /** @class */ (function () {
         var _this = this;
         if (typeof keyOrKeys === 'string') {
             this.subscriptions.forEach(function (subscription) {
-                if (subscription.key === keyOrKeys) {
+                var _a;
+                console.log((_a = subscription.key) !== null && _a !== void 0 ? _a : 'no key', keyOrKeys);
+                if (subscription.key === keyOrKeys ||
+                    subscription.key === ReSubstitute.Key_All) {
                     ReSubstitute.pendingCallbacks.set(subscription.callback, {
                         bypassBlock: _this.bypassTriggerBlocks,
                         keys: [keyOrKeys],
@@ -44364,7 +44395,10 @@ var ReSubstitute = /** @class */ (function () {
         }
         else if (Array.isArray(keyOrKeys)) {
             this.subscriptions.forEach(function (subscription) {
-                if (keyOrKeys.indexOf(subscription.key) !== -1) {
+                var _a;
+                console.log((_a = subscription.key) !== null && _a !== void 0 ? _a : 'no key', keyOrKeys);
+                if (keyOrKeys.indexOf(subscription.key) !== -1 ||
+                    subscription.key === ReSubstitute.Key_All) {
                     ReSubstitute.pendingCallbacks.set(subscription.callback, {
                         bypassBlock: _this.bypassTriggerBlocks,
                         keys: keyOrKeys,
@@ -44403,6 +44437,7 @@ var ReSubstitute = /** @class */ (function () {
             }
         }
     };
+    ReSubstitute.Key_All = 'RESUBSTITUTE_ALL_EVENTS';
     ReSubstitute.pendingCallbacks = new Map();
     ReSubstitute.triggerBlockCount = 0;
     return ReSubstitute;

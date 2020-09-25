@@ -3,6 +3,7 @@ import HeadersStore = require('../stores/HeadersStore');
 import { Header } from '../utils/FdEvents';
 import styles from './Headers.module.scss';
 import { TextInput } from '@fdmg/design-system/components/input/TextInput';
+import { ReSubstitute } from '../utils/ReSubstitute';
 
 interface Props {
     headers?: Header[];
@@ -25,7 +26,7 @@ export default function Headers(props: Props) {
                 headers.push({ property: '', value: '' });
             }
             setTableData(headers);
-        });
+        }, ReSubstitute.Key_All);
 
         const headers = HeadersStore.getHeaders() ?? props.headers;
         if (headers.length === 0) {

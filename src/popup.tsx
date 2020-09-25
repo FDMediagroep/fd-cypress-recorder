@@ -15,6 +15,7 @@ import '@fdmg/design-system/components/input/TextInput.css';
 import '@fdmg/design-system/components/input/TextArea.css';
 import '@fdmg/design-system/components/input/Radio.css';
 import './popup.scss';
+import { ReSubstitute } from './utils/ReSubstitute';
 
 declare let chrome: any;
 declare let browser: any;
@@ -101,6 +102,7 @@ function clear() {
         storageHeaders,
     ]);
     EventsStore.clear();
+    HeadersStore.clear();
     TestSuiteStore.clear();
 }
 
@@ -274,7 +276,6 @@ storage.onChanged.addListener((changes: any, namespace: any) => {
                 storageChange.oldValue,
                 storageChange.newValue
             );
-            console.log(storageChange.oldValue, storageChange.newValue);
             switch (key) {
                 case storageName:
                     storageChange.newValue
@@ -336,7 +337,7 @@ storage.local.get(
             storage.local.set({
                 'fd-cypress-chrome-extension-headers': HeadersStore.getHeaders(),
             });
-        });
+        }, ReSubstitute.Key_All);
 
         TestSuiteStore.setRecording(recording);
         TestSuiteStore.setTestSuite(items[storageTestSuiteName]);

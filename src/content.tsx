@@ -10,6 +10,7 @@ import {
     UNIQUE_ATTR_SELECTOR_OPTIONS,
     UNIQUE_ATTR_SELECTOR_OPTIONS_WITHOUT_ID,
 } from './utils/FdEvents';
+import { ReSubstitute } from './utils/ReSubstitute';
 
 declare let chrome: any;
 declare let browser: any;
@@ -232,14 +233,11 @@ function record() {
     });
 
     subscriptionToken = EventsStore.subscribe((keys) => {
-        console.log('Save events', keys);
-
         if (keys && keys.length && keys[0] === 'loadEvents') {
             return;
         } // Prevent an infinite loop.
-        console.log('Save events', keys);
         saveEvents();
-    });
+    }, ReSubstitute.Key_All);
 
     document.getElementsByTagName('head')[0].appendChild(style);
 

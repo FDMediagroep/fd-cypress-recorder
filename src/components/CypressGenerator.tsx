@@ -49,7 +49,6 @@ export default function CypressGenerator(props: Props) {
     const [view, setView] = useState<'code' | 'events' | 'headers'>('code');
 
     useEffect(() => {
-        console.log(generateCodeFromEvents(props.events));
         setCypressCode(generateCodeFromEvents(props.events));
     }, [
         props.testSuite,

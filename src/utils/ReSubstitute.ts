@@ -20,6 +20,7 @@ interface SubscriptionOptions {
  * Disregarded the framework specific implementations.
  */
 export class ReSubstitute {
+    static Key_All = 'RESUBSTITUTE_ALL_EVENTS';
     private subscriptions: Subscription[] = [];
     private static pendingCallbacks: Map<
         Callback,
@@ -59,6 +60,7 @@ export class ReSubstitute {
      * @param key limit only to events for this key
      */
     subscribe(callback: Callback, key?: string): number {
+        console.log('sub', key);
         const id = +new Date();
         this.subscriptions.push({ id, callback, key });
         return id;
@@ -96,7 +98,11 @@ export class ReSubstitute {
     trigger(keyOrKeys?: KeyOrKeys) {
         if (typeof keyOrKeys === 'string') {
             this.subscriptions.forEach((subscription) => {
-                if (subscription.key === keyOrKeys) {
+                console.log(subscription.key ?? 'no key', keyOrKeys);
+                if (
+                    subscription.key === keyOrKeys ||
+                    subscription.key === ReSubstitute.Key_All
+                ) {
                     ReSubstitute.pendingCallbacks.set(subscription.callback, {
                         bypassBlock: this.bypassTriggerBlocks,
                         keys: [keyOrKeys],
@@ -106,7 +112,11 @@ export class ReSubstitute {
             });
         } else if (Array.isArray(keyOrKeys)) {
             this.subscriptions.forEach((subscription) => {
-                if (keyOrKeys.indexOf(subscription.key) !== -1) {
+                console.log(subscription.key ?? 'no key', keyOrKeys);
+                if (
+                    keyOrKeys.indexOf(subscription.key) !== -1 ||
+                    subscription.key === ReSubstitute.Key_All
+                ) {
                     ReSubstitute.pendingCallbacks.set(subscription.callback, {
                         bypassBlock: this.bypassTriggerBlocks,
                         keys: keyOrKeys,

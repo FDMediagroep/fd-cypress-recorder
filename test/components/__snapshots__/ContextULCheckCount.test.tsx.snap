@@ -9,7 +9,7 @@ exports[`Context Menu Count should render correctly 1`] = `
     &lt; Count
   </li>
   <li
-    className="sc-AxjAm eYcNGP label separator"
+    className="li label separator"
   >
     <i>
       body &gt; DIV

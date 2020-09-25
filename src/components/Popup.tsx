@@ -4,12 +4,13 @@ import EventsStore = require('../stores/EventsStore');
 import { Button } from '@fdmg/design-system/components/button/Button';
 import { ButtonCta } from '@fdmg/design-system/components/button/ButtonCta';
 import { ButtonGhost } from '@fdmg/design-system/components/button/ButtonGhost';
-import { Template } from '../utils/FdEvents';
+import { AllFdEvents, Template } from '../utils/FdEvents';
 import TemplatesStore = require('../stores/TemplatesStore');
 import TestSuiteStore = require('../stores/TestSuiteStore');
 import ShortCut from './ShortCut';
 import HeadersStore = require('../stores/HeadersStore');
 import styles from './Popup.module.scss';
+import { ReSubstitute } from '../utils/ReSubstitute';
 
 export interface Props {
     onTestSuiteChange: (testSuiteName: string | null) => void;
@@ -31,7 +32,7 @@ export interface Props {
  * This is the Chrome plugin popup window.
  */
 export default function Popup(props: Props) {
-    const [events, setEvents] = useState(EventsStore.getEvents());
+    const [events, setEvents] = useState<AllFdEvents[]>([]);
     const [recording, setRecording] = useState(TestSuiteStore.getRecording());
     const [futures, setFutures] = useState(EventsStore.getFutures());
     const [headers, setHeaders] = useState(HeadersStore.getHeaders());
@@ -46,6 +47,10 @@ export default function Popup(props: Props) {
     const [basicAuth, setBasicAuth] = useState(TestSuiteStore.getBasicAuth());
 
     useEffect(() => {
+        const evts = EventsStore.getEvents();
+        evts.forEach((event: any, idx: number) => {
+            event.id = idx;
+        });
         const eventId = EventsStore.subscribe(() => {
             const evts = EventsStore.getEvents();
             evts.forEach((event: any, idx: number) => {
@@ -54,22 +59,22 @@ export default function Popup(props: Props) {
             setEvents(evts);
             setFutures(EventsStore.getFutures());
             setUndoneEvents(EventsStore.getUndoneEvents());
-        });
+        }, ReSubstitute.Key_All);
 
         const testSuiteId = TestSuiteStore.subscribe(() => {
             setTestSuite(TestSuiteStore.getTestSuite());
             setTestDescription(TestSuiteStore.getTestDescription());
             setRecording(TestSuiteStore.getRecording());
             setBasicAuth(TestSuiteStore.getBasicAuth());
-        });
+        }, ReSubstitute.Key_All);
 
         const headerId = HeadersStore.subscribe(() => {
             setHeaders(HeadersStore.getHeaders());
-        });
+        }, ReSubstitute.Key_All);
 
         const templateId = TemplatesStore.subscribe(() => {
             setTemplates(TemplatesStore.getTemplates());
-        });
+        }, ReSubstitute.Key_All);
 
         return () => {
             EventsStore.unsubscribe(eventId);
@@ -129,7 +134,6 @@ export default function Popup(props: Props) {
         props.onBasicAuthChange(e.currentTarget.checked);
     };
 
-    // render() {
     return (
         <div
             className={`${styles.popup}${
