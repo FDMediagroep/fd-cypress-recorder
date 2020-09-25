@@ -63,8 +63,6 @@ export default function EventsList(props: Props) {
         [props.events]
     );
 
-    console.log(props.events);
-
     return (
         <>
             {props.events.length ? (
@@ -73,7 +71,6 @@ export default function EventsList(props: Props) {
                         {(provided) => (
                             <ul
                                 className={styles.ul}
-                                {...provided.droppableProps}
                                 ref={provided.innerRef}
                                 {...provided.droppableProps}
                             >

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import HeadersStore = require('../stores/HeadersStore');
 import { Header } from '../utils/FdEvents';
 import styles from './Headers.module.scss';
@@ -14,30 +14,28 @@ interface Props {
  */
 // export default class Headers extends ComponentBase<any, State> {
 export default function Headers(props: Props) {
-    const [tableData, setTableData] = useState(
-        HeadersStore.getHeaders() ??
-            props.headers ?? [{ property: '', value: '' }]
-    );
+    const getHeaders = useCallback(() => {
+        return HeadersStore.getHeaders().length
+            ? HeadersStore.getHeaders()
+            : props.headers ?? [{ property: '', value: '' }];
+    }, [HeadersStore.getHeaders().length, props.headers]);
+    const [tableData, setTableData] = useState(getHeaders());
 
     useEffect(() => {
         const headerId = HeadersStore.subscribe(() => {
-            const headers = HeadersStore.getHeaders() ?? props.headers;
-            if (headers.length === 0) {
-                headers.push({ property: '', value: '' });
-            }
-            setTableData(headers);
+            setTableData(HeadersStore.getHeaders());
         }, ReSubstitute.Key_All);
 
-        const headers = HeadersStore.getHeaders() ?? props.headers;
+        const headers = getHeaders();
         if (headers.length === 0) {
             headers.push({ property: '', value: '' });
+            HeadersStore.setHeaders(headers);
         }
-        setTableData(headers);
 
         return () => {
             HeadersStore.unsubscribe(headerId);
         };
-    }, []);
+    }, [getHeaders]);
 
     const removeMultipleEmptyRows = (tblData: Header[]) => {
         return tblData.reduce((prev: Header[], header) => {

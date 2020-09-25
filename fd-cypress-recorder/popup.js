@@ -42894,9 +42894,8 @@ function EventsList(props) {
             'fd-cypress-chrome-extension-events': events,
         });
     }, [props.events]);
-    console.log(props.events);
     return (react_1.default.createElement(react_1.default.Fragment, null, props.events.length ? (react_1.default.createElement(react_beautiful_dnd_1.DragDropContext, { onDragEnd: handleDragEnd },
-        react_1.default.createElement(react_beautiful_dnd_1.Droppable, { droppableId: "events" }, function (provided) { return (react_1.default.createElement("ul", __assign({ className: EventsList_module_scss_1.default.ul }, provided.droppableProps, { ref: provided.innerRef }, provided.droppableProps),
+        react_1.default.createElement(react_beautiful_dnd_1.Droppable, { droppableId: "events" }, function (provided) { return (react_1.default.createElement("ul", __assign({ className: EventsList_module_scss_1.default.ul, ref: provided.innerRef }, provided.droppableProps),
             props.events.map(function (event, idx) { return (react_1.default.createElement(react_beautiful_dnd_1.Draggable, { key: idx, draggableId: "" + event.id, index: idx }, function (dragProvided) { return (react_1.default.createElement("li", __assign({ ref: dragProvided.innerRef }, dragProvided.draggableProps, dragProvided.dragHandleProps),
                 react_1.default.createElement(FdEvent_1.default, { event: event }),
                 react_1.default.createElement(ButtonGhost_1.ButtonGhost, { className: "toggle-view", "data-index": idx, onClick: props.onRemoveEvent, title: "Delete event" }, "x"))); })); }),
@@ -43048,27 +43047,26 @@ var ReSubstitute_1 = __webpack_require__(/*! ../utils/ReSubstitute */ "./src/uti
  */
 // export default class Headers extends ComponentBase<any, State> {
 function Headers(props) {
-    var _a, _b;
-    var _c = __read(react_1.useState((_b = (_a = HeadersStore.getHeaders()) !== null && _a !== void 0 ? _a : props.headers) !== null && _b !== void 0 ? _b : [{ property: '', value: '' }]), 2), tableData = _c[0], setTableData = _c[1];
-    react_1.useEffect(function () {
+    var getHeaders = react_1.useCallback(function () {
         var _a;
+        return HeadersStore.getHeaders().length
+            ? HeadersStore.getHeaders()
+            : (_a = props.headers) !== null && _a !== void 0 ? _a : [{ property: '', value: '' }];
+    }, [HeadersStore.getHeaders().length, props.headers]);
+    var _a = __read(react_1.useState(getHeaders()), 2), tableData = _a[0], setTableData = _a[1];
+    react_1.useEffect(function () {
         var headerId = HeadersStore.subscribe(function () {
-            var _a;
-            var headers = (_a = HeadersStore.getHeaders()) !== null && _a !== void 0 ? _a : props.headers;
-            if (headers.length === 0) {
-                headers.push({ property: '', value: '' });
-            }
-            setTableData(headers);
+            setTableData(HeadersStore.getHeaders());
         }, ReSubstitute_1.ReSubstitute.Key_All);
-        var headers = (_a = HeadersStore.getHeaders()) !== null && _a !== void 0 ? _a : props.headers;
+        var headers = getHeaders();
         if (headers.length === 0) {
             headers.push({ property: '', value: '' });
+            HeadersStore.setHeaders(headers);
         }
-        setTableData(headers);
         return function () {
             HeadersStore.unsubscribe(headerId);
         };
-    }, []);
+    }, [getHeaders]);
     var removeMultipleEmptyRows = function (tblData) {
         return tblData.reduce(function (prev, header) {
             var found = prev.find(function (h) {
