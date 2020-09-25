@@ -49,13 +49,11 @@ export default function EventsList(props: Props) {
                 arrayList.splice(endIndex, 0, removed);
                 return arrayList;
             };
-            console.log('PRE', events);
             events = reorder(
                 events,
                 result.source.index,
                 result.destination.index
             );
-            console.log('AFT', events);
             EventsStore.addFuture([...EventsStore.getEvents()]);
             EventsStore.setEvents(events);
             storage.local.set({

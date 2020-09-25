@@ -101,52 +101,55 @@ exports[`Cypress Generator should render empty test correctly 1`] = `
       className="J-gTWf2zmkW2ZoUTEfVM1"
     >
       <input
-        aria-label="Show code"
+        aria-label="Code"
         defaultChecked={true}
         id="code"
         name="views"
         onClick={[Function]}
+        title="Show code"
         type="radio"
         value="code"
       />
       <span
         className="_3vOMhlK4xJIv2rBAJOXmvS"
       >
-        Show code
+        Code
       </span>
     </label>
     <label
       className="J-gTWf2zmkW2ZoUTEfVM1"
     >
       <input
-        aria-label="Show events"
+        aria-label="Events"
         id="events"
         name="views"
         onClick={[Function]}
+        title="Show events"
         type="radio"
         value="events"
       />
       <span
         className="_3vOMhlK4xJIv2rBAJOXmvS"
       >
-        Show events
+        Events
       </span>
     </label>
     <label
       className="J-gTWf2zmkW2ZoUTEfVM1"
     >
       <input
-        aria-label="Show headers"
+        aria-label="Headers"
         id="headers"
         name="views"
         onClick={[Function]}
+        title="Show headers"
         type="radio"
         value="headers"
       />
       <span
         className="_3vOMhlK4xJIv2rBAJOXmvS"
       >
-        Show headers
+        Headers
       </span>
     </label>
     <label
@@ -334,52 +337,55 @@ exports[`Cypress Generator should render events correctly 1`] = `
       className="J-gTWf2zmkW2ZoUTEfVM1"
     >
       <input
-        aria-label="Show code"
+        aria-label="Code"
         defaultChecked={true}
         id="code"
         name="views"
         onClick={[Function]}
+        title="Show code"
         type="radio"
         value="code"
       />
       <span
         className="_3vOMhlK4xJIv2rBAJOXmvS"
       >
-        Show code
+        Code
       </span>
     </label>
     <label
       className="J-gTWf2zmkW2ZoUTEfVM1"
     >
       <input
-        aria-label="Show events"
+        aria-label="Events"
         id="events"
         name="views"
         onClick={[Function]}
+        title="Show events"
         type="radio"
         value="events"
       />
       <span
         className="_3vOMhlK4xJIv2rBAJOXmvS"
       >
-        Show events
+        Events
       </span>
     </label>
     <label
       className="J-gTWf2zmkW2ZoUTEfVM1"
     >
       <input
-        aria-label="Show headers"
+        aria-label="Headers"
         id="headers"
         name="views"
         onClick={[Function]}
+        title="Show headers"
         type="radio"
         value="headers"
       />
       <span
         className="_3vOMhlK4xJIv2rBAJOXmvS"
       >
-        Show headers
+        Headers
       </span>
     </label>
     <label
@@ -573,52 +579,55 @@ exports[`Cypress Generator should render headers correctly 1`] = `
       className="J-gTWf2zmkW2ZoUTEfVM1"
     >
       <input
-        aria-label="Show code"
+        aria-label="Code"
         defaultChecked={true}
         id="code"
         name="views"
         onClick={[Function]}
+        title="Show code"
         type="radio"
         value="code"
       />
       <span
         className="_3vOMhlK4xJIv2rBAJOXmvS"
       >
-        Show code
+        Code
       </span>
     </label>
     <label
       className="J-gTWf2zmkW2ZoUTEfVM1"
     >
       <input
-        aria-label="Show events"
+        aria-label="Events"
         id="events"
         name="views"
         onClick={[Function]}
+        title="Show events"
         type="radio"
         value="events"
       />
       <span
         className="_3vOMhlK4xJIv2rBAJOXmvS"
       >
-        Show events
+        Events
       </span>
     </label>
     <label
       className="J-gTWf2zmkW2ZoUTEfVM1"
     >
       <input
-        aria-label="Show headers"
+        aria-label="Headers"
         id="headers"
         name="views"
         onClick={[Function]}
+        title="Show headers"
         type="radio"
         value="headers"
       />
       <span
         className="_3vOMhlK4xJIv2rBAJOXmvS"
       >
-        Show headers
+        Headers
       </span>
     </label>
     <label
@@ -812,52 +821,55 @@ exports[`Cypress Generator should render test with suite name and description co
       className="J-gTWf2zmkW2ZoUTEfVM1"
     >
       <input
-        aria-label="Show code"
+        aria-label="Code"
         defaultChecked={true}
         id="code"
         name="views"
         onClick={[Function]}
+        title="Show code"
         type="radio"
         value="code"
       />
       <span
         className="_3vOMhlK4xJIv2rBAJOXmvS"
       >
-        Show code
+        Code
       </span>
     </label>
     <label
       className="J-gTWf2zmkW2ZoUTEfVM1"
     >
       <input
-        aria-label="Show events"
+        aria-label="Events"
         id="events"
         name="views"
         onClick={[Function]}
+        title="Show events"
         type="radio"
         value="events"
       />
       <span
         className="_3vOMhlK4xJIv2rBAJOXmvS"
       >
-        Show events
+        Events
       </span>
     </label>
     <label
       className="J-gTWf2zmkW2ZoUTEfVM1"
     >
       <input
-        aria-label="Show headers"
+        aria-label="Headers"
         id="headers"
         name="views"
         onClick={[Function]}
+        title="Show headers"
         type="radio"
         value="headers"
       />
       <span
         className="_3vOMhlK4xJIv2rBAJOXmvS"
       >
-        Show headers
+        Headers
       </span>
     </label>
     <label

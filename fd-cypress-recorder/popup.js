@@ -42887,9 +42887,7 @@ function EventsList(props) {
             arrayList.splice(endIndex, 0, removed);
             return arrayList;
         };
-        console.log('PRE', events);
         events = reorder(events, result.source.index, result.destination.index);
-        console.log('AFT', events);
         EventsStore.addFuture(__spread(EventsStore.getEvents()));
         EventsStore.setEvents(events);
         storage.local.set({
