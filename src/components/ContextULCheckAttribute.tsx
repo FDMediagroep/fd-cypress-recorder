@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { AllFdEvents, FdEventType } from '../utils/FdEvents';
+import styles from './ContextULCheckAttribute.module.scss';
 
 export interface Props {
     target: HTMLElement;
@@ -47,14 +47,14 @@ export default function ContextULCheckAttribute(props: Props) {
     }
 
     return (
-        <ul>
+        <ul className={styles.attribute}>
             {(props.target as HTMLElement).attributes.length === 0 ? (
-                <li className="label back" onMouseDown={handleBack}>
-                    &lt; No attributes found
+                <li className={styles.clickable} onMouseDown={handleBack}>
+                    <h2>&lt; No attributes found</h2>
                 </li>
             ) : (
-                <li className="label back" onMouseDown={handleBack}>
-                    &lt; Attributes
+                <li className={styles.clickable} onMouseDown={handleBack}>
+                    <h2>&lt; Attributes</h2>
                 </li>
             )}
             {[].slice
@@ -63,11 +63,11 @@ export default function ContextULCheckAttribute(props: Props) {
                     if (typeof attribute === 'object') {
                         return (
                             <React.Fragment key={attribute.name}>
-                                <li className="label separator">
+                                <li className="separator">
                                     <b>{attribute.name}</b>
                                 </li>
                                 <li
-                                    className="clickable"
+                                    className={styles.clickable}
                                     data-name={attribute.name}
                                     data-value={attribute.value}
                                     onMouseDown={handleAttributeValueContains}
@@ -75,17 +75,17 @@ export default function ContextULCheckAttribute(props: Props) {
                                     Contains...
                                 </li>
                                 <li
-                                    className="clickable"
+                                    className={styles.clickable}
                                     data-name={attribute.name}
                                     data-value={attribute.value}
                                     onMouseDown={handleAttributeValueEquals}
                                 >
-                                    <StyledDiv>
-                                        Equals<small>{attribute.value}</small>
-                                    </StyledDiv>
+                                    <div className={styles.equals}>
+                                        Equals <small>{attribute.value}</small>
+                                    </div>
                                 </li>
                                 <li
-                                    className="clickable"
+                                    className={styles.clickable}
                                     data-name={attribute.name}
                                     data-value={attribute.value}
                                     onMouseDown={handleAttributeExists}
@@ -100,11 +100,3 @@ export default function ContextULCheckAttribute(props: Props) {
         </ul>
     );
 }
-
-const StyledDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-    small {
-        padding: 0;
-    }
-`;

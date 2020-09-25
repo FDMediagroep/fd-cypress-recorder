@@ -1,0 +1,11 @@
+html {
+    background-color: var(--product-background);
+    color: var(--content-copy);
+}
+
+#popup {
+    display: flex;
+    flex-direction: column;
+    box-sizing: content-box;
+    min-height: 500px;
+}

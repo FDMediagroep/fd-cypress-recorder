@@ -10,7 +10,8 @@ import {
     UNIQUE_ATTR_SELECTOR_OPTIONS,
     UNIQUE_ATTR_SELECTOR_OPTIONS_WITHOUT_ID,
 } from './utils/FdEvents';
-import { StoreBase } from 'resub';
+import { ReSubstitute } from './utils/ReSubstitute';
+import '@fdmg/design-system/components/design-tokens/design-tokens.css';
 
 declare let chrome: any;
 declare let browser: any;
@@ -232,12 +233,12 @@ function record() {
         'fd-cypress-chrome-extension-record': recording,
     });
 
-    subscriptionToken = EventsStore.subscribe((keys?: string[]) => {
+    subscriptionToken = EventsStore.subscribe((keys) => {
         if (keys && keys.length && keys[0] === 'loadEvents') {
             return;
         } // Prevent an infinite loop.
         saveEvents();
-    }, StoreBase.Key_All);
+    }, ReSubstitute.Key_All);
 
     document.getElementsByTagName('head')[0].appendChild(style);
 
@@ -320,6 +321,7 @@ storage.local.get(
     (items: any) => {
         recording = !!items[storageRecord];
         console.log('FD Cypress enabled', items.enable);
+
         if (items.enable) {
             useAttributeSelectorFirst = items.attributeSelectorFirst;
             window.addEventListener('keyup', (e: KeyboardEvent) => {

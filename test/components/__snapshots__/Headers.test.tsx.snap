@@ -12,27 +12,6 @@ exports[`Headers should render correctly 1`] = `
       </td>
     </tr>
   </thead>
-  <tr>
-    <td>
-      <input
-        className="sc-AxjAm jxQczW property"
-        data-column="property"
-        data-row={0}
-        defaultValue=""
-        onChange={[Function]}
-        type="text"
-      />
-    </td>
-    <td>
-      <input
-        className="sc-AxjAm jxQczW value"
-        data-column="value"
-        data-row={0}
-        defaultValue=""
-        onChange={[Function]}
-        type="text"
-      />
-    </td>
-  </tr>
+  <tbody />
 </table>
 `;

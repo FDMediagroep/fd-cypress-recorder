@@ -1,0 +1,144 @@
+.popup {
+    h1 {
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: space-between;
+        > span:first-of-type {
+            flex: 0 1 200px;
+            margin-right: 2rem;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            flex: 1 1 auto;
+            span {
+                display: inline-flex;
+            }
+
+            [disabled] {
+                opacity: 0.3;
+            }
+
+            .arrow {
+                border: solid var(--button-text);
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+
+                &.left {
+                    transform: rotate(135deg);
+                }
+                &.right {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+
+    .popupLayout {
+        display: flex;
+        .templatesContainer {
+            flex: 0 1 auto;
+            min-width: 200px;
+            border-right: 1px solid var(--dividers);
+            box-sizing: content-box;
+            padding-right: 1rem;
+            margin-right: 1rem;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            h3 {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem;
+            }
+            ul {
+                padding: 0;
+                margin: 0;
+                overflow: auto;
+                flex: 1 1 auto;
+                ::-webkit-scrollbar {
+                    width: 0.5rem;
+                    height: 0.5rem;
+                }
+
+                ::-webkit-scrollbar-track {
+                    -webkit-border-radius: 0.25rem;
+                    border-radius: 0.25rem;
+                    background: var(--dividers);
+                }
+
+                ::-webkit-scrollbar-thumb {
+                    -webkit-border-radius: 0.25rem;
+                    border-radius: 0.25rem;
+                    background: var(--meta-copy);
+                }
+
+                ::-webkit-scrollbar-thumb:hover {
+                    background: var(--functional-copy);
+                }
+
+                ::-webkit-scrollbar-thumb:window-inactive {
+                    background: var(--dividers);
+                }
+
+                li {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    &:first-of-type {
+                        border-top: 1px solid var(--dividers);
+                    }
+                    border-bottom: 1px solid var(--dividers);
+                    padding: 0.5rem;
+                    span {
+                        cursor: pointer;
+                    }
+                    span + span {
+                        display: flex;
+                    }
+                }
+            }
+            label {
+                user-select: none;
+            }
+        }
+        .codeContainer {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            ::-webkit-scrollbar {
+                width: 0.5rem;
+                height: 0.5rem;
+            }
+
+            ::-webkit-scrollbar-track {
+                -webkit-border-radius: 0.25rem;
+                border-radius: 0.25rem;
+                background: var(--dividers);
+            }
+
+            ::-webkit-scrollbar-thumb {
+                -webkit-border-radius: 0.25rem;
+                border-radius: 0.25rem;
+                background: var(--meta-copy);
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: var(--functional-copy);
+            }
+
+            ::-webkit-scrollbar-thumb:window-inactive {
+                background: var(--dividers);
+            }
+
+            small {
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+}

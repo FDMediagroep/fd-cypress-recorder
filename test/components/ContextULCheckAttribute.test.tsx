@@ -98,11 +98,9 @@ describe('Context Menu Attribute', () => {
 
     it('should handle Back event correctly', () => {
         [].slice
-            .call(target.querySelectorAll('li'))
+            .call(target.querySelectorAll('li h2'))
             .forEach((li: HTMLLIElement) => {
-                if (li.textContent && li.classList.contains('back')) {
-                    li.dispatchEvent(mouseDownEvt);
-                }
+                li.dispatchEvent(mouseDownEvt);
             });
         expect(backMock).toHaveBeenCalledTimes(1);
     });

@@ -4,7 +4,7 @@ import Headers from '../../src/components/Headers';
 
 describe('Headers', () => {
     it('should render correctly', () => {
-        let headers = TestRenderer.create(<Headers events={[]}/>);
+        let headers = TestRenderer.create(<Headers headers={[]} />);
         expect(headers.toJSON()).toMatchSnapshot();
     });
 });

@@ -2,13 +2,19 @@
 
 exports[`Context Menu should render context menu correctly 1`] = `
 <div
-  className="sc-AxiKw gaMLKL"
+  className="contextMenu"
+  style={
+    Object {
+      "left": "0px",
+      "top": "0px",
+    }
+  }
 >
   <ul>
-    <li
-      className="label"
-    >
-      Interactions
+    <li>
+      <h2>
+        Interactions
+      </h2>
     </li>
     <li
       className="clickable"
@@ -34,10 +40,10 @@ exports[`Context Menu should render context menu correctly 1`] = `
     >
       Wait...
     </li>
-    <li
-      className="label"
-    >
-      Asserts
+    <li>
+      <h2>
+        Asserts
+      </h2>
     </li>
     <li
       className="clickable"
@@ -63,10 +69,10 @@ exports[`Context Menu should render context menu correctly 1`] = `
     >
       Exists
     </li>
-    <li
-      className="label"
-    >
-      Global
+    <li>
+      <h2>
+        Global
+      </h2>
     </li>
     <li
       className="clickable"

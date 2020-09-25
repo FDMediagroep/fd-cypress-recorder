@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import EventsStore = require('../stores/EventsStore');
 import ContextULCheckAttribute from './ContextULCheckAttribute';
 import ContextULCheckCount from './ContextULCheckCount';
 import { AllFdEvents, FdEventType } from '../utils/FdEvents';
+import styles from './ContextMenu.module.scss';
 
 declare let window: Window;
 
@@ -179,79 +179,91 @@ export default class ContextMenu extends PureComponent<Props, any> {
 
     render() {
         return (
-            <StyledContextMenu top={this.top} left={this.left}>
+            <div
+                className={styles.contextMenu}
+                style={{ top: `${this.top}px`, left: `${this.left}px` }}
+            >
                 {this.state.customContextMenu ? (
                     this.state.customContextMenu
                 ) : (
                     <ul>
-                        <li className="label">Interactions</li>
+                        <li>
+                            <h2>Interactions</h2>
+                        </li>
                         <li
-                            className="clickable"
+                            className={styles.clickable}
                             onMouseDown={this.handleClick}
                         >
                             Click
                         </li>
                         <li
-                            className="clickable"
+                            className={styles.clickable}
                             onMouseDown={this.handleEnterText}
                         >
                             Enter text...
                         </li>
                         <li
-                            className="clickable"
+                            className={styles.clickable}
                             onMouseDown={this.handleHover}
                         >
                             Hover
                         </li>
-                        <li className="clickable" onMouseDown={this.handleWait}>
+                        <li
+                            className={styles.clickable}
+                            onMouseDown={this.handleWait}
+                        >
                             Wait...
                         </li>
-                        <li className="label">Asserts</li>
+                        <li>
+                            <h2>Asserts</h2>
+                        </li>
                         <li
-                            className="clickable"
+                            className={styles.clickable}
                             onMouseDown={this.handleCheckAttribute}
                         >
                             Attributes...
                         </li>
                         <li
-                            className="clickable"
+                            className={styles.clickable}
                             onMouseDown={this.handleCheckText}
                         >
                             Contains text...
                         </li>
                         <li
-                            className="clickable"
+                            className={styles.clickable}
                             onMouseDown={this.handleCheckCount}
                         >
                             Count...
                         </li>
                         <li
-                            className="clickable"
+                            className={styles.clickable}
                             onMouseDown={this.handleCheckExists}
                         >
                             Exists
                         </li>
-                        <li className="label">Global</li>
+                        <li>
+                            <h2>Global</h2>
+                        </li>
                         <li
-                            className="clickable"
+                            className={styles.clickable}
                             onMouseDown={this.handleGoToLocation}
                         >
                             Go to URL...
                         </li>
                         <li
-                            className="clickable"
+                            className={styles.clickable}
                             onMouseDown={this.handleAwaitLocation}
                         >
                             Match current URL
                         </li>
                         <li
-                            className="clickable"
+                            className={styles.clickable}
                             onMouseDown={this.handleAwaitLocationContains}
                         >
                             URL contains...
                         </li>
                         <li
-                            className="clickable"
+                            className={styles.clickable}
                             onMouseDown={this.handleVisit}
                         >
                             Visit current URL
@@ -259,80 +271,7 @@ export default class ContextMenu extends PureComponent<Props, any> {
                     </ul>
                 )}
                 <small>{this.props.selector}</small>
-            </StyledContextMenu>
+            </div>
         );
     }
 }
-
-const StyledContextMenu: any = styled.div`
-    z-index: 2;
-    position: absolute;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #999;
-    top: ${(props: any) => props.top}px;
-    left: ${(props: any) => props.left}px;
-    width: 250px;
-    max-height: 500px;
-    word-break: break-all;
-    overflow: auto;
-    overscroll-behavior: contain;
-    ::-webkit-scrollbar {
-        width: 0.5rem;
-        height: 0.5rem;
-    }
-
-    ::-webkit-scrollbar-track {
-        -webkit-border-radius: 0.25rem;
-        border-radius: 0.25rem;
-        background: rgba(0, 0, 0, 0.1);
-    }
-
-    ::-webkit-scrollbar-thumb {
-        -webkit-border-radius: 0.25rem;
-        border-radius: 0.25rem;
-        background: rgba(0, 0, 0, 0.2);
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: rgba(0, 0, 0, 0.4);
-    }
-
-    ::-webkit-scrollbar-thumb:window-inactive {
-        background: rgba(0, 0, 0, 0.05);
-    }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        li {
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 0.5rem 1rem;
-            &.label {
-                justify-content: center;
-                color: #49a4a2;
-                &.separator {
-                    background-color: rgba(0, 0, 0, 0.1);
-                }
-                &.back {
-                    cursor: pointer;
-                }
-            }
-            &.clickable {
-                cursor: pointer;
-                color: #222;
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-        }
-    }
-    > small {
-        color: #677381;
-        display: block;
-        padding: 1rem;
-    }
-`;
