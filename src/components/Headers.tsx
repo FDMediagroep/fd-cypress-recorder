@@ -100,6 +100,7 @@ export default function Headers(props: Props) {
                                 defaultValue={data.property}
                                 data-row={rowIndex}
                                 data-column="property"
+                                label="Property"
                                 onChange={handleHeaderChange}
                             />
                         </td>
@@ -111,6 +112,7 @@ export default function Headers(props: Props) {
                                 defaultValue={data.value}
                                 data-row={rowIndex}
                                 data-column="value"
+                                label="Value"
                                 onChange={handleHeaderChange}
                             />
                         </td>
