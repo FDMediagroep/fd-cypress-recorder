@@ -1,3 +1,14 @@
-.input {
-    width: 100%;
+.table {
+    display: inline-flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+
+    tbody {
+        max-height: 230px;
+        overflow: auto;
+    }
+
+    .input {
+        width: 100%;
+    }
 }

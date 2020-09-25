@@ -339,6 +339,13 @@ storage.local.get(
             });
         }, ReSubstitute.Key_All);
 
+        /**
+         * Handle recording state
+         */
+        TestSuiteStore.subscribe(() => {
+            handleRecording(TestSuiteStore.getRecording());
+        }, ReSubstitute.Key_All);
+
         TestSuiteStore.setRecording(recording);
         TestSuiteStore.setTestSuite(items[storageTestSuiteName]);
         TestSuiteStore.setTestDescription(items[storageTestDescriptionName]);

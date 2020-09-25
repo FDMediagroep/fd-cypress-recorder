@@ -7,6 +7,7 @@ import { ReSubstitute } from '../utils/ReSubstitute';
 
 interface Props {
     headers?: Header[];
+    [x: string]: any;
 }
 
 /**
@@ -23,7 +24,7 @@ export default function Headers(props: Props) {
 
     useEffect(() => {
         const headerId = HeadersStore.subscribe(() => {
-            setTableData(HeadersStore.getHeaders());
+            setTableData(getHeaders());
         }, ReSubstitute.Key_All);
 
         const headers = getHeaders();
@@ -82,7 +83,11 @@ export default function Headers(props: Props) {
     };
 
     return (
-        <table>
+        <table
+            className={`${styles.table}${
+                props.className ? ` ${props.className}` : ''
+            }`}
+        >
             <thead>
                 <tr>
                     <td>Property</td>
@@ -101,6 +106,7 @@ export default function Headers(props: Props) {
                                 defaultValue={data.property}
                                 data-row={rowIndex}
                                 data-column="property"
+                                placeholder="New placeholder"
                                 label="Property"
                                 onChange={handleHeaderChange}
                             />
@@ -114,6 +120,7 @@ export default function Headers(props: Props) {
                                 defaultValue={data.value}
                                 data-row={rowIndex}
                                 data-column="value"
+                                placeholder="New value"
                                 label="Value"
                                 onChange={handleHeaderChange}
                             />

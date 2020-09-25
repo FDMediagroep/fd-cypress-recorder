@@ -8,6 +8,8 @@
     word-break: break-all;
     overflow: auto;
     overscroll-behavior: contain;
+    border: 1px solid var(--dividers);
+
     ::-webkit-scrollbar {
         width: 0.5rem;
         height: 0.5rem;
