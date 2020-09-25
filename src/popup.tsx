@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createGlobalStyle } from 'styled-components';
 import EventsStore = require('./stores/EventsStore');
 import Popup from './components/Popup';
 import TestSuiteStore = require('./stores/TestSuiteStore');
 import TemplatesStore = require('./stores/TemplatesStore');
 import { Template } from './utils/FdEvents';
 import HeadersStore = require('./stores/HeadersStore');
-import { StoreBase } from 'resub';
+import '@fdmg/design-system/components/design-tokens/design-tokens.css';
+import '@fdmg/design-system/components/button/Button.css';
+import '@fdmg/design-system/components/button/ButtonCta.css';
+import '@fdmg/design-system/components/button/ButtonGhost.css';
+import '@fdmg/design-system/components/input/Checkbox.css';
+import '@fdmg/design-system/components/input/TextInput.css';
+import '@fdmg/design-system/components/input/TextArea.css';
+import '@fdmg/design-system/components/input/Radio.css';
+import './popup.scss';
+import { ReSubstitute } from './utils/ReSubstitute';
 
 declare let chrome: any;
 declare let browser: any;
@@ -93,7 +101,9 @@ function clear() {
         storageTestDescriptionName,
         storageHeaders,
     ]);
+    EventsStore.clear();
     HeadersStore.clear();
+    TestSuiteStore.clear();
 }
 
 /**
@@ -266,7 +276,6 @@ storage.onChanged.addListener((changes: any, namespace: any) => {
                 storageChange.oldValue,
                 storageChange.newValue
             );
-            console.log(storageChange.oldValue, storageChange.newValue);
             switch (key) {
                 case storageName:
                     storageChange.newValue
@@ -328,7 +337,7 @@ storage.local.get(
             storage.local.set({
                 'fd-cypress-chrome-extension-headers': HeadersStore.getHeaders(),
             });
-        }, StoreBase.Key_All);
+        }, ReSubstitute.Key_All);
 
         TestSuiteStore.setRecording(recording);
         TestSuiteStore.setTestSuite(items[storageTestSuiteName]);
@@ -338,33 +347,21 @@ storage.local.get(
         EventsStore.setEvents(items[storageName]);
         HeadersStore.setHeaders(items[storageHeaders]);
         ReactDOM.render(
-            <div id="popup">
-                <GlobalStyle />
-                <Popup
-                    onBasicAuthChange={handleBasicAuthChange}
-                    onUndo={undo}
-                    onRedo={redo}
-                    onClear={clear}
-                    onRemoveEvent={handleRemoveEvent}
-                    onSaveTemplate={saveTemplate}
-                    onLoadTemplate={handleLoadTemplate}
-                    onLoadAppendTemplate={handleLoadAppendTemplate}
-                    onRecordingChange={handleRecording}
-                    onRemoveTemplate={removeTemplate}
-                    onTestSuiteChange={handleTestSuiteChange}
-                    onTestDescriptionChange={handleTestDescriptionChange}
-                />
-            </div>,
+            <Popup
+                onBasicAuthChange={handleBasicAuthChange}
+                onUndo={undo}
+                onRedo={redo}
+                onClear={clear}
+                onRemoveEvent={handleRemoveEvent}
+                onSaveTemplate={saveTemplate}
+                onLoadTemplate={handleLoadTemplate}
+                onLoadAppendTemplate={handleLoadAppendTemplate}
+                onRecordingChange={handleRecording}
+                onRemoveTemplate={removeTemplate}
+                onTestSuiteChange={handleTestSuiteChange}
+                onTestDescriptionChange={handleTestDescriptionChange}
+            />,
             document.querySelector('#popup')
         );
     }
 );
-
-const GlobalStyle = createGlobalStyle`
-#popup {
-    display: flex;
-    flex-direction: column;
-    box-sizing: content-box;
-    min-height: 500px;
-}
-`;

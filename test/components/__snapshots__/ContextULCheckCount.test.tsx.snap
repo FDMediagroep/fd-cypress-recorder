@@ -3,13 +3,15 @@
 exports[`Context Menu Count should render correctly 1`] = `
 <ul>
   <li
-    className="label back"
+    className="clickable"
     onMouseDown={[Function]}
   >
-    &lt; Count
+    <h2>
+      &lt; Count
+    </h2>
   </li>
   <li
-    className="sc-AxjAm eYcNGP label separator"
+    className="li separator"
   >
     <i>
       body &gt; DIV

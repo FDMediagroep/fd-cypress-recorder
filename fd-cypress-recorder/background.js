@@ -29,7 +29,7 @@ storage.local.get(
     {
         'fd-cypress-chrome-extension-record': false,
     },
-    function(items) {
+    function (items) {
         if (items['fd-cypress-chrome-extension-record']) {
             setTimeout(() => {
                 browserAction.setIcon({ path: 'record.png' });
@@ -45,12 +45,14 @@ storage.onChanged.addListener((changes, namespace) => {
     for (const key in changes) {
         if (changes[key]) {
             const storageChange = changes[key];
-            // console.log('Storage key "%s" in namespace "%s" changed. ' +
-            //           'Old value was "%s", new value is "%s".',
-            //           key,
-            //           namespace,
-            //           storageChange.oldValue,
-            //           storageChange.newValue);
+            console.log(
+                'Storage key "%s" in namespace "%s" changed. ' +
+                    'Old value was "%s", new value is "%s".',
+                key,
+                namespace,
+                storageChange.oldValue,
+                storageChange.newValue
+            );
             switch (key) {
                 case storageRecord:
                     browserAction.setIcon({

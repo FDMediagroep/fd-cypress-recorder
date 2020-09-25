@@ -1,0 +1,18 @@
+.fdEvent {
+    display: flex;
+    flex-wrap: wrap;
+
+    span {
+        margin-right: 0.5rem;
+    }
+
+    .eventType {
+        font-weight: bold;
+    }
+
+    .eventTarget {
+        flex: 1 1 100%;
+        font-style: italic;
+        color: #677381;
+    }
+}

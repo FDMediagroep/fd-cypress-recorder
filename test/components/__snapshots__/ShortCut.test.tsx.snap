@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Shortcut should render shortcut correctly 1`] = `
-<span
-  className="shortcut-button"
+<button
+  className="_11t4I8WhpNyDN6OkIboN1W  shortcut-button"
 >
   CTRL
-</span>
+</button>
 `;

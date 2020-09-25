@@ -1,8 +1,7 @@
-import { StoreBase, AutoSubscribeStore, autoSubscribe } from 'resub';
+import { ReSubstitute } from '../utils/ReSubstitute';
 import { AllFdEvents } from '../utils/FdEvents';
 
-@AutoSubscribeStore
-class EventsStore extends StoreBase {
+class EventsStore extends ReSubstitute {
     private events: AllFdEvents[] = [];
     private undoneEvents: AllFdEvents[] = [];
     private futures: any = [];
@@ -89,17 +88,14 @@ class EventsStore extends StoreBase {
         this.trigger('clear');
     }
 
-    @autoSubscribe
     getEvents() {
         return this.events;
     }
 
-    @autoSubscribe
     getUndoneEvents() {
         return this.undoneEvents;
     }
 
-    @autoSubscribe
     getFutures() {
         return this.futures;
     }

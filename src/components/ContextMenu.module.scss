@@ -1,0 +1,72 @@
+.contextMenu {
+    z-index: 2;
+    position: absolute;
+    background-color: var(--product-background);
+    box-shadow: var(--card-box-shadow);
+    width: 250px;
+    max-height: 500px;
+    word-break: break-all;
+    overflow: auto;
+    overscroll-behavior: contain;
+    ::-webkit-scrollbar {
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-border-radius: 0.25rem;
+        border-radius: 0.25rem;
+        background: var(--dividers);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 0.25rem;
+        border-radius: 0.25rem;
+        background: var(--meta-copy);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--functional-copy);
+    }
+
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background: var(--dividers);
+    }
+
+    h2 {
+        flex: 1 1 auto;
+        font-size: 1rem;
+        text-align: center;
+        color: var(--primary);
+        &.separator {
+            background-color: var(--dividers);
+        }
+        &.back {
+            cursor: pointer;
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        li {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--dividers);
+            padding: 0.5rem 1rem;
+            &.clickable {
+                cursor: pointer;
+                color: var(--content-copy);
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    > small {
+        color: var(--content-copy);
+        display: block;
+        padding: 1rem;
+    }
+}

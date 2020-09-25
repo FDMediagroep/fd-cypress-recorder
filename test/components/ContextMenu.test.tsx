@@ -265,7 +265,7 @@ describe('Context Menu', () => {
                 }
             });
         expect(clickMock).toHaveBeenCalledTimes(1);
-        expect(target.querySelectorAll('li.label.back').length).toBe(1);
+        expect(target.querySelectorAll('li h2').length).toBe(1);
     });
 
     it('should handle Attributes... and then Back event correctly', () => {
@@ -280,15 +280,15 @@ describe('Context Menu', () => {
                 }
             });
         expect(clickMock).toHaveBeenCalledTimes(1);
-        expect(target.querySelectorAll('li.label.back').length).toBe(1);
+        expect(target.querySelectorAll('li h2').length).toBe(1);
 
         [].slice
-            .call(target.querySelectorAll('li.label.back'))
+            .call(target.querySelectorAll('li h2'))
             .forEach((li: HTMLLIElement) => {
                 li.dispatchEvent(mouseDownEvt);
             });
 
-        expect(target.querySelectorAll('li.label.back').length).toBe(0);
+        expect(target.querySelectorAll('li h2').length).toBe(3);
     });
 
     it('should handle Count... event correctly', () => {
@@ -303,7 +303,7 @@ describe('Context Menu', () => {
                 }
             });
         expect(clickMock).toHaveBeenCalledTimes(1);
-        expect(target.querySelectorAll('li.label.back').length).toBe(1);
+        expect(target.querySelectorAll('li h2').length).toBe(1);
     });
 
     it('should handle Count... and then Back event correctly', () => {
@@ -318,14 +318,14 @@ describe('Context Menu', () => {
                 }
             });
         expect(clickMock).toHaveBeenCalledTimes(1);
-        expect(target.querySelectorAll('li.label.back').length).toBe(1);
+        expect(target.querySelectorAll('li h2').length).toBe(1);
 
         [].slice
-            .call(target.querySelectorAll('li.label.back'))
+            .call(target.querySelectorAll('li h2'))
             .forEach((li: HTMLLIElement) => {
                 li.dispatchEvent(mouseDownEvt);
             });
 
-        expect(target.querySelectorAll('li.label.back').length).toBe(0);
+        expect(target.querySelectorAll('li h2').length).toBe(3);
     });
 });

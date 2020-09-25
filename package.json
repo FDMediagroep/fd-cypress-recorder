@@ -13,9 +13,10 @@
         "release:firefox": "cpx -p manifest/firefox/manifest.json fd-cypress-recorder",
         "test": "jest",
         "test:updateSnapshot": "jest -u",
-        "watch": "cross-env NODE_ENV=production webpack --mode production --display-modules -w",
-        "watch-dev": "cross-env NODE_ENV=development webpack --mode development --display-modules -w",
-        "webpack": "cross-env NODE_ENV=production webpack --mode production --display-modules -p"
+        "watch": "cross-env NODE_ENV=production webpack --mode production -w",
+        "watch-dev": "cross-env NODE_ENV=development webpack --mode development -w",
+        "webpack": "cross-env NODE_ENV=production webpack --mode production",
+        "webpack-bundle-analyzer": "cross-env WEBPACK_BUNDLE_ANALYZER=true npm run webpack"
     },
     "repository": {
         "type": "git",
@@ -24,6 +25,7 @@
     "author": "Willem Liu",
     "license": "ISC",
     "devDependencies": {
+        "@fdmg/design-system": "^0.4.24-canary.37",
         "@types/chrome": "0.0.98",
         "@types/jest": "^25.2.3",
         "@types/lodash": "^4.14.158",
@@ -31,38 +33,43 @@
         "@types/react-beautiful-dnd": "^12.1.3",
         "@types/react-dom": "^16.9.8",
         "@types/react-test-renderer": "^16.9.2",
-        "@types/styled-components": "^5.1.3",
         "@types/webpack-env": "^1.15.3",
         "@typescript-eslint/eslint-plugin": "^2.34.0",
         "@typescript-eslint/parser": "^2.34.0",
-        "awesome-typescript-loader": "^5.2.1",
         "coveralls": "^3.1.0",
         "cpx": "^1.5.0",
         "cross-env": "^7.0.2",
         "css-loader": "^3.6.0",
+        "date-input-polyfill": "^2.14.0",
         "eslint": "^6.8.0",
         "eslint-config-prettier": "^6.11.0",
         "eslint-plugin-prettier": "^3.1.4",
         "eslint-plugin-react": "^7.20.5",
         "jest": "^25.5.4",
         "jest-cli": "^26.4.2",
+        "jest-css-modules": "^2.1.0",
+        "mini-css-extract-plugin": "^0.11.2",
+        "null-loader": "^4.0.0",
+        "postcss-flexbugs-fixes": "^4.2.1",
+        "postcss-loader": "^4.0.2",
+        "postcss-normalize": "^9.0.0",
+        "postcss-preset-env": "^6.7.0",
         "prettier": "^2.0.5",
         "react-test-renderer": "^16.13.1",
+        "sass": "^1.26.11",
+        "sass-loader": "^10.0.2",
         "style-loader": "^1.2.1",
         "ts-jest": "^25.5.1",
+        "ts-loader": "^8.0.4",
         "typescript": "^3.9.7",
         "webpack": "^4.44.1",
+        "webpack-bundle-analyzer": "^3.9.0",
         "webpack-cli": "^3.3.12"
     },
     "dependencies": {
-        "@fdmg/fd-buttons": "^2.0.1",
-        "@fdmg/fd-inputs": "^1.0.24",
-        "@fdmg/fd-typography": "^1.0.31",
         "react": "^16.13.1",
         "react-beautiful-dnd": "^12.2.0",
         "react-dom": "^16.13.1",
-        "resub": "^1.2.2",
-        "styled-components": "^5.1.1",
         "unique-selector": "^0.4.1"
     },
     "jest": {
@@ -85,6 +92,9 @@
             "lcov",
             "text",
             "text-summary"
-        ]
+        ],
+        "moduleNameMapper": {
+            "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+        }
     }
 }

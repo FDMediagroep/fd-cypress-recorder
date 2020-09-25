@@ -1,8 +1,7 @@
-import { StoreBase, AutoSubscribeStore, autoSubscribe } from 'resub';
+import { ReSubstitute } from '../utils/ReSubstitute';
 import { Header } from '../utils/FdEvents';
 
-@AutoSubscribeStore
-class HeadersStore extends StoreBase {
+class HeadersStore extends ReSubstitute {
     private headers: Header[] = [];
 
     addHeader(header: Header) {
@@ -21,7 +20,6 @@ class HeadersStore extends StoreBase {
         this.trigger();
     }
 
-    @autoSubscribe
     getHeaders() {
         return this.headers;
     }

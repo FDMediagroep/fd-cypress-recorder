@@ -1,6 +1,6 @@
 import { AllFdEvents } from '../utils/FdEvents';
-import React from 'react';
-import { ButtonEditorial } from '@fdmg/fd-buttons';
+import React, { useCallback } from 'react';
+import { ButtonGhost } from '@fdmg/design-system/components/button/ButtonGhost';
 import FdEvent from './FdEvent';
 import {
     DragDropContext,
@@ -9,7 +9,7 @@ import {
     Draggable,
 } from 'react-beautiful-dnd';
 import EventsStore = require('../stores/EventsStore');
-import styled from 'styled-components';
+import styles from './EventsList.module.scss';
 
 declare let chrome: any;
 declare let browser: any;
@@ -32,29 +32,36 @@ export interface Props {
  * @param props
  */
 export default function EventsList(props: Props) {
-    function handleDragEnd(result: DropResult) {
-        if (!result.destination) {
-            return;
-        }
+    const handleDragEnd = useCallback(
+        (result: DropResult) => {
+            if (!result.destination) {
+                return;
+            }
 
-        let events = [...props.events];
-        const reorder = (
-            list: AllFdEvents[],
-            startIndex: number,
-            endIndex: number
-        ) => {
-            const arrayList = Array.from(list);
-            const [removed] = arrayList.splice(startIndex, 1);
-            arrayList.splice(endIndex, 0, removed);
-            return arrayList;
-        };
-        events = reorder(events, result.source.index, result.destination.index);
-        EventsStore.addFuture([...EventsStore.getEvents()]);
-        EventsStore.setEvents(events);
-        storage.local.set({
-            'fd-cypress-chrome-extension-events': events,
-        });
-    }
+            let events = [...props.events];
+            const reorder = (
+                list: AllFdEvents[],
+                startIndex: number,
+                endIndex: number
+            ) => {
+                const arrayList = Array.from(list);
+                const [removed] = arrayList.splice(startIndex, 1);
+                arrayList.splice(endIndex, 0, removed);
+                return arrayList;
+            };
+            events = reorder(
+                events,
+                result.source.index,
+                result.destination.index
+            );
+            EventsStore.addFuture([...EventsStore.getEvents()]);
+            EventsStore.setEvents(events);
+            storage.local.set({
+                'fd-cypress-chrome-extension-events': events,
+            });
+        },
+        [props.events]
+    );
 
     return (
         <>
@@ -62,8 +69,8 @@ export default function EventsList(props: Props) {
                 <DragDropContext onDragEnd={handleDragEnd}>
                     <Droppable droppableId="events">
                         {(provided) => (
-                            <StyledUl
-                                {...provided.droppableProps}
+                            <ul
+                                className={styles.ul}
                                 ref={provided.innerRef}
                                 {...provided.droppableProps}
                             >
@@ -81,7 +88,7 @@ export default function EventsList(props: Props) {
                                                     {...dragProvided.dragHandleProps}
                                                 >
                                                     <FdEvent event={event} />
-                                                    <ButtonEditorial
+                                                    <ButtonGhost
                                                         className="toggle-view"
                                                         data-index={idx}
                                                         onClick={
@@ -90,36 +97,23 @@ export default function EventsList(props: Props) {
                                                         title="Delete event"
                                                     >
                                                         x
-                                                    </ButtonEditorial>
+                                                    </ButtonGhost>
                                                 </li>
                                             )}
                                         </Draggable>
                                     )
                                 )}
                                 {provided.placeholder}
-                            </StyledUl>
+                            </ul>
                         )}
                     </Droppable>
                 </DragDropContext>
             ) : (
-                <StyledNoEvents>
+                <div className={styles.noEvents}>
                     Start record and interact with a website to record some
                     events
-                </StyledNoEvents>
+                </div>
             )}
         </>
     );
 }
-
-const StyledUl = styled.ul`
-    flex: 1 1 auto;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-`;
-
-const StyledNoEvents = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1 1 auto;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-`;

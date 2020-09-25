@@ -1,0 +1,21 @@
+.attribute {
+    display: flex;
+    flex-direction: column;
+    small {
+        padding: 0;
+        display: block;
+    }
+
+    b {
+        text-align: center;
+        flex: 1 1 auto;
+    }
+
+    .clickable {
+        cursor: pointer;
+        color: var(--content-copy);
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
