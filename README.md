@@ -14,6 +14,8 @@ The plugin only automatically record click on `anchors` and `buttons`. If you wa
 
 Via Chrome Web Store: https://chrome.google.com/webstore/detail/fd-cypress-recorder/amleackadkomdccpbfginhnecfhhognj
 
+Via Edge Add-ons: https://microsoftedge.microsoft.com/addons/detail/fd-cypress-recorder/lpfepmjegidkfonehkgfgipioceoccmc
+
 Or manually:
 
 -   From [zip-file](https://github.com/FDMediagroep/fd-cypress-recorder/releases/latest)
