@@ -3,4 +3,5 @@ dist
 node_modules
 *.map
 *.zip
+analyzer
 releases
