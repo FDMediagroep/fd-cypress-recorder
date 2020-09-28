@@ -306,6 +306,14 @@ storage.onChanged.addListener((changes: any, namespace: any) => {
                 case storageBasicAuth:
                     TestSuiteStore.setBasicAuth(storageChange.newValue);
                     break;
+                case storageHeaders:
+                    if (
+                        JSON.stringify(storageChange.oldValue) !==
+                        JSON.stringify(storageChange.newValue)
+                    ) {
+                        HeadersStore.setHeaders(storageChange.newValue);
+                    }
+                    break;
             }
         }
     }

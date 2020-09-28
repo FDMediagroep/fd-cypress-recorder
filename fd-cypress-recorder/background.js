@@ -74,7 +74,7 @@ storage.onChanged.addListener((changes, namespace) => {
                             tabs.query(
                                 { active: true, currentWindow: true },
                                 (tabs) => {
-                                    tabId = tabs[0].id;
+                                    tabId = tabs[0]?.id;
                                     browserDebugger.attach({ tabId }, '1.0');
                                     browserDebugger.sendCommand(
                                         { tabId },
@@ -109,14 +109,14 @@ runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.get === 'tabId') {
         sendResponse({ activeTabId: tabId, ownTabId: sender.tab.id });
         tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            tabId = tabs[0].id;
+            tabId = tabs[0]?.id;
         });
     }
 
     if (request.head === 'activeTabId') {
         tabs.query({ active: true, currentWindow: true }, (tabs) => {
             // console.log('old tab', tabId, 'new tab', tabs[0].id);
-            tabId = tabs[0].id;
+            tabId = tabs[0]?.id;
         });
     }
 });

@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import HeadersStore = require('../stores/HeadersStore');
 import { Header } from '../utils/FdEvents';
 import styles from './Headers.module.scss';
 import { TextInput } from '@fdmg/design-system/components/input/TextInput';
-import { ReSubstitute } from '../utils/ReSubstitute';
 
 interface Props {
     headers?: Header[];
