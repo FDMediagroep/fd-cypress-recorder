@@ -67,51 +67,53 @@ export default function Headers(props: Props) {
     };
 
     return (
-        <table
-            className={`${styles.table}${
+        <div
+            className={`${styles.tableContainer}${
                 props.className ? ` ${props.className}` : ''
             }`}
         >
-            <thead>
-                <tr>
-                    <td>Property</td>
-                    <td>Value</td>
-                </tr>
-            </thead>
-            <tbody>
-                {tableData.map((data, rowIndex) => (
-                    <tr key={rowIndex}>
-                        <td>
-                            <TextInput
-                                id={`${data.property}-${data.value}-property`}
-                                type="text"
-                                name="property"
-                                className={styles.input}
-                                defaultValue={data.property}
-                                data-row={rowIndex}
-                                data-column="property"
-                                placeholder="New placeholder"
-                                label="Property"
-                                onChange={handleHeaderChange}
-                            />
-                        </td>
-                        <td>
-                            <TextInput
-                                id={`${data.property}-${data.value}-value`}
-                                type="text"
-                                name="value"
-                                className={styles.input}
-                                defaultValue={data.value}
-                                data-row={rowIndex}
-                                data-column="value"
-                                placeholder="New value"
-                                label="Value"
-                                onChange={handleHeaderChange}
-                            />
-                        </td>
+            <table className={`${styles.table}`}>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {tableData.map((data, rowIndex) => (
+                        <tr key={rowIndex}>
+                            <td>
+                                <TextInput
+                                    id={`${data.property}-${data.value}-property`}
+                                    type="text"
+                                    name="property"
+                                    className={styles.input}
+                                    defaultValue={data.property}
+                                    data-row={rowIndex}
+                                    data-column="property"
+                                    placeholder="New placeholder"
+                                    label="Property"
+                                    onChange={handleHeaderChange}
+                                />
+                            </td>
+                            <td>
+                                <TextInput
+                                    id={`${data.property}-${data.value}-value`}
+                                    type="text"
+                                    name="value"
+                                    className={styles.input}
+                                    defaultValue={data.value}
+                                    data-row={rowIndex}
+                                    data-column="value"
+                                    placeholder="New value"
+                                    label="Value"
+                                    onChange={handleHeaderChange}
+                                />
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     );
 }

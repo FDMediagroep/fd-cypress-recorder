@@ -1,14 +1,16 @@
-.table {
-    display: inline-flex;
-    flex-direction: column;
-    flex: 1 1 auto;
+.tableContainer {
+    max-height: 250px;
+    overflow: auto;
+    .table {
+        th {
+            position: sticky;
+            top: 0;
+            background-color: var(--product-background);
+            z-index: 1;
+        }
 
-    tbody {
-        max-height: 230px;
-        overflow: auto;
-    }
-
-    .input {
-        width: 100%;
+        .input {
+            width: 100%;
+        }
     }
 }

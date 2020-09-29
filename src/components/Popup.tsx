@@ -160,7 +160,7 @@ export default function Popup(props: Props) {
                     )}
                     {events.length || (futures.length && futures[0].length) ? (
                         <span>
-                            <Button
+                            <ButtonGhost
                                 onClick={undo}
                                 title="Remove last interaction"
                                 {...{ disabled: !events.length }}
@@ -168,8 +168,8 @@ export default function Popup(props: Props) {
                                 <i
                                     className={`${styles['arrow']} ${styles['left']}`}
                                 />
-                            </Button>
-                            <Button
+                            </ButtonGhost>
+                            <ButtonGhost
                                 onClick={redo}
                                 title="Redo"
                                 {...{
@@ -181,7 +181,7 @@ export default function Popup(props: Props) {
                                 <i
                                     className={`${styles['arrow']} ${styles['right']}`}
                                 />
-                            </Button>
+                            </ButtonGhost>
                         </span>
                     ) : null}
                     <ButtonGhost onClick={clear} title="Clear current session">
@@ -211,20 +211,20 @@ export default function Popup(props: Props) {
                                         {template.name}
                                     </span>
                                     <span>
-                                        <Button
+                                        <ButtonGhost
                                             data-value={template.name}
                                             onClick={loadAppendTemplate}
                                             title="Append template"
                                         >
                                             +
-                                        </Button>
-                                        <Button
+                                        </ButtonGhost>
+                                        <ButtonGhost
                                             data-value={template.name}
                                             onClick={removeTemplate}
                                             title="Delete template"
                                         >
                                             X
-                                        </Button>
+                                        </ButtonGhost>
                                     </span>
                                 </li>
                             ) : null

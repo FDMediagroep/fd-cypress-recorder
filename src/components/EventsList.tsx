@@ -17,9 +17,9 @@ declare let browser: any;
 let storage: any;
 
 if (typeof browser !== 'undefined') {
-    storage = browser?.storage || undefined;
+    storage = browser?.storage ?? undefined;
 } else if (typeof chrome !== 'undefined') {
-    storage = chrome?.storage || undefined;
+    storage = chrome?.storage ?? undefined;
 }
 
 export interface Props {
@@ -67,14 +67,14 @@ export default function EventsList(props: Props) {
                     <Droppable droppableId="events">
                         {(provided) => (
                             <ul
-                                className={styles.ul}
-                                ref={provided.innerRef}
                                 {...provided.droppableProps}
+                                ref={provided.innerRef}
+                                className={styles.ul}
                             >
                                 {props.events.map(
                                     (event: AllFdEvents, idx: number) => (
                                         <Draggable
-                                            key={idx}
+                                            key={`${(event as any).id}`}
                                             draggableId={`${(event as any).id}`}
                                             index={idx}
                                         >

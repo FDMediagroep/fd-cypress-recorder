@@ -266,8 +266,12 @@ function handleRecording(recording: boolean) {
  */
 storage.onChanged.addListener((changes: any, namespace: any) => {
     for (const key in changes) {
-        if (changes[key]) {
-            const storageChange = changes[key];
+        const storageChange = changes[key];
+        if (
+            changes[key] &&
+            JSON.stringify(storageChange.oldValue) !==
+                JSON.stringify(storageChange.newValue)
+        ) {
             console.log(
                 'Storage key "%s" in namespace "%s" changed. ' +
                     'Old value was "%s", new value is "%s".',
