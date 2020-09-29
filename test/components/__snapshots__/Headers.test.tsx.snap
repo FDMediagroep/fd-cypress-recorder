@@ -1,19 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Headers should render correctly 1`] = `
-<table
-  className="table"
+<div
+  className="tableContainer"
 >
-  <thead>
-    <tr>
-      <td>
-        Property
-      </td>
-      <td>
-        Value
-      </td>
-    </tr>
-  </thead>
-  <tbody />
-</table>
+  <table
+    className="table"
+  >
+    <thead>
+      <tr>
+        <th>
+          Property
+        </th>
+        <th>
+          Value
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</div>
 `;
