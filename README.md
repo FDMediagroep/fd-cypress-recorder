@@ -42,7 +42,7 @@ or
     1. Fill in the `Test suite name` and `Description`.
     1. You can now save these interactions as a template by pressing the `+` button
     1. Click `Show events` to see the recorded interactions in a list.
-       ![Events](/fd-cypress-recorder/screenshot3.jpg?raw=true 'Events')
+       ![Events](/screenshots/screenshot3.jpg?raw=true 'Events')
     1. You can remove or re-order the interactions as you see fit.
 1. Copy the code from the text area and paste it into a Cypress test file.
 1. Run the Cypress test.
