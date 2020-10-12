@@ -78,9 +78,6 @@ module.exports = {
         content: ['./src/content.tsx'],
         popup: ['./src/popup.tsx'],
     },
-    node: {
-        fs: 'empty',
-    },
     output: {
         path: path.join(__dirname, '/fd-cypress-recorder'),
         filename: '[name].js',

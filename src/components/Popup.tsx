@@ -4,7 +4,7 @@ import EventsStore = require('../stores/EventsStore');
 import { Button } from '@fdmg/design-system/components/button/Button';
 import { ButtonCta } from '@fdmg/design-system/components/button/ButtonCta';
 import { ButtonGhost } from '@fdmg/design-system/components/button/ButtonGhost';
-import { AllFdEvents, Template } from '../utils/FdEvents';
+import { Template } from '../utils/FdEvents';
 import TemplatesStore = require('../stores/TemplatesStore');
 import TestSuiteStore = require('../stores/TestSuiteStore');
 import ShortCut from './ShortCut';
