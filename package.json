@@ -49,7 +49,7 @@
         "jest-cli": "^26.5.3",
         "jest-css-modules": "^2.1.0",
         "mini-css-extract-plugin": "^0.12.0",
-        "null-loader": "^4.0.0",
+        "null-loader": "^4.0.1",
         "postcss-flexbugs-fixes": "^4.2.1",
         "postcss-loader": "^4.0.3",
         "postcss-normalize": "^9.0.0",
