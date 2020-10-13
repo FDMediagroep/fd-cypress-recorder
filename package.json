@@ -60,7 +60,7 @@
         "sass-loader": "^10.0.3",
         "style-loader": "^2.0.0",
         "ts-jest": "^25.5.1",
-        "ts-loader": "^8.0.4",
+        "ts-loader": "^8.0.5",
         "typescript": "^3.9.7",
         "webpack": "^5.0.0",
         "webpack-bundle-analyzer": "^3.9.0",
