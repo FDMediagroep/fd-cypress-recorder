@@ -70,7 +70,7 @@
         "react": "^16.13.1",
         "react-beautiful-dnd": "^13.0.0",
         "react-dom": "^16.13.1",
-        "unique-selector": "^0.4.1"
+        "unique-selector": "^0.5.0"
     },
     "jest": {
         "transform": {
