@@ -43,6 +43,7 @@
     },
     "content_scripts": [
         {
+            "all_frames": true,
             "matches": ["*://*/*"],
             "css": ["content.css"],
             "js": ["content.js"],
