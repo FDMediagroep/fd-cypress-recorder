@@ -161,12 +161,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/burner"><img src="https://avatars0.githubusercontent.com/u/13327?v=4" width="100px;" alt=""/><br /><sub><b>Robert Schadek</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=burner" title="Code">💻</a> <a href="https://github.com/FDMediagroep/fd-cypress-recorder/pulls?q=is%3Apr+reviewed-by%3Aburner" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://greenkeeper.io/"><img src="https://avatars2.githubusercontent.com/u/13812225?v=4" width="100px;" alt=""/><br /><sub><b>Greenkeeper</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=greenkeeperio" title="Code">💻</a></td>
     <td align="center"><a href="http://www.mad3linux.org"><img src="https://avatars3.githubusercontent.com/u/508624?v=4" width="100px;" alt=""/><br /><sub><b>Átila Camurça Alves</b></sub></a><br /><a href="https://github.com/FDMediagroep/fd-cypress-recorder/commits?author=atilacamurca" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/adelin-b"><img src="https://avatars1.githubusercontent.com/u/23508913?v=4" width="100px;" alt=""/><br /><sub><b>adelin-b</b></sub></a><br /><a href="#ideas-adelin-b" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
