@@ -25,7 +25,7 @@
     "author": "Willem Liu",
     "license": "ISC",
     "devDependencies": {
-        "@fdmg/design-system": "^0.4.31",
+        "@fdmg/design-system": "^0.4.32",
         "@types/chrome": "0.0.126",
         "@types/jest": "^26.0.16",
         "@types/lodash": "^4.14.165",
@@ -34,7 +34,7 @@
         "@types/react-dom": "^17.0.0",
         "@types/react-test-renderer": "^17.0.0",
         "@types/webpack-env": "^1.16.0",
-        "@typescript-eslint/eslint-plugin": "^4.8.2",
+        "@typescript-eslint/eslint-plugin": "^4.9.1",
         "@typescript-eslint/parser": "^4.9.1",
         "coveralls": "^3.1.0",
         "cpx": "^1.5.0",
