@@ -1,4 +1,5 @@
 ![Build](https://github.com/FDMediagroep/fd-cypress-recorder/workflows/Build/badge.svg)
+![CodeQL](https://github.com/FDMediagroep/fd-cypress-recorder/workflows/CodeQL/badge.svg)
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 [![Coverage Status](https://coveralls.io/repos/github/FDMediagroep/fd-cypress-recorder/badge.svg?branch=master)](https://coveralls.io/github/FDMediagroep/fd-cypress-recorder?branch=master)
 
