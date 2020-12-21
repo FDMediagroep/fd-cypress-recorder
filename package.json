@@ -25,7 +25,7 @@
     "author": "Willem Liu",
     "license": "ISC",
     "devDependencies": {
-        "@fdmg/design-system": "^0.4.35",
+        "@fdmg/design-system": "^0.4.37",
         "@types/chrome": "0.0.127",
         "@types/jest": "^26.0.19",
         "@types/lodash": "^4.14.165",
