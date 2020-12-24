@@ -28,7 +28,7 @@
         "@fdmg/design-system": "^0.4.37",
         "@types/chrome": "0.0.127",
         "@types/jest": "^26.0.19",
-        "@types/lodash": "^4.14.165",
+        "@types/lodash": "^4.14.166",
         "@types/react": "^17.0.0",
         "@types/react-beautiful-dnd": "^13.0.0",
         "@types/react-dom": "^17.0.0",
