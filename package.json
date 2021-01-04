@@ -41,7 +41,7 @@
         "cross-env": "^7.0.3",
         "css-loader": "^5.0.1",
         "date-input-polyfill": "^2.14.0",
-        "eslint": "^7.16.0",
+        "eslint": "^7.17.0",
         "eslint-config-prettier": "^7.1.0",
         "eslint-plugin-prettier": "^3.3.0",
         "eslint-plugin-react": "^7.22.0",
