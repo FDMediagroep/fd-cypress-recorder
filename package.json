@@ -57,7 +57,7 @@
         "prettier": "^2.2.1",
         "react-test-renderer": "^17.0.1",
         "sass": "^1.32.4",
-        "sass-loader": "^10.1.0",
+        "sass-loader": "^10.1.1",
         "style-loader": "^2.0.0",
         "ts-jest": "^26.4.4",
         "ts-loader": "^8.0.14",
