@@ -52,7 +52,7 @@
         "null-loader": "^4.0.1",
         "postcss-flexbugs-fixes": "^5.0.2",
         "postcss-loader": "^5.2.0",
-        "postcss-normalize": "^9.0.0",
+        "postcss-normalize": "^10.0.0",
         "postcss-preset-env": "^6.7.0",
         "prettier": "^2.2.1",
         "react-test-renderer": "^17.0.2",
