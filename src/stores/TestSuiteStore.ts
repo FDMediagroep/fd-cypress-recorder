@@ -1,4 +1,4 @@
-import { ReSubstitute } from '../utils/ReSubstitute';
+import { ReSubstitute } from '@fdmg/resubstitute';
 
 class TestSuiteStore extends ReSubstitute {
     private testSuite: string | undefined;

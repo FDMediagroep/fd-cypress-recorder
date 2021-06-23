@@ -10,7 +10,7 @@ import TestSuiteStore = require('../stores/TestSuiteStore');
 import ShortCut from './ShortCut';
 import HeadersStore = require('../stores/HeadersStore');
 import styles from './Popup.module.scss';
-import { ReSubstitute } from '../utils/ReSubstitute';
+import { ReSubstitute } from '@fdmg/resubstitute';
 
 export interface Props {
     onTestSuiteChange: (testSuiteName: string | null) => void;

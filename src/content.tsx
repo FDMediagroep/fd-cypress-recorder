@@ -10,7 +10,7 @@ import {
     UNIQUE_ATTR_SELECTOR_OPTIONS,
     UNIQUE_ATTR_SELECTOR_OPTIONS_WITHOUT_ID,
 } from './utils/FdEvents';
-import { ReSubstitute } from './utils/ReSubstitute';
+import { ReSubstitute } from '@fdmg/resubstitute';
 import '@fdmg/design-system/components/design-tokens/design-tokens.css';
 
 declare let chrome: any;

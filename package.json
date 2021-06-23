@@ -26,6 +26,7 @@
     "license": "ISC",
     "devDependencies": {
         "@fdmg/design-system": "^0.4.42",
+        "@fdmg/resubstitute": "^0.1.1",
         "@types/chrome": "0.0.145",
         "@types/jest": "^26.0.23",
         "@types/lodash": "^4.14.170",

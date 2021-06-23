@@ -1,4 +1,4 @@
-import { ReSubstitute } from '../utils/ReSubstitute';
+import { ReSubstitute } from '@fdmg/resubstitute';
 import { Header } from '../utils/FdEvents';
 
 class HeadersStore extends ReSubstitute {

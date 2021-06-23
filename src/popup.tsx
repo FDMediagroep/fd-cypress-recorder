@@ -15,7 +15,7 @@ import '@fdmg/design-system/components/input/TextInput.css';
 import '@fdmg/design-system/components/input/TextArea.css';
 import '@fdmg/design-system/components/input/Radio.css';
 import './popup.scss';
-import { ReSubstitute } from './utils/ReSubstitute';
+import { ReSubstitute } from '@fdmg/resubstitute';
 
 declare let chrome: any;
 declare let browser: any;

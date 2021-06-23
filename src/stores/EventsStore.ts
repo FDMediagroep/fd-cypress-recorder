@@ -1,4 +1,4 @@
-import { ReSubstitute } from '../utils/ReSubstitute';
+import { ReSubstitute } from '@fdmg/resubstitute';
 import { AllFdEvents } from '../utils/FdEvents';
 
 class EventsStore extends ReSubstitute {
