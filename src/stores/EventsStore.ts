@@ -71,10 +71,7 @@ class EventsStore extends ReSubstitute {
         this.trigger('setEvent');
     }
 
-    setEvents(
-        events: AllFdEvents[],
-        triggerKey?: string | number | string[] | number[]
-    ) {
+    setEvents(events: AllFdEvents[], triggerKey?: string | string[]) {
         if (this.events && events && this.events.length !== events.length) {
             this.clearUndone();
         }
