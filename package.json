@@ -27,7 +27,7 @@
     "devDependencies": {
         "@fdmg/design-system": "^0.4.43",
         "@fdmg/resubstitute": "^0.1.2",
-        "@types/chrome": "0.0.148",
+        "@types/chrome": "0.0.153",
         "@types/jest": "^26.0.24",
         "@types/lodash": "^4.14.171",
         "@types/react": "^17.0.15",
