@@ -2,7 +2,7 @@
 
 exports[`Shortcut should render shortcut correctly 1`] = `
 <button
-  className="_11t4I8WhpNyDN6OkIboN1W  shortcut-button"
+  className="ehBjC0vJRnyKcRbpCEt0  shortcut-button"
 >
   CTRL
 </button>

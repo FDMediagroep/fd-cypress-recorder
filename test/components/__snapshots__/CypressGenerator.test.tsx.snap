@@ -5,10 +5,10 @@ exports[`Cypress Generator should render empty test correctly 1`] = `
   className="cypressGenerator"
 >
   <div
-    className="_3n6K_fKxrsVm1CJPqwAq8o testSuite"
+    className="GKKRoDa3ZmDl3Ba6z_8a testSuite"
   >
     <div
-      className="_38eXidZASNp7atFrIvNeiv"
+      className="n_TEH7ulnXJksU32jbQ7"
     >
       <input
         aria-label="Test suite name"
@@ -32,29 +32,29 @@ exports[`Cypress Generator should render empty test correctly 1`] = `
           Test suite name
         </label>
         <span
-          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          className="NC6NSkYeZUDX_BS1nJQC"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565Z\\"/></svg>",
             }
           }
         />
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
+        className="_WcbkpsD4_xgcmng0e3S ___sS2lS2z9n6DiCdyqU"
       >
         Please enter a name for your test suite
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV"
+        className="_WcbkpsD4_xgcmng0e3S"
       />
     </div>
   </div>
   <div
-    className="_3n6K_fKxrsVm1CJPqwAq8o testDescription"
+    className="GKKRoDa3ZmDl3Ba6z_8a testDescription"
   >
     <div
-      className="_38eXidZASNp7atFrIvNeiv"
+      className="n_TEH7ulnXJksU32jbQ7"
     >
       <input
         aria-label="Description"
@@ -78,21 +78,21 @@ exports[`Cypress Generator should render empty test correctly 1`] = `
           Description
         </label>
         <span
-          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          className="NC6NSkYeZUDX_BS1nJQC"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565Z\\"/></svg>",
             }
           }
         />
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
+        className="_WcbkpsD4_xgcmng0e3S ___sS2lS2z9n6DiCdyqU"
       >
         Please enter a description for your test
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV"
+        className="_WcbkpsD4_xgcmng0e3S"
       />
     </div>
   </div>
@@ -100,7 +100,7 @@ exports[`Cypress Generator should render empty test correctly 1`] = `
     className="extraOptions"
   >
     <label
-      className="J-gTWf2zmkW2ZoUTEfVM1"
+      className="AZw_6I1jvaBT1ig8_g35"
     >
       <input
         aria-label="Code"
@@ -113,13 +113,13 @@ exports[`Cypress Generator should render empty test correctly 1`] = `
         value="code"
       />
       <span
-        className="_3vOMhlK4xJIv2rBAJOXmvS"
+        className="_mftckuWm_CxbUi4VQTL"
       >
         Code
       </span>
     </label>
     <label
-      className="J-gTWf2zmkW2ZoUTEfVM1"
+      className="AZw_6I1jvaBT1ig8_g35"
     >
       <input
         aria-label="Events"
@@ -131,13 +131,13 @@ exports[`Cypress Generator should render empty test correctly 1`] = `
         value="events"
       />
       <span
-        className="_3vOMhlK4xJIv2rBAJOXmvS"
+        className="_mftckuWm_CxbUi4VQTL"
       >
         Events
       </span>
     </label>
     <label
-      className="J-gTWf2zmkW2ZoUTEfVM1"
+      className="AZw_6I1jvaBT1ig8_g35"
     >
       <input
         aria-label="Headers"
@@ -149,13 +149,13 @@ exports[`Cypress Generator should render empty test correctly 1`] = `
         value="headers"
       />
       <span
-        className="_3vOMhlK4xJIv2rBAJOXmvS"
+        className="_mftckuWm_CxbUi4VQTL"
       >
         Headers
       </span>
     </label>
     <label
-      className="_2xr_2PwwBn0jwkzvvP5PKe"
+      className="jjsX8_eNFDgBVwmCs_Bv"
     >
       <input
         aria-label="Basic Auth"
@@ -168,17 +168,17 @@ exports[`Cypress Generator should render empty test correctly 1`] = `
         value="basic-auth"
       />
       <span
-        className="_1EUjYjpYvYDrup4HQpjJMf"
+        className="D9xOGb0Smbed_MdnEz_h"
       >
         Basic Auth
       </span>
     </label>
   </div>
   <div
-    className="N-HkZtzD4J4oU9qn_-yvs textArea"
+    className="_Cf6_6UlOEa0xDl2PbX6 textArea"
   >
     <div
-      className="_3rymx_8W221gnQrkBW4CCG"
+      className="qmkSeklt9AUFgqAjf2iJ"
     >
       <textarea
         aria-label="Value"
@@ -217,21 +217,21 @@ describe('Test Suite ...', () => {
           Value
         </label>
         <span
-          className="_1HGjbdJPl4WE23V2ftyaNX"
+          className="e6yI3SPkg4DqRDW3zTKp"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565Z\\"/></svg>",
             }
           }
         />
       </div>
       <div
-        className="_1tzA5J2lU3Dtk5elSSvQHA sf0RpxblxNDZUlesZ5VIc"
+        className="_Ep_tl05BdWdA14JbUGO DJsXPedUeH_GYbWEWQ08"
       >
         Voer een geldige waarde in
       </div>
       <div
-        className="_1tzA5J2lU3Dtk5elSSvQHA"
+        className="_Ep_tl05BdWdA14JbUGO"
       />
     </div>
   </div>
@@ -243,10 +243,10 @@ exports[`Cypress Generator should render events correctly 1`] = `
   className="cypressGenerator"
 >
   <div
-    className="_3n6K_fKxrsVm1CJPqwAq8o testSuite"
+    className="GKKRoDa3ZmDl3Ba6z_8a testSuite"
   >
     <div
-      className="_38eXidZASNp7atFrIvNeiv"
+      className="n_TEH7ulnXJksU32jbQ7"
     >
       <input
         aria-label="Test suite name"
@@ -270,29 +270,29 @@ exports[`Cypress Generator should render events correctly 1`] = `
           Test suite name
         </label>
         <span
-          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          className="NC6NSkYeZUDX_BS1nJQC"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565Z\\"/></svg>",
             }
           }
         />
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
+        className="_WcbkpsD4_xgcmng0e3S ___sS2lS2z9n6DiCdyqU"
       >
         Please enter a name for your test suite
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV"
+        className="_WcbkpsD4_xgcmng0e3S"
       />
     </div>
   </div>
   <div
-    className="_3n6K_fKxrsVm1CJPqwAq8o testDescription"
+    className="GKKRoDa3ZmDl3Ba6z_8a testDescription"
   >
     <div
-      className="_38eXidZASNp7atFrIvNeiv"
+      className="n_TEH7ulnXJksU32jbQ7"
     >
       <input
         aria-label="Description"
@@ -316,21 +316,21 @@ exports[`Cypress Generator should render events correctly 1`] = `
           Description
         </label>
         <span
-          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          className="NC6NSkYeZUDX_BS1nJQC"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565Z\\"/></svg>",
             }
           }
         />
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
+        className="_WcbkpsD4_xgcmng0e3S ___sS2lS2z9n6DiCdyqU"
       >
         Please enter a description for your test
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV"
+        className="_WcbkpsD4_xgcmng0e3S"
       />
     </div>
   </div>
@@ -338,7 +338,7 @@ exports[`Cypress Generator should render events correctly 1`] = `
     className="extraOptions"
   >
     <label
-      className="J-gTWf2zmkW2ZoUTEfVM1"
+      className="AZw_6I1jvaBT1ig8_g35"
     >
       <input
         aria-label="Code"
@@ -351,13 +351,13 @@ exports[`Cypress Generator should render events correctly 1`] = `
         value="code"
       />
       <span
-        className="_3vOMhlK4xJIv2rBAJOXmvS"
+        className="_mftckuWm_CxbUi4VQTL"
       >
         Code
       </span>
     </label>
     <label
-      className="J-gTWf2zmkW2ZoUTEfVM1"
+      className="AZw_6I1jvaBT1ig8_g35"
     >
       <input
         aria-label="Events"
@@ -369,13 +369,13 @@ exports[`Cypress Generator should render events correctly 1`] = `
         value="events"
       />
       <span
-        className="_3vOMhlK4xJIv2rBAJOXmvS"
+        className="_mftckuWm_CxbUi4VQTL"
       >
         Events
       </span>
     </label>
     <label
-      className="J-gTWf2zmkW2ZoUTEfVM1"
+      className="AZw_6I1jvaBT1ig8_g35"
     >
       <input
         aria-label="Headers"
@@ -387,13 +387,13 @@ exports[`Cypress Generator should render events correctly 1`] = `
         value="headers"
       />
       <span
-        className="_3vOMhlK4xJIv2rBAJOXmvS"
+        className="_mftckuWm_CxbUi4VQTL"
       >
         Headers
       </span>
     </label>
     <label
-      className="_2xr_2PwwBn0jwkzvvP5PKe"
+      className="jjsX8_eNFDgBVwmCs_Bv"
     >
       <input
         aria-label="Basic Auth"
@@ -406,17 +406,17 @@ exports[`Cypress Generator should render events correctly 1`] = `
         value="basic-auth"
       />
       <span
-        className="_1EUjYjpYvYDrup4HQpjJMf"
+        className="D9xOGb0Smbed_MdnEz_h"
       >
         Basic Auth
       </span>
     </label>
   </div>
   <div
-    className="N-HkZtzD4J4oU9qn_-yvs textArea"
+    className="_Cf6_6UlOEa0xDl2PbX6 textArea"
   >
     <div
-      className="_3rymx_8W221gnQrkBW4CCG"
+      className="qmkSeklt9AUFgqAjf2iJ"
     >
       <textarea
         aria-label="Value"
@@ -461,21 +461,21 @@ describe('Test Suite ...', () => {
           Value
         </label>
         <span
-          className="_1HGjbdJPl4WE23V2ftyaNX"
+          className="e6yI3SPkg4DqRDW3zTKp"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565Z\\"/></svg>",
             }
           }
         />
       </div>
       <div
-        className="_1tzA5J2lU3Dtk5elSSvQHA sf0RpxblxNDZUlesZ5VIc"
+        className="_Ep_tl05BdWdA14JbUGO DJsXPedUeH_GYbWEWQ08"
       >
         Voer een geldige waarde in
       </div>
       <div
-        className="_1tzA5J2lU3Dtk5elSSvQHA"
+        className="_Ep_tl05BdWdA14JbUGO"
       />
     </div>
   </div>
@@ -487,10 +487,10 @@ exports[`Cypress Generator should render headers correctly 1`] = `
   className="cypressGenerator"
 >
   <div
-    className="_3n6K_fKxrsVm1CJPqwAq8o testSuite"
+    className="GKKRoDa3ZmDl3Ba6z_8a testSuite"
   >
     <div
-      className="_38eXidZASNp7atFrIvNeiv"
+      className="n_TEH7ulnXJksU32jbQ7"
     >
       <input
         aria-label="Test suite name"
@@ -514,29 +514,29 @@ exports[`Cypress Generator should render headers correctly 1`] = `
           Test suite name
         </label>
         <span
-          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          className="NC6NSkYeZUDX_BS1nJQC"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565Z\\"/></svg>",
             }
           }
         />
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
+        className="_WcbkpsD4_xgcmng0e3S ___sS2lS2z9n6DiCdyqU"
       >
         Please enter a name for your test suite
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV"
+        className="_WcbkpsD4_xgcmng0e3S"
       />
     </div>
   </div>
   <div
-    className="_3n6K_fKxrsVm1CJPqwAq8o testDescription"
+    className="GKKRoDa3ZmDl3Ba6z_8a testDescription"
   >
     <div
-      className="_38eXidZASNp7atFrIvNeiv"
+      className="n_TEH7ulnXJksU32jbQ7"
     >
       <input
         aria-label="Description"
@@ -560,21 +560,21 @@ exports[`Cypress Generator should render headers correctly 1`] = `
           Description
         </label>
         <span
-          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          className="NC6NSkYeZUDX_BS1nJQC"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565Z\\"/></svg>",
             }
           }
         />
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
+        className="_WcbkpsD4_xgcmng0e3S ___sS2lS2z9n6DiCdyqU"
       >
         Please enter a description for your test
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV"
+        className="_WcbkpsD4_xgcmng0e3S"
       />
     </div>
   </div>
@@ -582,7 +582,7 @@ exports[`Cypress Generator should render headers correctly 1`] = `
     className="extraOptions"
   >
     <label
-      className="J-gTWf2zmkW2ZoUTEfVM1"
+      className="AZw_6I1jvaBT1ig8_g35"
     >
       <input
         aria-label="Code"
@@ -595,13 +595,13 @@ exports[`Cypress Generator should render headers correctly 1`] = `
         value="code"
       />
       <span
-        className="_3vOMhlK4xJIv2rBAJOXmvS"
+        className="_mftckuWm_CxbUi4VQTL"
       >
         Code
       </span>
     </label>
     <label
-      className="J-gTWf2zmkW2ZoUTEfVM1"
+      className="AZw_6I1jvaBT1ig8_g35"
     >
       <input
         aria-label="Events"
@@ -613,13 +613,13 @@ exports[`Cypress Generator should render headers correctly 1`] = `
         value="events"
       />
       <span
-        className="_3vOMhlK4xJIv2rBAJOXmvS"
+        className="_mftckuWm_CxbUi4VQTL"
       >
         Events
       </span>
     </label>
     <label
-      className="J-gTWf2zmkW2ZoUTEfVM1"
+      className="AZw_6I1jvaBT1ig8_g35"
     >
       <input
         aria-label="Headers"
@@ -631,13 +631,13 @@ exports[`Cypress Generator should render headers correctly 1`] = `
         value="headers"
       />
       <span
-        className="_3vOMhlK4xJIv2rBAJOXmvS"
+        className="_mftckuWm_CxbUi4VQTL"
       >
         Headers
       </span>
     </label>
     <label
-      className="_2xr_2PwwBn0jwkzvvP5PKe"
+      className="jjsX8_eNFDgBVwmCs_Bv"
     >
       <input
         aria-label="Basic Auth"
@@ -650,17 +650,17 @@ exports[`Cypress Generator should render headers correctly 1`] = `
         value="basic-auth"
       />
       <span
-        className="_1EUjYjpYvYDrup4HQpjJMf"
+        className="D9xOGb0Smbed_MdnEz_h"
       >
         Basic Auth
       </span>
     </label>
   </div>
   <div
-    className="N-HkZtzD4J4oU9qn_-yvs textArea"
+    className="_Cf6_6UlOEa0xDl2PbX6 textArea"
   >
     <div
-      className="_3rymx_8W221gnQrkBW4CCG"
+      className="qmkSeklt9AUFgqAjf2iJ"
     >
       <textarea
         aria-label="Value"
@@ -705,21 +705,21 @@ describe('Test Suite ...', () => {
           Value
         </label>
         <span
-          className="_1HGjbdJPl4WE23V2ftyaNX"
+          className="e6yI3SPkg4DqRDW3zTKp"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565Z\\"/></svg>",
             }
           }
         />
       </div>
       <div
-        className="_1tzA5J2lU3Dtk5elSSvQHA sf0RpxblxNDZUlesZ5VIc"
+        className="_Ep_tl05BdWdA14JbUGO DJsXPedUeH_GYbWEWQ08"
       >
         Voer een geldige waarde in
       </div>
       <div
-        className="_1tzA5J2lU3Dtk5elSSvQHA"
+        className="_Ep_tl05BdWdA14JbUGO"
       />
     </div>
   </div>
@@ -731,10 +731,10 @@ exports[`Cypress Generator should render test with suite name and description co
   className="cypressGenerator"
 >
   <div
-    className="_3n6K_fKxrsVm1CJPqwAq8o testSuite"
+    className="GKKRoDa3ZmDl3Ba6z_8a testSuite"
   >
     <div
-      className="_38eXidZASNp7atFrIvNeiv"
+      className="n_TEH7ulnXJksU32jbQ7"
     >
       <input
         aria-label="Test suite name"
@@ -758,29 +758,29 @@ exports[`Cypress Generator should render test with suite name and description co
           Test suite name
         </label>
         <span
-          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          className="NC6NSkYeZUDX_BS1nJQC"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565Z\\"/></svg>",
             }
           }
         />
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
+        className="_WcbkpsD4_xgcmng0e3S ___sS2lS2z9n6DiCdyqU"
       >
         Please enter a name for your test suite
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV"
+        className="_WcbkpsD4_xgcmng0e3S"
       />
     </div>
   </div>
   <div
-    className="_3n6K_fKxrsVm1CJPqwAq8o testDescription"
+    className="GKKRoDa3ZmDl3Ba6z_8a testDescription"
   >
     <div
-      className="_38eXidZASNp7atFrIvNeiv"
+      className="n_TEH7ulnXJksU32jbQ7"
     >
       <input
         aria-label="Description"
@@ -804,21 +804,21 @@ exports[`Cypress Generator should render test with suite name and description co
           Description
         </label>
         <span
-          className="_2r0FisJhjYRQ1B7ApaziUQ"
+          className="NC6NSkYeZUDX_BS1nJQC"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565Z\\"/></svg>",
             }
           }
         />
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV SB2FTwzzEpP_rkCBbXf_H"
+        className="_WcbkpsD4_xgcmng0e3S ___sS2lS2z9n6DiCdyqU"
       >
         Please enter a description for your test
       </div>
       <div
-        className="_32QKThU6BOofPz0VKi6SvV"
+        className="_WcbkpsD4_xgcmng0e3S"
       />
     </div>
   </div>
@@ -826,7 +826,7 @@ exports[`Cypress Generator should render test with suite name and description co
     className="extraOptions"
   >
     <label
-      className="J-gTWf2zmkW2ZoUTEfVM1"
+      className="AZw_6I1jvaBT1ig8_g35"
     >
       <input
         aria-label="Code"
@@ -839,13 +839,13 @@ exports[`Cypress Generator should render test with suite name and description co
         value="code"
       />
       <span
-        className="_3vOMhlK4xJIv2rBAJOXmvS"
+        className="_mftckuWm_CxbUi4VQTL"
       >
         Code
       </span>
     </label>
     <label
-      className="J-gTWf2zmkW2ZoUTEfVM1"
+      className="AZw_6I1jvaBT1ig8_g35"
     >
       <input
         aria-label="Events"
@@ -857,13 +857,13 @@ exports[`Cypress Generator should render test with suite name and description co
         value="events"
       />
       <span
-        className="_3vOMhlK4xJIv2rBAJOXmvS"
+        className="_mftckuWm_CxbUi4VQTL"
       >
         Events
       </span>
     </label>
     <label
-      className="J-gTWf2zmkW2ZoUTEfVM1"
+      className="AZw_6I1jvaBT1ig8_g35"
     >
       <input
         aria-label="Headers"
@@ -875,13 +875,13 @@ exports[`Cypress Generator should render test with suite name and description co
         value="headers"
       />
       <span
-        className="_3vOMhlK4xJIv2rBAJOXmvS"
+        className="_mftckuWm_CxbUi4VQTL"
       >
         Headers
       </span>
     </label>
     <label
-      className="_2xr_2PwwBn0jwkzvvP5PKe"
+      className="jjsX8_eNFDgBVwmCs_Bv"
     >
       <input
         aria-label="Basic Auth"
@@ -894,17 +894,17 @@ exports[`Cypress Generator should render test with suite name and description co
         value="basic-auth"
       />
       <span
-        className="_1EUjYjpYvYDrup4HQpjJMf"
+        className="D9xOGb0Smbed_MdnEz_h"
       >
         Basic Auth
       </span>
     </label>
   </div>
   <div
-    className="N-HkZtzD4J4oU9qn_-yvs textArea"
+    className="_Cf6_6UlOEa0xDl2PbX6 textArea"
   >
     <div
-      className="_3rymx_8W221gnQrkBW4CCG"
+      className="qmkSeklt9AUFgqAjf2iJ"
     >
       <textarea
         aria-label="Value"
@@ -943,21 +943,21 @@ describe('Test suite name', () => {
           Value
         </label>
         <span
-          className="_1HGjbdJPl4WE23V2ftyaNX"
+          className="e6yI3SPkg4DqRDW3zTKp"
           dangerouslySetInnerHTML={
             Object {
-              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565z\\"/></svg>",
+              "__html": "<svg xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"512\\" height=\\"512\\" viewBox=\\"-240 -240 512 512\\" xml:space=\\"preserve\\"><path d=\\"m-54.371 243.208 313.454-433.155-37.483-20.687L-66.106 102.03l-138.441-54.537-22.77 28.15 172.946 167.565Z\\"/></svg>",
             }
           }
         />
       </div>
       <div
-        className="_1tzA5J2lU3Dtk5elSSvQHA sf0RpxblxNDZUlesZ5VIc"
+        className="_Ep_tl05BdWdA14JbUGO DJsXPedUeH_GYbWEWQ08"
       >
         Voer een geldige waarde in
       </div>
       <div
-        className="_1tzA5J2lU3Dtk5elSSvQHA"
+        className="_Ep_tl05BdWdA14JbUGO"
       />
     </div>
   </div>
