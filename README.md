@@ -1,3 +1,5 @@
+> :exclamation: **DEPRECATED** :exclamation: : Not compatible with Manifest V3 https://developer.chrome.com/docs/extensions/mv3/intro/
+
 ![Build](https://github.com/FDMediagroep/fd-cypress-recorder/workflows/Build/badge.svg)
 ![CodeQL](https://github.com/FDMediagroep/fd-cypress-recorder/workflows/CodeQL/badge.svg)
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
